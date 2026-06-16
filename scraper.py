@@ -1,5 +1,4 @@
-"""
-CTI Pipeline – Stage 2: Article Extraction
+"""CTI Pipeline – Stage 2: Article Extraction
 Multi-method fallback pipeline to reliably extract clean article text.
 
 Priority:

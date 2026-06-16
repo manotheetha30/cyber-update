@@ -19,7 +19,30 @@ from pathlib import Path
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, TimeElapsedColumn
 from rich.table import Table
+RELEVANT_KEYWORDS = [
+    "cve",
+    "vulnerability", "vulnerable","zero","day","flaw","risk","hackers",
+    "exploit","adware","traffic","fake","phishing","hack","bug",
+    "rce",
+    "zero-day",
+    "0day",
+    "malware",
+    "ransomware",
+    "apt",
+    "threat actor","exposes","expose",
+    "breach","stealth","defense",
+    "incident",
+    "campaign",
+    "ioc","abuse","steal",
+    "attack","cyberattack","spy","cybersecurity","breached","exposed","exploitation","exploitated",
+    "compromise",
+    "privilege escalation",
+    "command injection",
+    "sql injection",
+    "authentication bypass"
+]
 
+EXCLUSION_WORDS=["webinar","tutorial","how to","recap"]
 console = Console()
 
 
@@ -33,6 +56,17 @@ def setup_logging(verbose: bool = False) -> None:
         ],
     )
 
+def is_relevant(title: str, summary: str) -> bool:
+    text = f"{title}".lower()
+    positive=negative=0
+    for k in RELEVANT_KEYWORDS:
+        if k in text:
+            positive=1
+            break
+    for j in EXCLUSION_WORDS:
+        if j in text:
+            negative=1
+    return positive >= 1 and not(negative)
 
 def run_pipeline(lookback_days: int = 1) -> dict:
     from rss_ingestor   import ingest_feeds
@@ -69,9 +103,14 @@ def run_pipeline(lookback_days: int = 1) -> dict:
             console.print("[yellow]No articles found. Exiting.")
             return stats
 
+    
+        rss_articles = [
+            a for a in rss_articles
+            if is_relevant(a.title, a.summary)
+        ]
         # ── Extraction ───────────────────────────────────────────────────────
         t = prog.add_task("[cyan]Stage 2: Extracting content...", total=None)
-        extracted = extract_articles(rss_articles)
+        extracted = extract_articles(rss_articles[:10])
         stats["articles_extracted"] = len(extracted)
         prog.update(t, description=f"[green]Stage 2 done — {len(extracted)} extracted")
 
