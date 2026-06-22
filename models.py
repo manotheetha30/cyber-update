@@ -9,11 +9,12 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 
-class ConfidenceLevel(str, Enum):
-    HIGH    = "High"
-    MEDIUM  = "Medium"
-    LOW     = "Low"
-    UNKNOWN = "Unknown"
+class ArticleClassification(str, Enum):
+    """Classification of article relevance to security incidents."""
+    SECURITY_INCIDENT = "Security Incident"
+    GENERAL_INFO      = "General Information"
+    ADVISORY           = "Advisory"
+    UNKNOWN            = "Unknown"
 
 
 class MalwareType(str, Enum):
@@ -27,6 +28,7 @@ class MalwareType(str, Enum):
     BOTNET      = "Botnet"
     ROOTKIT     = "Rootkit"
     UNKNOWN     = "Unknown"
+
 
 
 class IOCType(str, Enum):
@@ -84,7 +86,6 @@ class ThreatActor(BaseModel):
     name:        str
     aliases:     list[str]       = []
     motivation:  Optional[str]   = None
-    confidence:  ConfidenceLevel = ConfidenceLevel.UNKNOWN
     evidence:    Optional[str]   = None
 
 
@@ -92,7 +93,6 @@ class Campaign(BaseModel):
     name:        str
     aliases:     list[str]       = []
     description: str             = ""
-    confidence:  ConfidenceLevel = ConfidenceLevel.MEDIUM
     evidence:    str             = ""
 
 
@@ -101,23 +101,23 @@ class MalwareFamily(BaseModel):
     malware_type: MalwareType   = MalwareType.UNKNOWN
     aliases:      list[str]     = []
     description:  Optional[str] = None
-    confidence:   ConfidenceLevel = ConfidenceLevel.UNKNOWN
 
 
 class IOC(BaseModel):
     value:      str
     ioc_type:   IOCType
     context:    Optional[str]   = None
-    confidence: ConfidenceLevel = ConfidenceLevel.MEDIUM
 
 
 class RawBehavior(BaseModel):
-    """A single adversary behavior extracted by the LLM — no ATT&CK mapping yet."""
-    behavior:  str                          # what the attacker did
-    category:  str             = "Unknown"  # rough tactic hint
-    evidence:  str                          # article quote/paraphrase
-    artifacts: list[str]       = []         # observable items (filenames, cmds…)
-    confidence: ConfidenceLevel = ConfidenceLevel.MEDIUM
+    """
+    A single adversary behavior extracted by the LLM with rich context.
+    No tactic classification by AI — the mapper decides based on behavior description.
+    """
+    behavior:   str                  # what the attacker did
+    evidence:   str                  # article quote/paraphrase
+    artifacts:  list[str] = []       # observable items (filenames, cmds…)
+    context:    Optional[str] = None # additional context for mapper (e.g., "after gaining access", "to maintain persistence")
 
 
 # ── ATT&CK mapping (Stage B — pure RAG, no LLM) ──────────────────────────────
@@ -144,6 +144,7 @@ class HuntHypothesis(BaseModel):
 
 class CTIReport(BaseModel):
     article:            ExtractedArticle
+    classification:     ArticleClassification = ArticleClassification.UNKNOWN
     executive_summary:  str                    = ""
     threat_actors:      list[ThreatActor]      = []
     campaigns:          list[Campaign]         = []

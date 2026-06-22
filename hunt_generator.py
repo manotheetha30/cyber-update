@@ -25,7 +25,7 @@ from collections import defaultdict
 
 from models import (
     ATTACKMapping, CTIReport, DataSource,
-    HuntHypothesis, RawBehavior, ConfidenceLevel,
+    HuntHypothesis, RawBehavior
 )
 
 

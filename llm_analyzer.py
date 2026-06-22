@@ -3,15 +3,16 @@ CTI Pipeline – Stage A: LLM Extraction
 The model does ONE thing: read article content and return raw facts as JSON.
 
 What the LLM extracts:
+  - Article classification (security incident or general info)
   - executive_summary
   - threat_actors
   - campaigns
   - malware families
   - IOCs
-  - raw behaviors (no ATT&CK IDs)
+  - raw behaviors (no tactic classification)
 
 What the LLM does NOT do (handled in later stages):
-  - ATT&CK mapping  →  attack_mapper.py  (ChromaDB similarity search)
+  - ATT&CK mapping  →  attack_mapper.py  (embedding-based similarity search)
   - Hunt hypotheses →  hunt_generator.py (deterministic from mapped behaviors)
 """
 from __future__ import annotations
@@ -26,23 +27,18 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 
 from settings import LLM_MAX_TOKENS, LLM_MODEL, LLM_TEMPERATURE, OLLAMA_BASE_URL
 from models import (
-    Campaign, ConfidenceLevel, ExtractedArticle,
+    Campaign, ArticleClassification, ExtractedArticle,
     IOC, IOCType, MalwareFamily, MalwareType,
     RawBehavior, ThreatActor, CTIReport,
 )
-from prompts import EXTRACTION_PROMPT, SYSTEM_PROMPT
+from prompts import CLASSIFICATION_PROMPT, EXTRACTION_PROMPT, SYSTEM_PROMPT
 
 logger = logging.getLogger(__name__)
 
 # ── Chunking configuration ────────────────────────────────────────────────────
 
-# Each chunk is this many characters max (safe for model context)
 CHUNK_SIZE = 4_000
-
-# Overlap between chunks (for context continuity)
 CHUNK_OVERLAP = 1_500
-
-# Minimum chunk size (to avoid tiny fragments)
 MIN_CHUNK_SIZE = 2_000
 
 
@@ -52,49 +48,32 @@ def _smart_chunk_text(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = CH
     """
     Split text into overlapping chunks at sentence boundaries.
     Tries to avoid breaking mid-sentence or mid-paragraph.
-    
-    Args:
-        text: The article content to chunk
-        chunk_size: Target chunk size in characters
-        overlap: Overlap size between consecutive chunks
-    
-    Returns:
-        List of overlapping text chunks
     """
     if len(text) <= chunk_size:
         return [text]
     
-    # Split by sentences (rough heuristic: `. `, `! `, `? `)
     sentences = re.split(r'(?<=[.!?])\s+', text)
-    
     chunks = []
     current_chunk = ""
     
     for sentence in sentences:
-        # Add sentence to current chunk if it fits
         if len(current_chunk) + len(sentence) + 1 < chunk_size:
             current_chunk += (" " if current_chunk else "") + sentence
         else:
-            # Current chunk is full, save it
             if current_chunk:
                 chunks.append(current_chunk)
-            # Start new chunk with overlap from previous
             if chunks and overlap > 0:
-                # Take last `overlap` chars from previous chunk as context
                 overlap_text = chunks[-1][-overlap:]
                 current_chunk = overlap_text + " " + sentence
             else:
                 current_chunk = sentence
     
-    # Don't forget the last chunk
     if current_chunk:
         chunks.append(current_chunk)
     
-    # Filter out tiny chunks (merge with previous)
     filtered = []
     for chunk in chunks:
         if len(chunk) < MIN_CHUNK_SIZE and filtered:
-            # Merge with previous chunk
             filtered[-1] = filtered[-1] + " " + chunk
         else:
             filtered.append(chunk)
@@ -103,10 +82,20 @@ def _smart_chunk_text(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = CH
     return filtered
 
 
-# ── Ollama call ───────────────────────────────────────────────────────────────
+# ── Ollama call with chat history ────────────────────────────────────────────
 
 @retry(stop=stop_after_attempt(2), wait=wait_exponential(multiplier=2, min=5, max=20))
-def _ollama(prompt: str, model: str = LLM_MODEL) -> str:
+def _ollama(prompt: str, model: str = LLM_MODEL, messages: list[dict] | None = None) -> str:
+    """
+    Call Ollama with optional chat history for context.
+    If messages is provided, uses that history; otherwise uses single-turn mode.
+    """
+    if messages is None:
+        messages = [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": prompt},
+        ]
+    
     payload = {
         "model":  model,
         "stream": False,
@@ -115,10 +104,7 @@ def _ollama(prompt: str, model: str = LLM_MODEL) -> str:
             "num_predict": LLM_MAX_TOKENS,
             "top_p":       0.9,
         },
-        "messages": [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user",   "content": prompt},
-        ],
+        "messages": messages,
     }
 
     resp = _requests.post(
@@ -126,7 +112,6 @@ def _ollama(prompt: str, model: str = LLM_MODEL) -> str:
         json=payload,
         timeout=500,
     )
-    print("call succe")
     resp.raise_for_status()
     return resp.json()["message"]["content"]
 
@@ -134,13 +119,13 @@ def _ollama(prompt: str, model: str = LLM_MODEL) -> str:
 # ── JSON extraction ───────────────────────────────────────────────────────────
 
 def _parse_json(raw: str) -> dict:
-    # Strip Qwen3 <think>…</think> reasoning block
+    """Extract JSON from LLM output, handling various formats."""
     raw = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
 
     for candidate in [
         raw,
         re.search(r"```(?:json)?\s*([\s\S]+?)```", raw),
-        None,  # fallback: brace extraction
+        None,
     ]:
         if candidate is None:
             start = raw.find("{")
@@ -159,11 +144,46 @@ def _parse_json(raw: str) -> dict:
     raise ValueError(f"No valid JSON found in LLM output:\n{raw[:400]}")
 
 
-# ── Field coercers ────────────────────────────────────────────────────────────
+# ── Article classification ────────────────────────────────────────────────────
 
-def _conf(v: Any) -> ConfidenceLevel:
-    return {"high": ConfidenceLevel.HIGH, "medium": ConfidenceLevel.MEDIUM,
-            "low": ConfidenceLevel.LOW}.get(str(v).lower(), ConfidenceLevel.UNKNOWN)
+def _classify_article(article: ExtractedArticle) -> ArticleClassification:
+    """
+    Classify article as Security Incident, General Info, Advisory, or Unknown.
+    Only returns Security Incident classification.
+    """
+    rss = article.rss_article
+    content = article.full_text[:2000]  # Use first 2000 chars for classification
+    
+    logger.info(f"Classifying article: {rss.title[:60]}")
+    
+    try:
+        prompt = CLASSIFICATION_PROMPT.format(
+            title=rss.title,
+            source=rss.source,
+            published_date=rss.published_date.strftime("%Y-%m-%d"),
+            content=content,
+        )
+        
+        raw = _ollama(prompt)
+        data = _parse_json(raw)
+        
+        classification_str = data.get("classification", "Unknown").lower()
+        reason = data.get("reason", "")
+        
+        # Map to enum
+        for cls in ArticleClassification:
+            if cls.value.lower() == classification_str:
+                logger.debug(f"  Classification: {cls.value} - {reason}")
+                return cls
+        
+        return ArticleClassification.UNKNOWN
+        
+    except Exception as exc:
+        logger.warning(f"Classification failed: {exc}")
+        return ArticleClassification.UNKNOWN
+
+
+# ── Field coercers ────────────────────────────────────────────────────────────
 
 def _mtype(v: Any) -> MalwareType:
     return {t.value.lower(): t for t in MalwareType}.get(str(v).lower(), MalwareType.UNKNOWN)
@@ -176,14 +196,8 @@ def _itype(v: Any) -> IOCType:
 
 def _merge_reports(chunk_reports: list[dict]) -> dict:
     """
-    Merge extraction results from multiple chunks into one consolidated report.
-    Deduplicates behaviors and IOCs while keeping highest confidence scores.
-    
-    Args:
-        chunk_reports: List of extraction dicts from each chunk
-    
-    Returns:
-        Single merged extraction dict
+    Merge extraction results from multiple chunks with chat history.
+    Deduplicates behaviors and IOCs while preserving context.
     """
     if not chunk_reports:
         return {}
@@ -236,34 +250,31 @@ def _merge_reports(chunk_reports: list[dict]) -> dict:
                 if value not in iocs_by_value:
                     iocs_by_value[value] = ioc
                 else:
-                    # Keep highest confidence
-                    existing_conf = _conf(iocs_by_value[value].get("confidence", "low"))
-                    new_conf = _conf(ioc.get("confidence", "low"))
-                    if new_conf.value > existing_conf.value:  # HIGH > MEDIUM > LOW
-                        iocs_by_value[value] = ioc
+                    # Merge context
+                    existing_ctx = iocs_by_value[value].get("context", "")
+                    new_ctx = ioc.get("context", "")
+                    if new_ctx and new_ctx != existing_ctx:
+                        iocs_by_value[value]["context"] = f"{existing_ctx}; {new_ctx}"
     merged["iocs"] = list(iocs_by_value.values())
     
-    # Deduplicate behaviors by description (similar behaviors)
-    behaviors_by_desc = {}
+    # Deduplicate behaviors by description + context
+    behaviors_by_key = {}
     for report in chunk_reports:
         for behavior in (report.get("behaviors") or []):
             desc = behavior.get("behavior", "").lower().strip()
+            context = behavior.get("context", "").lower().strip()
+            key = f"{desc}||{context}"  # Unique key combining behavior and context
+            
             if desc:
-                if desc not in behaviors_by_desc:
-                    behaviors_by_desc[desc] = behavior
+                if key not in behaviors_by_key:
+                    behaviors_by_key[key] = behavior
                 else:
-                    # Keep highest confidence
-                    existing = behaviors_by_desc[desc]
-                    existing_conf = _conf(existing.get("confidence", "low"))
-                    new_conf = _conf(behavior.get("confidence", "low"))
-                    if new_conf.value > existing_conf.value:
-                        behaviors_by_desc[desc] = behavior
                     # Merge artifacts if different
-                    else:
-                        existing_artifacts = set(existing.get("artifacts", []))
-                        new_artifacts = set(behavior.get("artifacts", []))
-                        existing["artifacts"] = list(existing_artifacts | new_artifacts)
-    merged["behaviors"] = list(behaviors_by_desc.values())
+                    existing_artifacts = set(behaviors_by_key[key].get("artifacts", []))
+                    new_artifacts = set(behavior.get("artifacts", []))
+                    behaviors_by_key[key]["artifacts"] = list(existing_artifacts | new_artifacts)
+    
+    merged["behaviors"] = list(behaviors_by_key.values())
     
     logger.info(
         f"Merged {len(chunk_reports)} chunk reports: "
@@ -277,13 +288,19 @@ def _merge_reports(chunk_reports: list[dict]) -> dict:
 
 # ── JSON → Pydantic ───────────────────────────────────────────────────────────
 
-def _build_report(article: ExtractedArticle, data: dict, model: str, elapsed: float) -> CTIReport:
+def _build_report(
+    article: ExtractedArticle,
+    classification: ArticleClassification,
+    data: dict,
+    model: str,
+    elapsed: float
+) -> CTIReport:
+    """Build CTIReport from extracted data."""
     threat_actors = [
         ThreatActor(
             name        = ta.get("name", "Unknown"),
             aliases     = ta.get("aliases", []),
             motivation  = ta.get("motivation"),
-            confidence  = _conf(ta.get("confidence")),
             evidence    = ta.get("evidence"),
         )
         for ta in (data.get("threat_actors") or [])
@@ -295,7 +312,6 @@ def _build_report(article: ExtractedArticle, data: dict, model: str, elapsed: fl
             name        = c.get("name", "Unknown"),
             aliases     = c.get("aliases", []),
             description = c.get("description", ""),
-            confidence  = _conf(c.get("confidence")),
             evidence    = c.get("evidence", ""),
         )
         for c in (data.get("campaigns") or [])
@@ -307,7 +323,6 @@ def _build_report(article: ExtractedArticle, data: dict, model: str, elapsed: fl
             name         = m.get("name", "Unknown"),
             malware_type = _mtype(m.get("type", "")),
             description  = m.get("description"),
-            confidence   = _conf(m.get("confidence")),
         )
         for m in (data.get("malware") or [])
         if m.get("name")
@@ -318,7 +333,6 @@ def _build_report(article: ExtractedArticle, data: dict, model: str, elapsed: fl
             value      = i.get("value", ""),
             ioc_type   = _itype(i.get("ioc_type", "")),
             context    = i.get("context"),
-            confidence = _conf(i.get("confidence")),
         )
         for i in (data.get("iocs") or [])
         if i.get("value")
@@ -327,9 +341,9 @@ def _build_report(article: ExtractedArticle, data: dict, model: str, elapsed: fl
     behaviors = [
         RawBehavior(
             behavior   = b.get("behavior", ""),
-            category   = b.get("category", "Unknown"),
             evidence   = b.get("evidence", ""),
             artifacts  = b.get("artifacts", []),
+            context    = b.get("context"),
         )
         for b in (data.get("behaviors") or [])
         if b.get("behavior")
@@ -337,6 +351,7 @@ def _build_report(article: ExtractedArticle, data: dict, model: str, elapsed: fl
 
     return CTIReport(
         article           = article,
+        classification    = classification,
         executive_summary = data.get("executive_summary", ""),
         threat_actors     = threat_actors,
         campaigns         = campaigns,
@@ -352,34 +367,46 @@ def _build_report(article: ExtractedArticle, data: dict, model: str, elapsed: fl
 
 def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunking: bool = True) -> CTIReport:
     """
-    Stage A: send article content to the LLM, get back raw extracted facts.
+    Stage A: Classify article, then extract facts if it's a security incident.
     
-    Now supports intelligent chunking for longer articles:
+    Supports intelligent chunking for longer articles with chat history:
+    - Classifies article first
+    - Skips analysis for non-incident articles
     - Splits article into overlapping chunks at sentence boundaries
-    - Processes each chunk with context intact
+    - Maintains chat history across chunks for context
     - Merges and deduplicates results
-    - Much better behavior extraction for long articles!
-    
-    ATT&CK mapping and hunt generation happen in separate stages after this.
-    
-    Args:
-        article: ExtractedArticle to analyze
-        model: LLM model name
-        use_chunking: If True, chunk long articles; if False, truncate at MAX_CONTENT
     """
     rss     = article.rss_article
     content = article.full_text
-
-    logger.info("Analyzing [%s]: %s", model, rss.title[:70])
+    
+    logger.info("Processing [%s]: %s", model, rss.title[:70])
     t0 = time.time()
-
+    
     try:
-        # Decide whether to use chunking
+        # Step 1: Classify article
+        classification = _classify_article(article)
+        
+        # Step 2: Skip non-incident articles
+        if classification != ArticleClassification.SECURITY_INCIDENT:
+            logger.info(
+                f"  Skipping analysis: classified as {classification.value}"
+            )
+            return CTIReport(
+                article        = article,
+                classification = classification,
+                model_used     = model,
+                processing_time_s = round(time.time() - t0, 2),
+            )
+        
+        # Step 3: Extract facts from security incident
         if use_chunking and len(content) > CHUNK_SIZE:
             chunks = _smart_chunk_text(content, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP)
-            logger.info(f"  Processing {len(chunks)} chunks from full article...")
+            logger.info(f"  Analyzing {len(chunks)} chunks from full article...")
             
+            # Maintain chat history across chunks
+            chat_history = [{"role": "system", "content": SYSTEM_PROMPT}]
             chunk_results = []
+            
             for i, chunk in enumerate(chunks, 1):
                 logger.debug(f"  [Chunk {i}/{len(chunks)}] {len(chunk)} chars")
                 
@@ -391,7 +418,15 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
                 )
                 
                 try:
-                    raw  = _ollama(prompt, model=model)
+                    # Add user message to history
+                    chat_history.append({"role": "user", "content": prompt})
+                    
+                    # Get response with history
+                    raw = _ollama(prompt, model=model, messages=chat_history)
+                    
+                    # Add assistant response to history
+                    chat_history.append({"role": "assistant", "content": raw})
+                    
                     data = _parse_json(raw)
                     chunk_results.append(data)
                 except Exception as e:
@@ -401,11 +436,10 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
             if not chunk_results:
                 raise ValueError("All chunks failed to extract")
             
-            # Merge results from all chunks
             data = _merge_reports(chunk_results)
         
         else:
-            # Original truncation behavior for short articles or if chunking disabled
+            # Single-pass for short articles
             if len(content) > CHUNK_SIZE:
                 logger.info(f"  Article longer than {CHUNK_SIZE} chars, truncating (chunking disabled)")
                 content = content[:CHUNK_SIZE] + "\n\n[truncated]"
@@ -420,8 +454,8 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
             raw  = _ollama(prompt, model=model)
             data = _parse_json(raw)
         
-        # Build final report from merged data
-        report = _build_report(article, data, model, time.time() - t0)
+        # Build final report
+        report = _build_report(article, classification, data, model, time.time() - t0)
         logger.info(
             "  → actors=%d  iocs=%d  behaviors=%d  (%.1fs)",
             len(report.threat_actors), len(report.iocs),
@@ -432,6 +466,7 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
         logger.exception("LLM failed for '%s': %s", rss.title[:60], exc)
         report = CTIReport(
             article           = article,
+            classification    = ArticleClassification.UNKNOWN,
             executive_summary = f"[Extraction failed: {exc}]",
             model_used        = model,
             processing_time_s = round(time.time() - t0, 2),
@@ -441,17 +476,7 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
 
 
 def analyze_articles(articles: list[ExtractedArticle], model: str = LLM_MODEL, use_chunking: bool = True) -> list[CTIReport]:
-    """
-    Analyze multiple articles.
-    
-    Args:
-        articles: List of ExtractedArticle objects
-        model: LLM model to use
-        use_chunking: If True, use intelligent chunking for long articles
-    
-    Returns:
-        List of CTIReport objects
-    """
+    """Analyze multiple articles."""
     reports = []
     for i, art in enumerate(articles, 1):
         reports.append(analyze_article(art, model=model, use_chunking=use_chunking))

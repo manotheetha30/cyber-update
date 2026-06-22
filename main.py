@@ -14,85 +14,97 @@ import logging
 import sys
 import time
 from pathlib import Path
+from collections import defaultdict
 
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, TimeElapsedColumn
 from rich.table import Table
+
 RELEVANT_KEYWORDS = [
-    "cve",
-    "vulnerability", "vulnerable","zero","day","flaw","risk","hackers",
-    "exploit","adware","traffic","fake","phishing","hack","bug",
-    "rce",
-    "zero-day",
-    "0day",
-    "malware",
-    "ransomware",
-    "apt",
-    "threat actor","exposes","expose",
-    "breach","stealth","defense",
-    "incident",
-    "campaign",
-    "ioc","abuse","steal",
-    "attack","cyberattack","spy","cybersecurity","breached","exposed","exploitation","exploitated",
-    "compromise",
-    "privilege escalation",
-    "command injection",
-    "sql injection",
+    "cve", "vulnerability", "vulnerable", "zero", "day", "flaw", "risk", "hackers",
+    "exploit", "adware", "traffic", "fake", "phishing", "hack", "bug",
+    "rce", "zero-day", "0day", "malware", "ransomware", "apt",
+    "threat actor", "exposes", "expose", "breach", "stealth", "defense",
+    "incident", "campaign", "ioc", "abuse", "steal",
+    "attack", "cyberattack", "spy", "cybersecurity", "breached", "exposed",
+    "exploitation", "exploitated", "compromise",
+    "privilege escalation", "command injection", "sql injection",
     "authentication bypass"
 ]
 
-EXCLUSION_WORDS=["webinar","tutorial","how to","recap","bulletin"]
+EXCLUSION_WORDS = ["webinar", "tutorial", "how to", "recap", "bulletin"]
+
 console = Console()
 
 
 def setup_logging(verbose: bool = False) -> None:
     logging.basicConfig(
-        level   = logging.DEBUG if verbose else logging.INFO,
-        format  = "%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-        handlers = [
+        level=logging.DEBUG if verbose else logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+        handlers=[
             logging.StreamHandler(sys.stdout),
             logging.FileHandler("pipeline.log", mode="a"),
         ],
     )
 
+
 def is_relevant(title: str, summary: str) -> bool:
+    """Quick relevance filter based on keywords."""
     text = f"{title}".lower()
-    positive=negative=0
+    positive = negative = 0
     for k in RELEVANT_KEYWORDS:
         if k in text:
-            positive=1
+            positive = 1
             break
     for j in EXCLUSION_WORDS:
         if j in text:
-            negative=1
-    return positive >= 1 and not(negative)
+            negative = 1
+    return positive >= 1 and not negative
+
 
 def run_pipeline(lookback_days: int = 1) -> dict:
-    from rss_ingestor   import ingest_feeds
-    from scraper        import extract_articles
-    from llm_analyzer   import analyze_articles       # Stage A
-    from attack_mapper  import map_reports            # Stage B
-    from hunt_generator import generate_all_hypotheses  # Stage C
+    """
+    Main pipeline orchestrator:
+    1. Ingest RSS feeds
+    2. Extract article content
+    3. Classify + analyze (only security incidents)
+    4. Deduplicate same content from multiple sources
+    5. Map to ATT&CK
+    6. Generate hunt hypotheses
+    7. Save reports
+    """
+    from rss_ingestor import ingest_feeds
+    from scraper import extract_articles
+    from llm_analyzer import analyze_articles
+    from attack_mapper import map_reports
+    from hunt_generator import generate_all_hypotheses
     from report_generator import save_all_reports, export_ioc_csv
-    from database       import save_article, save_report
-    from settings       import LLM_MODEL
+    from database import save_article, save_report, is_duplicate
+    from settings import LLM_MODEL
 
     stats = {
-        "articles_found":    0,
+        "articles_found": 0,
         "articles_extracted": 0,
+        "articles_deduplicated": 0,
         "articles_analyzed": 0,
-        "attack_mappings":   0,
-        "hunt_hypotheses":   0,
-        "iocs_extracted":    0,
-        "reports_written":   0,
-        "elapsed_s":         0.0,
+        "articles_classified_security": 0,
+        "articles_skipped_non_incident": 0,
+        "attack_mappings": 0,
+        "hunt_hypotheses": 0,
+        "iocs_extracted": 0,
+        "reports_written": 0,
+        "elapsed_s": 0.0,
     }
     t0 = time.time()
 
-    with Progress(SpinnerColumn(), TextColumn("{task.description}"),
-                  TimeElapsedColumn(), console=console) as prog:
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("{task.description}"),
+        TimeElapsedColumn(),
+        console=console
+    ) as prog:
 
-        # ── RSS ───────────────────────────────────────────────────────────────
+        # ── Stage 1: RSS Ingestion ────────────────────────────────────────────
         t = prog.add_task("[cyan]Stage 1: RSS ingestion...", total=None)
         rss_articles = ingest_feeds(lookback_days=lookback_days)
         stats["articles_found"] = len(rss_articles)
@@ -102,46 +114,115 @@ def run_pipeline(lookback_days: int = 1) -> dict:
             console.print("[yellow]No articles found. Exiting.")
             return stats
 
-    
+        # Quick relevance filter
         rss_articles = [
             a for a in rss_articles
-            if is_relevant(a.title, a.summary)
+            if is_relevant(a.title, a.summary or "")
         ]
-        # ── Extraction ───────────────────────────────────────────────────────
+
+        # ── Stage 2: Extract Article Content ──────────────────────────────────
         t = prog.add_task("[cyan]Stage 2: Extracting content...", total=None)
-        extracted = extract_articles(rss_articles[15:16])
+        extracted = extract_articles(rss_articles[:2])
         stats["articles_extracted"] = len(extracted)
         prog.update(t, description=f"[green]Stage 2 done — {len(extracted)} extracted")
-        for art in extracted:
-            save_article(art)
+
         if not extracted:
             console.print("[yellow]No articles extracted. Exiting.")
             return stats
-        # ── Stage A: LLM extraction ───────────────────────────────────────────
-        t = prog.add_task(f"[cyan]Stage A: LLM extraction ({LLM_MODEL})...", total=None)
-        reports = analyze_articles(extracted)
-        stats["articles_analyzed"] = len(reports)
-        stats["iocs_extracted"]    = sum(len(r.iocs) for r in reports)
-        prog.update(t, description=f"[green]Stage A done — {len(reports)} reports, "
-                                   f"{stats['iocs_extracted']} IOCs")
 
-        # ── Stage B: ATT&CK mapping ───────────────────────────────────────────
+        # ── Stage 3: Deduplication across sources ──────────────────────────────
+        t = prog.add_task("[cyan]Stage 3: Deduplicating across sources...", total=None)
+        
+        # Track unique content hashes
+        unique_articles = []
+        hash_to_article = {}
+        
+        for art in extracted:
+            if art.content_hash in hash_to_article:
+                # Same content from different source
+                existing = hash_to_article[art.content_hash]
+                console.print(
+                    f"[yellow]Duplicate content:[/] {art.rss_article.source} ≈ "
+                    f"{existing.rss_article.source}"
+                )
+                stats["articles_deduplicated"] += 1
+            else:
+                hash_to_article[art.content_hash] = art
+                unique_articles.append(art)
+                # Save to database (marks duplicate sources)
+                is_new, _ = save_article(art)
+        
+        prog.update(
+            t,
+            description=f"[green]Stage 3 done — {len(unique_articles)} unique "
+                       f"({stats['articles_deduplicated']} duplicates)"
+        )
+
+        # ── Stage A: LLM Extraction + Classification ──────────────────────────
+        t = prog.add_task(
+            f"[cyan]Stage A: LLM analysis ({LLM_MODEL})...",
+            total=None
+        )
+        reports = analyze_articles(unique_articles)
+        
+        # Count classification results
+        classified_security = sum(
+            1 for r in reports
+            if r.classification.value == "Security Incident"
+        )
+        stats["articles_analyzed"] = len(reports)
+        stats["articles_classified_security"] = classified_security
+        stats["articles_skipped_non_incident"] = len(reports) - classified_security
+        stats["iocs_extracted"] = sum(len(r.iocs) for r in reports)
+        
+        prog.update(
+            t,
+            description=f"[green]Stage A done — {classified_security} security incidents, "
+                       f"{stats['articles_skipped_non_incident']} skipped"
+        )
+
+        # Filter to security incidents only for further processing
+        security_reports = [
+            r for r in reports
+            if r.classification.value == "Security Incident"
+        ]
+
+        if not security_reports:
+            console.print(
+                "[yellow]No security incidents identified. Saving reports for non-incidents."
+            )
+            for r in reports:
+                content_hash = r.article.content_hash
+                save_report(r, content_hash)
+            
+            paths = save_all_reports(reports)
+            stats["reports_written"] = len(paths)
+            stats["elapsed_s"] = round(time.time() - t0, 1)
+            return stats
+
+        # ── Stage B: ATT&CK Mapping ───────────────────────────────────────────
         t = prog.add_task("[cyan]Stage B: ATT&CK mapping...", total=None)
-        reports = map_reports(reports)
-        stats["attack_mappings"] = sum(len(r.attack_mappings) for r in reports)
+        security_reports = map_reports(security_reports)
+        stats["attack_mappings"] = sum(len(r.attack_mappings) for r in security_reports)
         prog.update(t, description=f"[green]Stage B done — {stats['attack_mappings']} techniques mapped")
 
-        # ── Stage C: Hunt hypotheses ──────────────────────────────────────────
+        # ── Stage C: Hunt Hypothesis Generation ────────────────────────────────
         t = prog.add_task("[cyan]Stage C: Generating hunt hypotheses...", total=None)
-        reports = generate_all_hypotheses(reports)
-        stats["hunt_hypotheses"] = sum(len(r.hunt_hypotheses) for r in reports)
-        prog.update(t, description=f"[green]Stage C done ")
-        # ── Persist + output ──────────────────────────────────────────────────
+        security_reports = generate_all_hypotheses(security_reports)
+        stats["hunt_hypotheses"] = sum(len(r.hunt_hypotheses) for r in security_reports)
+        prog.update(t, description=f"[green]Stage C done — {stats['hunt_hypotheses']} hypotheses")
+
+        # ── Persist + Output ──────────────────────────────────────────────────
         t = prog.add_task("[cyan]Writing reports...", total=None)
+        
+        # Save all reports (security incidents + skipped articles)
         for r in reports:
-            save_report(r)
+            content_hash = r.article.content_hash
+            save_report(r, content_hash)
+        
         paths = save_all_reports(reports)
-        export_ioc_csv(reports)
+        export_ioc_csv(security_reports)
+        
         stats["reports_written"] = len(paths)
         prog.update(t, description=f"[green]Done — {len(paths)} reports written")
 
@@ -150,17 +231,21 @@ def run_pipeline(lookback_days: int = 1) -> dict:
 
 
 def print_summary(stats: dict) -> None:
+    """Print run summary table."""
     tbl = Table(title="CTI Pipeline — Run Summary")
-    tbl.add_column("Metric",  style="cyan")
-    tbl.add_column("Value",   style="white")
+    tbl.add_column("Metric", style="cyan")
+    tbl.add_column("Value", style="white")
     for k, v in stats.items():
-        tbl.add_row(k.replace("_", " ").title(), str(v))
+        label = k.replace("_", " ").title()
+        tbl.add_row(label, str(v))
     console.print(tbl)
 
 
 def scheduled_run() -> None:
+    """Run pipeline on a schedule."""
     import schedule as sched
     from settings import RUN_HOUR, RUN_MINUTE
+    
     run_time = f"{RUN_HOUR:02d}:{RUN_MINUTE:02d}"
     console.print(f"[cyan]Scheduler active — daily run at {run_time} UTC")
 
@@ -176,15 +261,16 @@ def scheduled_run() -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="CTI Pipeline")
-    parser.add_argument("--schedule",  action="store_true")
-    parser.add_argument("--init-rag",  action="store_true")
-    parser.add_argument("--lookback",  type=int, default=1)
-    parser.add_argument("--verbose",   action="store_true")
+    parser.add_argument("--schedule", action="store_true", help="Run on schedule")
+    parser.add_argument("--init-rag", action="store_true", help="Initialize RAG system")
+    parser.add_argument("--lookback", type=int, default=1, help="Days to look back")
+    parser.add_argument("--verbose", action="store_true", help="Verbose logging")
     args = parser.parse_args()
 
     setup_logging(args.verbose)
     Path("data").mkdir(exist_ok=True)
     Path("reports").mkdir(exist_ok=True)
+
     if args.schedule:
         scheduled_run()
         return

@@ -17,7 +17,7 @@ DATABASE_URL: str = os.getenv("CTI_DATABASE_URL", f"sqlite:///{BASE_DIR}/data/ct
 
 # ── LLM ───────────────────────────────────────────────────────────────────────
 OLLAMA_BASE_URL: str  = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-LLM_MODEL:       str  = os.getenv("CTI_LLM_MODEL",   "qwen3:8b")
+LLM_MODEL:       str  = os.getenv("CTI_LLM_MODEL",   "cth-qwen:latest")
 LLM_TEMPERATURE: float = float(os.getenv("CTI_LLM_TEMPERATURE", "0.1"))
 LLM_MAX_TOKENS:  int  = int(os.getenv("CTI_LLM_MAX_TOKENS",    "4096"))
 LLM_CONTEXT_WINDOW: int = int(os.getenv("CTI_LLM_CONTEXT_WINDOW", "32768"))

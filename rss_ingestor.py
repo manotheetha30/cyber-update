@@ -22,9 +22,14 @@ logger = logging.getLogger(__name__)
 def _utc_yesterday() -> tuple[datetime, datetime]:
     """Return (start, end) of the previous UTC calendar day."""
     today = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
-    yesterday_start = today - timedelta(days=1)
-    yesterday_end   = today
-    return yesterday_start, yesterday_end
+    if today.strftime("%A") == "Monday":
+        print("Today is Monday, looking back to Friday-Sunday")
+        # If today is Monday, look back from Friday to Sunday (3 days) to catch weekend articles.
+        search_start = today - timedelta(days=3)
+    else:
+        search_start = today - timedelta(days=1)
+    search_end   = today
+    return search_start, search_end
 
 
 def _parse_published(entry: feedparser.util.FeedParserDict) -> datetime | None:
@@ -84,8 +89,7 @@ def ingest_feeds(
         feeds = RSS_FEEDS
 
     today = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
-    window_start = today - timedelta(days=lookback_days)
-    window_end   = today
+    window_start,window_end   = _utc_yesterday()
 
     seen_urls: set[str] = set()
     articles: list[RSSArticle] = []

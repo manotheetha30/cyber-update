@@ -1,6 +1,6 @@
 """
 CTI Pipeline – Report Generator
-Renders the final CTIReport (with all three stages complete) into Markdown + CSV.
+Renders the final CTIReport into Markdown + CSV with rich context.
 """
 from __future__ import annotations
 import csv
@@ -15,6 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 def _table(headers: list[str], rows: list[list[str]]) -> str:
+    """Render a markdown table."""
     sep  = "| " + " | ".join("---" for _ in headers) + " |"
     head = "| " + " | ".join(headers) + " |"
     body = ["| " + " | ".join(str(c).replace("|", "\\|")[:120] for c in row) + " |"
@@ -23,6 +24,7 @@ def _table(headers: list[str], rows: list[list[str]]) -> str:
 
 
 def render_report(report: CTIReport) -> str:
+    """Render full CTI report to markdown."""
     rss  = report.article.rss_article
     now  = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
     lines: list[str] = []
@@ -36,6 +38,7 @@ def render_report(report: CTIReport) -> str:
         f"| Source | {rss.source} |",
         f"| Published | {rss.published_date.strftime('%Y-%m-%d %H:%M UTC')} |",
         f"| URL | [{rss.url}]({rss.url}) |",
+        f"| Classification | {report.classification.value} |",
         f"| Report Generated | {now} |",
         f"| Model | {report.model_used} |",
         f"| LLM Processing Time | {report.processing_time_s}s |",
@@ -43,6 +46,17 @@ def render_report(report: CTIReport) -> str:
         "---",
         "",
     ]
+
+    # ── Classification Status ─────────────────────────────────────────────────
+    if report.classification.value != "Security Incident":
+        lines += [
+            f"**Status:** {report.classification.value}",
+            "",
+            f"*This article was classified as '{report.classification.value}' and minimal analysis was performed.*",
+            "",
+            "---",
+            "",
+        ]
 
     # ── Executive Summary ─────────────────────────────────────────────────────
     lines += ["## Executive Summary", "", report.executive_summary or "_None generated._", ""]
@@ -55,7 +69,6 @@ def render_report(report: CTIReport) -> str:
                 f"### {ta.name}",
                 f"- **Aliases:** {', '.join(ta.aliases) or '—'}",
                 f"- **Motivation:** {ta.motivation or '—'}",
-                f"- **Confidence:** {ta.confidence.value}",
                 f"- **Evidence:** {ta.evidence or '—'}",
                 "",
             ]
@@ -69,7 +82,6 @@ def render_report(report: CTIReport) -> str:
             lines += [
                 f"### {c.name}",
                 f"- **Aliases:** {', '.join(c.aliases) or '—'}",
-                f"- **Confidence:** {c.confidence.value}",
                 f"- **Description:** {c.description or '—'}",
                 f"- **Evidence:** {c.evidence or '—'}",
                 "",
@@ -82,7 +94,6 @@ def render_report(report: CTIReport) -> str:
             lines += [
                 f"### {mw.name} ({mw.malware_type.value})",
                 f"- **Aliases:** {', '.join(mw.aliases) or '—'}",
-                f"- **Confidence:** {mw.confidence.value}",
                 f"- **Description:** {mw.description or '—'}",
                 "",
             ]
@@ -94,26 +105,31 @@ def render_report(report: CTIReport) -> str:
     if report.iocs:
         lines += [
             _table(
-                ["IOC Value", "Type", "Confidence", "Context"],
-                [[i.value, i.ioc_type.value, i.confidence.value, i.context or "—"]
+                ["IOC Value", "Type", "Context"],
+                [[i.value, i.ioc_type.value, i.context or "—"]
                  for i in report.iocs],
             ), "",
         ]
     else:
         lines += ["_None extracted._", ""]
 
-    # ── Behaviors (raw LLM output) ────────────────────────────────────────────
+    # ── Behaviors with Rich Context ───────────────────────────────────────────
     lines += ["## Observed Behaviors", ""]
     if report.behaviors:
         for i, b in enumerate(report.behaviors, 1):
-            artifacts = ", ".join(b.artifacts) if b.artifacts else "—"
+            artifacts = ", ".join(f"`{a}`" for a in b.artifacts) if b.artifacts else "—"
             lines += [
                 f"**{i}. {b.behavior}**",
-                f"- Category: {b.category}  ",
-                f"- Evidence: _{b.evidence}_",
-                f"- Artifacts: `{artifacts}`",
-                "",
+                f"- **Evidence:** {b.evidence}",
             ]
+            
+            if b.artifacts:
+                lines.append(f"- **Artifacts:** {artifacts}")
+            
+            if b.context:
+                lines.append(f"- **Context:** {b.context}")
+            
+            lines.append("")
     else:
         lines += ["_None extracted._", ""]
 
@@ -135,7 +151,7 @@ def render_report(report: CTIReport) -> str:
             ), "",
         ]
     else:
-        lines += ["_No techniques mapped — either no behaviors were extracted or similarity was below threshold._", ""]
+        lines += ["_No techniques mapped._", ""]
 
     # ── Hunt Hypotheses (Stage C) ─────────────────────────────────────────────
     lines += ["## Threat Hunt Hypotheses", ""]
@@ -163,12 +179,12 @@ def render_report(report: CTIReport) -> str:
     else:
         lines += ["_No hypotheses generated._", ""]
 
-
     lines += ["---", f"*Generated by CTI Pipeline | {now}*"]
     return "\n".join(lines)
 
 
 def save_report_file(report: CTIReport, output_dir: Path | None = None) -> Path:
+    """Save rendered report to markdown file."""
     output_dir = Path(REPORT_DIR)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -183,36 +199,37 @@ def save_report_file(report: CTIReport, output_dir: Path | None = None) -> Path:
 
 
 def save_all_reports(reports: list[CTIReport], output_dir: Path | None = None) -> list[Path]:
+    """Save multiple reports."""
     paths = []
     for r in reports:
         try:
             paths.append(save_report_file(r, output_dir))
         except Exception as exc:
-       
-            logger.exception(
-        "Failed to write report"
-    )
+            logger.exception("Failed to write report")
     return paths
 
 
 def export_ioc_csv(reports: list[CTIReport], output_dir: Path | None = None) -> Path:
+    """Export all IOCs to CSV."""
     output_dir = Path(output_dir or REPORT_DIR)
     output_dir.mkdir(parents=True, exist_ok=True)
     path = output_dir / f"{datetime.utcnow().strftime('%Y-%m-%d')}_iocs.csv"
 
     with open(path, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=["value", "type", "confidence", "context", "source", "url"])
+        w = csv.DictWriter(f, fieldnames=[
+            "value", "type", "context", "source", "url", "published_date"
+        ])
         w.writeheader()
         for r in reports:
             rss = r.article.rss_article
             for ioc in r.iocs:
                 w.writerow({
-                    "value":      ioc.value,
-                    "type":       ioc.ioc_type.value,
-                    "confidence": ioc.confidence.value,
-                    "context":    ioc.context or "",
-                    "source":     rss.source,
-                    "url":        rss.url,
+                    "value":          ioc.value,
+                    "type":           ioc.ioc_type.value,
+                    "context":        ioc.context or "",
+                    "source":         rss.source,
+                    "url":            rss.url,
+                    "published_date": rss.published_date.strftime("%Y-%m-%d"),
                 })
 
     total = sum(len(r.iocs) for r in reports)
