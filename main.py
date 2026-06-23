@@ -1,5 +1,5 @@
 """
-CTI Pipeline – Main Orchestrator
+Threat Hunt Generation Pipeline
 Three-stage pipeline: A (LLM extract) → B (ATT&CK map) → C (hunt generate)
 
 Usage:
@@ -19,6 +19,7 @@ from collections import defaultdict
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, TimeElapsedColumn
 from rich.table import Table
+from peak_hunt_generator import generate_peak_hunts
 
 RELEVANT_KEYWORDS = [
     "cve", "vulnerability", "vulnerable", "zero", "day", "flaw", "risk", "hackers",
@@ -48,7 +49,7 @@ def setup_logging(verbose: bool = False) -> None:
     )
 
 
-def is_relevant(title: str, summary: str) -> bool:
+def is_relevant(title: str) -> bool:
     """Quick relevance filter based on keywords."""
     text = f"{title}".lower()
     positive = negative = 0
@@ -117,32 +118,31 @@ def run_pipeline(lookback_days: int = 1) -> dict:
         # Quick relevance filter
         rss_articles = [
             a for a in rss_articles
-            if is_relevant(a.title, a.summary or "")
+            if is_relevant(a.title)
         ]
 
         # ── Stage 2: Extract Article Content ──────────────────────────────────
-        t = prog.add_task("[cyan]Stage 2: Extracting content...", total=None)
-        extracted = extract_articles(rss_articles[:2])
+        t = prog.add_task("Stage 2: Extracting content...", total=None)
+        extracted = extract_articles(rss_articles[4:5])
         stats["articles_extracted"] = len(extracted)
-        prog.update(t, description=f"[green]Stage 2 done — {len(extracted)} extracted")
+        prog.update(t, description=f"Stage 2 done — {len(extracted)} extracted")
 
         if not extracted:
-            console.print("[yellow]No articles extracted. Exiting.")
+            console.print("No articles extracted. Exiting.")
             return stats
 
         # ── Stage 3: Deduplication across sources ──────────────────────────────
-        t = prog.add_task("[cyan]Stage 3: Deduplicating across sources...", total=None)
+        t = prog.add_task("Stage 3: Deduplicating across sources...", total=None)
         
         # Track unique content hashes
         unique_articles = []
         hash_to_article = {}
-        
         for art in extracted:
             if art.content_hash in hash_to_article:
                 # Same content from different source
                 existing = hash_to_article[art.content_hash]
                 console.print(
-                    f"[yellow]Duplicate content:[/] {art.rss_article.source} ≈ "
+                    f"Duplicate content:[/] {art.rss_article.source} ≈ "
                     f"{existing.rss_article.source}"
                 )
                 stats["articles_deduplicated"] += 1
@@ -164,7 +164,11 @@ def run_pipeline(lookback_days: int = 1) -> dict:
             total=None
         )
         reports = analyze_articles(unique_articles)
+        for r in reports:
         
+            r.peak_hunts = generate_peak_hunts(r)
+  
+
         # Count classification results
         classified_security = sum(
             1 for r in reports
@@ -232,7 +236,7 @@ def run_pipeline(lookback_days: int = 1) -> dict:
 
 def print_summary(stats: dict) -> None:
     """Print run summary table."""
-    tbl = Table(title="CTI Pipeline — Run Summary")
+    tbl = Table(title="Threat Hunt Generation Pipeline — Run Summary")
     tbl.add_column("Metric", style="cyan")
     tbl.add_column("Value", style="white")
     for k, v in stats.items():
@@ -260,9 +264,8 @@ def scheduled_run() -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="CTI Pipeline")
+    parser = argparse.ArgumentParser(description="Threat Hunt Generation Pipeline")
     parser.add_argument("--schedule", action="store_true", help="Run on schedule")
-    parser.add_argument("--init-rag", action="store_true", help="Initialize RAG system")
     parser.add_argument("--lookback", type=int, default=1, help="Days to look back")
     parser.add_argument("--verbose", action="store_true", help="Verbose logging")
     args = parser.parse_args()
@@ -275,7 +278,7 @@ def main() -> None:
         scheduled_run()
         return
 
-    console.print("[bold cyan]CTI Pipeline — starting run[/]")
+    console.print("[bold cyan]Threat Hunt Generation Pipeline — starting run[/]")
     print_summary(run_pipeline(lookback_days=args.lookback))
 
 

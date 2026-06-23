@@ -1,11 +1,11 @@
 """
-CTI Pipeline – Pydantic data models
+Threat Hunt Generation Pipeline – Pydantic data models
 Clean, minimal, strictly aligned with what the LLM actually returns.
 """
 from __future__ import annotations
 from datetime import datetime
 from enum import Enum
-from typing import Optional
+from typing import Optional,List
 from pydantic import BaseModel, Field
 
 
@@ -142,7 +142,32 @@ class HuntHypothesis(BaseModel):
 
 # ── Final per-article report ──────────────────────────────────────────────────
 
-class CTIReport(BaseModel):
+
+class PeakPrepare(BaseModel):
+    hypothesis: str
+    behavior_basis: List[str]
+    objective: str
+    required_data_sources: List[str]
+
+
+class PeakExecute(BaseModel):
+    gather_data: List[str]
+    analysis_steps: List[str]
+    supporting_evidence: List[str]
+
+
+class PeakAct(BaseModel):
+    documentation_requirements: str
+    findings_to_preserve: List[str]
+    future_hunt_recommendations: List[str]
+
+
+class PeakHunt(BaseModel):
+    prepare: PeakPrepare
+    execute: PeakExecute
+    act: PeakAct
+    
+class  HuntReport(BaseModel):
     article:            ExtractedArticle
     classification:     ArticleClassification = ArticleClassification.UNKNOWN
     executive_summary:  str                    = ""
@@ -153,6 +178,7 @@ class CTIReport(BaseModel):
     behaviors:          list[RawBehavior]      = []
     attack_mappings:    list[ATTACKMapping]    = []
     hunt_hypotheses:    list[HuntHypothesis]   = []
+    peak_hunts:         list[PeakHunt]         = []
     model_used:         str                    = ""
     processing_time_s:  float                  = 0.0
     generated_at:       datetime = Field(default_factory=datetime.utcnow)

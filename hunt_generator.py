@@ -1,5 +1,5 @@
 """
-CTI Pipeline – Stage C: Threat Hunt Hypothesis Generation
+Threat Hunt Generation Pipeline – Stage C: Threat Hunt Hypothesis Generation
 One hypothesis per tactic — all techniques and behaviors under that tactic
 are consolidated into a single, richer hunting hypothesis.
 
@@ -24,7 +24,7 @@ from __future__ import annotations
 from collections import defaultdict
 
 from models import (
-    ATTACKMapping, CTIReport, DataSource,
+    ATTACKMapping, HuntReport, DataSource,
     HuntHypothesis, RawBehavior
 )
 
@@ -304,7 +304,7 @@ def _build_tactic_hypothesis(
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
-def generate_hypotheses(report: CTIReport) -> CTIReport:
+def generate_hypotheses(report: HuntReport) -> HuntReport:
     """
     Stage C: one hypothesis per tactic, consolidating all techniques
     and behaviors observed under that tactic.
@@ -331,5 +331,5 @@ def generate_hypotheses(report: CTIReport) -> CTIReport:
     return report
 
 
-def generate_all_hypotheses(reports: list[CTIReport]) -> list[CTIReport]:
+def generate_all_hypotheses(reports: list[HuntReport]) -> list[HuntReport]:
     return [generate_hypotheses(r) for r in reports]

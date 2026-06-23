@@ -1,5 +1,5 @@
 """
-CTI Pipeline – Stage A: LLM Extraction
+Threat Hunt Generation Pipeline – Stage A: LLM Extraction
 The model does ONE thing: read article content and return raw facts as JSON.
 
 What the LLM extracts:
@@ -29,17 +29,17 @@ from settings import LLM_MAX_TOKENS, LLM_MODEL, LLM_TEMPERATURE, OLLAMA_BASE_URL
 from models import (
     Campaign, ArticleClassification, ExtractedArticle,
     IOC, IOCType, MalwareFamily, MalwareType,
-    RawBehavior, ThreatActor, CTIReport,
+    RawBehavior, ThreatActor, HuntReport,
 )
-from prompts import CLASSIFICATION_PROMPT, EXTRACTION_PROMPT, SYSTEM_PROMPT
+from prompts import CLASSIFICATION_PROMPT, EXTRACTION_PROMPT
 
 logger = logging.getLogger(__name__)
 
 # ── Chunking configuration ────────────────────────────────────────────────────
 
-CHUNK_SIZE = 4_000
+CHUNK_SIZE = 7_000
 CHUNK_OVERLAP = 1_500
-MIN_CHUNK_SIZE = 2_000
+MIN_CHUNK_SIZE = 1_000
 
 
 # ── Chunking utilities ────────────────────────────────────────────────────────
@@ -83,7 +83,6 @@ def _smart_chunk_text(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = CH
 
 
 # ── Ollama call with chat history ────────────────────────────────────────────
-
 @retry(stop=stop_after_attempt(2), wait=wait_exponential(multiplier=2, min=5, max=20))
 def _ollama(prompt: str, model: str = LLM_MODEL, messages: list[dict] | None = None) -> str:
     """
@@ -92,7 +91,6 @@ def _ollama(prompt: str, model: str = LLM_MODEL, messages: list[dict] | None = N
     """
     if messages is None:
         messages = [
-            {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": prompt},
         ]
     
@@ -110,11 +108,10 @@ def _ollama(prompt: str, model: str = LLM_MODEL, messages: list[dict] | None = N
     resp = _requests.post(
         f"{OLLAMA_BASE_URL}/api/chat",
         json=payload,
-        timeout=500,
+        timeout=(20,1500),
     )
     resp.raise_for_status()
     return resp.json()["message"]["content"]
-
 
 # ── JSON extraction ───────────────────────────────────────────────────────────
 
@@ -152,7 +149,7 @@ def _classify_article(article: ExtractedArticle) -> ArticleClassification:
     Only returns Security Incident classification.
     """
     rss = article.rss_article
-    content = article.full_text[:2000]  # Use first 2000 chars for classification
+    content = article.full_text[:1500]  # Use first 2000 chars for classification
     
     logger.info(f"Classifying article: {rss.title[:60]}")
     
@@ -211,7 +208,7 @@ def _merge_reports(chunk_reports: list[dict]) -> dict:
         "campaigns": [],
         "malware": [],
         "iocs": [],
-        "behaviors": [],
+        "behaviors": []
     }
     
     # Deduplicate threat actors by name
@@ -275,7 +272,6 @@ def _merge_reports(chunk_reports: list[dict]) -> dict:
                     behaviors_by_key[key]["artifacts"] = list(existing_artifacts | new_artifacts)
     
     merged["behaviors"] = list(behaviors_by_key.values())
-    
     logger.info(
         f"Merged {len(chunk_reports)} chunk reports: "
         f"actors={len(merged['threat_actors'])}, "
@@ -294,8 +290,8 @@ def _build_report(
     data: dict,
     model: str,
     elapsed: float
-) -> CTIReport:
-    """Build CTIReport from extracted data."""
+) -> HuntReport:
+    """Build HuntReport from extracted data."""
     threat_actors = [
         ThreatActor(
             name        = ta.get("name", "Unknown"),
@@ -349,7 +345,7 @@ def _build_report(
         if b.get("behavior")
     ]
 
-    return CTIReport(
+    return HuntReport(
         article           = article,
         classification    = classification,
         executive_summary = data.get("executive_summary", ""),
@@ -365,7 +361,7 @@ def _build_report(
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
-def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunking: bool = True) -> CTIReport:
+def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunking: bool = True) -> HuntReport:
     """
     Stage A: Classify article, then extract facts if it's a security incident.
     
@@ -391,7 +387,7 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
             logger.info(
                 f"  Skipping analysis: classified as {classification.value}"
             )
-            return CTIReport(
+            return HuntReport(
                 article        = article,
                 classification = classification,
                 model_used     = model,
@@ -404,7 +400,7 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
             logger.info(f"  Analyzing {len(chunks)} chunks from full article...")
             
             # Maintain chat history across chunks
-            chat_history = [{"role": "system", "content": SYSTEM_PROMPT}]
+            chat_history = []
             chunk_results = []
             
             for i, chunk in enumerate(chunks, 1):
@@ -464,7 +460,7 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
     
     except Exception as exc:
         logger.exception("LLM failed for '%s': %s", rss.title[:60], exc)
-        report = CTIReport(
+        report = HuntReport(
             article           = article,
             classification    = ArticleClassification.UNKNOWN,
             executive_summary = f"[Extraction failed: {exc}]",
@@ -475,7 +471,7 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
     return report
 
 
-def analyze_articles(articles: list[ExtractedArticle], model: str = LLM_MODEL, use_chunking: bool = True) -> list[CTIReport]:
+def analyze_articles(articles: list[ExtractedArticle], model: str = LLM_MODEL, use_chunking: bool = True) -> list[HuntReport]:
     """Analyze multiple articles."""
     reports = []
     for i, art in enumerate(articles, 1):

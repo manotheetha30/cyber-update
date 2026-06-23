@@ -13,7 +13,7 @@ from sentence_transformers import SentenceTransformer
 import numpy as np
 from models import (
     ATTACKMapping,
-    CTIReport,
+    HuntReport,
     RawBehavior,
 )
 
@@ -149,7 +149,7 @@ def map_behavior(behavior: RawBehavior, top_k: int = 1) -> list[ATTACKMapping]:
 # Batch mapping
 # ──────────────────────────────────────────────────────────────────────────────
 
-def map_report(report: CTIReport) -> CTIReport:
+def map_report(report: HuntReport) -> HuntReport:
     """
     Map all behaviors in a report to ATT&CK techniques.
     """
@@ -181,6 +181,6 @@ def map_report(report: CTIReport) -> CTIReport:
     return report
 
 
-def map_reports(reports: list[CTIReport]) -> list[CTIReport]:
+def map_reports(reports: list[HuntReport]) -> list[HuntReport]:
     """Map all reports."""
     return [map_report(r) for r in reports]

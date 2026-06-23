@@ -1,5 +1,5 @@
 """
-CTI Pipeline – central configuration
+Threat Hunt Generation Pipeline – central configuration
 All values overridable via environment variables or a .env file.
 """
 from __future__ import annotations

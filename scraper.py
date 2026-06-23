@@ -1,4 +1,4 @@
-"""CTI Pipeline – Stage 2: Article Extraction
+"""Threat Hunt Generation Pipeline – Stage 2: Article Extraction
 Multi-method fallback pipeline to reliably extract clean article text.
 
 Priority:

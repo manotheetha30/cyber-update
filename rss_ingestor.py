@@ -1,5 +1,5 @@
 """
-CTI Pipeline – Stage 1: RSS Ingestion
+Threat Hunt Generation Pipeline – Stage 1: RSS Ingestion
 Fetches articles published during the previous UTC day from configured feeds.
 """
 from __future__ import annotations
@@ -7,27 +7,24 @@ import hashlib
 import logging
 from datetime import datetime, timedelta, timezone
 from typing import Generator
-
 import feedparser
 import requests
 from dateutil import parser as dateutil_parser
 from tenacity import retry, stop_after_attempt, wait_exponential
-
 from settings import RSS_FEEDS, REQUEST_TIMEOUT, USER_AGENT
 from models import RSSArticle
 
 logger = logging.getLogger(__name__)
 
 
-def _utc_yesterday() -> tuple[datetime, datetime]:
+def _utc_yesterday(lookback_days:int) -> tuple[datetime, datetime]:
     """Return (start, end) of the previous UTC calendar day."""
     today = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
-    if today.strftime("%A") == "Monday":
-        print("Today is Monday, looking back to Friday-Sunday")
+    if today.strftime("%A") == "Monday" and lookback_days!=1:
         # If today is Monday, look back from Friday to Sunday (3 days) to catch weekend articles.
         search_start = today - timedelta(days=3)
     else:
-        search_start = today - timedelta(days=1)
+        search_start = today - timedelta(days=lookback_days)
     search_end   = today
     return search_start, search_end
 
@@ -89,7 +86,7 @@ def ingest_feeds(
         feeds = RSS_FEEDS
 
     today = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
-    window_start,window_end   = _utc_yesterday()
+    window_start,window_end   = _utc_yesterday(lookback_days)
 
     seen_urls: set[str] = set()
     articles: list[RSSArticle] = []

@@ -1,5 +1,5 @@
 """
-CTI Pipeline – LLM Prompt Templates
+Threat Hunt Generation Pipeline – LLM Prompt Templates
 
 DESIGN PRINCIPLE:
   The LLM does ONE job: read article content and extract raw observable facts.
@@ -9,52 +9,6 @@ DESIGN PRINCIPLE:
 
   This keeps the prompt short, the output schema tiny, and the model fast.
 """
-
-SYSTEM_PROMPT = """\
-You are a Cyber Threat Intelligence analyst. Your only job is to read a \
-cybersecurity article and extract raw observable facts into JSON. 
-
-Rules:
-- Extract ONLY what is explicitly stated in the article and don't repeatedly extract the same behavior which may be mentioned more than once.
-- Never invent actors, malware, IOCs, or behaviors.
-- IOCs are IP addresses, file hashes, domain names, urls, malware names, mac addresses, host addresses, etc.
-
-For behaviors:
-Extract concrete observable adversary actions with clear context of WHAT they did.
-Do NOT try to classify by tactic — that's the mapper's job.
-Focus on WHAT and HOW, not WHY or tactical classification.
-
-Prefer behaviors that mention:
-- commands executed
-- processes spawned
-- executables used
-- protocols used
-- services accessed
-- files touched
-- registry keys modified
-- credentials obtained
-- network communication patterns
-- persistence mechanisms (methods used)
-- privilege escalation (methods used, not the classification)
-
-GOOD:
-- "PowerShell downloaded payload from C2 server"
-- "Registry Run key modified with malware path"
-- "LSASS memory dumped via MiniDump"
-- "ICMP used for command and control with custom protocol"
-- "Scheduled task created to execute backdoor daily"
-- "WMI executed remote commands on target system"
-- "SOCKS5 tunnel established through compromised proxy"
-
-BAD:
-- "Attackers compromised systems" (too vague)
-- "Malware infected devices" (no observable action)
-- "Threat actor conducted malicious activity" (meaningless)
-- "Persistence was established" (no observable detail)
-
-If a field has no data, use an empty array [] or null.
-Output ONLY valid JSON. No markdown, no explanation."""
-
 
 # ── Article Classification Prompt ─────────────────────────────────────────────
 CLASSIFICATION_PROMPT = """\
@@ -87,36 +41,7 @@ Source:  {source} | {published_date}
 {content}
 
 ---
-Extract and return ONLY this JSON (no other text):
-
-{{
-  "executive_summary": "<2-3 sentences summarising the incident, threat actors, malware, and what they did>",
-
-  "threat_actors": [
-    {{"name": "", "aliases": [], "motivation": "", "evidence": ""}}
-  ],
-
-  "campaigns": [
-    {{"name": "", "aliases": [], "description": "", "evidence": ""}}
-  ],
-
-  "malware": [
-    {{"name": "", "type": "Ransomware|Infostealer|Backdoor|Loader|RAT|Wiper|Dropper|Botnet|Rootkit|Unknown", "description": ""}}
-  ],
-
-  "iocs": [
-    {{"value": "", "ioc_type": "IP Address|Domain|Malware Name|URL|Email|MD5|SHA1|SHA256|SHA512|Filename|Registry Key|CVE", "context": ""}}
-  ],
-
-  "behaviors": [
-    {{
-      "behavior": "<specific observable action: what did they do, how did they do it>",
-      "evidence": "<direct quote or close paraphrase from article>",
-      "artifacts": ["<filename>", "<command>", "<registry key>", "<process name>", "<network address>"],
-      "context": "<optional: when did this happen, what was the goal, what came before/after>"
-    }}
-  ]
-}}
+Extract and return ONLY VALID JSON
 
 BEHAVIOR EXAMPLES:
 ✓ "PowerShell executed with encoded command to download payload from C2"
@@ -128,4 +53,14 @@ BEHAVIOR EXAMPLES:
 ✗ "Gained persistence" (too vague)
 ✗ "Privilege escalation occurred" (no observable detail)
 ✗ "Lateral movement was conducted" (how? what tools?)
+"""
+
+PEAK_HUNT_PROMPT=""" \
+Generate PEAK hunts using ONLY the provided behaviors.\
+
+Behaviors:
+
+{behaviors}
+
+Return valid JSON only.
 """

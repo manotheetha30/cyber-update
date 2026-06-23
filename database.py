@@ -1,5 +1,5 @@
 """
-CTI Pipeline – Storage Layer
+Threat Hunt Generation Pipeline – Storage Layer
 Handles articles, reports, and deduplication across multiple sources.
 """
 from __future__ import annotations
@@ -14,7 +14,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
 from settings import DATABASE_URL
-from models import CTIReport, ExtractedArticle, ArticleClassification
+from models import HuntReport, ExtractedArticle, ArticleClassification
 
 logger = logging.getLogger(__name__)
 
@@ -49,12 +49,12 @@ class ArticleRecord(Base):
     sources_seen      = Column(Text, default="[]")  # JSON list of sources that have this content
 
 
-class CTIReportRecord(Base):
+class HuntReportRecord(Base):
     """
-    Store CTI reports for articles.
+    Store Hunt reports for articles.
     Links to articles via content_hash so multiple source articles map to one report.
     """
-    __tablename__ = "cti_reports"
+    __tablename__ = "hunt_reports"
     __table_args__ = (
         Index("idx_content_hash", "content_hash"),
         Index("idx_generated_at", "generated_at"),
@@ -171,17 +171,17 @@ def save_article(article: ExtractedArticle) -> tuple[bool, ArticleRecord]:
 # Report storage
 # ──────────────────────────────────────────────────────────────────────────────
 
-def save_report(report: CTIReport, content_hash: str) -> None:
+def save_report(report: HuntReport, content_hash: str) -> None:
     """
-    Save CTI report, linking to article by content hash.
+    Save Hunt report, linking to article by content hash.
     
     Args:
-        report: CTIReport with extracted intelligence
+        report: HuntReport with extracted intelligence
         content_hash: Content hash to link back to original article(s)
     """
     with _session() as s:
         # Check if report already exists for this content
-        existing = s.query(CTIReportRecord).filter_by(content_hash=content_hash).first()
+        existing = s.query(HuntReportRecord).filter_by(content_hash=content_hash).first()
         
         if existing:
             logger.warning(f"Report already exists for content hash {content_hash}, skipping")
@@ -205,7 +205,7 @@ def save_report(report: CTIReport, content_hash: str) -> None:
             except:
                 original_urls = [report.article.rss_article.url]
         
-        rec = CTIReportRecord(
+        rec = HuntReportRecord(
             content_hash=content_hash,
             original_urls=json.dumps(original_urls),
             generated_at=report.generated_at,
@@ -230,22 +230,22 @@ def save_report(report: CTIReport, content_hash: str) -> None:
 # Query helpers
 # ──────────────────────────────────────────────────────────────────────────────
 
-def get_recent_reports(days: int = 7) -> list[CTIReportRecord]:
-    """Get CTI reports generated in the last N days."""
+def get_recent_reports(days: int = 7) -> list[HuntReportRecord]:
+    """Get Hunt reports generated in the last N days."""
     cutoff = datetime.utcnow() - timedelta(days=days)
     with _session() as s:
-        return (s.query(CTIReportRecord)
-                  .filter(CTIReportRecord.generated_at >= cutoff)
-                  .order_by(CTIReportRecord.generated_at.desc())
+        return (s.query(HuntReportRecord)
+                  .filter(HuntReportRecord.generated_at >= cutoff)
+                  .order_by(HuntReportRecord.generated_at.desc())
                   .all())
 
 
-def get_reports_by_classification(classification: str) -> list[CTIReportRecord]:
+def get_reports_by_classification(classification: str) -> list[HuntReportRecord]:
     """Get reports filtered by classification."""
     with _session() as s:
-        return (s.query(CTIReportRecord)
+        return (s.query(HuntReportRecord)
                   .filter_by(classification=classification)
-                  .order_by(CTIReportRecord.generated_at.desc())
+                  .order_by(HuntReportRecord.generated_at.desc())
                   .all())
 
 

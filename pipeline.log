@@ -37,3 +37,606 @@
 2026-06-23 00:14:20,971 [INFO] database: New article saved: Microsoft links Mastra AI supply chain attack to N
 2026-06-23 00:14:20,975 [INFO] llm_analyzer: Processing [cth-qwen:latest]: New Prinz Eugen ransomware prioritizes recent files for encryption
 2026-06-23 00:14:20,975 [INFO] llm_analyzer: Classifying article: New Prinz Eugen ransomware prioritizes recent files for encr
+2026-06-22 22:32:26,308 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-22 22:32:26,310 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-22 22:32:26,657 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-22 22:32:26,931 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-22 22:32:28,361 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-22 22:32:28,811 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-22 22:32:30,151 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-22 22:32:30,714 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-22 22:32:32,147 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-22 22:32:32,569 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-22 22:32:33,022 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-22 22:32:36,202 [INFO] rss_ingestor: Total articles collected: 31
+2026-06-22 22:32:36,202 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/whatsapp-phishing-attack-uses-fak
+2026-06-22 22:32:38,400 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-22 22:32:38,424 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-22 22:32:38,446 [INFO] database: New article saved: WhatsApp phishing attack uses fake business docs t
+2026-06-22 22:32:38,446 [INFO] llm_analyzer: Processing [cth-qwen:latest]: WhatsApp phishing attack uses fake business docs to hack PCs
+2026-06-22 22:32:38,446 [INFO] llm_analyzer: Classifying article: WhatsApp phishing attack uses fake business docs to hack PCs
+2026-06-22 22:51:21,306 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_WhatsApp_phishing_attack_uses_fake_business_docs_t.md
+2026-06-22 22:51:21,319 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-23_iocs.csv (2 IOCs)
+2026-06-22 23:02:37,101 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-22 23:02:37,101 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-22 23:02:37,414 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-22 23:02:37,653 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-22 23:02:38,638 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-22 23:02:39,320 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-22 23:02:39,918 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-22 23:02:40,343 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-22 23:02:41,793 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-22 23:02:42,180 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-22 23:02:42,569 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-22 23:02:44,206 [INFO] rss_ingestor: Total articles collected: 31
+2026-06-22 23:02:44,208 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/jaredfromsubway-mev-bot-hacked-in
+2026-06-22 23:02:45,954 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-22 23:02:45,971 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-22 23:02:45,982 [INFO] database: New article saved: JaredFromSubway MEV bot hacked in $15 million cryp
+2026-06-22 23:02:45,984 [INFO] llm_analyzer: Processing [cth-qwen:latest]: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-22 23:02:45,985 [INFO] llm_analyzer: Classifying article: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-22 23:09:56,270 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_JaredFromSubway_MEV_bot_hacked_in__15_million_cryp.md
+2026-06-22 23:09:56,270 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-23_iocs.csv (0 IOCs)
+2026-06-22 23:28:40,169 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-22 23:28:40,169 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-22 23:28:40,474 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-22 23:28:40,693 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-22 23:28:41,531 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-22 23:28:41,941 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-22 23:28:42,566 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-22 23:28:43,009 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-22 23:28:44,278 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-22 23:28:44,951 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-22 23:28:45,350 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-22 23:28:47,854 [INFO] rss_ingestor: Total articles collected: 31
+2026-06-22 23:28:47,855 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/ffmpeg-fixes-pixelsmash-flaw-in-w
+2026-06-22 23:28:49,616 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/fortibleed-campaign-used-custom-f
+2026-06-22 23:28:51,363 [INFO] scraper: Extraction complete: 2/2 articles succeeded
+2026-06-22 23:28:51,388 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-22 23:28:51,399 [INFO] database: New article saved: FFmpeg fixes PixelSmash flaw in widely used video 
+2026-06-22 23:28:51,407 [INFO] database: New article saved: FortiBleed campaign used custom FortiGate sniffer 
+2026-06-22 23:28:51,409 [INFO] llm_analyzer: Processing [cth-qwen:latest]: FFmpeg fixes PixelSmash flaw in widely used video decoder
+2026-06-22 23:28:51,409 [INFO] llm_analyzer: Classifying article: FFmpeg fixes PixelSmash flaw in widely used video decoder
+2026-06-22 23:31:02,347 [INFO] llm_analyzer:   Skipping analysis: classified as Advisory
+2026-06-22 23:31:02,347 [INFO] llm_analyzer: Processing [cth-qwen:latest]: FortiBleed campaign used custom FortiGate sniffer to steal credentials
+2026-06-22 23:31:02,347 [INFO] llm_analyzer: Classifying article: FortiBleed campaign used custom FortiGate sniffer to steal c
+2026-06-22 23:49:24,636 [ERROR] llm_analyzer: LLM failed for 'FortiBleed campaign used custom FortiGate sniffer to steal c': RetryError[<Future at 0x20a0a147f20 state=finished raised ReadTimeout>]
+Traceback (most recent call last):
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1411, in getresponse
+    response.begin()
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 324, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 285, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 707, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
+    raise value
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=500)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\threa\cyber_helper\llm_analyzer.py", line 109, in _ollama
+    resp = _requests.post(
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 134, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 742, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=500)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\threa\cyber_helper\llm_analyzer.py", line 453, in analyze_article
+    raw  = _ollama(prompt, model=model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\tenacity\__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\tenacity\__init__.py", line 414, in exc_check
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x20a0a147f20 state=finished raised ReadTimeout>]
+2026-06-22 23:49:24,761 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_FFmpeg_fixes_PixelSmash_flaw_in_widely_used_video.md
+2026-06-22 23:49:24,774 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_FortiBleed_campaign_used_custom_FortiGate_sniffer.md
+2026-06-23 00:10:42,605 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 00:10:42,605 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 00:10:42,904 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 00:10:43,141 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 00:10:44,052 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 00:10:45,390 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 00:10:45,967 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 00:10:46,404 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 00:10:50,358 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 00:10:50,726 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 00:10:51,121 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 00:10:52,714 [INFO] rss_ingestor: Total articles collected: 31
+2026-06-23 00:10:52,716 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/fortibleed-campaign-used-custom-f
+2026-06-23 00:10:54,611 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 00:10:54,640 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 00:10:54,648 [INFO] llm_analyzer: Processing [cth-qwen:latest]: FortiBleed campaign used custom FortiGate sniffer to steal credentials
+2026-06-23 00:10:54,648 [INFO] llm_analyzer: Classifying article: FortiBleed campaign used custom FortiGate sniffer to steal c
+2026-06-23 00:25:38,499 [WARNING] database: Report already exists for content hash 00757553cf63aaa239a7f6da0aa6a1d65ea7c2cbdb0b99c37f6d505dba463ba4, skipping
+2026-06-23 00:25:38,503 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_FortiBleed_campaign_used_custom_FortiGate_sniffer.md
+2026-06-23 00:25:38,513 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-23_iocs.csv (1 IOCs)
+2026-06-23 00:38:08,938 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 00:38:08,938 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 00:38:09,231 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 00:38:09,465 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 00:38:10,847 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 00:38:11,246 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 00:38:12,527 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 00:38:12,975 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 00:38:14,391 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 00:38:15,372 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 00:38:15,801 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 00:38:17,377 [INFO] rss_ingestor: Total articles collected: 31
+2026-06-23 00:38:17,378 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/whatsapp-phishing-attack-uses-fak
+2026-06-23 00:38:19,131 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 00:38:19,153 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 00:38:19,153 [INFO] llm_analyzer: Processing [cth-qwen:latest]: WhatsApp phishing attack uses fake business docs to hack PCs
+2026-06-23 00:38:19,153 [INFO] llm_analyzer: Classifying article: WhatsApp phishing attack uses fake business docs to hack PCs
+2026-06-23 00:40:40,592 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 00:40:40,592 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 00:40:40,882 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 00:40:41,093 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 00:40:42,462 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 00:40:42,824 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 00:40:43,366 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 00:40:43,762 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 00:40:44,550 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 00:40:44,906 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 00:40:45,285 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 00:40:46,863 [INFO] rss_ingestor: Total articles collected: 31
+2026-06-23 00:40:46,865 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/whatsapp-phishing-attack-uses-fak
+2026-06-23 00:40:48,630 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 00:40:48,649 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 00:40:48,649 [INFO] llm_analyzer: Processing [cth-qwen:latest]: WhatsApp phishing attack uses fake business docs to hack PCs
+2026-06-23 00:40:48,649 [INFO] llm_analyzer: Classifying article: WhatsApp phishing attack uses fake business docs to hack PCs
+2026-06-23 00:53:32,435 [WARNING] database: Report already exists for content hash 57b36f038a4344276fe5f42e995060911451d9e7080527d14519a36ce98ae268, skipping
+2026-06-23 00:53:32,437 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_WhatsApp_phishing_attack_uses_fake_business_docs_t.md
+2026-06-23 00:53:32,439 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-23_iocs.csv (0 IOCs)
+2026-06-23 00:56:57,494 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 00:56:57,494 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 00:56:57,816 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 00:56:58,016 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 00:56:59,350 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 00:56:59,738 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 00:57:00,336 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 00:57:00,785 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 00:57:02,454 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 00:57:02,825 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 00:57:03,238 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 00:57:05,234 [INFO] rss_ingestor: Total articles collected: 31
+2026-06-23 00:57:05,235 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/whatsapp-phishing-attack-uses-fak
+2026-06-23 00:57:07,078 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 00:57:07,100 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 00:57:07,115 [INFO] llm_analyzer: Processing [cth-qwen:latest]: WhatsApp phishing attack uses fake business docs to hack PCs
+2026-06-23 00:57:07,115 [INFO] llm_analyzer: Classifying article: WhatsApp phishing attack uses fake business docs to hack PCs
+2026-06-23 02:10:31,773 [ERROR] llm_analyzer: LLM failed for 'WhatsApp phishing attack uses fake business docs to hack PCs': RetryError[<Future at 0x200ce3c35f0 state=finished raised ReadTimeout>]
+Traceback (most recent call last):
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1411, in getresponse
+    response.begin()
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 324, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 285, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 707, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
+    raise value
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=1000)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\threa\cyber_helper\llm_analyzer.py", line 109, in _ollama
+    resp = _requests.post(
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 134, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 742, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\threa\cyber_helper\llm_analyzer.py", line 452, in analyze_article
+    raw  = _ollama(prompt, model=model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\tenacity\__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\threa\AppData\Local\Programs\Python\Python312\Lib\site-packages\tenacity\__init__.py", line 414, in exc_check
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x200ce3c35f0 state=finished raised ReadTimeout>]
+2026-06-23 02:10:31,810 [WARNING] database: Report already exists for content hash 57b36f038a4344276fe5f42e995060911451d9e7080527d14519a36ce98ae268, skipping
+2026-06-23 02:10:31,812 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_WhatsApp_phishing_attack_uses_fake_business_docs_t.md
+2026-06-23 02:13:49,612 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 02:13:49,613 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 02:13:50,014 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 02:13:50,261 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 02:13:51,002 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 02:13:52,460 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 02:13:53,536 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 02:13:53,983 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 02:13:55,053 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 02:13:55,892 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 02:13:56,462 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 02:13:58,686 [INFO] rss_ingestor: Total articles collected: 31
+2026-06-23 02:13:58,688 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/whatsapp-phishing-attack-uses-fak
+2026-06-23 02:14:00,481 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 02:14:00,494 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 02:14:00,514 [INFO] llm_analyzer: Processing [cth-qwen:latest]: WhatsApp phishing attack uses fake business docs to hack PCs
+2026-06-23 02:14:00,514 [INFO] llm_analyzer: Classifying article: WhatsApp phishing attack uses fake business docs to hack PCs
+2026-06-23 02:23:15,190 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 02:23:15,190 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 02:23:15,522 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 02:23:15,732 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 02:23:16,672 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 02:23:18,092 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 02:23:18,749 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 02:23:19,194 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 02:23:20,264 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 02:23:20,627 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 02:23:21,045 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 02:23:23,110 [INFO] rss_ingestor: Total articles collected: 31
+2026-06-23 02:23:23,113 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/whatsapp-phishing-attack-uses-fak
+2026-06-23 02:23:24,933 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 02:23:24,949 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 02:23:24,949 [INFO] llm_analyzer: Processing [cth-qwen:latest]: WhatsApp phishing attack uses fake business docs to hack PCs
+2026-06-23 02:23:24,949 [INFO] llm_analyzer: Classifying article: WhatsApp phishing attack uses fake business docs to hack PCs
+2026-06-23 02:35:22,533 [WARNING] database: Report already exists for content hash 57b36f038a4344276fe5f42e995060911451d9e7080527d14519a36ce98ae268, skipping
+2026-06-23 02:35:22,534 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_WhatsApp_phishing_attack_uses_fake_business_docs_t.md
+2026-06-23 02:35:22,534 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-23_iocs.csv (0 IOCs)
+2026-06-23 02:41:04,030 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 02:41:04,030 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 02:41:04,330 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 02:43:20,740 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 02:43:20,740 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 02:43:21,040 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 02:46:01,928 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 02:46:01,928 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 02:46:02,239 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 02:46:02,408 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 02:46:03,855 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 02:46:04,267 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 02:46:04,887 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 02:46:07,035 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 02:46:08,454 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 02:46:08,818 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 02:46:09,212 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 02:46:11,312 [INFO] rss_ingestor: Total articles collected: 30
+2026-06-23 02:46:11,314 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/jaredfromsubway-mev-bot-hacked-in
+2026-06-23 02:46:13,045 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 02:47:38,097 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 02:47:38,113 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 02:47:38,422 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 02:47:38,590 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 02:47:39,524 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 02:47:39,894 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 02:47:40,942 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 02:47:41,354 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 02:47:42,407 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 02:47:42,777 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 02:47:43,163 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 02:47:45,036 [INFO] rss_ingestor: Total articles collected: 30
+2026-06-23 02:47:45,038 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/jaredfromsubway-mev-bot-hacked-in
+2026-06-23 02:47:46,914 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 02:47:46,964 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 02:47:46,973 [INFO] database: New article saved: JaredFromSubway MEV bot hacked in $15 million cryp
+2026-06-23 02:47:46,975 [INFO] llm_analyzer: Processing [cth-qwen:latest]: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 02:47:46,975 [INFO] llm_analyzer: Classifying article: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 02:55:55,901 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_JaredFromSubway_MEV_bot_hacked_in__15_million_cryp.md
+2026-06-23 02:55:55,903 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-23_iocs.csv (0 IOCs)
+2026-06-23 02:58:34,295 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 02:58:34,295 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 02:58:34,599 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 02:58:34,825 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 02:58:35,572 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 02:58:35,981 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 02:58:36,631 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 02:58:37,073 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 02:58:38,305 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 02:58:38,669 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 02:58:39,057 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 02:58:41,583 [INFO] rss_ingestor: Total articles collected: 30
+2026-06-23 02:58:41,585 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/jaredfromsubway-mev-bot-hacked-in
+2026-06-23 02:58:43,378 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 02:58:43,398 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 02:58:43,398 [INFO] llm_analyzer: Processing [cth-qwen:latest]: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 02:58:43,398 [INFO] llm_analyzer: Classifying article: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 03:04:55,634 [WARNING] database: Report already exists for content hash 0008e01dcdd4c8e50f0391832b3b3e833220a8b1a20189aab7299bf37ede0e8d, skipping
+2026-06-23 03:04:55,636 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_JaredFromSubway_MEV_bot_hacked_in__15_million_cryp.md
+2026-06-23 03:04:55,639 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-23_iocs.csv (0 IOCs)
+2026-06-23 03:09:26,247 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 03:09:26,247 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 03:09:26,551 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 03:09:26,719 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 03:09:27,742 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 03:09:28,146 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 03:09:28,736 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 03:09:29,187 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 03:09:30,119 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 03:09:30,477 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 03:09:30,877 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 03:09:33,414 [INFO] rss_ingestor: Total articles collected: 30
+2026-06-23 03:09:33,415 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/jaredfromsubway-mev-bot-hacked-in
+2026-06-23 03:09:35,178 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 03:09:35,194 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 03:09:35,211 [INFO] llm_analyzer: Processing [cth-qwen:latest]: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 03:09:35,211 [INFO] llm_analyzer: Classifying article: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 03:17:40,153 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 03:17:40,155 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 03:17:40,533 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 03:17:40,719 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 03:17:42,163 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 03:17:42,571 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 03:17:43,658 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 03:17:44,078 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 03:17:45,417 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 03:17:46,454 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 03:17:46,875 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 03:17:48,991 [INFO] rss_ingestor: Total articles collected: 30
+2026-06-23 03:17:48,992 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/jaredfromsubway-mev-bot-hacked-in
+2026-06-23 03:17:50,865 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 03:17:50,867 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 03:17:50,885 [INFO] llm_analyzer: Processing [cth-qwen:latest]: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 03:17:50,886 [INFO] llm_analyzer: Classifying article: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 03:30:05,905 [WARNING] database: Report already exists for content hash 0008e01dcdd4c8e50f0391832b3b3e833220a8b1a20189aab7299bf37ede0e8d, skipping
+2026-06-23 03:30:05,907 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_JaredFromSubway_MEV_bot_hacked_in__15_million_cryp.md
+2026-06-23 03:30:05,908 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-23_iocs.csv (0 IOCs)
+2026-06-23 03:32:09,103 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 03:32:09,103 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 03:32:09,374 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 03:32:09,538 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 03:32:10,865 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 03:32:11,257 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 03:32:11,876 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 03:32:12,310 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 03:32:13,658 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 03:32:14,013 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 03:32:14,509 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 03:32:16,044 [INFO] rss_ingestor: Total articles collected: 29
+2026-06-23 03:32:16,046 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/jaredfromsubway-mev-bot-hacked-in
+2026-06-23 03:32:17,725 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 03:32:17,784 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 03:32:17,791 [INFO] database: New article saved: JaredFromSubway MEV bot hacked in $15 million cryp
+2026-06-23 03:32:17,799 [INFO] llm_analyzer: Processing [cth-qwen:latest]: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 03:32:17,800 [INFO] llm_analyzer: Classifying article: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 03:43:21,428 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_JaredFromSubway_MEV_bot_hacked_in__15_million_cryp.md
+2026-06-23 03:43:21,430 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-23_iocs.csv (0 IOCs)
+2026-06-23 03:58:27,602 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 03:58:27,602 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 03:58:27,902 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 03:58:28,065 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 03:58:29,404 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 03:58:29,784 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 03:58:30,814 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 03:58:31,250 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 03:58:32,409 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 03:58:32,762 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 03:58:33,160 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 03:58:35,192 [INFO] rss_ingestor: Total articles collected: 29
+2026-06-23 03:58:35,194 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/jaredfromsubway-mev-bot-hacked-in
+2026-06-23 03:58:36,976 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 03:58:36,987 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 03:58:36,996 [INFO] llm_analyzer: Processing [cth-qwen:latest]: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 03:58:36,996 [INFO] llm_analyzer: Classifying article: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 04:16:32,950 [WARNING] database: Report already exists for content hash 0008e01dcdd4c8e50f0391832b3b3e833220a8b1a20189aab7299bf37ede0e8d, skipping
+2026-06-23 04:16:32,952 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_JaredFromSubway_MEV_bot_hacked_in__15_million_cryp.md
+2026-06-23 04:16:32,964 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-23_iocs.csv (0 IOCs)
+2026-06-23 04:21:26,221 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 04:21:26,222 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 04:21:26,510 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 04:21:26,718 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 04:21:27,603 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 04:21:27,995 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 04:21:29,052 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 04:21:29,497 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 04:21:30,718 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 04:21:32,144 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 04:21:32,620 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 04:21:34,612 [INFO] rss_ingestor: Total articles collected: 28
+2026-06-23 04:21:34,613 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/jaredfromsubway-mev-bot-hacked-in
+2026-06-23 04:21:36,378 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 04:21:36,400 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 04:21:36,407 [INFO] llm_analyzer: Processing [cth-qwen:latest]: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 04:21:36,407 [INFO] llm_analyzer: Classifying article: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 04:41:11,564 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 04:41:11,564 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 04:41:12,094 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 04:41:12,551 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 04:41:13,662 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 04:41:14,212 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 04:41:15,486 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 04:41:16,059 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 04:41:17,939 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 04:41:18,406 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 04:41:19,141 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 04:41:21,386 [INFO] rss_ingestor: Total articles collected: 28
+2026-06-23 04:41:21,390 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/jaredfromsubway-mev-bot-hacked-in
+2026-06-23 04:41:23,253 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 04:41:23,286 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 04:41:23,302 [INFO] llm_analyzer: Processing [cth-qwen:latest]: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 04:41:23,302 [INFO] llm_analyzer: Classifying article: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 04:52:20,040 [WARNING] database: Report already exists for content hash 0008e01dcdd4c8e50f0391832b3b3e833220a8b1a20189aab7299bf37ede0e8d, skipping
+2026-06-23 04:52:20,040 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_JaredFromSubway_MEV_bot_hacked_in__15_million_cryp.md
+2026-06-23 04:52:20,046 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-23_iocs.csv (0 IOCs)
+2026-06-23 05:38:17,604 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 05:38:17,604 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 05:38:17,955 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 05:38:18,171 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 05:38:19,634 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 05:38:20,036 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 05:38:20,660 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 05:38:21,113 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 05:38:21,972 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 05:38:22,983 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 05:38:23,398 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 05:38:25,403 [INFO] rss_ingestor: Total articles collected: 27
+2026-06-23 05:38:25,405 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/jaredfromsubway-mev-bot-hacked-in
+2026-06-23 05:38:27,231 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 05:38:27,244 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 05:38:27,250 [INFO] llm_analyzer: Processing [cth-qwen:latest]: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 05:38:27,250 [INFO] llm_analyzer: Classifying article: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 05:50:40,533 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 05:50:40,533 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 05:50:40,840 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 05:50:41,054 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 05:50:42,347 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 05:50:42,750 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 05:50:43,322 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 05:50:43,747 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 05:50:44,934 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 05:50:45,293 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 05:50:45,672 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 05:50:47,660 [INFO] rss_ingestor: Total articles collected: 26
+2026-06-23 05:50:47,661 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/jaredfromsubway-mev-bot-hacked-in
+2026-06-23 05:50:49,436 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 05:50:49,452 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 05:50:49,460 [INFO] llm_analyzer: Processing [cth-qwen:latest]: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 05:50:49,460 [INFO] llm_analyzer: Classifying article: JaredFromSubway MEV bot hacked in $15 million crypto theft
+2026-06-23 05:59:50,895 [WARNING] database: Report already exists for content hash 0008e01dcdd4c8e50f0391832b3b3e833220a8b1a20189aab7299bf37ede0e8d, skipping
+2026-06-23 05:59:50,896 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_JaredFromSubway_MEV_bot_hacked_in__15_million_cryp.md
+2026-06-23 05:59:50,897 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-23_iocs.csv (0 IOCs)
+2026-06-23 06:14:55,070 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 06:14:55,072 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 06:14:55,436 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 06:14:55,659 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 06:14:56,600 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 06:14:56,989 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 06:14:57,580 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 06:14:58,046 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 06:14:58,896 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 06:14:59,258 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 06:14:59,663 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 06:15:01,245 [INFO] rss_ingestor: Total articles collected: 25
+2026-06-23 06:15:01,248 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/ffmpeg-fixes-pixelsmash-flaw-in-w
+2026-06-23 06:15:03,112 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 06:15:03,135 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 06:15:03,149 [INFO] database: New article saved: FFmpeg fixes PixelSmash flaw in widely used video 
+2026-06-23 06:15:03,151 [INFO] llm_analyzer: Processing [cth-qwen:latest]: FFmpeg fixes PixelSmash flaw in widely used video decoder
+2026-06-23 06:15:03,152 [INFO] llm_analyzer: Classifying article: FFmpeg fixes PixelSmash flaw in widely used video decoder
+2026-06-23 06:17:06,724 [INFO] llm_analyzer:   Skipping analysis: classified as Advisory
+2026-06-23 06:17:06,753 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_FFmpeg_fixes_PixelSmash_flaw_in_widely_used_video.md
+2026-06-23 06:18:35,329 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 06:18:35,329 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 06:18:35,619 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 06:18:35,771 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 06:18:36,530 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 06:18:36,880 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 06:18:37,424 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 06:18:37,847 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 06:18:39,286 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 06:18:39,645 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 06:18:40,028 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 06:18:42,061 [INFO] rss_ingestor: Total articles collected: 25
+2026-06-23 06:18:42,063 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/fortibleed-campaign-used-custom-f
+2026-06-23 06:18:43,906 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 06:18:43,926 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 06:18:43,942 [INFO] database: New article saved: FortiBleed campaign used custom FortiGate sniffer 
+2026-06-23 06:18:43,944 [INFO] llm_analyzer: Processing [cth-qwen:latest]: FortiBleed campaign used custom FortiGate sniffer to steal credentials
+2026-06-23 06:18:43,944 [INFO] llm_analyzer: Classifying article: FortiBleed campaign used custom FortiGate sniffer to steal c
+2026-06-23 06:34:28,366 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_FortiBleed_campaign_used_custom_FortiGate_sniffer.md
+2026-06-23 06:34:28,366 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-23_iocs.csv (0 IOCs)
