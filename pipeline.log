@@ -640,3 +640,128 @@ tenacity.RetryError: RetryError[<Future at 0x200ce3c35f0 state=finished raised R
 2026-06-23 06:18:43,944 [INFO] llm_analyzer: Classifying article: FortiBleed campaign used custom FortiGate sniffer to steal c
 2026-06-23 06:34:28,366 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-22_FortiBleed_campaign_used_custom_FortiGate_sniffer.md
 2026-06-23 06:34:28,366 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-23_iocs.csv (0 IOCs)
+2026-06-23 22:14:28,237 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 22:14:28,237 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 22:14:28,645 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 22:14:28,996 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 22:14:29,956 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 22:14:30,636 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 22:14:32,158 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 22:14:32,870 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 22:14:34,048 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 22:14:35,030 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 22:14:36,051 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 22:14:38,000 [INFO] rss_ingestor: Total articles collected: 39
+2026-06-23 22:14:38,005 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/cisco-unified-cm-sme-flaw-cve-202
+2026-06-23 22:14:40,007 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 22:14:40,040 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 22:14:40,055 [INFO] database: New article saved: Cisco Unified CM flaw CVE-2026-20230 now exploited
+2026-06-23 22:14:40,060 [INFO] llm_analyzer: Processing [cth-qwen:latest]: Cisco Unified CM flaw CVE-2026-20230 now exploited in attacks
+2026-06-23 22:14:40,063 [INFO] llm_analyzer: Classifying article: Cisco Unified CM flaw CVE-2026-20230 now exploited in attack
+2026-06-23 22:40:17,507 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-23_Cisco_Unified_CM_flaw_CVE-2026-20230_now_exploited.md
+2026-06-23 22:40:17,514 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-24_iocs.csv (1 IOCs)
+2026-06-23 22:58:53,710 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 22:58:53,710 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 22:58:54,002 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 22:58:54,223 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-23 22:58:55,153 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-23 22:58:55,530 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-23 22:58:56,740 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-23 22:58:57,181 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-23 22:58:59,838 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-23 22:59:00,521 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-23 22:59:00,947 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-23 22:59:03,422 [INFO] rss_ingestor: Total articles collected: 38
+2026-06-23 22:59:03,424 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/new-macos-clickfix-attack-silentl
+2026-06-23 22:59:05,227 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-23 22:59:05,257 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-23 22:59:05,262 [INFO] database: New article saved: New macOS ClickFix attack silently mounts DMGs to 
+2026-06-23 22:59:05,272 [INFO] llm_analyzer: Processing [cth-qwen:latest]: New macOS ClickFix attack silently mounts DMGs to push infostealer
+2026-06-23 22:59:05,272 [INFO] llm_analyzer: Classifying article: New macOS ClickFix attack silently mounts DMGs to push infos
+2026-06-23 23:20:16,392 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-23_New_macOS_ClickFix_attack_silently_mounts_DMGs_to.md
+2026-06-23 23:20:16,397 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-24_iocs.csv (8 IOCs)
+2026-06-23 23:44:30,948 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 23:44:30,948 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 23:44:31,248 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 23:45:10,809 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 23:45:10,809 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 23:45:11,129 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 23:46:26,092 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 23:46:26,092 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 23:46:26,381 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 23:48:31,788 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 23:48:31,788 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 23:48:32,074 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 23:49:19,932 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-23 23:49:19,933 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-23 23:49:20,268 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-23 23:49:20,442 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-24 00:09:14,448 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-24 00:09:14,448 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-24 00:09:14,641 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-24 00:11:45,618 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-24 00:11:45,618 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-24 00:11:45,903 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-24 00:11:46,588 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-24 00:11:47,037 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-24 00:11:47,037 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-24 00:13:54,966 [INFO] llm_analyzer:   Analyzing 2 chunks from full article...
+2026-06-24 01:54:45,663 [WARNING] llm_analyzer:   Chunk 2 failed: RetryError[<Future at 0x1d87ce4cf50 state=finished raised HTTPError>]
+2026-06-24 02:06:10,436 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-24 02:06:10,436 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-24 02:06:11,062 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-24 02:06:12,705 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-24 02:06:13,379 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-24 02:06:13,379 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-24 02:08:16,872 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-24 02:08:16,873 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-24 02:08:17,042 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-24 02:08:17,778 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-24 02:08:18,293 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-24 02:08:18,293 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-24 02:09:33,437 [INFO] llm_analyzer:   Analyzing 2 chunks from full article...
+2026-06-24 03:15:05,942 [WARNING] llm_analyzer:   Chunk 2 failed: RetryError[<Future at 0x205fdc2c950 state=finished raised ReadTimeout>]
+2026-06-24 03:16:33,457 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-24 03:16:33,457 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-24 03:16:33,704 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-24 03:16:34,768 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-24 03:16:35,333 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-24 03:16:35,333 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-24 03:19:16,832 [INFO] llm_analyzer:   Analyzing 2 chunks from full article...
+2026-06-24 03:37:24,734 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-24 03:37:24,750 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-24 03:37:24,934 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-24 03:37:25,662 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-24 03:37:26,151 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-24 03:37:26,151 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-24 03:39:08,579 [INFO] llm_analyzer:   Analyzing 2 chunks from full article...
+2026-06-24 03:39:52,308 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-24 03:39:52,308 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-24 03:39:52,773 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-24 03:39:54,030 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-24 03:39:54,861 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-24 03:39:54,861 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-24 03:42:11,143 [INFO] llm_analyzer:   Analyzing 2 chunks from full article...
+2026-06-24 05:17:08,421 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-24 05:17:08,421 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-24 05:17:08,873 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-24 05:17:09,815 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-24 05:17:10,317 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-24 05:17:10,317 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-24 05:18:57,154 [INFO] llm_analyzer:   Analyzing 2 chunks from full article...
+2026-06-24 05:57:42,746 [INFO] llm_analyzer: Merged 2 chunk reports: actors=1, behaviors=15, iocs=36
+2026-06-24 06:47:54,405 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
+2026-06-24 06:47:54,458 [WARNING] database: Article not found for hash f0ad84d0a634a95683b1613b88bfe0f2499253a9aa5d20a2376f23964e986588
+2026-06-24 06:47:54,481 [ERROR] report_generator: Failed to write report
+Traceback (most recent call last):
+  File "c:\Users\threa\cyber_helper\report_generator.py", line 258, in save_all_reports
+    paths.append(save_report_file(r, output_dir))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\threa\cyber_helper\report_generator.py", line 248, in save_report_file
+    path.write_text(render_report(report), encoding="utf-8")
+                    ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\threa\cyber_helper\report_generator.py", line 27, in render_report
+    now  = datetime.strftime("%Y-%m-%d %H:%M UTC")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: descriptor 'strftime' for 'datetime.date' objects doesn't apply to a 'str' object
+2026-06-24 06:47:54,485 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-24_iocs.csv (36 IOCs)

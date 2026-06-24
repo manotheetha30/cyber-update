@@ -108,7 +108,7 @@ def _ollama(prompt: str, model: str = LLM_MODEL, messages: list[dict] | None = N
     resp = _requests.post(
         f"{OLLAMA_BASE_URL}/api/chat",
         json=payload,
-        timeout=(20,1500),
+        timeout=(20,2500),
     )
     resp.raise_for_status()
     return resp.json()["message"]["content"]
@@ -149,7 +149,7 @@ def _classify_article(article: ExtractedArticle) -> ArticleClassification:
     Only returns Security Incident classification.
     """
     rss = article.rss_article
-    content = article.full_text[:1500]  # Use first 2000 chars for classification
+    content = article.full_text[:1500]  # Use first 1500 chars for classification
     
     logger.info(f"Classifying article: {rss.title[:60]}")
     
@@ -400,31 +400,41 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
             logger.info(f"  Analyzing {len(chunks)} chunks from full article...")
             
             # Maintain chat history across chunks
-            chat_history = []
+            behavior_memory = []
             chunk_results = []
-            
+    
             for i, chunk in enumerate(chunks, 1):
                 logger.debug(f"  [Chunk {i}/{len(chunks)}] {len(chunk)} chars")
-                
+                if behavior_memory!=[]:
+                     context= f"""
+                                Previous observed behaviors from earlier chunks of the SAME article:
+
+                                {json.dumps(behavior_memory, indent=2)}
+
+                                Use these previously extracted behaviors only as contextual memory. Correlate entities, tools, malware, commands, infrastructure, and attack sequences across chunks when evidence supports a connection.
+
+                                Guidelines:
+                                - Do NOT repeat behaviors that have already been extracted unless new details are revealed.
+                                - If the current chunk expands, clarifies, or provides additional evidence for a previously observed behavior, update the context in your analysis.
+                                - Identify relationships between current observations and previously observed behaviors when they appear to be part of the same attack chain.
+                                - Prefer extracting NEW observable behaviors from the current chunk.
+                                - Do NOT infer facts that are not supported by the current chunk or the provided context.
+                        """
+                else:
+                    context=""
                 prompt = EXTRACTION_PROMPT.format(
                     title          = rss.title,
                     source         = rss.source,
                     published_date = rss.published_date.strftime("%Y-%m-%d"),
-                    content        = chunk,
+                    previous_context=context,
+                    content        = chunk                
                 )
-                
                 try:
-                    # Add user message to history
-                    chat_history.append({"role": "user", "content": prompt})
-                    
-                    # Get response with history
-                    raw = _ollama(prompt, model=model, messages=chat_history)
-                    
-                    # Add assistant response to history
-                    chat_history.append({"role": "assistant", "content": raw})
-                    
+                    raw = _ollama(prompt, model=model)
                     data = _parse_json(raw)
                     chunk_results.append(data)
+                    for b in data.get("behaviors", []):
+                        behavior_memory.append(b)
                 except Exception as e:
                     logger.warning(f"  Chunk {i} failed: {e}")
                     continue
@@ -444,7 +454,8 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
                 title          = rss.title,
                 source         = rss.source,
                 published_date = rss.published_date.strftime("%Y-%m-%d"),
-                content        = content,
+                previous_context="",
+                content        = content  
             )
             
             raw  = _ollama(prompt, model=model)
@@ -469,7 +480,6 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
         )
 
     return report
-
 
 def analyze_articles(articles: list[ExtractedArticle], model: str = LLM_MODEL, use_chunking: bool = True) -> list[HuntReport]:
     """Analyze multiple articles."""

@@ -28,11 +28,8 @@ def generate_peak_hunts(report):
     )
 
     raw = _ollama(prompt,model="hunt-generator:latest")
-    print(raw)
-    data = _parse_json(raw)
-    print(data)
 
-   
+    data = _parse_json(raw)
     hunts = []
 
     for hunt in data.get("peak_hunts", []):
@@ -45,7 +42,6 @@ def generate_peak_hunts(report):
                 )
             
             )
-            print(hunts)
         except Exception:
             continue
     return hunts

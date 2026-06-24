@@ -1,6 +1,5 @@
 from sklearn.model_selection import train_test_split
 from sentence_transformers import InputExample,losses,SentenceTransformer
-
 model=SentenceTransformer(
     "BAAI/bge-small-en-v1.5"
 )
@@ -47,5 +46,5 @@ model.fit(
     ],
     epochs=1,
     warmup_steps=warmup_steps,
-    output_path="./e5_attack_mapper"
+    output_path="./attack_mapper"
 )

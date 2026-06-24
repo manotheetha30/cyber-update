@@ -27,7 +27,7 @@ from settings import (
     REQUEST_TIMEOUT,
     USER_AGENT,
 )
-from models import ExtractedArticle, RSSArticle
+from models import ExtractedArticle, RSSArticle,ExtractedArticleURL
 
 logger = logging.getLogger(__name__)
 
@@ -197,12 +197,25 @@ def _fingerprint(text: str) -> str:
 
 # ── Main extraction pipeline ──────────────────────────────────────────────────
 
-def extract_article(article: RSSArticle) -> ExtractedArticle | None:
+def extract_article(article: RSSArticle | str ) -> ExtractedArticle | None:
     """
     Run the full multi-method extraction pipeline for a single article.
     Returns None if no method succeeds or content fails validation.
     """
-    url = article.url
+    if isinstance(article,str):
+        url=article
+        from urllib.parse import urlparse
+        domain = urlparse(url).netloc
+        downloaded = trafilatura.fetch_url(url)
+        if not downloaded:
+            return None
+        metadata = trafilatura.extract_metadata(downloaded)
+        title= metadata.title if metadata else ""
+        published= metadata.date if metadata else None
+        article=RSSArticle(title=title,url=url,published_date=published,source=domain)
+
+    else:
+        url = article.url
     logger.info("Extracting: %s", url[:80])
 
     # Fetch the page once; reuse bytes across methods
@@ -255,7 +268,7 @@ def extract_article(article: RSSArticle) -> ExtractedArticle | None:
         return None
 
     return ExtractedArticle(
-        rss_article       = article,
+        rss_article      = article,
         full_text         = text,
         extraction_method = method_used,
         char_count        = len(text),
@@ -264,20 +277,23 @@ def extract_article(article: RSSArticle) -> ExtractedArticle | None:
     )
 
 
-def extract_articles(articles: list[RSSArticle]) -> list[ExtractedArticle]:
+def extract_articles(articles: list[RSSArticle] | str) -> list[ExtractedArticle]| ExtractedArticle:
     """Batch extraction with deduplication by content fingerprint."""
-    seen_hashes: set[str] = set()
-    extracted: list[ExtractedArticle] = []
-
-    for article in articles:
-        result = extract_article(article)
-        if result is None:
-            continue
-        if result.content_hash in seen_hashes:
-            logger.debug("Duplicate content skipped: %s", article.url)
-            continue
-        seen_hashes.add(result.content_hash)
-        extracted.append(result)
+    if isinstance(articles,str):
+        result=extract_article(articles)
+        return result
+    else:
+        seen_hashes: set[str] = set()
+        extracted: list[ExtractedArticle] = [] 
+        for article in articles:
+            result = extract_article(article)
+            if result is None:
+                continue
+            if result.content_hash in seen_hashes:
+                logger.debug("Duplicate content skipped: %s", article.url)
+                continue
+            seen_hashes.add(result.content_hash)
+            extracted.append(result)
 
     logger.info(
         "Extraction complete: %d/%d articles succeeded",

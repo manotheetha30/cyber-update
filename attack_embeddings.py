@@ -51,4 +51,4 @@ with open("attack_embeddings_transformer.pkl", "wb") as f:
         f
     )
 
-print("Saved attack_embeddings.pkl")
+print("Saved attack_embeddings_transformer.pkl")

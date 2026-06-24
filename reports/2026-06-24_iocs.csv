@@ -1,0 +1,37 @@
+value,type,context,source,url,published_date
+nvidiadriver[.]net,Domain,Domain used for downloading the Windows payload; C2 domain associated with payload delivery,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+95[.]216[.]92[.]207:8080,IP Address,C2 server used by the RAT,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+postcss-minify-selector-parser,Malware Name,Malicious npm package,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+aes-decode-runner-pro,Malware Name,Related malicious package,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+winpatch-xd7d.win,Filename,Downloaded Windows payload file,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+settings.ps1,Filename,PowerShell script executed by the downloader,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+update.vbs,Filename,VBS bootstrapper used to extract payloads,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+dll.zip,Filename,File extracted by the VBS bootstrapper,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+loader.py,Filename,Python loader used to initiate malware logic,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+chost.exe,Filename,Renamed Python 3.10 console launcher,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+python310.dll,Filename,Python runtime component,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+pythonw.exe,Filename,Python executable,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+api.cp310-win_amd64.pyd,Filename,Nuitka-compiled Python extension module,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+audiodriver.cp310-win_amd64.pyd,Filename,Main RAT orchestration module,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+auto.cp310-win_amd64.pyd,Filename,Chrome credential theft module,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+hxxp[:]//nvidiadriver[.]net/verv1432/winpatch-xd7d[.]win,URL,C2 server URL used for payload delivery,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+hxxp[:]//95[.]216[.]92[.]207:8080,URL,C2 communication endpoint,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+95[.]216[.]92[.]207,IP Address,C2 IP address used for encrypted HTTP communication,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+%TEMP%\winPatch.zip,Filename,Temporary file used for payload delivery,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+%TEMP%\winPatch\update.vbs,Filename,VBS bootstrapper used for loader extraction,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+%TEMP%\.store,Filename,Temporary directory for persistent storage,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+%TEMP%\.host,Filename,Temporary directory for victim UUID storage,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+HKCU\Software\Microsoft\Windows\CurrentVersion\Run\csshost,Registry Key,Registry persistence location,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+win-driver-xd7d/chost.exe,Filename,Main malware executable,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+win-driver-xd7d/loader.py,Filename,Python loader used for execution,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+win-driver-xd7d/api.cp310-win_amd64.pyd,Filename,Module handling C2 communication,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+win-driver-xd7d/auto.cp310-win_amd64.pyd,Filename,Module handling Chrome credential theft,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+win-driver-xd7d/command.cp310-win_amd64.pyd,Filename,Command dispatcher module,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+win-driver-xd7d/config.cp310-win_amd64.pyd,Filename,Configuration module,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+win-driver-xd7d/util.cp310-win_amd64.pyd,Filename,Utility module,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+164e322d6fbc62e254d73583acd7f39444c884d3f5e6a5d27db143fc25bc88b3,SHA256,Hash of audiodriver.cp310-win_amd64.pyd,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+50ffce607867d8fa8eaf6ef5cd25a3c0e7e4415e881b9e55c04a67bcddb74fdf,SHA256,Hash of api.cp310-win_amd64.pyd,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+17832aa629524ef6e8d8d6e9b6b902a8d324b559e3c36dbd0e221ab1690be871,SHA256,Hash of auto.cp310-win_amd64.pyd,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+c8075bbff748096e1c6a1ea0aa67bb6762fdd7551427a12425b35b94c1f1ecf2,SHA256,Hash of command.cp310-win_amd64.pyd,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+f6669bd504ce6b0e303be7ee47f2ebbc062989c88c41f0a3f436044a24869798,SHA256,Hash of config.cp310-win_amd64.pyd,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22
+282b9bc318ad1234cbd1b86424b784299b8be31545802a7c6b751166b814b990,SHA256,Hash of util.cp310-win_amd64.pyd,research.jfrog.com,https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/,2026-06-22

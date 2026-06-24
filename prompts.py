@@ -3,10 +3,8 @@ Threat Hunt Generation Pipeline – LLM Prompt Templates
 
 DESIGN PRINCIPLE:
   The LLM does ONE job: read article content and extract raw observable facts.
-  It does NOT classify behaviors by tactic. It does NOT map to ATT&CK. 
   It does NOT generate hunt hypotheses. All of that happens in separate 
   deterministic stages.
-
   This keeps the prompt short, the output schema tiny, and the model fast.
 """
 
@@ -30,6 +28,7 @@ CLASSIFICATION RULES:
 - "General Information": News about security industry, conference announcements, tools/product releases, general cybersecurity tips, educational content
 - "Advisory": CVE advisories, vulnerability disclosures, patches, vendor statements about known issues
 - "Unknown": Cannot determine or ambiguous
+
 """
 
 
@@ -37,6 +36,8 @@ CLASSIFICATION RULES:
 EXTRACTION_PROMPT = """\
 Article: {title}
 Source:  {source} | {published_date}
+
+{previous_context}
 
 {content}
 
@@ -54,6 +55,7 @@ BEHAVIOR EXAMPLES:
 ✗ "Privilege escalation occurred" (no observable detail)
 ✗ "Lateral movement was conducted" (how? what tools?)
 """
+
 
 PEAK_HUNT_PROMPT=""" \
 Generate PEAK hunts using ONLY the provided behaviors.\

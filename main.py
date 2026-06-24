@@ -15,7 +15,7 @@ import sys
 import time
 from pathlib import Path
 from collections import defaultdict
-
+from models import ExtractedArticle
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, TimeElapsedColumn
 from rich.table import Table
@@ -63,7 +63,7 @@ def is_relevant(title: str) -> bool:
     return positive >= 1 and not negative
 
 
-def run_pipeline(lookback_days: int = 1) -> dict:
+def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
     """
     Main pipeline orchestrator:
     1. Ingest RSS feeds
@@ -82,8 +82,21 @@ def run_pipeline(lookback_days: int = 1) -> dict:
     from report_generator import save_all_reports, export_ioc_csv
     from database import save_article, save_report, is_duplicate
     from settings import LLM_MODEL
-
-    stats = {
+    print(url)
+    print("******")
+    if url:
+        stats = {
+        "article_analyzed": 0,
+        "article_classified_security": 0,
+        "article_skipped_non_incident": 0,
+        "attack_mappings": 0,
+        "hunt_hypotheses": 0,
+        "iocs_extracted": 0,
+        "report_written": False,
+        "elapsed_s": 0.0,
+    }
+    else:
+        stats = {
         "articles_found": 0,
         "articles_extracted": 0,
         "articles_deduplicated": 0,
@@ -104,59 +117,65 @@ def run_pipeline(lookback_days: int = 1) -> dict:
         TimeElapsedColumn(),
         console=console
     ) as prog:
+        unique_articles = []
+        if url:
+            t = prog.add_task("Stage 1: Extracting content...", total=None)
+            extracted = extract_articles(url)
+            unique_articles.append(extracted)
 
+        else:
         # ── Stage 1: RSS Ingestion ────────────────────────────────────────────
-        t = prog.add_task("[cyan]Stage 1: RSS ingestion...", total=None)
-        rss_articles = ingest_feeds(lookback_days=lookback_days)
-        stats["articles_found"] = len(rss_articles)
-        prog.update(t, description=f"[green]Stage 1 done — {len(rss_articles)} articles")
+            t = prog.add_task("[cyan]Stage 1: RSS ingestion...", total=None)
+            rss_articles = ingest_feeds(lookback_days=lookback_days)
+            stats["articles_found"] = len(rss_articles)
+            prog.update(t, description=f"[green]Stage 1 done — {len(rss_articles)} articles")
 
-        if not rss_articles:
-            console.print("[yellow]No articles found. Exiting.")
-            return stats
+            if not rss_articles:
+                console.print("[yellow]No articles found. Exiting.")
+                return stats
 
-        # Quick relevance filter
-        rss_articles = [
-            a for a in rss_articles
-            if is_relevant(a.title)
-        ]
+            # Quick relevance filter
+            rss_articles = [
+                a for a in rss_articles
+                if is_relevant(a.title)
+            ]
 
         # ── Stage 2: Extract Article Content ──────────────────────────────────
-        t = prog.add_task("Stage 2: Extracting content...", total=None)
-        extracted = extract_articles(rss_articles[4:5])
-        stats["articles_extracted"] = len(extracted)
-        prog.update(t, description=f"Stage 2 done — {len(extracted)} extracted")
-
-        if not extracted:
-            console.print("No articles extracted. Exiting.")
-            return stats
-
-        # ── Stage 3: Deduplication across sources ──────────────────────────────
-        t = prog.add_task("Stage 3: Deduplicating across sources...", total=None)
         
-        # Track unique content hashes
-        unique_articles = []
-        hash_to_article = {}
-        for art in extracted:
-            if art.content_hash in hash_to_article:
-                # Same content from different source
-                existing = hash_to_article[art.content_hash]
-                console.print(
-                    f"Duplicate content:[/] {art.rss_article.source} ≈ "
-                    f"{existing.rss_article.source}"
-                )
-                stats["articles_deduplicated"] += 1
-            else:
-                hash_to_article[art.content_hash] = art
-                unique_articles.append(art)
-                # Save to database (marks duplicate sources)
-                is_new, _ = save_article(art)
         
-        prog.update(
-            t,
-            description=f"[green]Stage 3 done — {len(unique_articles)} unique "
-                       f"({stats['articles_deduplicated']} duplicates)"
-        )
+            stats["articles_extracted"] = len(extracted)
+            prog.update(t, description=f"Stage 2 done — {len(extracted)} extracted")
+
+            if not extracted:
+                console.print("No articles extracted. Exiting.")
+                return stats
+
+            # ── Stage 3: Deduplication across sources ──────────────────────────────
+            t = prog.add_task("Stage 3: Deduplicating across sources...", total=None)
+            
+            # Track unique content hashes
+        
+            hash_to_article = {}
+            for art in extracted:
+                if art.content_hash in hash_to_article:
+                    # Same content from different source
+                    existing = hash_to_article[art.content_hash]
+                    console.print(
+                        f"Duplicate content:[/] {art.rss_article.source} ≈ "
+                        f"{existing.rss_article.source}"
+                    )
+                    stats["articles_deduplicated"] += 1
+                else:
+                    hash_to_article[art.content_hash] = art
+                    unique_articles.append(art)
+                    # Save to database (marks duplicate sources)
+                    is_new, _ = save_article(art)
+            
+            prog.update(
+                t,
+                description=f"[green]Stage 3 done — {len(unique_articles)} unique "
+                        f"({stats['articles_deduplicated']} duplicates)"
+            )
 
         # ── Stage A: LLM Extraction + Classification ──────────────────────────
         t = prog.add_task(
@@ -165,24 +184,26 @@ def run_pipeline(lookback_days: int = 1) -> dict:
         )
         reports = analyze_articles(unique_articles)
         for r in reports:
-        
             r.peak_hunts = generate_peak_hunts(r)
-  
-
+            print(r.peak_hunts)
         # Count classification results
         classified_security = sum(
             1 for r in reports
             if r.classification.value == "Security Incident"
         )
-        stats["articles_analyzed"] = len(reports)
-        stats["articles_classified_security"] = classified_security
-        stats["articles_skipped_non_incident"] = len(reports) - classified_security
+        if not url:
+            stats["articles_analyzed"] = len(reports)
+            stats["articles_classified_security"] = classified_security
+            stats["articles_skipped_non_incident"] = len(reports) - classified_security
+        else:
+            stats["article_classified_security"]=classified_security
+            stats["article_skipped_non_incident"]=1-classified_security
+
         stats["iocs_extracted"] = sum(len(r.iocs) for r in reports)
         
         prog.update(
             t,
-            description=f"[green]Stage A done — {classified_security} security incidents, "
-                       f"{stats['articles_skipped_non_incident']} skipped"
+            description=f"[green]Stage A done — {classified_security} security incidents"
         )
 
         # Filter to security incidents only for further processing
@@ -191,7 +212,14 @@ def run_pipeline(lookback_days: int = 1) -> dict:
             if r.classification.value == "Security Incident"
         ]
 
-        if not security_reports:
+        if not security_reports and url:
+            console.print(
+                "[yellow]No security incident identified in the provided URL"
+            )
+            stats["report_written"] =False
+            stats["elapsed_s"] = round(time.time() - t0, 1)
+            return stats
+        elif not security_reports:
             console.print(
                 "[yellow]No security incidents identified. Saving reports for non-incidents."
             )
@@ -203,7 +231,7 @@ def run_pipeline(lookback_days: int = 1) -> dict:
             stats["reports_written"] = len(paths)
             stats["elapsed_s"] = round(time.time() - t0, 1)
             return stats
-
+        
         # ── Stage B: ATT&CK Mapping ───────────────────────────────────────────
         t = prog.add_task("[cyan]Stage B: ATT&CK mapping...", total=None)
         security_reports = map_reports(security_reports)
@@ -226,8 +254,10 @@ def run_pipeline(lookback_days: int = 1) -> dict:
         
         paths = save_all_reports(reports)
         export_ioc_csv(security_reports)
-        
-        stats["reports_written"] = len(paths)
+        if url:
+            stats["report_written"]=True
+        else:
+            stats["reports_written"] = len(paths)
         prog.update(t, description=f"[green]Done — {len(paths)} reports written")
 
     stats["elapsed_s"] = round(time.time() - t0, 1)
@@ -266,6 +296,7 @@ def scheduled_run() -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Threat Hunt Generation Pipeline")
     parser.add_argument("--schedule", action="store_true", help="Run on schedule")
+    parser.add_argument("--article_url",type=str,default="",help="Analyze a particular blog/article")
     parser.add_argument("--lookback", type=int, default=1, help="Days to look back")
     parser.add_argument("--verbose", action="store_true", help="Verbose logging")
     args = parser.parse_args()
@@ -273,7 +304,9 @@ def main() -> None:
     setup_logging(args.verbose)
     Path("data").mkdir(exist_ok=True)
     Path("reports").mkdir(exist_ok=True)
-
+    if args.article_url:
+        run_pipeline(url=args.article_url)
+        return
     if args.schedule:
         scheduled_run()
         return

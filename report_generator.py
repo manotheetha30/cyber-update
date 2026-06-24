@@ -12,8 +12,6 @@ from settings import REPORT_DIR
 from models import HuntReport
 
 logger = logging.getLogger(__name__)
-
-
 def _table(headers: list[str], rows: list[list[str]]) -> str:
     """Render a markdown table."""
     sep  = "| " + " | ".join("---" for _ in headers) + " |"
@@ -26,7 +24,7 @@ def _table(headers: list[str], rows: list[list[str]]) -> str:
 def render_report(report: HuntReport) -> str:
     """Render full Hunt report to markdown."""
     rss  = report.article.rss_article
-    now  = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+    now  = datetime.now().strftime(r"%Y-%m-%d %H:%M UTC")
     lines: list[str] = []
 
     # ── Header ────────────────────────────────────────────────────────────────
