@@ -15,11 +15,10 @@ import sys
 import time
 from pathlib import Path
 from collections import defaultdict
-from models import ExtractedArticle
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, TimeElapsedColumn
 from rich.table import Table
-from peak_hunt_generator import generate_peak_hunts
+
 
 RELEVANT_KEYWORDS = [
     "cve", "vulnerability", "vulnerable", "zero", "day", "flaw", "risk", "hackers",
@@ -78,10 +77,10 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
     from scraper import extract_articles
     from llm_analyzer import analyze_articles
     from attack_mapper import map_reports
-    from hunt_generator import generate_all_hypotheses
     from report_generator import save_all_reports, export_ioc_csv
     from database import save_article, save_report, is_duplicate
     from settings import LLM_MODEL
+    from peak_hunt_generator import generate_peak_hunts
     print(url)
     print("******")
     if url:
@@ -142,7 +141,7 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
 
         # ── Stage 2: Extract Article Content ──────────────────────────────────
         
-        
+            extracted = extract_articles(rss_articles[2:3])
             stats["articles_extracted"] = len(extracted)
             prog.update(t, description=f"Stage 2 done — {len(extracted)} extracted")
 
@@ -183,9 +182,6 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
             total=None
         )
         reports = analyze_articles(unique_articles)
-        for r in reports:
-            r.peak_hunts = generate_peak_hunts(r)
-            print(r.peak_hunts)
         # Count classification results
         classified_security = sum(
             1 for r in reports
@@ -240,8 +236,10 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
 
         # ── Stage C: Hunt Hypothesis Generation ────────────────────────────────
         t = prog.add_task("[cyan]Stage C: Generating hunt hypotheses...", total=None)
-        security_reports = generate_all_hypotheses(security_reports)
-        stats["hunt_hypotheses"] = sum(len(r.hunt_hypotheses) for r in security_reports)
+        for r in security_reports:
+            r.peak_hunts = generate_peak_hunts(r)
+
+        stats["hunt_hypotheses"] = sum(len(r.peak_hunts) for r in security_reports)
         prog.update(t, description=f"[green]Stage C done — {stats['hunt_hypotheses']} hypotheses")
 
         # ── Persist + Output ──────────────────────────────────────────────────

@@ -406,7 +406,7 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
             for i, chunk in enumerate(chunks, 1):
                 logger.debug(f"  [Chunk {i}/{len(chunks)}] {len(chunk)} chars")
                 if behavior_memory!=[]:
-                     context= f"""
+                    context= f"""
                                 Previous observed behaviors from earlier chunks of the SAME article:
 
                                 {json.dumps(behavior_memory, indent=2)}
@@ -457,8 +457,10 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
                 previous_context="",
                 content        = content  
             )
+            print(EXTRACTION_PROMPT)
             
             raw  = _ollama(prompt, model=model)
+            print(raw)
             data = _parse_json(raw)
         
         # Build final report

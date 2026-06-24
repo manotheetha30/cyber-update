@@ -137,15 +137,7 @@ class ATTACKMapping(BaseModel):
     observed_behavior: str
 
 
-# ── Hunt hypothesis (Stage C — deterministic) ────────────────────────────────
 
-class HuntHypothesis(BaseModel):
-    hypothesis:         str
-    evidence:           str
-    mitre_techniques:   list[str]       = []
-    data_sources:       list[DataSource] = []
-    required_telemetry: list[str]       = []
-    detection_query:    Optional[str]   = None
 
 
 # ── Final per-article report ──────────────────────────────────────────────────
@@ -185,7 +177,6 @@ class  HuntReport(BaseModel):
     iocs:               list[IOC]              = []
     behaviors:          list[RawBehavior]      = []
     attack_mappings:    list[ATTACKMapping]    = []
-    hunt_hypotheses:    list[HuntHypothesis]   = []
     peak_hunts:         list[PeakHunt]         = []
     model_used:         str                    = ""
     processing_time_s:  float                  = 0.0

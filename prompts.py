@@ -42,7 +42,7 @@ Source:  {source} | {published_date}
 {content}
 
 ---
-Extract and return ONLY VALID JSON
+Extract all the fields and return ONLY VALID JSON
 
 BEHAVIOR EXAMPLES:
 ✓ "PowerShell executed with encoded command to download payload from C2"

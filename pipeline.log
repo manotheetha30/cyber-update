@@ -765,3 +765,121 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 TypeError: descriptor 'strftime' for 'datetime.date' objects doesn't apply to a 'str' object
 2026-06-24 06:47:54,485 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-06-24_iocs.csv (36 IOCs)
+2026-06-24 20:43:43,933 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-24 20:43:43,935 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-24 20:43:44,416 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-24 20:43:45,894 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-24 20:43:47,211 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-24 20:43:47,211 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-24 20:48:17,386 [INFO] llm_analyzer:   Analyzing 2 chunks from full article...
+2026-06-24 21:24:26,401 [INFO] llm_analyzer: Merged 2 chunk reports: actors=1, behaviors=0, iocs=32
+2026-06-24 21:24:26,735 [INFO] database: Database ready: sqlite:///M:\cyber/data/cti.db
+2026-06-24 21:24:26,784 [WARNING] database: Article not found for hash e990fe035c8186179cd8a94174e5cf03b8813480c2b8a602a535caf49a86a7c5
+2026-06-24 21:24:26,814 [INFO] report_generator: Report written: M:\cyber\reports\2026-06-22_From_PostCSS_Masquerading_to_Windows_RAT___JFrog.md
+2026-06-24 21:24:26,817 [INFO] report_generator: IOC CSV: M:\cyber\reports\2026-06-24_iocs.csv (32 IOCs)
+2026-06-24 21:38:35,874 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-24 21:38:35,877 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-24 21:38:36,823 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-24 21:38:37,588 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-24 21:38:39,799 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-24 21:38:41,066 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-24 21:38:42,876 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-24 21:38:44,145 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-24 21:38:48,198 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-24 21:38:49,472 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-24 21:38:50,841 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-24 21:38:54,616 [INFO] rss_ingestor: Total articles collected: 28
+2026-06-24 21:38:54,616 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/tata-electronics-confirms-cyberat
+2026-06-24 21:38:56,914 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-24 21:38:56,961 [INFO] database: Database ready: sqlite:///M:\cyber/data/cti.db
+2026-06-24 21:38:56,987 [INFO] database: New article saved: Tata Electronics confirms cyberattack as hackers l
+2026-06-24 21:38:56,993 [INFO] llm_analyzer: Processing [cth-qwen:latest]: Tata Electronics confirms cyberattack as hackers leak data
+2026-06-24 21:38:56,994 [INFO] llm_analyzer: Classifying article: Tata Electronics confirms cyberattack as hackers leak data
+2026-06-24 21:45:43,249 [INFO] report_generator: Report written: M:\cyber\reports\2026-06-23_Tata_Electronics_confirms_cyberattack_as_hackers_l.md
+2026-06-24 21:45:43,253 [INFO] report_generator: IOC CSV: M:\cyber\reports\2026-06-24_iocs.csv (0 IOCs)
+2026-06-24 21:49:26,132 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-24 21:49:26,132 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-24 21:49:26,529 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-24 21:49:26,797 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-24 21:49:28,515 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-24 21:49:30,094 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-24 21:49:31,015 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-24 21:49:31,618 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-24 21:49:33,404 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-24 21:49:34,313 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-24 21:49:34,824 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-24 21:49:37,681 [INFO] rss_ingestor: Total articles collected: 28
+2026-06-24 21:49:37,682 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/tata-electronics-confirms-cyberat
+2026-06-24 21:49:39,378 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-24 21:49:39,429 [INFO] database: Database ready: sqlite:///M:\cyber/data/cti.db
+2026-06-24 21:49:39,442 [INFO] llm_analyzer: Processing [cth-qwen:latest]: Tata Electronics confirms cyberattack as hackers leak data
+2026-06-24 21:49:39,442 [INFO] llm_analyzer: Classifying article: Tata Electronics confirms cyberattack as hackers leak data
+2026-06-24 21:55:33,301 [WARNING] database: Report already exists for content hash 415cf1e3f5368779bed121e980969faac1b1bf53cfeed348d15cf4bb3d68aca0, skipping
+2026-06-24 21:55:33,303 [INFO] report_generator: Report written: M:\cyber\reports\2026-06-23_Tata_Electronics_confirms_cyberattack_as_hackers_l.md
+2026-06-24 21:55:33,305 [INFO] report_generator: IOC CSV: M:\cyber\reports\2026-06-24_iocs.csv (0 IOCs)
+2026-06-24 22:01:36,853 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-24 22:01:36,854 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-24 22:01:37,237 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-24 22:01:37,440 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-24 22:01:39,035 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-24 22:01:39,432 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-24 22:01:40,821 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-24 22:01:41,381 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-24 22:01:44,130 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-24 22:01:44,608 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-24 22:01:45,669 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-24 22:01:48,095 [INFO] rss_ingestor: Total articles collected: 28
+2026-06-24 22:01:48,096 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/tata-electronics-confirms-cyberat
+2026-06-24 22:01:50,719 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-24 22:01:50,746 [INFO] database: Database ready: sqlite:///M:\cyber/data/cti.db
+2026-06-24 22:01:50,755 [INFO] llm_analyzer: Processing [cth-qwen:latest]: Tata Electronics confirms cyberattack as hackers leak data
+2026-06-24 22:01:50,755 [INFO] llm_analyzer: Classifying article: Tata Electronics confirms cyberattack as hackers leak data
+2026-06-24 22:13:33,097 [WARNING] database: Report already exists for content hash 415cf1e3f5368779bed121e980969faac1b1bf53cfeed348d15cf4bb3d68aca0, skipping
+2026-06-24 22:13:33,104 [INFO] report_generator: Report written: M:\cyber\reports\2026-06-23_Tata_Electronics_confirms_cyberattack_as_hackers_l.md
+2026-06-24 22:13:33,124 [INFO] report_generator: IOC CSV: M:\cyber\reports\2026-06-24_iocs.csv (0 IOCs)
+2026-06-24 22:15:48,265 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-24 22:15:48,266 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-24 22:15:48,997 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-24 22:15:49,514 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-24 22:15:51,687 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-24 22:15:53,551 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-24 22:15:55,481 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-24 22:15:56,743 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-24 22:15:59,537 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-24 22:16:00,774 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-24 22:16:01,802 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-24 22:16:05,902 [INFO] rss_ingestor: Total articles collected: 28
+2026-06-24 22:16:05,903 [INFO] scraper: Extracting: https://www.darkreading.com/cyberattacks-data-breaches/scope-salesforce-attacks-
+2026-06-24 22:16:09,973 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-24 22:16:10,033 [INFO] database: Database ready: sqlite:///M:\cyber/data/cti.db
+2026-06-24 22:16:10,068 [INFO] database: New article saved: Scope of Salesforce Attacks Expands as Icarus Leak
+2026-06-24 22:16:10,076 [INFO] llm_analyzer: Processing [cth-qwen:latest]: Scope of Salesforce Attacks Expands as Icarus Leaks Data
+2026-06-24 22:16:10,076 [INFO] llm_analyzer: Classifying article: Scope of Salesforce Attacks Expands as Icarus Leaks Data
+2026-06-24 22:44:19,395 [INFO] report_generator: Report written: M:\cyber\reports\2026-06-23_Scope_of_Salesforce_Attacks_Expands_as_Icarus_Leak.md
+2026-06-24 22:44:19,407 [INFO] report_generator: IOC CSV: M:\cyber\reports\2026-06-24_iocs.csv (4 IOCs)
+2026-06-24 23:18:20,455 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-24 23:18:20,457 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-24 23:18:20,860 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-24 23:18:21,247 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-24 23:18:22,328 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-24 23:18:23,642 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-24 23:18:24,925 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-24 23:18:25,532 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-24 23:18:27,022 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-24 23:18:27,774 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-24 23:18:28,291 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-24 23:18:30,907 [INFO] rss_ingestor: Total articles collected: 28
+2026-06-24 23:18:30,908 [INFO] scraper: Extracting: https://www.darkreading.com/cyberattacks-data-breaches/scope-salesforce-attacks-
+2026-06-24 23:18:31,483 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-24 23:18:31,517 [INFO] database: Database ready: sqlite:///M:\cyber/data/cti.db
+2026-06-24 23:18:31,525 [INFO] llm_analyzer: Processing [cth-qwen:latest]: Scope of Salesforce Attacks Expands as Icarus Leaks Data
+2026-06-24 23:18:31,526 [INFO] llm_analyzer: Classifying article: Scope of Salesforce Attacks Expands as Icarus Leaks Data
+2026-06-24 23:50:04,295 [WARNING] database: Report already exists for content hash 866a07764764bc83d4c9e2bdc076869d5cf9680ec52e32892d0e744f58e423ed, skipping
+2026-06-24 23:50:04,556 [INFO] report_generator: Report written: M:\cyber\reports\2026-06-23_Scope_of_Salesforce_Attacks_Expands_as_Icarus_Leak.md
+2026-06-24 23:50:04,674 [INFO] report_generator: IOC CSV: M:\cyber\reports\2026-06-24_iocs.csv (3 IOCs)
+2026-06-25 00:03:08,677 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-25 00:03:08,678 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-25 00:03:09,304 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-25 00:03:10,762 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-25 00:03:11,403 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-25 00:03:11,404 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
