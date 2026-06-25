@@ -38,12 +38,8 @@ Article: {title}
 Source:  {source} | {published_date}
 
 {previous_context}
-
 {content}
-
 ---
-Extract all the fields and return ONLY VALID JSON
-
 BEHAVIOR EXAMPLES:
 ✓ "PowerShell executed with encoded command to download payload from C2"
 ✓ "Registry HKLM\\Software\\Run modified to add backdoor path for persistence"
@@ -54,6 +50,38 @@ BEHAVIOR EXAMPLES:
 ✗ "Gained persistence" (too vague)
 ✗ "Privilege escalation occurred" (no observable detail)
 ✗ "Lateral movement was conducted" (how? what tools?)
+Extract all the fields and return ONLY VALID JSON .DON'T CHANGE THE FORMAT OF SPECIFIED JSON IF A PARTICULAR FIELD HAS NO VALUE ENTER "null" OR "[]" OR "{{}}" AS APPROPRIATE. DO NOT ADD ANY OTHER TEXT.
+OUTPUT ONLY IN THE BELOW JSON FORMAT.
+
+{{
+  "executive_summary": "<2-3 sentences summarising the incident, threat actors, malware, and what they did>",
+
+  "threat_actors": [
+    {{"name": "", "aliases": [], "motivation": "", "evidence": ""}}
+  ],
+
+  "campaigns": [
+    {{"name": "", "aliases": [], "description": "", "evidence": ""}}
+  ],
+
+  "malware": [
+    {{"name": "", "type": "Ransomware|Infostealer|Backdoor|Loader|RAT|Wiper|Dropper|Botnet|Rootkit|Unknown", "description": ""}}
+  ],
+
+  "iocs": [
+    {{"value": "", "ioc_type": "IP Address|Domain|Malware Name|URL|Email|MD5|SHA1|SHA256|SHA512|Filename|Registry Key|CVE", "context": ""}}
+  ],
+
+  "behaviors": [
+    {{
+      "behavior": "<specific observable action: what did they do, how did they do it>",
+      "evidence": "<direct quote or close paraphrase from article>",
+      "artifacts": ["<filename>", "<command>", "<registry key>", "<process name>", "<network address>"],
+      "context": "<optional: when did this happen, what was the goal, what came before/after>"
+    }}
+  ]
+}}
+
 """
 
 

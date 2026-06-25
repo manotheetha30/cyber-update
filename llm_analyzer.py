@@ -135,8 +135,11 @@ def _parse_json(raw: str) -> dict:
         if isinstance(candidate, str):
             try:
                 return json.loads(candidate)
-            except json.JSONDecodeError:
-                continue
+   
+            except:
+                from json_repair import repair_json
+                return json.loads(repair_json(candidate))
+        
 
     raise ValueError(f"No valid JSON found in LLM output:\n{raw[:400]}")
 
@@ -419,6 +422,8 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
                                 - Identify relationships between current observations and previously observed behaviors when they appear to be part of the same attack chain.
                                 - Prefer extracting NEW observable behaviors from the current chunk.
                                 - Do NOT infer facts that are not supported by the current chunk or the provided context.
+                                - The extraction should follow the VALID JSON format specified , and should be parsable by a JSON parser.
+                                - ALWAYS return valid JSON.
                         """
                 else:
                     context=""
@@ -431,7 +436,10 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
                 )
                 try:
                     raw = _ollama(prompt, model=model)
+                    print(raw)
+                    print("**********")
                     data = _parse_json(raw)
+                    print(data)
                     chunk_results.append(data)
                     for b in data.get("behaviors", []):
                         behavior_memory.append(b)

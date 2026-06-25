@@ -883,3 +883,73 @@ TypeError: descriptor 'strftime' for 'datetime.date' objects doesn't apply to a 
 2026-06-25 00:03:10,762 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
 2026-06-25 00:03:11,403 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
 2026-06-25 00:03:11,404 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-25 00:07:20,902 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-25 00:07:20,902 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-25 00:07:21,259 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-25 00:07:22,235 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-25 00:07:22,694 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-25 00:07:22,695 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-25 00:11:39,412 [INFO] llm_analyzer:   Analyzing 2 chunks from full article...
+2026-06-25 00:49:31,811 [ERROR] llm_analyzer: LLM failed for 'From PostCSS Masquerading to Windows RAT | JFrog': 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "m:\cyber\llm_analyzer.py", line 445, in analyze_article
+    data = _merge_reports(chunk_results)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "m:\cyber\llm_analyzer.py", line 236, in _merge_reports
+    name = malware.get("name", "").lower()
+           ^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+2026-06-25 00:56:45,794 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-25 00:56:45,795 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-25 00:56:46,209 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-25 00:56:47,336 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-25 00:56:47,700 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-25 00:56:47,700 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-25 01:00:10,517 [INFO] llm_analyzer:   Analyzing 2 chunks from full article...
+2026-06-25 01:14:22,426 [WARNING] llm_analyzer:   Chunk 1 failed: No valid JSON found in LLM output:
+{
+  "executive_summary": "A malicious npm package named postcss-minify-selector-parser masqueraded as a legitimate tool, leading to a Windows RAT with capabilities including remote shell, file transfer, persistence, and Chrome credential theft. The malware used a C2 server at hxxp[:]//95[.]216[.]92[.]207:8080 and leveraged decoded blobs and PowerShell scripts to execute its payload.",
+  "threat_ac
+2026-06-25 01:24:31,180 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-25 01:24:31,181 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-25 01:24:31,486 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-25 01:24:32,332 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-25 01:24:32,737 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-25 01:24:32,738 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-25 01:26:41,963 [INFO] llm_analyzer:   Analyzing 2 chunks from full article...
+2026-06-25 01:55:02,519 [ERROR] llm_analyzer: LLM failed for 'From PostCSS Masquerading to Windows RAT | JFrog': 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "m:\cyber\llm_analyzer.py", line 451, in analyze_article
+    data = _merge_reports(chunk_results)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "m:\cyber\llm_analyzer.py", line 264, in _merge_reports
+    desc = behavior.get("behavior", "").lower().strip()
+           ^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+2026-06-25 07:48:50,928 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-25 07:48:50,930 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-25 07:48:51,582 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-25 07:48:53,456 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-25 07:48:54,194 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-25 07:48:54,194 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-25 07:52:54,478 [INFO] llm_analyzer:   Analyzing 2 chunks from full article...
+2026-06-25 08:25:14,475 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-25 08:25:14,475 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-25 08:25:14,836 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-25 08:25:16,020 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-25 08:25:16,640 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-25 08:25:16,640 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-25 08:29:27,185 [INFO] llm_analyzer:   Analyzing 2 chunks from full article...
+2026-06-25 08:29:27,187 [ERROR] llm_analyzer: LLM failed for 'From PostCSS Masquerading to Windows RAT | JFrog': Replacement index 0 out of range for positional args tuple
+Traceback (most recent call last):
+  File "m:\cyber\llm_analyzer.py", line 430, in analyze_article
+    prompt = EXTRACTION_PROMPT.format(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+IndexError: Replacement index 0 out of range for positional args tuple
+2026-06-25 08:32:28,767 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-25 08:32:28,768 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-25 08:32:29,083 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-25 08:32:29,738 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-25 08:32:30,146 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-25 08:32:30,146 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-25 08:34:33,632 [INFO] llm_analyzer:   Analyzing 2 chunks from full article...
