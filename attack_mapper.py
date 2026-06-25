@@ -20,7 +20,7 @@ from models import (
 logger = logging.getLogger(__name__)
 
 # Load sentence transformer for embedding
-model = SentenceTransformer("./e5_attack_mapper")
+model = SentenceTransformer("./attack_mapper")
 
 # Load pre-computed ATT&CK embeddings
 with open("attack_embeddings_transformer.pkl", "rb") as f:

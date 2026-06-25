@@ -23,7 +23,7 @@ from rich.table import Table
 RELEVANT_KEYWORDS = [
     "cve", "vulnerability", "vulnerable", "zero", "day", "flaw", "risk", "hackers",
     "exploit", "adware", "traffic", "fake", "phishing", "hack", "bug",
-    "rce", "zero-day", "0day", "malware", "ransomware", "apt",
+    "rce", "zero-day", "0day", "malware", "ransomware", "apt","adversary","cybercrime","cyber",
     "threat actor", "exposes", "expose", "breach", "stealth", "defense",
     "incident", "campaign", "ioc", "abuse", "steal",
     "attack", "cyberattack", "spy", "cybersecurity", "breached", "exposed",
@@ -81,8 +81,6 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
     from database import save_article, save_report, is_duplicate
     from settings import LLM_MODEL
     from peak_hunt_generator import generate_peak_hunts
-    print(url)
-    print("******")
     if url:
         stats = {
         "article_analyzed": 0,
@@ -141,7 +139,7 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
 
         # ── Stage 2: Extract Article Content ──────────────────────────────────
         
-            extracted = extract_articles(rss_articles[2:3])
+            extracted = extract_articles(rss_articles)
             stats["articles_extracted"] = len(extracted)
             prog.update(t, description=f"Stage 2 done — {len(extracted)} extracted")
 

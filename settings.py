@@ -17,24 +17,24 @@ DATABASE_URL: str = os.getenv("CTI_DATABASE_URL", f"sqlite:///{BASE_DIR}/data/ct
 
 # ── LLM ───────────────────────────────────────────────────────────────────────
 OLLAMA_BASE_URL: str  = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-LLM_MODEL:       str  = os.getenv("CTI_LLM_MODEL",   "cth-qwen:latest")
-LLM_TEMPERATURE: float = float(os.getenv("CTI_LLM_TEMPERATURE", "0.1"))
-LLM_MAX_TOKENS:  int  = int(os.getenv("CTI_LLM_MAX_TOKENS",    "4096"))
-LLM_CONTEXT_WINDOW: int = int(os.getenv("CTI_LLM_CONTEXT_WINDOW", "32768"))
+LLM_MODEL:       str  = os.getenv("LLM_MODEL",   "cth-qwen:latest")
+LLM_TEMPERATURE: float = float(os.getenv("LLM_TEMPERATURE", "0.1"))
+LLM_MAX_TOKENS:  int  = int(os.getenv("LLM_MAX_TOKENS",    "4096"))
+LLM_CONTEXT_WINDOW: int = int(os.getenv("LLM_CONTEXT_WINDOW", "32768"))
 
 
 # ── Article extraction ────────────────────────────────────────────────────────
-MIN_ARTICLE_LENGTH: int = int(os.getenv("CTI_MIN_ARTICLE_LEN", "500"))
-REQUEST_TIMEOUT:    int = int(os.getenv("CTI_REQUEST_TIMEOUT", "30"))
-MAX_RETRIES:        int = int(os.getenv("CTI_MAX_RETRIES",     "3"))
+MIN_ARTICLE_LENGTH: int = int(os.getenv("MIN_ARTICLE_LEN", "500"))
+REQUEST_TIMEOUT:    int = int(os.getenv("REQUEST_TIMEOUT", "60"))
+MAX_RETRIES:        int = int(os.getenv("MAX_RETRIES",     "3"))
 USER_AGENT: str = (
-    "Mozilla/5.0 (compatible; CTI-Pipeline/1.0; "
-    "+https://github.com/your-org/cti-pipeline)"
+    "Mozilla/5.0 (compatible; Threat-Hunt-Generation-Pipeline/1.0; "
+     "+https://github.com/your-org/automated-hunt-generation-pipeline)"
 )
 
 # ── Scheduling ────────────────────────────────────────────────────────────────
-RUN_HOUR:   int = int(os.getenv("CTI_RUN_HOUR",   "6"))
-RUN_MINUTE: int = int(os.getenv("CTI_RUN_MINUTE", "0"))
+RUN_HOUR:   int = int(os.getenv("RUN_HOUR",   "6"))
+RUN_MINUTE: int = int(os.getenv("RUN_MINUTE", "0"))
 
 # ── Output ────────────────────────────────────────────────────────────────────
 REPORT_DIR: Path = BASE_DIR / "reports"

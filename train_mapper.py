@@ -4,7 +4,7 @@ model=SentenceTransformer(
     "BAAI/bge-small-en-v1.5"
 )
 import json
-with open("flattened_attack_pairs.json","r",encoding="utf-8") as f:
+with open("model_training_data.json","r",encoding="utf-8") as f:
     flattened=json.load(f)[:2000]
 train_data, val_data = train_test_split(
     flattened,
@@ -46,5 +46,5 @@ model.fit(
     ],
     epochs=1,
     warmup_steps=warmup_steps,
-    output_path="./attack_mapper"
+    output_path=r"./attack_mapper"
 )

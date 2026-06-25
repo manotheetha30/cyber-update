@@ -1,17 +1,11 @@
-
 import pandas as pd
 from sentence_transformers import SentenceTransformer
 import pickle
-import numpy as np
-model = SentenceTransformer(
-    "./e5_attack_mapper"
-)
-df = pd.read_excel("attack_dataset.xlsx")
-
+model = SentenceTransformer("./attack_mapper")
+df = pd.read_excel("./train-attack-mapper/attack_dataset.xlsx")
 attack_docs = []
 attack_ids = []
 attack_metadata=[]
-
 for _, row in df.iterrows():
 
     passage = f"""
@@ -39,7 +33,6 @@ embeddings = model.encode(
     show_progress_bar=True,
     batch_size=32
 )
-
 with open("attack_embeddings_transformer.pkl", "wb") as f:
     pickle.dump(
         {
@@ -50,5 +43,4 @@ with open("attack_embeddings_transformer.pkl", "wb") as f:
         },
         f
     )
-
 print("Saved attack_embeddings_transformer.pkl")

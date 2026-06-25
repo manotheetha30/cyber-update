@@ -13,9 +13,7 @@ from dateutil import parser as dateutil_parser
 from tenacity import retry, stop_after_attempt, wait_exponential
 from settings import RSS_FEEDS, REQUEST_TIMEOUT, USER_AGENT
 from models import RSSArticle
-
 logger = logging.getLogger(__name__)
-
 
 def _utc_yesterday(lookback_days:int) -> tuple[datetime, datetime]:
     """Return (start, end) of the previous UTC calendar day."""
@@ -136,4 +134,4 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     results = ingest_feeds()
     for a in results:
-        print(f"[{a.source}] {a.published_date.date()} | {a.title[:70]}")
+        print(f"[{a.source}] {a.published_date.date()} | {a.title}")

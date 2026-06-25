@@ -6,16 +6,13 @@ from __future__ import annotations
 import json
 import logging
 from datetime import datetime, timedelta
-
 from sqlalchemy import (
     Column, DateTime, Float, Integer, String, Text,
     UniqueConstraint, create_engine, Index,
 )
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
-
 from settings import DATABASE_URL
 from models import HuntReport, ExtractedArticle, ArticleClassification
-
 logger = logging.getLogger(__name__)
 
 
@@ -219,7 +216,7 @@ def save_report(report: HuntReport, content_hash: str) -> None:
             iocs_json=json.dumps([x.model_dump() for x in report.iocs]),
             behaviors_json=json.dumps([x.model_dump() for x in report.behaviors]),
             attack_mappings_json=json.dumps([x.model_dump() for x in report.attack_mappings]),
-            hunt_hypotheses_json=json.dumps([x.model_dump() for x in report.hunt_hypotheses]),
+            hunt_hypotheses_json=json.dumps([x.model_dump() for x in report.peak_hunts]),
         )
         s.add(rec)
         s.commit()
