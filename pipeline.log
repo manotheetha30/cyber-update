@@ -953,3 +953,15 @@ IndexError: Replacement index 0 out of range for positional args tuple
 2026-06-25 08:32:30,146 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
 2026-06-25 08:32:30,146 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
 2026-06-25 08:34:33,632 [INFO] llm_analyzer:   Analyzing 2 chunks from full article...
+2026-06-25 09:03:14,620 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-25 09:03:14,621 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./e5_attack_mapper.
+2026-06-25 09:03:14,953 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-25 09:03:16,258 [INFO] scraper: Extracting: https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat/
+2026-06-25 09:03:16,716 [INFO] llm_analyzer: Processing [cth-qwen:latest]: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-25 09:03:16,717 [INFO] llm_analyzer: Classifying article: From PostCSS Masquerading to Windows RAT | JFrog
+2026-06-25 09:05:43,907 [INFO] llm_analyzer:   Analyzing 2 chunks from full article...
+2026-06-25 09:46:39,459 [INFO] llm_analyzer: Merged 2 chunk reports: actors=1, behaviors=6, iocs=29
+2026-06-25 09:56:28,865 [INFO] database: Database ready: sqlite:///M:\cyber/data/cti.db
+2026-06-25 09:56:28,907 [WARNING] database: Report already exists for content hash e990fe035c8186179cd8a94174e5cf03b8813480c2b8a602a535caf49a86a7c5, skipping
+2026-06-25 09:56:28,910 [INFO] report_generator: Report written: M:\cyber\reports\2026-06-22_From_PostCSS_Masquerading_to_Windows_RAT___JFrog.md
+2026-06-25 09:56:28,913 [INFO] report_generator: IOC CSV: M:\cyber\reports\2026-06-25_iocs.csv (29 IOCs)
