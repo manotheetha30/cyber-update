@@ -25,11 +25,13 @@ LLM_CONTEXT_WINDOW: int = int(os.getenv("LLM_CONTEXT_WINDOW", "32768"))
 
 # ── Article extraction ────────────────────────────────────────────────────────
 MIN_ARTICLE_LENGTH: int = int(os.getenv("MIN_ARTICLE_LEN", "500"))
-REQUEST_TIMEOUT:    int = int(os.getenv("REQUEST_TIMEOUT", "60"))
+REQUEST_TIMEOUT:    int = int(os.getenv("REQUEST_TIMEOUT", "120"))
 MAX_RETRIES:        int = int(os.getenv("MAX_RETRIES",     "3"))
 USER_AGENT: str = (
     "Mozilla/5.0 (compatible; Threat-Hunt-Generation-Pipeline/1.0; "
      "+https://github.com/your-org/automated-hunt-generation-pipeline)"
+         "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/137.0.0.0 Safari/537.36"
 )
 
 # ── Scheduling ────────────────────────────────────────────────────────────────

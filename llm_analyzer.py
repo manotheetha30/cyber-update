@@ -11,9 +11,8 @@ What the LLM extracts:
   - IOCs
   - raw behaviors (no tactic classification)
 
-What the LLM does NOT do (handled in later stages):
+What this LLM does NOT do (handled in later stages):
   - ATT&CK mapping  →  attack_mapper.py  (embedding-based similarity search)
-  - Hunt hypotheses →  hunt_generator.py (deterministic from mapped behaviors)
 """
 from __future__ import annotations
 import json
@@ -82,7 +81,6 @@ def _smart_chunk_text(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = CH
     return filtered
 
 
-# ── Ollama call with chat history ────────────────────────────────────────────
 @retry(stop=stop_after_attempt(2), wait=wait_exponential(multiplier=2, min=5, max=20))
 def _ollama(prompt: str, model: str = LLM_MODEL, messages: list[dict] | None = None) -> str:
     """
@@ -436,10 +434,7 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
                 )
                 try:
                     raw = _ollama(prompt, model=model)
-                    print(raw)
-                    print("**********")
                     data = _parse_json(raw)
-                    print(data)
                     chunk_results.append(data)
                     for b in data.get("behaviors", []):
                         behavior_memory.append(b)

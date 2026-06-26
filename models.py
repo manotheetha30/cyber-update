@@ -69,14 +69,7 @@ class RSSArticle(BaseModel):
     author:         Optional[str] = None
     summary:        Optional[str] = None
 
-class ExtractedArticleURL(BaseModel):
-    url: str
-    full_text:         str
-    extraction_method: str
-    char_count:        int
-    word_count:        int
-    content_hash:      str
-    extracted_at:      datetime = Field(default_factory=datetime.utcnow)
+
 
 class ExtractedArticle(BaseModel):
     rss_article:       RSSArticle

@@ -27,7 +27,7 @@ from settings import (
     REQUEST_TIMEOUT,
     USER_AGENT,
 )
-from models import ExtractedArticle, RSSArticle,ExtractedArticleURL
+from models import ExtractedArticle, RSSArticle
 
 logger = logging.getLogger(__name__)
 
@@ -138,20 +138,34 @@ def _extract_bs4(html: bytes, encoding: str) -> Optional[str]:
 async def _extract_playwright(url: str) -> Optional[str]:
     """Render JavaScript-heavy pages using Playwright (async)."""
     try:
+
         from playwright.async_api import async_playwright
 
+
         async with async_playwright() as pw:
-            browser = await pw.chromium.launch(headless=True)
+            try:
+                browser = await pw.chromium.launch(headless=True)
+            except Exception as e:
+                print(e)
+            print("blin")
             page    = await browser.new_page()
-            await page.set_extra_http_headers({"User-Agent": USER_AGENT})
-            await page.goto(url, wait_until="networkidle", timeout=45_000)
+            print("blin")
+            await page.goto(url)
             html    = await page.content()
+
             await browser.close()
+            print("blin")
 
         # Pass rendered HTML through trafilatura
-        text = trafilatura.extract(html.encode(), favor_precision=True)
+        try:
+
+            text = trafilatura.extract(html.encode(), favor_precision=True)
+            print(text,"gtufe")
+        except:
+            print("jfgk")
         return text
     except Exception as exc:
+        print("hehh")
         logger.debug("Playwright error: %s", exc)
         return None
 
@@ -217,38 +231,39 @@ def extract_article(article: RSSArticle | str ) -> ExtractedArticle | None:
     else:
         url = article.url
     logger.info("Extracting: %s", url[:80])
-
+    req_Fail=False
     # Fetch the page once; reuse bytes across methods
     try:
         html, encoding = _get_page(url)
     except Exception as exc:
         logger.warning("HTTP fetch failed for %s: %s", url, exc)
-        return None
-
-    methods = [
-        ("trafilatura",  lambda: _extract_trafilatura(html)),
-        ("newspaper3k",  lambda: _extract_newspaper(url)),
-        ("readability",  lambda: _extract_readability(html, encoding)),
-        ("bs4",          lambda: _extract_bs4(html, encoding)),
-    ]
-
+        req_Fail=True
     text        : Optional[str] = None
     method_used : str           = ""
+    if not req_Fail:
+        methods = [
+            ("trafilatura",  lambda: _extract_trafilatura(html)),
+            ("newspaper3k",  lambda: _extract_newspaper(url)),
+            ("readability",  lambda: _extract_readability(html, encoding)),
+            ("bs4",          lambda: _extract_bs4(html, encoding)),
+        ]
 
-    for method_name, extractor in methods:
-        candidate = extractor()
-        if candidate:
-            valid, reason = _validate_text(candidate)
-            if valid:
-                text        = _clean_text(candidate)
-                method_used = method_name
-                logger.debug("  ✓ %s succeeded (%d chars)", method_name, len(text))
-                break
-            else:
-                logger.debug("  ✗ %s invalid: %s", method_name, reason)
+   
+
+        for method_name, extractor in methods:
+            candidate = extractor()
+            if candidate:
+                valid, reason = _validate_text(candidate)
+                if valid:
+                    text        = _clean_text(candidate)
+                    method_used = method_name
+                    logger.debug("  ✓ %s succeeded (%d chars)", method_name, len(text))
+                    break
+                else:
+                    logger.debug("  ✗ %s invalid: %s", method_name, reason)
 
     # Playwright fallback for JS-rendered pages
-    if text is None:
+    if text is None or req_Fail==True:
         logger.info("  Trying Playwright for %s", url)
         try:
             pw_text = asyncio.run(_extract_playwright(url))

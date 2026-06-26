@@ -18,8 +18,6 @@ from collections import defaultdict
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, TimeElapsedColumn
 from rich.table import Table
-
-
 RELEVANT_KEYWORDS = [
     "cve", "vulnerability", "vulnerable", "zero", "day", "flaw", "risk", "hackers",
     "exploit", "adware", "traffic", "fake", "phishing", "hack", "bug",
@@ -81,6 +79,7 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
     from database import save_article, save_report, is_duplicate
     from settings import LLM_MODEL
     from peak_hunt_generator import generate_peak_hunts
+    from group_articles import group_news
     if url:
         stats = {
         "article_analyzed": 0,
@@ -138,7 +137,7 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
             ]
 
         # ── Stage 2: Extract Article Content ──────────────────────────────────
-        
+            
             extracted = extract_articles(rss_articles)
             stats["articles_extracted"] = len(extracted)
             prog.update(t, description=f"Stage 2 done — {len(extracted)} extracted")
