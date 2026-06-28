@@ -15,9 +15,11 @@ import sys
 import time
 from pathlib import Path
 from collections import defaultdict
+from venv import logger
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, TimeElapsedColumn
 from rich.table import Table
+from llm_analyzer import _classify_article
 RELEVANT_KEYWORDS = [
     "cve", "vulnerability", "vulnerable", "zero", "day", "flaw", "risk", "hackers",
     "exploit", "adware", "traffic", "fake", "phishing", "hack", "bug",
@@ -76,10 +78,11 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
     from llm_analyzer import analyze_articles
     from attack_mapper import map_reports
     from report_generator import save_all_reports, export_ioc_csv
-    from database import save_article, save_report, is_duplicate
     from settings import LLM_MODEL
     from peak_hunt_generator import generate_peak_hunts
     from group_articles import group_news
+    from models import ArticleClassification
+    from models import ExtractedArticle, ExtractedArticleWithCluster, HuntReport
     if url:
         stats = {
         "article_analyzed": 0,
@@ -95,7 +98,6 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
         stats = {
         "articles_found": 0,
         "articles_extracted": 0,
-        "articles_deduplicated": 0,
         "articles_analyzed": 0,
         "articles_classified_security": 0,
         "articles_skipped_non_incident": 0,
@@ -117,7 +119,14 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
         if url:
             t = prog.add_task("Stage 1: Extracting content...", total=None)
             extracted = extract_articles(url)
+            classified_security = 1
             unique_articles.append(extracted)
+            t = prog.add_task(
+                f"[cyan]Stage A: LLM analysis ({LLM_MODEL})...",
+                total=None
+            )
+            reports= analyze_articles(unique_articles)
+
 
         else:
         # ── Stage 1: RSS Ingestion ────────────────────────────────────────────
@@ -129,65 +138,80 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
             if not rss_articles:
                 console.print("[yellow]No articles found. Exiting.")
                 return stats
-
             # Quick relevance filter
             rss_articles = [
                 a for a in rss_articles
                 if is_relevant(a.title)
             ]
-
+    
         # ── Stage 2: Extract Article Content ──────────────────────────────────
             
-            extracted = extract_articles(rss_articles)
+            extracted = extract_articles(rss_articles[:1])
             stats["articles_extracted"] = len(extracted)
             prog.update(t, description=f"Stage 2 done — {len(extracted)} extracted")
-
             if not extracted:
                 console.print("No articles extracted. Exiting.")
                 return stats
+            try:
+                for article in extracted:
+                    #Step 1: Classify article
+                    classification = _classify_article(article)
+            
+                # Step 2: Skip non-incident articles
+                    if classification != ArticleClassification.SECURITY_INCIDENT:
+                        logger.info(
+                            f"  Skipping analysis: classified as {classification.value}"
+                        )
+                    
+                    else:
+                        unique_articles.append(article)
+            except Exception as exc:
+                logger.exception("LLM Classification failed for '%s': %s", article.rss_article.title[:60], exc)
+                return stats     
 
-            # ── Stage 3: Deduplication across sources ──────────────────────────────
-            t = prog.add_task("Stage 3: Deduplicating across sources...", total=None)
-            
-            # Track unique content hashes
+            classified_security =len(unique_articles)           
+            clusters = group_news(unique_articles)
+            clustered_articles = []
         
-            hash_to_article = {}
-            for art in extracted:
-                if art.content_hash in hash_to_article:
-                    # Same content from different source
-                    existing = hash_to_article[art.content_hash]
-                    console.print(
-                        f"Duplicate content:[/] {art.rss_article.source} ≈ "
-                        f"{existing.rss_article.source}"
-                    )
-                    stats["articles_deduplicated"] += 1
-                else:
-                    hash_to_article[art.content_hash] = art
-                    unique_articles.append(art)
-                    # Save to database (marks duplicate sources)
-                    is_new, _ = save_article(art)
-            
-            prog.update(
-                t,
-                description=f"[green]Stage 3 done — {len(unique_articles)} unique "
-                        f"({stats['articles_deduplicated']} duplicates)"
-            )
+            for cluster in clusters:
+                articles_rss=[]
+                w_count=0
+                c_count=0
+                method=[]
+                date=[]
+                text=[]
+                hash=[]
+                for idx in cluster:
+                    article= unique_articles[idx]
+                    articles_rss.append(article.rss_article)
+                    w_count+=article.word_count
+                    c_count+=article.char_count
+                    date.append(article.extracted_at)
+                    method.append(article.extraction_method)
+                    text.append(article.full_text)
+                    hash.append(article.content_hash)
+                clustered_articles.append(ExtractedArticleWithCluster(
+                    rss_article=articles_rss,
+                    full_text=text,
+                    extraction_method=method,
+                    char_count=c_count,
+                    word_count=w_count,
+                    content_hash=hash,
+                    extracted_at=date
+                ))
 
         # ── Stage A: LLM Extraction + Classification ──────────────────────────
-        t = prog.add_task(
-            f"[cyan]Stage A: LLM analysis ({LLM_MODEL})...",
-            total=None
-        )
-        reports = analyze_articles(unique_articles)
+            t = prog.add_task(
+                f"[cyan]Stage A: LLM analysis ({LLM_MODEL})...",
+                total=None
+            )
+            reports = analyze_articles(clustered_articles)
         # Count classification results
-        classified_security = sum(
-            1 for r in reports
-            if r.classification.value == "Security Incident"
-        )
+
         if not url:
-            stats["articles_analyzed"] = len(reports)
+            stats["articles_analyzed"] = len(extracted)
             stats["articles_classified_security"] = classified_security
-            stats["articles_skipped_non_incident"] = len(reports) - classified_security
+            stats["articles_skipped_non_incident"] = len(extracted) - classified_security
         else:
             stats["article_classified_security"]=classified_security
             stats["article_skipped_non_incident"]=1-classified_security
@@ -200,55 +224,40 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
         )
 
         # Filter to security incidents only for further processing
-        security_reports = [
-            r for r in reports
-            if r.classification.value == "Security Incident"
-        ]
-
-        if not security_reports and url:
+        if not reports and url:
             console.print(
                 "[yellow]No security incident identified in the provided URL"
             )
             stats["report_written"] =False
             stats["elapsed_s"] = round(time.time() - t0, 1)
             return stats
-        elif not security_reports:
+        elif not reports:
             console.print(
-                "[yellow]No security incidents identified. Saving reports for non-incidents."
+                "[yellow]No security incidents identified. No reports written."
             )
-            for r in reports:
-                content_hash = r.article.content_hash
-                save_report(r, content_hash)
-            
-            paths = save_all_reports(reports)
-            stats["reports_written"] = len(paths)
+            stats["reports_written"] = 0
             stats["elapsed_s"] = round(time.time() - t0, 1)
             return stats
         
         # ── Stage B: ATT&CK Mapping ───────────────────────────────────────────
         t = prog.add_task("[cyan]Stage B: ATT&CK mapping...", total=None)
-        security_reports = map_reports(security_reports)
-        stats["attack_mappings"] = sum(len(r.attack_mappings) for r in security_reports)
+        reports = map_reports(reports)
+        stats["attack_mappings"] = sum(len(r.attack_mappings) for r in reports)
         prog.update(t, description=f"[green]Stage B done — {stats['attack_mappings']} techniques mapped")
 
         # ── Stage C: Hunt Hypothesis Generation ────────────────────────────────
         t = prog.add_task("[cyan]Stage C: Generating hunt hypotheses...", total=None)
-        for r in security_reports:
+        for r in reports:
             r.peak_hunts = generate_peak_hunts(r)
 
-        stats["hunt_hypotheses"] = sum(len(r.peak_hunts) for r in security_reports)
+        stats["hunt_hypotheses"] = sum(len(r.peak_hunts) for r in reports)
         prog.update(t, description=f"[green]Stage C done — {stats['hunt_hypotheses']} hypotheses")
 
         # ── Persist + Output ──────────────────────────────────────────────────
         t = prog.add_task("[cyan]Writing reports...", total=None)
         
-        # Save all reports (security incidents + skipped articles)
-        for r in reports:
-            content_hash = r.article.content_hash
-            save_report(r, content_hash)
-        
         paths = save_all_reports(reports)
-        export_ioc_csv(security_reports)
+        export_ioc_csv(reports)
         if url:
             stats["report_written"]=True
         else:

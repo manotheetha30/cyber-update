@@ -80,6 +80,14 @@ class ExtractedArticle(BaseModel):
     content_hash:      str
     extracted_at:      datetime = Field(default_factory=datetime.utcnow)
 
+class ExtractedArticleWithCluster(BaseModel):
+    rss_article: list[RSSArticle]
+    full_text:list[str]
+    extraction_method: list[str]
+    char_count:        int
+    word_count:        int
+    content_hash:      list[str]
+    extracted_at:      list[datetime]= Field(default_factory=datetime.utcnow)
 
 # ── LLM extraction outputs (Stage A) ─────────────────────────────────────────
 
@@ -146,6 +154,7 @@ class PeakPrepare(BaseModel):
 class PeakExecute(BaseModel):
     gather_data: List[str]
     analysis_steps: List[str]
+    hunt_queries: List[str]
     supporting_evidence: List[str]
 
 
@@ -161,7 +170,7 @@ class PeakHunt(BaseModel):
     act: PeakAct
     
 class  HuntReport(BaseModel):
-    article:            ExtractedArticle
+    article:            ExtractedArticle| ExtractedArticleWithCluster
     classification:     ArticleClassification = ArticleClassification.UNKNOWN
     executive_summary:  str                    = ""
     threat_actors:      list[ThreatActor]      = []

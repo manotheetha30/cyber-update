@@ -12,7 +12,7 @@ What the LLM extracts:
   - raw behaviors (no tactic classification)
 
 What this LLM does NOT do (handled in later stages):
-  - ATT&CK mapping  →  attack_mapper.py  (embedding-based similarity search)
+  - ATT&CK mapping  -> attack_mapper.py  (embedding-based similarity search)
 """
 from __future__ import annotations
 import json
@@ -27,7 +27,7 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 from settings import LLM_MAX_TOKENS, LLM_MODEL, LLM_TEMPERATURE, OLLAMA_BASE_URL
 from models import (
     Campaign, ArticleClassification, ExtractedArticle,
-    IOC, IOCType, MalwareFamily, MalwareType,
+    IOC, ExtractedArticleWithCluster, IOCType, MalwareFamily, MalwareType,
     RawBehavior, ThreatActor, HuntReport,
 )
 from prompts import CLASSIFICATION_PROMPT, EXTRACTION_PROMPT
@@ -150,8 +150,7 @@ def _classify_article(article: ExtractedArticle) -> ArticleClassification:
     Only returns Security Incident classification.
     """
     rss = article.rss_article
-    content = article.full_text[:1500]  # Use first 1500 chars for classification
-    
+    content=article.full_text[:200]
     logger.info(f"Classifying article: {rss.title[:60]}")
     
     try:
@@ -162,16 +161,15 @@ def _classify_article(article: ExtractedArticle) -> ArticleClassification:
             content=content,
         )
         
+        
         raw = _ollama(prompt)
         data = _parse_json(raw)
         
         classification_str = data.get("classification", "Unknown").lower()
-        reason = data.get("reason", "")
-        
         # Map to enum
         for cls in ArticleClassification:
             if cls.value.lower() == classification_str:
-                logger.debug(f"  Classification: {cls.value} - {reason}")
+                logger.debug(f"  Classification: {cls.value}")
                 return cls
         
         return ArticleClassification.UNKNOWN
@@ -192,7 +190,7 @@ def _itype(v: Any) -> IOCType:
 
 # ── Result aggregation (for multi-chunk processing) ────────────────────────────
 
-def _merge_reports(chunk_reports: list[dict]) -> dict:
+def _merge_reports(chunk_reports: list[dict],cluster: bool) -> dict:
     """
     Merge extraction results from multiple chunks with chat history.
     Deduplicates behaviors and IOCs while preserving context.
@@ -286,7 +284,7 @@ def _merge_reports(chunk_reports: list[dict]) -> dict:
 # ── JSON → Pydantic ───────────────────────────────────────────────────────────
 
 def _build_report(
-    article: ExtractedArticle,
+    article: ExtractedArticle | ExtractedArticleWithCluster,
     classification: ArticleClassification,
     data: dict,
     model: str,
@@ -362,7 +360,7 @@ def _build_report(
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
-def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunking: bool = True) -> HuntReport:
+def analyze_article(article: ExtractedArticleWithCluster | ExtractedArticle, model: str = LLM_MODEL, use_chunking: bool = True) -> HuntReport:
     """
     Stage A: Classify article, then extract facts if it's a security incident.
     
@@ -373,41 +371,39 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
     - Maintains chat history across chunks for context
     - Merges and deduplicates results
     """
-    rss     = article.rss_article
-    content = article.full_text
-    
-    logger.info("Processing [%s]: %s", model, rss.title[:70])
     t0 = time.time()
     
     try:
-        # Step 1: Classify article
-        classification = _classify_article(article)
-        
-        # Step 2: Skip non-incident articles
-        if classification != ArticleClassification.SECURITY_INCIDENT:
-            logger.info(
-                f"  Skipping analysis: classified as {classification.value}"
-            )
-            return HuntReport(
-                article        = article,
-                classification = classification,
-                model_used     = model,
-                processing_time_s = round(time.time() - t0, 2),
-            )
-        
-        # Step 3: Extract facts from security incident
-        if use_chunking and len(content) > CHUNK_SIZE:
-            chunks = _smart_chunk_text(content, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP)
-            logger.info(f"  Analyzing {len(chunks)} chunks from full article...")
-            
-            # Maintain chat history across chunks
-            behavior_memory = []
-            chunk_results = []
+        behavior_memory = []
+        chunk_results = []
+        if isinstance(article, ExtractedArticleWithCluster):
+            cluster=True
+            rss=article.rss_article[0]
     
-            for i, chunk in enumerate(chunks, 1):
-                logger.debug(f"  [Chunk {i}/{len(chunks)}] {len(chunk)} chars")
-                if behavior_memory!=[]:
-                    context= f"""
+            content="\n".join(article.full_text)
+            context_article=f"""Previously extracted behaviors from OTHER ARTICLES describing the SAME cybersecurity incident:
+
+                        {json.dumps(behavior_memory, indent=2)}
+
+                        Use these previously extracted behaviors only as contextual memory to understand the progression of the incident.
+
+                        Guidelines:
+                        - Treat the previous behaviors as already known observations for this incident.
+                        - Correlate the current article with the previous behaviors to understand where it fits in the attack sequence.
+                        - Extract ONLY NEW observable adversary behaviors that are not already represented in the previous behaviors.
+                        - If the current article expands or clarifies an existing behavior, extract only the newly revealed aspects of that behavior rather than repeating the original observation.
+                        - If the current article describes the same behavior using different wording, consider it a duplicate and do not extract it again.
+                        - Prefer behaviors that introduce new attacker actions, techniques, or stages of the attack.
+                        - Do NOT suppress or filter other extracted fields (such as malware, tools, vulnerabilities, threat actors, victims, affected products, or IOCs) based on the previous behaviors. Those fields should be extracted solely from the current article according to the schema.
+                        - Do NOT infer or speculate. Extract only information explicitly supported by the current article.
+                        - If no new behaviors are present, return an empty array for the behaviors field.
+                        - The output MUST follow the specified JSON schema exactly.
+                        - ALWAYS return valid, parsable JSON and no additional text."""
+        else:
+            rss     = article.rss_article
+            content = article.full_text
+            cluster=False
+            context_article = f"""
                                 Previous observed behaviors from earlier chunks of the SAME article:
 
                                 {json.dumps(behavior_memory, indent=2)}
@@ -423,6 +419,19 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
                                 - The extraction should follow the VALID JSON format specified , and should be parsable by a JSON parser.
                                 - ALWAYS return valid JSON.
                         """
+
+        # Step 1: Extract facts from security incident
+        if use_chunking and len(content) > CHUNK_SIZE:
+          
+            chunks = _smart_chunk_text(content, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP)
+            logger.info(f"  Analyzing {len(chunks)} chunks from full article...")
+            
+            # Maintain chat history across chunks
+            
+            for i, chunk in enumerate(chunks, 1):
+                logger.debug(f"  [Chunk {i}/{len(chunks)}] {len(chunk)} chars")
+                if behavior_memory!=[]:
+                    context=context_article
                 else:
                     context=""
                 prompt = EXTRACTION_PROMPT.format(
@@ -445,7 +454,7 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
             if not chunk_results:
                 raise ValueError("All chunks failed to extract")
             
-            data = _merge_reports(chunk_results)
+            data = _merge_reports(chunk_results,cluster)
         
         else:
             # Single-pass for short articles
@@ -460,16 +469,13 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
                 previous_context="",
                 content        = content  
             )
-            print(EXTRACTION_PROMPT)
-            
             raw  = _ollama(prompt, model=model)
-            print(raw)
             data = _parse_json(raw)
         
         # Build final report
-        report = _build_report(article, classification, data, model, time.time() - t0)
+        report = _build_report(article,"Security Incident" , data, model, time.time() - t0)
         logger.info(
-            "  → actors=%d  iocs=%d  behaviors=%d  (%.1fs)",
+            " -> actors=%d  iocs=%d  behaviors=%d  (%.1fs)",
             len(report.threat_actors), len(report.iocs),
             len(report.behaviors), report.processing_time_s,
         )
@@ -478,7 +484,7 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
         logger.exception("LLM failed for '%s': %s", rss.title[:60], exc)
         report = HuntReport(
             article           = article,
-            classification    = ArticleClassification.UNKNOWN,
+            classification    = "Security Incident",
             executive_summary = f"[Extraction failed: {exc}]",
             model_used        = model,
             processing_time_s = round(time.time() - t0, 2),
@@ -486,7 +492,7 @@ def analyze_article(article: ExtractedArticle, model: str = LLM_MODEL, use_chunk
 
     return report
 
-def analyze_articles(articles: list[ExtractedArticle], model: str = LLM_MODEL, use_chunking: bool = True) -> list[HuntReport]:
+def analyze_articles(articles: list[ExtractedArticle] | list[ExtractedArticleWithCluster], model: str = LLM_MODEL, use_chunking: bool = True) -> list[HuntReport]:
     """Analyze multiple articles."""
     reports = []
     for i, art in enumerate(articles, 1):

@@ -123,7 +123,7 @@ def ingest_feeds(
             articles.append(article)
             logger.debug("  + %s", article.title[:80])
 
-        logger.info("  → %d articles from %s", sum(1 for a in articles if a.source == source), source)
+        logger.info("  -> %d articles from %s", sum(1 for a in articles if a.source == source), source)
 
     articles.sort(key=lambda a: a.published_date, reverse=True)
     logger.info("Total articles collected: %d", len(articles))

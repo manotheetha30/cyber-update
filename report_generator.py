@@ -9,7 +9,7 @@ from datetime import datetime
 from pathlib import Path
 
 from settings import REPORT_DIR
-from models import HuntReport
+from models import ExtractedArticle, HuntReport
 
 logger = logging.getLogger(__name__)
 def _table(headers: list[str], rows: list[list[str]]) -> str:
@@ -24,18 +24,31 @@ def _table(headers: list[str], rows: list[list[str]]) -> str:
 def render_report(report: HuntReport) -> str:
     """Render full Hunt report to markdown."""
     rss  = report.article.rss_article
+    if isinstance(report.article, ExtractedArticle):
+        titles=rss.title
+        sources=rss.source
+        url=rss.url
+        published_dates=rss.published_date.strftime('%Y-%m-%d')
+    else:
+        titles = ", ".join(a.title for a in rss)
+        sources = ", ".join(a.source for a in rss)
+        published_dates = rss[0].published_date.strftime("%Y-%m-%d")
+        url="\n".join(a.url for a in rss)
+
+
+
     now  = datetime.now().strftime(r"%Y-%m-%d %H:%M UTC")
     lines: list[str] = []
 
     # ── Header ────────────────────────────────────────────────────────────────
     lines += [
-        f"# Threat Hunt Generation Report: {rss.title}",
+        f"# Threat Hunt Generation Report: {titles}",
         "",
         f"| Field | Value |",
         f"| --- | --- |",
-        f"| Source | {rss.source} |",
-        f"| Published | {rss.published_date.strftime('%Y-%m-%d %H:%M UTC')} |",
-        f"| URL | [{rss.url}]({rss.url}) |",
+        f"| Source | {sources} |",
+        f"| Published | {published_dates} |",
+        f"| URL | [{url}]({url}) |",
         f"| Classification | {report.classification.value} |",
         f"| Report Generated | {now} |",
         f"| Model | {report.model_used} |",
@@ -45,16 +58,6 @@ def render_report(report: HuntReport) -> str:
         "",
     ]
 
-    # ── Classification Status ─────────────────────────────────────────────────
-    if report.classification.value != "Security Incident":
-        lines += [
-            f"**Status:** {report.classification.value}",
-            "",
-            f"*This article was classified as '{report.classification.value}' and minimal analysis was performed.*",
-            "",
-            "---",
-            "",
-        ]
 
     # ── Executive Summary ─────────────────────────────────────────────────────
     lines += ["## Executive Summary", "", report.executive_summary or "_None generated._", ""]
@@ -143,7 +146,7 @@ def render_report(report: HuntReport) -> str:
                         m.tactic,
                         f"`{m.technique_id}`",
                         m.technique_name,
-                        m.observed_behavior[:70]
+                        m.observed_behavior
                     ]
                     for m in report.attack_mappings
                 ],
@@ -181,6 +184,11 @@ def render_report(report: HuntReport) -> str:
             for item in hunt.execute.analysis_steps:
                 lines.append(f"- {item}")
 
+            lines += ["", "**Hunt Queries**"]
+
+            for item in hunt.execute.hunt_queries:
+                lines.append(f"- {item}")
+
             lines += ["", "**Supporting Evidence**"]
 
             for item in hunt.execute.supporting_evidence:
@@ -215,9 +223,12 @@ def save_report_file(report: HuntReport, output_dir: Path | None = None) -> Path
     """Save rendered report to markdown file."""
     output_dir = Path(REPORT_DIR)
     output_dir.mkdir(parents=True, exist_ok=True)
-
-    date_str = report.article.rss_article.published_date.strftime("%Y-%m-%d")
-    title    = report.article.rss_article.title[:50]
+    if isinstance(report.article, ExtractedArticle):
+        date_str = report.article.rss_article.published_date.strftime("%Y-%m-%d")
+        title    = report.article.rss_article.title[:50]
+    else:
+        date_str = report.article.rss_article[0].published_date.strftime("%Y-%m-%d")
+        title    = report.article.rss_article[0].title[:50]
     safe     = "".join(c if c.isalnum() or c in "- " else "_" for c in title).strip()
     path     = output_dir / f"{date_str}_{safe.replace(' ', '_')}.md"
 
@@ -250,14 +261,21 @@ def export_ioc_csv(reports: list[HuntReport], output_dir: Path | None = None) ->
         w.writeheader()
         for r in reports:
             rss = r.article.rss_article
+            if isinstance(r.article, ExtractedArticle):
+                source=rss.source
+                url=rss.url
+            else:
+                source=", ".join(a.source for a in rss)
+                url="\n ".join(a.url for a in rss)
+
             for ioc in r.iocs:
                 w.writerow({
                     "value":          ioc.value,
                     "type":           ioc.ioc_type.value,
                     "context":        ioc.context or "",
-                    "source":         rss.source,
-                    "url":            rss.url,
-                    "published_date": rss.published_date.strftime("%Y-%m-%d"),
+                    "source":         source,
+                    "url":            url,
+                    "published_date": rss[0].published_date.strftime("%Y-%m-%d"),
                 })
 
     total = sum(len(r.iocs) for r in reports)

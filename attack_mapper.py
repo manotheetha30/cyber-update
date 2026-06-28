@@ -120,7 +120,7 @@ def map_behavior(behavior: RawBehavior, top_k: int = 1) -> list[ATTACKMapping]:
             if score < 0.3:
                 logger.debug(
                     f"Low similarity ({score:.3f}): {behavior.behavior[:50]} "
-                    f"→ {technique['attack_id']}"
+                    f"-> {technique['attack_id']}"
                 )
                 continue
             
@@ -133,7 +133,7 @@ def map_behavior(behavior: RawBehavior, top_k: int = 1) -> list[ATTACKMapping]:
             
             logger.debug(
                 f"[{score:.3f}] {behavior.behavior[:50]} "
-                f"→ {technique['attack_id']} ({technique['tactic']})"
+                f"-> {technique['attack_id']} ({technique['tactic']})"
             )
             
             mappings.append(mapping)
@@ -169,13 +169,13 @@ def map_report(report: HuntReport) -> HuntReport:
             context_hint = f" (context: {behavior.context[:30]})" if behavior.context else ""
             logger.info(
                 f"  {behavior.behavior[:55]}{context_hint} "
-                f"→ {mappings[0].technique_id} | {mappings[0].tactic}"
+                f"-> {mappings[0].technique_id} | {mappings[0].tactic}"
             )
     
     report.attack_mappings = all_mappings
     
     logger.info(
-        f"Mapped {len(report.behaviors)} behaviors → {len(report.attack_mappings)} techniques"
+        f"Mapped {len(report.behaviors)} behaviors -> {len(report.attack_mappings)} techniques"
     )
     
     return report

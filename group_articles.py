@@ -4,35 +4,33 @@ from sklearn.cluster import AgglomerativeClustering
 from sklearn.metrics.pairwise import cosine_similarity
 from models import ExtractedArticle
 # Load once when your application starts
-model = SentenceTransformer("all-MiniLM-L6-v2")
+model = SentenceTransformer("BAAI/bge-small-en-v1.5")  
 
-def group_news(articles:list[ExtractedArticle],similarity_threshold=0.6):
+def group_news(articles:list[ExtractedArticle],similarity_threshold=0.85) -> list[list[int]]:
     """
     Groups similar cybersecurity article titles.
 
     Args:
-        titles (list[str]): List of article titles.
+        articles (list[ExtractedArticle]): List of extracted articles.
         similarity_threshold (float): Cosine similarity required for grouping.
 
     Returns:
-        list[list[int]]: List of clusters containing title indices.
+        list[list[int]]: List of clusters containing article indices.
     """
-    
-    titles=[]
+
+    titles_content=[]
     for article in articles:
-        titles.append(article.rss_article.title+"\n"+article.full_text[:80])
+
+        titles_content.append(article.rss_article.title + " " + article.full_text[:500])
     
-    if len(titles) == 0:
+    if len(titles_content) == 0:
         return []
 
-    if len(titles) == 1:
+    if len(titles_content) == 1:
         return [[0]]
 
     # Generate embeddings
-    embeddings = model.encode(
-        titles,
-        convert_to_numpy=True,
-        normalize_embeddings=True
+    embeddings = model.encode(titles_content,convert_to_numpy=True,normalize_embeddings=True
     )
 
     # Cosine similarity matrix
@@ -53,7 +51,9 @@ def group_news(articles:list[ExtractedArticle],similarity_threshold=0.6):
     clusters = {}
 
     for idx, label in enumerate(labels):
-        clusters.setdefault(label, []).append(titles[idx])
+        clusters.setdefault(label, []).append(idx)
 
-    print(clusters)
+    # Convert clusters to list of lists of article indices
+    result = list(clusters.values())
+    return result
 

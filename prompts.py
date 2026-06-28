@@ -10,25 +10,52 @@ DESIGN PRINCIPLE:
 
 # ── Article Classification Prompt ─────────────────────────────────────────────
 CLASSIFICATION_PROMPT = """\
-Article: {title}
-Source:  {source} | {published_date}
 
-{content}
-
----
 Classify this article and return ONLY this JSON (no other text):
-
+ 
 {{
-  "classification": "Security Incident|General Information|Advisory|Unknown",
-  "reason": "<brief explanation (1-2 sentences)>"
+  "classification": "Security Incident|Advisory|General Information|Unknown",
 }}
-
+ 
+---
+Title: {title}
+Source: {source} | {published_date}
+{content}
+---
+ 
 CLASSIFICATION RULES:
-- "Security Incident": Describes a specific attack, breach, vulnerability exploitation, malware discovery, threat actor activity, or APT campaign
-- "General Information": News about security industry, conference announcements, tools/product releases, general cybersecurity tips, educational content
-- "Advisory": CVE advisories, vulnerability disclosures, patches, vendor statements about known issues
-- "Unknown": Cannot determine or ambiguous
-
+ 
+"Security Incident": 
+  - Specific attack, breach, or vulnerability exploitation
+  - NEW vulnerability discovery (CVE found, zero-day revealed)
+  - Threat actor activity (APT campaign, hacker group)
+  - Malware found in wild
+  - Data breach reported
+ 
+"Advisory": 
+  - Patches/fixes for vulnerabilities (vendor releases update)
+  - Mitigation guidance or detection rules
+  
+"General Information": 
+  - Security industry news (company funding, startup, acquisition)
+  - Conference announcements, job postings
+  - Educational content, tips, best practices
+  - Tool/product releases (not security patches)
+ 
+"Unknown": 
+  - Cannot determine
+ 
+KEY DISTINCTION:
+- Vulnerability DISCOVERED = Security Incident
+- Vulnerability PATCHED = Advisory
+- Default to Security Incident if unsure
+ 
+EXAMPLES:
+- "Critical RCE found in Apache" → Security Incident
+- "Apache releases patch for RCE" → Advisory
+- "APT28 attacks company" → Security Incident
+- "Microsoft warns of exploitation" → Incident
+- "New security startup raises $50M" → General Information
 """
 
 
