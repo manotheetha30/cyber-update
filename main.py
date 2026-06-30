@@ -90,7 +90,7 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
     from peak_hunt_generator import generate_peak_hunts
     from group_articles import group_news
     from models import ArticleClassification
-    from models import ExtractedArticle, ExtractedArticleWithCluster, HuntReport
+    from models import  ExtractedArticleWithCluster
     if url:
         stats = {
         "article_analyzed": 0,

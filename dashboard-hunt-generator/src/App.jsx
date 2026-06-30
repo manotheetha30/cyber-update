@@ -1,122 +1,133 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import AttackMatrix from "./AttackMatrix";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function Header() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+    <header className="header">
+      <h1>HUNT HYPOTHESIS GENERATION DASHBOARD</h1>
+    </header>
+  );
 }
 
-export default App
+function UrlCard() {
+  const [url, setUrl] = useState("");
+
+  const handleSubmit = () => {
+    console.log("URL:", url);
+
+    // TODO: Call your backend here
+    // fetch(...)
+  };
+
+  return (
+    <div className="card">
+      <h2>Analyze a single article</h2>
+
+      <p>Enter the URL of an article to analyze.</p>
+
+      <input
+        type="text"
+        placeholder=""
+        value={url}
+        onChange={(e) => setUrl(e.target.value)}
+      />
+
+      <button onClick={handleSubmit}>
+       Analyze
+      </button>
+    </div>
+  );
+}
+
+function BatchCard() {
+  const handleClick = () => {
+    console.log("Analyze Recent Threat Articles");
+
+    // TODO: Call your backend here
+    // fetch(...)
+  };
+  const [selectedSources, setSelectedSources] = useState([    "The Hacker News",
+    "BleepingComputer",
+    "Krebs on Security",
+    "Dark Reading",
+    "The Record",
+    "CyberScoop",
+    "SecurityWeek"]);
+
+  const sources = [
+    "The Hacker News",
+    "BleepingComputer",
+    "Krebs on Security",
+    "Dark Reading",
+    "The Record",
+    "CyberScoop",
+    "SecurityWeek",
+  ];
+  const [days, setDays] = useState("1");
+  const toggleSource = (source) => {
+    if (selectedSources.includes(source)) {
+      setSelectedSources(
+        selectedSources.filter((s) => s !== source)
+      );
+    } else {
+      setSelectedSources([...selectedSources, source]);
+    }
+  };
+
+  return (
+    <div className="card">
+      <h2>Analyze Recent Threat Articles</h2>
+
+      <p>
+        Run the intelligence pipeline on cybersecurity articles from the selected lookback period and generate hunt hypotheses for actionable incidents.
+      </p>
+    
+      <label htmlFor="lookback">Lookback Period</label>
+
+      <select
+        id="lookback"
+        value={days}
+        onChange={(e) => setDays(e.target.value)}
+      >
+        <option value="1">Last 1 Day</option>
+        <option value="3">Last 3 Days</option>
+        <option value="7">Last 7 Days</option>
+      </select>
+      <h3>News Sources</h3>
+
+      <div className="sources">
+        {sources.map((source) => (
+          <label key={source} className="source-item">
+            <input
+              type="checkbox"
+              checked={selectedSources.includes(source)}
+              onChange={() => toggleSource(source)}
+            />
+            {source}
+          </label>
+        ))}
+      </div>
+
+      <button onClick={handleClick}>
+        Start Analysis
+      </button>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div className="app">
+      <Header />
+
+      <main className="dashboard">
+        <UrlCard />
+        <BatchCard />
+        <AttackMatrix/>
+      </main>
+    </div>
+  );
+}
+
+export default App;

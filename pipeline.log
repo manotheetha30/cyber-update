@@ -1021,9 +1021,9 @@ IndexError: Replacement index 0 out of range for positional args tuple
 2026-06-25 06:36:21,643 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
 2026-06-25 06:36:21,674 [INFO] database: New article saved: DraftKings hacker 'Snoopy' sentenced to 18 months 
 2026-06-25 06:36:21,682 [INFO] database: New article saved: Mandiant reveals how Cisco SD-WAN zero-day attacks
-2026-06-25 06:36:21,694 [INFO] database: New article saved: Three ‘cybercrime as a service’ operations undercu
+2026-06-25 06:36:21,694 [INFO] database: New article saved: Three ï¿½cybercrime as a serviceï¿½ operations undercu
 2026-06-25 06:36:21,703 [INFO] database: New article saved: Malicious hackers exploit Cisco zero-day for highe
-2026-06-25 06:36:21,706 [INFO] database: New article saved: When Information Becomes the Attack Surface – Unde
+2026-06-25 06:36:21,706 [INFO] database: New article saved: When Information Becomes the Attack Surface ï¿½ Unde
 2026-06-25 06:36:21,706 [INFO] database: New article saved: CISA Warns Critical Lantronix EDS5000 Flaw Is Bein
 2026-06-25 06:36:21,719 [INFO] database: New article saved: Amadey and StealC Malware Network Disrupted, 27M S
 2026-06-25 06:36:21,719 [INFO] database: New article saved: Microsoft and Allies Smash Shared Infrastructure o
@@ -1083,7 +1083,7 @@ IndexError: Replacement index 0 out of range for positional args tuple
 2026-06-25 22:10:24,549 [INFO] database: New article saved: New macOS malware embeds fake errors to confuse AI
 2026-06-25 22:10:24,557 [INFO] database: New article saved: Bluekit phishing kit adopts browser-in-the-middle 
 2026-06-25 22:10:24,566 [INFO] database: New article saved: Another Russian dairy company reportedly disrupted
-2026-06-25 22:10:24,575 [INFO] database: New article saved: Minnesota man known as ‘Snoopy’ sentenced in Draft
+2026-06-25 22:10:24,575 [INFO] database: New article saved: Minnesota man known as ï¿½Snoopyï¿½ sentenced in Draft
 2026-06-25 22:10:24,582 [INFO] database: New article saved: Ukraine's state postal operator reports app disrup
 2026-06-25 22:10:24,590 [INFO] database: New article saved: Russia used Cellebrite phone-hacking tool to crack
 2026-06-25 22:10:24,598 [INFO] database: New article saved: Cal Water Says No OT Systems Breached in Iranian H
@@ -3012,8 +3012,8 @@ IndexError: Replacement index 0 out of range for positional args tuple
 2026-06-26 03:46:28,016 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
 2026-06-26 03:46:28,251 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
 2026-06-26 03:46:29,048 [INFO] scraper: Extracting: https://www.trendmicro.com/en_us/research/26/e/analyzing-void-dokkaebi-invisible
-2026-06-26 03:46:29,497 [INFO] llm_analyzer: Processing [cth-qwen:latest]: Analyzing Void Dokkaebi’s Cython-Compiled InvisibleFerret Malware
-2026-06-26 03:46:29,497 [INFO] llm_analyzer: Classifying article: Analyzing Void Dokkaebi’s Cython-Compiled InvisibleFerret Ma
+2026-06-26 03:46:29,497 [INFO] llm_analyzer: Processing [cth-qwen:latest]: Analyzing Void Dokkaebiï¿½s Cython-Compiled InvisibleFerret Malware
+2026-06-26 03:46:29,497 [INFO] llm_analyzer: Classifying article: Analyzing Void Dokkaebiï¿½s Cython-Compiled InvisibleFerret Ma
 2026-06-26 03:48:39,494 [INFO] llm_analyzer:   Analyzing 4 chunks from full article...
 2026-06-26 06:23:07,000 [INFO] llm_analyzer: Merged 4 chunk reports: actors=1, behaviors=15, iocs=16
 2026-06-26 06:30:58,353 [INFO] database: Database ready: sqlite:///C:\Users\threa\cyber_helper/data/cti.db
@@ -4209,7 +4209,7 @@ IndexError: Replacement index 0 out of range for positional args tuple
 2026-06-27 18:53:40,410 [INFO] venv:   Skipping analysis: classified as Advisory
 2026-06-27 18:53:40,412 [INFO] llm_analyzer: Classifying article: Amazon Q Developer Flaw Could Let Malicious Repos Run Code v
 2026-06-27 18:56:09,446 [INFO] venv:   Skipping analysis: classified as Advisory
-2026-06-27 18:56:09,447 [INFO] llm_analyzer: Classifying article: Turla group adds more malware to Russia’s espionage efforts 
+2026-06-27 18:56:09,447 [INFO] llm_analyzer: Classifying article: Turla group adds more malware to Russiaï¿½s espionage efforts 
 2026-06-27 18:59:12,689 [INFO] llm_analyzer: Classifying article: Russia used social engineering to breach prominent messaging
 2026-06-27 19:01:35,394 [INFO] llm_analyzer: Classifying article: CISA Adds Exploited PTC Windchill RCE Flaw to KEV as Web She
 2026-06-27 19:05:22,237 [INFO] venv:   Skipping analysis: classified as Advisory
@@ -4220,7 +4220,7 @@ IndexError: Replacement index 0 out of range for positional args tuple
 2026-06-27 19:12:56,061 [INFO] llm_analyzer: Classifying article: Miasma Malware Targets npm Packages and GitHub Actions in Su
 2026-06-27 19:16:28,489 [INFO] llm_analyzer: Classifying article: $3 Million Reportedly Stolen in Polymarket Hack
 2026-06-27 19:19:11,026 [INFO] llm_analyzer: Classifying article: Microsoft Warns of Photo ZIP Phishing Campaign Targeting Hot
-2026-06-27 19:21:57,660 [INFO] llm_analyzer: Classifying article: Russian APT Deploys ‘StockStay’ Backdoor Against Ukrainian T
+2026-06-27 19:21:57,660 [INFO] llm_analyzer: Classifying article: Russian APT Deploys ï¿½StockStayï¿½ Backdoor Against Ukrainian T
 2026-06-27 19:24:06,895 [INFO] llm_analyzer: Classifying article: First-Ever Exploitation of PTC Windchill Vulnerability Disco
 2026-06-27 19:26:52,588 [INFO] llm_analyzer: Classifying article: Google Details Turla's New STOCKSTAY Backdoor Used in Ukrain
 2026-06-27 19:36:11,090 [INFO] sentence_transformers.base.model: No device provided, using cpu
@@ -4547,7 +4547,7 @@ IndexError: Replacement index 0 out of range for positional args tuple
 2026-06-27 20:34:01,837 [INFO] llm_analyzer: Classifying article: In Other News: Chinese Mythos-Like AI, Tata Electronics Brea
 2026-06-27 20:39:11,751 [INFO] llm_analyzer: Classifying article: New Linux pedit COW Exploit Enables Root Access by Poisoning
 2026-06-27 20:40:56,025 [INFO] llm_analyzer: Classifying article: Amazon Q Developer Flaw Could Let Malicious Repos Run Code v
-2026-06-27 20:42:28,903 [INFO] llm_analyzer: Classifying article: Turla group adds more malware to Russia’s espionage efforts 
+2026-06-27 20:42:28,903 [INFO] llm_analyzer: Classifying article: Turla group adds more malware to Russiaï¿½s espionage efforts 
 2026-06-27 20:44:07,415 [INFO] llm_analyzer: Classifying article: Russia used social engineering to breach prominent messaging
 2026-06-27 20:45:52,436 [INFO] llm_analyzer: Classifying article: CISA Adds Exploited PTC Windchill RCE Flaw to KEV as Web She
 2026-06-27 20:53:21,373 [INFO] llm_analyzer: Classifying article: New DirtyClone Linux Kernel Flaw Lets Local Users Gain Root 
@@ -4557,7 +4557,7 @@ IndexError: Replacement index 0 out of range for positional args tuple
 2026-06-27 20:59:05,621 [INFO] llm_analyzer: Classifying article: $3 Million Reportedly Stolen in Polymarket Hack
 2026-06-27 21:00:57,987 [INFO] llm_analyzer: Classifying article: Microsoft Warns of Photo ZIP Phishing Campaign Targeting Hot
 2026-06-27 21:06:08,662 [INFO] venv:   Skipping analysis: classified as Advisory
-2026-06-27 21:06:08,663 [INFO] llm_analyzer: Classifying article: Russian APT Deploys ‘StockStay’ Backdoor Against Ukrainian T
+2026-06-27 21:06:08,663 [INFO] llm_analyzer: Classifying article: Russian APT Deploys ï¿½StockStayï¿½ Backdoor Against Ukrainian T
 2026-06-27 21:08:08,224 [INFO] llm_analyzer: Classifying article: First-Ever Exploitation of PTC Windchill Vulnerability Disco
 2026-06-27 21:10:12,978 [INFO] llm_analyzer: Classifying article: Google Details Turla's New STOCKSTAY Backdoor Used in Ukrain
 2026-06-27 21:15:34,159 [INFO] sentence_transformers.base.model: No device provided, using cpu
@@ -5184,6 +5184,7 @@ AttributeError: 'list' object has no attribute 'published_date'
 2026-06-28 10:13:06,501 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from BAAI/bge-small-en-v1.5.
 2026-06-28 10:13:06,510 [WARNING] huggingface_hub.utils._http: '[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/adapter_config.json
 2026-06-28 10:13:06,511 [WARNING] huggingface_hub.utils._http: Retrying in 1s [Retry 1/5].
+<<<<<<< HEAD
 2026-06-28 10:19:53,815 [INFO] sentence_transformers.base.model: No device provided, using cpu
 2026-06-28 10:19:53,815 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./attack_mapper.
 2026-06-28 10:19:54,097 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
@@ -5344,3 +5345,6 @@ AttributeError: 'list' object has no attribute 'published_date'
 2026-06-28 19:58:58,296 [INFO] report_generator: Report written: M:\cyber\reports\2026-06-27_Clean_GitHub_repo_tricks_AI_coding_agents_into_run.md
 2026-06-28 19:58:58,306 [INFO] report_generator: Report written: M:\cyber\reports\2026-06-27_Third-Party_Breaches_Teach_Education_Sector_a_Cost.md
 2026-06-28 19:58:58,319 [INFO] report_generator: IOC CSV: M:\cyber\reports\2026-06-28_iocs.csv (2 IOCs)
+2026-06-29 23:38:10,371 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-29 23:38:10,373 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./attack_mapper.
+2026-06-29 23:38:10,743 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
