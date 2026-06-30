@@ -1,0 +1,37 @@
+.tech-header{
+    display:flex;
+    gap:10px;
+    cursor:pointer;
+    align-items:flex-start;
+    padding:8px;
+}
+
+.tech-header:hover{
+    background:#eef4ff;
+}
+
+.arrow{
+    font-size:12px;
+    margin-top:3px;
+}
+
+.subtechniques{
+    margin-left:22px;
+    border-left:2px solid #ddd;
+    padding-left:10px;
+    margin-bottom:10px;
+}
+
+.sub-technique{
+    padding:5px 0;
+}
+
+.sub-id{
+    color:#2563eb;
+    font-weight:600;
+}
+
+.sub-name{
+    font-size:13px;
+    color:#555;
+}

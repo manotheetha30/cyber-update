@@ -82,7 +82,7 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
     from peak_hunt_generator import generate_peak_hunts
     from group_articles import group_news
     from models import ArticleClassification
-    from models import ExtractedArticle, ExtractedArticleWithCluster, HuntReport
+    from models import  ExtractedArticleWithCluster
     if url:
         stats = {
         "article_analyzed": 0,
@@ -146,7 +146,7 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
     
         # ── Stage 2: Extract Article Content ──────────────────────────────────
             
-            extracted = extract_articles(rss_articles[:1])
+            extracted = extract_articles(rss_articles[:4])
             stats["articles_extracted"] = len(extracted)
             prog.update(t, description=f"Stage 2 done — {len(extracted)} extracted")
             if not extracted:

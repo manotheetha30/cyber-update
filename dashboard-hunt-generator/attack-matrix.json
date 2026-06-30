@@ -1,0 +1,3898 @@
+{
+    "Privilege Escalation": {
+        "T1548": {
+            "tech_id": "T1548",
+            "tech_name": "Abuse Elevation Control Mechanism",
+            "subtechniques": [
+                {
+                    "tech_id": "T1548.002",
+                    "tech_name": "Abuse Elevation Control Mechanism: Bypass User Account Control"
+                },
+                {
+                    "tech_id": "T1548.004",
+                    "tech_name": "Abuse Elevation Control Mechanism: Elevated Execution with Prompt"
+                },
+                {
+                    "tech_id": "T1548.001",
+                    "tech_name": "Abuse Elevation Control Mechanism: Setuid and Setgid"
+                },
+                {
+                    "tech_id": "T1548.003",
+                    "tech_name": "Abuse Elevation Control Mechanism: Sudo and Sudo Caching"
+                },
+                {
+                    "tech_id": "T1548.006",
+                    "tech_name": "Abuse Elevation Control Mechanism: TCC Manipulation"
+                },
+                {
+                    "tech_id": "T1548.005",
+                    "tech_name": "Abuse Elevation Control Mechanism: Temporary Elevated Cloud Access"
+                }
+            ]
+        },
+        "T1134": {
+            "tech_id": "T1134",
+            "tech_name": "Access Token Manipulation",
+            "subtechniques": [
+                {
+                    "tech_id": "T1134.002",
+                    "tech_name": "Access Token Manipulation: Create Process with Token"
+                },
+                {
+                    "tech_id": "T1134.003",
+                    "tech_name": "Access Token Manipulation: Make and Impersonate Token"
+                },
+                {
+                    "tech_id": "T1134.004",
+                    "tech_name": "Access Token Manipulation: Parent PID Spoofing"
+                },
+                {
+                    "tech_id": "T1134.005",
+                    "tech_name": "Access Token Manipulation: SID-History Injection"
+                },
+                {
+                    "tech_id": "T1134.001",
+                    "tech_name": "Access Token Manipulation: Token Impersonation/Theft"
+                }
+            ]
+        },
+        "T1098": {
+            "tech_id": "T1098",
+            "tech_name": "Account Manipulation",
+            "subtechniques": [
+                {
+                    "tech_id": "T1098.001",
+                    "tech_name": "Account Manipulation: Additional Cloud Credentials"
+                },
+                {
+                    "tech_id": "T1098.003",
+                    "tech_name": "Account Manipulation: Additional Cloud Roles"
+                },
+                {
+                    "tech_id": "T1098.006",
+                    "tech_name": "Account Manipulation: Additional Container Cluster Roles"
+                },
+                {
+                    "tech_id": "T1098.002",
+                    "tech_name": "Account Manipulation: Additional Email Delegate Permissions"
+                },
+                {
+                    "tech_id": "T1098.007",
+                    "tech_name": "Account Manipulation: Additional Local or Domain Groups"
+                },
+                {
+                    "tech_id": "T1098.005",
+                    "tech_name": "Account Manipulation: Device Registration"
+                },
+                {
+                    "tech_id": "T1098.004",
+                    "tech_name": "Account Manipulation: SSH Authorized Keys"
+                }
+            ]
+        },
+        "T1547": {
+            "tech_id": "T1547",
+            "tech_name": "Boot or Logon Autostart Execution",
+            "subtechniques": [
+                {
+                    "tech_id": "T1547.014",
+                    "tech_name": "Boot or Logon Autostart Execution: Active Setup"
+                },
+                {
+                    "tech_id": "T1547.002",
+                    "tech_name": "Boot or Logon Autostart Execution: Authentication Package"
+                },
+                {
+                    "tech_id": "T1547.006",
+                    "tech_name": "Boot or Logon Autostart Execution: Kernel Modules and Extensions"
+                },
+                {
+                    "tech_id": "T1547.008",
+                    "tech_name": "Boot or Logon Autostart Execution: LSASS Driver"
+                },
+                {
+                    "tech_id": "T1547.015",
+                    "tech_name": "Boot or Logon Autostart Execution: Login Items"
+                },
+                {
+                    "tech_id": "T1547.010",
+                    "tech_name": "Boot or Logon Autostart Execution: Port Monitors"
+                },
+                {
+                    "tech_id": "T1547.012",
+                    "tech_name": "Boot or Logon Autostart Execution: Print Processors"
+                },
+                {
+                    "tech_id": "T1547.007",
+                    "tech_name": "Boot or Logon Autostart Execution: Re-opened Applications"
+                },
+                {
+                    "tech_id": "T1547.001",
+                    "tech_name": "Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder"
+                },
+                {
+                    "tech_id": "T1547.005",
+                    "tech_name": "Boot or Logon Autostart Execution: Security Support Provider"
+                },
+                {
+                    "tech_id": "T1547.009",
+                    "tech_name": "Boot or Logon Autostart Execution: Shortcut Modification"
+                },
+                {
+                    "tech_id": "T1547.003",
+                    "tech_name": "Boot or Logon Autostart Execution: Time Providers"
+                },
+                {
+                    "tech_id": "T1547.004",
+                    "tech_name": "Boot or Logon Autostart Execution: Winlogon Helper DLL"
+                },
+                {
+                    "tech_id": "T1547.013",
+                    "tech_name": "Boot or Logon Autostart Execution: XDG Autostart Entries"
+                }
+            ]
+        },
+        "T1037": {
+            "tech_id": "T1037",
+            "tech_name": "Boot or Logon Initialization Scripts",
+            "subtechniques": [
+                {
+                    "tech_id": "T1037.002",
+                    "tech_name": "Boot or Logon Initialization Scripts: Login Hook"
+                },
+                {
+                    "tech_id": "T1037.001",
+                    "tech_name": "Boot or Logon Initialization Scripts: Logon Script (Windows)"
+                },
+                {
+                    "tech_id": "T1037.003",
+                    "tech_name": "Boot or Logon Initialization Scripts: Network Logon Script"
+                },
+                {
+                    "tech_id": "T1037.004",
+                    "tech_name": "Boot or Logon Initialization Scripts: RC Scripts"
+                },
+                {
+                    "tech_id": "T1037.005",
+                    "tech_name": "Boot or Logon Initialization Scripts: Startup Items"
+                }
+            ]
+        },
+        "T1543": {
+            "tech_id": "T1543",
+            "tech_name": "Create or Modify System Process",
+            "subtechniques": [
+                {
+                    "tech_id": "T1543.005",
+                    "tech_name": "Create or Modify System Process: Container Service"
+                },
+                {
+                    "tech_id": "T1543.001",
+                    "tech_name": "Create or Modify System Process: Launch Agent"
+                },
+                {
+                    "tech_id": "T1543.004",
+                    "tech_name": "Create or Modify System Process: Launch Daemon"
+                },
+                {
+                    "tech_id": "T1543.002",
+                    "tech_name": "Create or Modify System Process: Systemd Service"
+                },
+                {
+                    "tech_id": "T1543.003",
+                    "tech_name": "Create or Modify System Process: Windows Service"
+                }
+            ]
+        },
+        "T1484": {
+            "tech_id": "T1484",
+            "tech_name": "Domain or Tenant Policy Modification",
+            "subtechniques": [
+                {
+                    "tech_id": "T1484.001",
+                    "tech_name": "Domain or Tenant Policy Modification: Group Policy Modification"
+                },
+                {
+                    "tech_id": "T1484.002",
+                    "tech_name": "Domain or Tenant Policy Modification: Trust Modification"
+                }
+            ]
+        },
+        "T1611": {
+            "tech_id": "T1611",
+            "tech_name": "Escape to Host",
+            "subtechniques": []
+        },
+        "T1546": {
+            "tech_id": "T1546",
+            "tech_name": "Event Triggered Execution",
+            "subtechniques": [
+                {
+                    "tech_id": "T1546.008",
+                    "tech_name": "Event Triggered Execution: Accessibility Features"
+                },
+                {
+                    "tech_id": "T1546.009",
+                    "tech_name": "Event Triggered Execution: AppCert DLLs"
+                },
+                {
+                    "tech_id": "T1546.010",
+                    "tech_name": "Event Triggered Execution: AppInit DLLs"
+                },
+                {
+                    "tech_id": "T1546.011",
+                    "tech_name": "Event Triggered Execution: Application Shimming"
+                },
+                {
+                    "tech_id": "T1546.001",
+                    "tech_name": "Event Triggered Execution: Change Default File Association"
+                },
+                {
+                    "tech_id": "T1546.015",
+                    "tech_name": "Event Triggered Execution: Component Object Model Hijacking"
+                },
+                {
+                    "tech_id": "T1546.014",
+                    "tech_name": "Event Triggered Execution: Emond"
+                },
+                {
+                    "tech_id": "T1546.012",
+                    "tech_name": "Event Triggered Execution: Image File Execution Options Injection"
+                },
+                {
+                    "tech_id": "T1546.016",
+                    "tech_name": "Event Triggered Execution: Installer Packages"
+                },
+                {
+                    "tech_id": "T1546.006",
+                    "tech_name": "Event Triggered Execution: LC_LOAD_DYLIB Addition"
+                },
+                {
+                    "tech_id": "T1546.007",
+                    "tech_name": "Event Triggered Execution: Netsh Helper DLL"
+                },
+                {
+                    "tech_id": "T1546.013",
+                    "tech_name": "Event Triggered Execution: PowerShell Profile"
+                },
+                {
+                    "tech_id": "T1546.018",
+                    "tech_name": "Event Triggered Execution: Python Startup Hooks"
+                },
+                {
+                    "tech_id": "T1546.002",
+                    "tech_name": "Event Triggered Execution: Screensaver"
+                },
+                {
+                    "tech_id": "T1546.005",
+                    "tech_name": "Event Triggered Execution: Trap"
+                },
+                {
+                    "tech_id": "T1546.017",
+                    "tech_name": "Event Triggered Execution: Udev Rules"
+                },
+                {
+                    "tech_id": "T1546.004",
+                    "tech_name": "Event Triggered Execution: Unix Shell Configuration Modification"
+                },
+                {
+                    "tech_id": "T1546.003",
+                    "tech_name": "Event Triggered Execution: Windows Management Instrumentation Event Subscription"
+                }
+            ]
+        },
+        "T1068": {
+            "tech_id": "T1068",
+            "tech_name": "Exploitation for Privilege Escalation",
+            "subtechniques": []
+        },
+        "T1055": {
+            "tech_id": "T1055",
+            "tech_name": "Process Injection",
+            "subtechniques": [
+                {
+                    "tech_id": "T1055.004",
+                    "tech_name": "Process Injection: Asynchronous Procedure Call"
+                },
+                {
+                    "tech_id": "T1055.001",
+                    "tech_name": "Process Injection: Dynamic-link Library Injection"
+                },
+                {
+                    "tech_id": "T1055.011",
+                    "tech_name": "Process Injection: Extra Window Memory Injection"
+                },
+                {
+                    "tech_id": "T1055.015",
+                    "tech_name": "Process Injection: ListPlanting"
+                },
+                {
+                    "tech_id": "T1055.002",
+                    "tech_name": "Process Injection: Portable Executable Injection"
+                },
+                {
+                    "tech_id": "T1055.009",
+                    "tech_name": "Process Injection: Proc Memory"
+                },
+                {
+                    "tech_id": "T1055.013",
+                    "tech_name": "Process Injection: Process Doppelg\u00e4nging"
+                },
+                {
+                    "tech_id": "T1055.012",
+                    "tech_name": "Process Injection: Process Hollowing"
+                },
+                {
+                    "tech_id": "T1055.008",
+                    "tech_name": "Process Injection: Ptrace System Calls"
+                },
+                {
+                    "tech_id": "T1055.003",
+                    "tech_name": "Process Injection: Thread Execution Hijacking"
+                },
+                {
+                    "tech_id": "T1055.005",
+                    "tech_name": "Process Injection: Thread Local Storage"
+                },
+                {
+                    "tech_id": "T1055.014",
+                    "tech_name": "Process Injection: VDSO Hijacking"
+                }
+            ]
+        },
+        "T1053": {
+            "tech_id": "T1053",
+            "tech_name": "Scheduled Task/Job",
+            "subtechniques": [
+                {
+                    "tech_id": "T1053.002",
+                    "tech_name": "Scheduled Task/Job: At"
+                },
+                {
+                    "tech_id": "T1053.007",
+                    "tech_name": "Scheduled Task/Job: Container Orchestration Job"
+                },
+                {
+                    "tech_id": "T1053.003",
+                    "tech_name": "Scheduled Task/Job: Cron"
+                },
+                {
+                    "tech_id": "T1053.005",
+                    "tech_name": "Scheduled Task/Job: Scheduled Task"
+                },
+                {
+                    "tech_id": "T1053.006",
+                    "tech_name": "Scheduled Task/Job: Systemd Timers"
+                }
+            ]
+        },
+        "T1078": {
+            "tech_id": "T1078",
+            "tech_name": "Valid Accounts",
+            "subtechniques": [
+                {
+                    "tech_id": "T1078.004",
+                    "tech_name": "Valid Accounts: Cloud Accounts"
+                },
+                {
+                    "tech_id": "T1078.001",
+                    "tech_name": "Valid Accounts: Default Accounts"
+                },
+                {
+                    "tech_id": "T1078.002",
+                    "tech_name": "Valid Accounts: Domain Accounts"
+                },
+                {
+                    "tech_id": "T1078.003",
+                    "tech_name": "Valid Accounts: Local Accounts"
+                }
+            ]
+        }
+    },
+    "Stealth": {
+        "T1134": {
+            "tech_id": "T1134",
+            "tech_name": "Access Token Manipulation",
+            "subtechniques": [
+                {
+                    "tech_id": "T1134.002",
+                    "tech_name": "Access Token Manipulation: Create Process with Token"
+                },
+                {
+                    "tech_id": "T1134.003",
+                    "tech_name": "Access Token Manipulation: Make and Impersonate Token"
+                },
+                {
+                    "tech_id": "T1134.004",
+                    "tech_name": "Access Token Manipulation: Parent PID Spoofing"
+                },
+                {
+                    "tech_id": "T1134.005",
+                    "tech_name": "Access Token Manipulation: SID-History Injection"
+                },
+                {
+                    "tech_id": "T1134.001",
+                    "tech_name": "Access Token Manipulation: Token Impersonation/Theft"
+                }
+            ]
+        },
+        "T1197": {
+            "tech_id": "T1197",
+            "tech_name": "BITS Jobs",
+            "subtechniques": []
+        },
+        "T1612": {
+            "tech_id": "T1612",
+            "tech_name": "Build Image on Host",
+            "subtechniques": []
+        },
+        "T1622": {
+            "tech_id": "T1622",
+            "tech_name": "Debugger Evasion",
+            "subtechniques": []
+        },
+        "T1678": {
+            "tech_id": "T1678",
+            "tech_name": "Delay Execution",
+            "subtechniques": []
+        },
+        "T1140": {
+            "tech_id": "T1140",
+            "tech_name": "Deobfuscate/Decode Files or Information",
+            "subtechniques": []
+        },
+        "T1006": {
+            "tech_id": "T1006",
+            "tech_name": "Direct Volume Access",
+            "subtechniques": []
+        },
+        "T1480": {
+            "tech_id": "T1480",
+            "tech_name": "Execution Guardrails",
+            "subtechniques": [
+                {
+                    "tech_id": "T1480.001",
+                    "tech_name": "Execution Guardrails: Environmental Keying"
+                },
+                {
+                    "tech_id": "T1480.002",
+                    "tech_name": "Execution Guardrails: Mutual Exclusion"
+                }
+            ]
+        },
+        "T1211": {
+            "tech_id": "T1211",
+            "tech_name": "Exploitation for Stealth",
+            "subtechniques": []
+        },
+        "T1564": {
+            "tech_id": "T1564",
+            "tech_name": "Hide Artifacts",
+            "subtechniques": [
+                {
+                    "tech_id": "T1564.013",
+                    "tech_name": "Hide Artifacts: Bind Mounts"
+                },
+                {
+                    "tech_id": "T1564.008",
+                    "tech_name": "Hide Artifacts: Email Hiding Rules"
+                },
+                {
+                    "tech_id": "T1564.014",
+                    "tech_name": "Hide Artifacts: Extended Attributes"
+                },
+                {
+                    "tech_id": "T1564.012",
+                    "tech_name": "Hide Artifacts: File/Path Exclusions"
+                },
+                {
+                    "tech_id": "T1564.005",
+                    "tech_name": "Hide Artifacts: Hidden File System"
+                },
+                {
+                    "tech_id": "T1564.001",
+                    "tech_name": "Hide Artifacts: Hidden Files and Directories"
+                },
+                {
+                    "tech_id": "T1564.002",
+                    "tech_name": "Hide Artifacts: Hidden Users"
+                },
+                {
+                    "tech_id": "T1564.003",
+                    "tech_name": "Hide Artifacts: Hidden Window"
+                },
+                {
+                    "tech_id": "T1564.011",
+                    "tech_name": "Hide Artifacts: Ignore Process Interrupts"
+                },
+                {
+                    "tech_id": "T1564.004",
+                    "tech_name": "Hide Artifacts: NTFS File Attributes"
+                },
+                {
+                    "tech_id": "T1564.010",
+                    "tech_name": "Hide Artifacts: Process Argument Spoofing"
+                },
+                {
+                    "tech_id": "T1564.009",
+                    "tech_name": "Hide Artifacts: Resource Forking"
+                },
+                {
+                    "tech_id": "T1564.006",
+                    "tech_name": "Hide Artifacts: Run Virtual Instance"
+                },
+                {
+                    "tech_id": "T1564.007",
+                    "tech_name": "Hide Artifacts: VBA Stomping"
+                }
+            ]
+        },
+        "T1574": {
+            "tech_id": "T1574",
+            "tech_name": "Hijack Execution Flow",
+            "subtechniques": [
+                {
+                    "tech_id": "T1574.014",
+                    "tech_name": "Hijack Execution Flow: AppDomainManager"
+                },
+                {
+                    "tech_id": "T1574.012",
+                    "tech_name": "Hijack Execution Flow: COR_PROFILER"
+                },
+                {
+                    "tech_id": "T1574.001",
+                    "tech_name": "Hijack Execution Flow: DLL"
+                },
+                {
+                    "tech_id": "T1574.004",
+                    "tech_name": "Hijack Execution Flow: Dylib Hijacking"
+                },
+                {
+                    "tech_id": "T1574.006",
+                    "tech_name": "Hijack Execution Flow: Dynamic Linker Hijacking"
+                },
+                {
+                    "tech_id": "T1574.005",
+                    "tech_name": "Hijack Execution Flow: Executable Installer File Permissions Weakness"
+                },
+                {
+                    "tech_id": "T1574.013",
+                    "tech_name": "Hijack Execution Flow: KernelCallbackTable"
+                },
+                {
+                    "tech_id": "T1574.007",
+                    "tech_name": "Hijack Execution Flow: Path Interception by PATH Environment Variable"
+                },
+                {
+                    "tech_id": "T1574.008",
+                    "tech_name": "Hijack Execution Flow: Path Interception by Search Order Hijacking"
+                },
+                {
+                    "tech_id": "T1574.009",
+                    "tech_name": "Hijack Execution Flow: Path Interception by Unquoted Path"
+                },
+                {
+                    "tech_id": "T1574.010",
+                    "tech_name": "Hijack Execution Flow: Services File Permissions Weakness"
+                },
+                {
+                    "tech_id": "T1574.011",
+                    "tech_name": "Hijack Execution Flow: Services Registry Permissions Weakness"
+                }
+            ]
+        },
+        "T1070": {
+            "tech_id": "T1070",
+            "tech_name": "Indicator Removal",
+            "subtechniques": [
+                {
+                    "tech_id": "T1070.003",
+                    "tech_name": "Indicator Removal: Clear Command History"
+                },
+                {
+                    "tech_id": "T1070.008",
+                    "tech_name": "Indicator Removal: Clear Mailbox Data"
+                },
+                {
+                    "tech_id": "T1070.007",
+                    "tech_name": "Indicator Removal: Clear Network Connection History and Configurations"
+                },
+                {
+                    "tech_id": "T1070.009",
+                    "tech_name": "Indicator Removal: Clear Persistence"
+                },
+                {
+                    "tech_id": "T1070.004",
+                    "tech_name": "Indicator Removal: File Deletion"
+                },
+                {
+                    "tech_id": "T1070.005",
+                    "tech_name": "Indicator Removal: Network Share Connection Removal"
+                },
+                {
+                    "tech_id": "T1070.010",
+                    "tech_name": "Indicator Removal: Relocate Malware"
+                },
+                {
+                    "tech_id": "T1070.006",
+                    "tech_name": "Indicator Removal: Timestomp"
+                }
+            ]
+        },
+        "T1202": {
+            "tech_id": "T1202",
+            "tech_name": "Indirect Command Execution",
+            "subtechniques": []
+        },
+        "T1036": {
+            "tech_id": "T1036",
+            "tech_name": "Masquerading",
+            "subtechniques": [
+                {
+                    "tech_id": "T1036.009",
+                    "tech_name": "Masquerading: Break Process Trees"
+                },
+                {
+                    "tech_id": "T1036.012",
+                    "tech_name": "Masquerading: Browser Fingerprint"
+                },
+                {
+                    "tech_id": "T1036.007",
+                    "tech_name": "Masquerading: Double File Extension"
+                },
+                {
+                    "tech_id": "T1036.001",
+                    "tech_name": "Masquerading: Invalid Code Signature"
+                },
+                {
+                    "tech_id": "T1036.010",
+                    "tech_name": "Masquerading: Masquerade Account Name"
+                },
+                {
+                    "tech_id": "T1036.008",
+                    "tech_name": "Masquerading: Masquerade File Type"
+                },
+                {
+                    "tech_id": "T1036.004",
+                    "tech_name": "Masquerading: Masquerade Task or Service"
+                },
+                {
+                    "tech_id": "T1036.005",
+                    "tech_name": "Masquerading: Match Legitimate Resource Name or Location"
+                },
+                {
+                    "tech_id": "T1036.011",
+                    "tech_name": "Masquerading: Overwrite Process Arguments"
+                },
+                {
+                    "tech_id": "T1036.003",
+                    "tech_name": "Masquerading: Rename Legitimate Utilities"
+                },
+                {
+                    "tech_id": "T1036.002",
+                    "tech_name": "Masquerading: Right-to-Left Override"
+                },
+                {
+                    "tech_id": "T1036.006",
+                    "tech_name": "Masquerading: Space after Filename"
+                }
+            ]
+        },
+        "T1027": {
+            "tech_id": "T1027",
+            "tech_name": "Obfuscated Files or Information",
+            "subtechniques": [
+                {
+                    "tech_id": "T1027.001",
+                    "tech_name": "Obfuscated Files or Information: Binary Padding"
+                },
+                {
+                    "tech_id": "T1027.010",
+                    "tech_name": "Obfuscated Files or Information: Command Obfuscation"
+                },
+                {
+                    "tech_id": "T1027.004",
+                    "tech_name": "Obfuscated Files or Information: Compile After Delivery"
+                },
+                {
+                    "tech_id": "T1027.015",
+                    "tech_name": "Obfuscated Files or Information: Compression"
+                },
+                {
+                    "tech_id": "T1027.007",
+                    "tech_name": "Obfuscated Files or Information: Dynamic API Resolution"
+                },
+                {
+                    "tech_id": "T1027.009",
+                    "tech_name": "Obfuscated Files or Information: Embedded Payloads"
+                },
+                {
+                    "tech_id": "T1027.013",
+                    "tech_name": "Obfuscated Files or Information: Encrypted/Encoded File"
+                },
+                {
+                    "tech_id": "T1027.011",
+                    "tech_name": "Obfuscated Files or Information: Fileless Storage"
+                },
+                {
+                    "tech_id": "T1027.006",
+                    "tech_name": "Obfuscated Files or Information: HTML Smuggling"
+                },
+                {
+                    "tech_id": "T1027.005",
+                    "tech_name": "Obfuscated Files or Information: Indicator Removal from Tools"
+                },
+                {
+                    "tech_id": "T1027.018",
+                    "tech_name": "Obfuscated Files or Information: Invisible Unicode"
+                },
+                {
+                    "tech_id": "T1027.016",
+                    "tech_name": "Obfuscated Files or Information: Junk Code Insertion"
+                },
+                {
+                    "tech_id": "T1027.012",
+                    "tech_name": "Obfuscated Files or Information: LNK Icon Smuggling"
+                },
+                {
+                    "tech_id": "T1027.014",
+                    "tech_name": "Obfuscated Files or Information: Polymorphic Code"
+                },
+                {
+                    "tech_id": "T1027.017",
+                    "tech_name": "Obfuscated Files or Information: SVG Smuggling"
+                },
+                {
+                    "tech_id": "T1027.002",
+                    "tech_name": "Obfuscated Files or Information: Software Packing"
+                },
+                {
+                    "tech_id": "T1027.003",
+                    "tech_name": "Obfuscated Files or Information: Steganography"
+                },
+                {
+                    "tech_id": "T1027.008",
+                    "tech_name": "Obfuscated Files or Information: Stripped Payloads"
+                }
+            ]
+        },
+        "T1542": {
+            "tech_id": "T1542",
+            "tech_name": "Pre-OS Boot",
+            "subtechniques": [
+                {
+                    "tech_id": "T1542.003",
+                    "tech_name": "Pre-OS Boot: Bootkit"
+                },
+                {
+                    "tech_id": "T1542.002",
+                    "tech_name": "Pre-OS Boot: Component Firmware"
+                },
+                {
+                    "tech_id": "T1542.004",
+                    "tech_name": "Pre-OS Boot: ROMMONkit"
+                },
+                {
+                    "tech_id": "T1542.001",
+                    "tech_name": "Pre-OS Boot: System Firmware"
+                },
+                {
+                    "tech_id": "T1542.005",
+                    "tech_name": "Pre-OS Boot: TFTP Boot"
+                }
+            ]
+        },
+        "T1055": {
+            "tech_id": "T1055",
+            "tech_name": "Process Injection",
+            "subtechniques": [
+                {
+                    "tech_id": "T1055.004",
+                    "tech_name": "Process Injection: Asynchronous Procedure Call"
+                },
+                {
+                    "tech_id": "T1055.001",
+                    "tech_name": "Process Injection: Dynamic-link Library Injection"
+                },
+                {
+                    "tech_id": "T1055.011",
+                    "tech_name": "Process Injection: Extra Window Memory Injection"
+                },
+                {
+                    "tech_id": "T1055.015",
+                    "tech_name": "Process Injection: ListPlanting"
+                },
+                {
+                    "tech_id": "T1055.002",
+                    "tech_name": "Process Injection: Portable Executable Injection"
+                },
+                {
+                    "tech_id": "T1055.009",
+                    "tech_name": "Process Injection: Proc Memory"
+                },
+                {
+                    "tech_id": "T1055.013",
+                    "tech_name": "Process Injection: Process Doppelg\u00e4nging"
+                },
+                {
+                    "tech_id": "T1055.012",
+                    "tech_name": "Process Injection: Process Hollowing"
+                },
+                {
+                    "tech_id": "T1055.008",
+                    "tech_name": "Process Injection: Ptrace System Calls"
+                },
+                {
+                    "tech_id": "T1055.003",
+                    "tech_name": "Process Injection: Thread Execution Hijacking"
+                },
+                {
+                    "tech_id": "T1055.005",
+                    "tech_name": "Process Injection: Thread Local Storage"
+                },
+                {
+                    "tech_id": "T1055.014",
+                    "tech_name": "Process Injection: VDSO Hijacking"
+                }
+            ]
+        },
+        "T1620": {
+            "tech_id": "T1620",
+            "tech_name": "Reflective Code Loading",
+            "subtechniques": []
+        },
+        "T1014": {
+            "tech_id": "T1014",
+            "tech_name": "Rootkit",
+            "subtechniques": []
+        },
+        "T1679": {
+            "tech_id": "T1679",
+            "tech_name": "Selective Exclusion",
+            "subtechniques": []
+        },
+        "T1684": {
+            "tech_id": "T1684",
+            "tech_name": "Social Engineering",
+            "subtechniques": [
+                {
+                    "tech_id": "T1684.002",
+                    "tech_name": "Social Engineering: Email Spoofing"
+                },
+                {
+                    "tech_id": "T1684.001",
+                    "tech_name": "Social Engineering: Impersonation"
+                }
+            ]
+        },
+        "T1218": {
+            "tech_id": "T1218",
+            "tech_name": "System Binary Proxy Execution",
+            "subtechniques": [
+                {
+                    "tech_id": "T1218.003",
+                    "tech_name": "System Binary Proxy Execution: CMSTP"
+                },
+                {
+                    "tech_id": "T1218.001",
+                    "tech_name": "System Binary Proxy Execution: Compiled HTML File"
+                },
+                {
+                    "tech_id": "T1218.002",
+                    "tech_name": "System Binary Proxy Execution: Control Panel"
+                },
+                {
+                    "tech_id": "T1218.015",
+                    "tech_name": "System Binary Proxy Execution: Electron Applications"
+                },
+                {
+                    "tech_id": "T1218.004",
+                    "tech_name": "System Binary Proxy Execution: InstallUtil"
+                },
+                {
+                    "tech_id": "T1218.014",
+                    "tech_name": "System Binary Proxy Execution: MMC"
+                },
+                {
+                    "tech_id": "T1218.013",
+                    "tech_name": "System Binary Proxy Execution: Mavinject"
+                },
+                {
+                    "tech_id": "T1218.005",
+                    "tech_name": "System Binary Proxy Execution: Mshta"
+                },
+                {
+                    "tech_id": "T1218.007",
+                    "tech_name": "System Binary Proxy Execution: Msiexec"
+                },
+                {
+                    "tech_id": "T1218.008",
+                    "tech_name": "System Binary Proxy Execution: Odbcconf"
+                },
+                {
+                    "tech_id": "T1218.009",
+                    "tech_name": "System Binary Proxy Execution: Regsvcs/Regasm"
+                },
+                {
+                    "tech_id": "T1218.010",
+                    "tech_name": "System Binary Proxy Execution: Regsvr32"
+                },
+                {
+                    "tech_id": "T1218.011",
+                    "tech_name": "System Binary Proxy Execution: Rundll32"
+                },
+                {
+                    "tech_id": "T1218.012",
+                    "tech_name": "System Binary Proxy Execution: Verclsid"
+                }
+            ]
+        },
+        "T1216": {
+            "tech_id": "T1216",
+            "tech_name": "System Script Proxy Execution",
+            "subtechniques": [
+                {
+                    "tech_id": "T1216.001",
+                    "tech_name": "System Script Proxy Execution: PubPrn"
+                },
+                {
+                    "tech_id": "T1216.002",
+                    "tech_name": "System Script Proxy Execution: SyncAppvPublishingServer"
+                }
+            ]
+        },
+        "T1221": {
+            "tech_id": "T1221",
+            "tech_name": "Template Injection",
+            "subtechniques": []
+        },
+        "T1205": {
+            "tech_id": "T1205",
+            "tech_name": "Traffic Signaling",
+            "subtechniques": [
+                {
+                    "tech_id": "T1205.001",
+                    "tech_name": "Traffic Signaling: Port Knocking"
+                },
+                {
+                    "tech_id": "T1205.002",
+                    "tech_name": "Traffic Signaling: Socket Filters"
+                }
+            ]
+        },
+        "T1127": {
+            "tech_id": "T1127",
+            "tech_name": "Trusted Developer Utilities Proxy Execution",
+            "subtechniques": [
+                {
+                    "tech_id": "T1127.002",
+                    "tech_name": "Trusted Developer Utilities Proxy Execution: ClickOnce"
+                },
+                {
+                    "tech_id": "T1127.003",
+                    "tech_name": "Trusted Developer Utilities Proxy Execution: JamPlus"
+                },
+                {
+                    "tech_id": "T1127.001",
+                    "tech_name": "Trusted Developer Utilities Proxy Execution: MSBuild"
+                }
+            ]
+        },
+        "T1535": {
+            "tech_id": "T1535",
+            "tech_name": "Unused/Unsupported Cloud Regions",
+            "subtechniques": []
+        },
+        "T1078": {
+            "tech_id": "T1078",
+            "tech_name": "Valid Accounts",
+            "subtechniques": [
+                {
+                    "tech_id": "T1078.004",
+                    "tech_name": "Valid Accounts: Cloud Accounts"
+                },
+                {
+                    "tech_id": "T1078.001",
+                    "tech_name": "Valid Accounts: Default Accounts"
+                },
+                {
+                    "tech_id": "T1078.002",
+                    "tech_name": "Valid Accounts: Domain Accounts"
+                },
+                {
+                    "tech_id": "T1078.003",
+                    "tech_name": "Valid Accounts: Local Accounts"
+                }
+            ]
+        },
+        "T1497": {
+            "tech_id": "T1497",
+            "tech_name": "Virtualization/Sandbox Evasion",
+            "subtechniques": [
+                {
+                    "tech_id": "T1497.001",
+                    "tech_name": "Virtualization/Sandbox Evasion: System Checks"
+                },
+                {
+                    "tech_id": "T1497.003",
+                    "tech_name": "Virtualization/Sandbox Evasion: Time Based Checks"
+                },
+                {
+                    "tech_id": "T1497.002",
+                    "tech_name": "Virtualization/Sandbox Evasion: User Activity Based Checks"
+                }
+            ]
+        },
+        "T1220": {
+            "tech_id": "T1220",
+            "tech_name": "XSL Script Processing",
+            "subtechniques": []
+        }
+    },
+    "Impact": {
+        "T1531": {
+            "tech_id": "T1531",
+            "tech_name": "Account Access Removal",
+            "subtechniques": []
+        },
+        "T1485": {
+            "tech_id": "T1485",
+            "tech_name": "Data Destruction",
+            "subtechniques": [
+                {
+                    "tech_id": "T1485.001",
+                    "tech_name": "Data Destruction: Lifecycle-Triggered Deletion"
+                }
+            ]
+        },
+        "T1486": {
+            "tech_id": "T1486",
+            "tech_name": "Data Encrypted for Impact",
+            "subtechniques": []
+        },
+        "T1565": {
+            "tech_id": "T1565",
+            "tech_name": "Data Manipulation",
+            "subtechniques": [
+                {
+                    "tech_id": "T1565.003",
+                    "tech_name": "Data Manipulation: Runtime Data Manipulation"
+                },
+                {
+                    "tech_id": "T1565.001",
+                    "tech_name": "Data Manipulation: Stored Data Manipulation"
+                },
+                {
+                    "tech_id": "T1565.002",
+                    "tech_name": "Data Manipulation: Transmitted Data Manipulation"
+                }
+            ]
+        },
+        "T1491": {
+            "tech_id": "T1491",
+            "tech_name": "Defacement",
+            "subtechniques": [
+                {
+                    "tech_id": "T1491.002",
+                    "tech_name": "Defacement: External Defacement"
+                },
+                {
+                    "tech_id": "T1491.001",
+                    "tech_name": "Defacement: Internal Defacement"
+                }
+            ]
+        },
+        "T1561": {
+            "tech_id": "T1561",
+            "tech_name": "Disk Wipe",
+            "subtechniques": [
+                {
+                    "tech_id": "T1561.001",
+                    "tech_name": "Disk Wipe: Disk Content Wipe"
+                },
+                {
+                    "tech_id": "T1561.002",
+                    "tech_name": "Disk Wipe: Disk Structure Wipe"
+                }
+            ]
+        },
+        "T1667": {
+            "tech_id": "T1667",
+            "tech_name": "Email Bombing",
+            "subtechniques": []
+        },
+        "T1499": {
+            "tech_id": "T1499",
+            "tech_name": "Endpoint Denial of Service",
+            "subtechniques": [
+                {
+                    "tech_id": "T1499.003",
+                    "tech_name": "Endpoint Denial of Service: Application Exhaustion Flood"
+                },
+                {
+                    "tech_id": "T1499.004",
+                    "tech_name": "Endpoint Denial of Service: Application or System Exploitation"
+                },
+                {
+                    "tech_id": "T1499.001",
+                    "tech_name": "Endpoint Denial of Service: OS Exhaustion Flood"
+                },
+                {
+                    "tech_id": "T1499.002",
+                    "tech_name": "Endpoint Denial of Service: Service Exhaustion Flood"
+                }
+            ]
+        },
+        "T1657": {
+            "tech_id": "T1657",
+            "tech_name": "Financial Theft",
+            "subtechniques": []
+        },
+        "T1495": {
+            "tech_id": "T1495",
+            "tech_name": "Firmware Corruption",
+            "subtechniques": []
+        },
+        "T1490": {
+            "tech_id": "T1490",
+            "tech_name": "Inhibit System Recovery",
+            "subtechniques": []
+        },
+        "T1498": {
+            "tech_id": "T1498",
+            "tech_name": "Network Denial of Service",
+            "subtechniques": [
+                {
+                    "tech_id": "T1498.001",
+                    "tech_name": "Network Denial of Service: Direct Network Flood"
+                },
+                {
+                    "tech_id": "T1498.002",
+                    "tech_name": "Network Denial of Service: Reflection Amplification"
+                }
+            ]
+        },
+        "T1496": {
+            "tech_id": "T1496",
+            "tech_name": "Resource Hijacking",
+            "subtechniques": [
+                {
+                    "tech_id": "T1496.002",
+                    "tech_name": "Resource Hijacking: Bandwidth Hijacking"
+                },
+                {
+                    "tech_id": "T1496.004",
+                    "tech_name": "Resource Hijacking: Cloud Service Hijacking"
+                },
+                {
+                    "tech_id": "T1496.001",
+                    "tech_name": "Resource Hijacking: Compute Hijacking"
+                },
+                {
+                    "tech_id": "T1496.003",
+                    "tech_name": "Resource Hijacking: SMS Pumping"
+                }
+            ]
+        },
+        "T1489": {
+            "tech_id": "T1489",
+            "tech_name": "Service Stop",
+            "subtechniques": []
+        },
+        "T1529": {
+            "tech_id": "T1529",
+            "tech_name": "System Shutdown/Reboot",
+            "subtechniques": []
+        }
+    },
+    "Discovery": {
+        "T1087": {
+            "tech_id": "T1087",
+            "tech_name": "Account Discovery",
+            "subtechniques": [
+                {
+                    "tech_id": "T1087.004",
+                    "tech_name": "Account Discovery: Cloud Account"
+                },
+                {
+                    "tech_id": "T1087.002",
+                    "tech_name": "Account Discovery: Domain Account"
+                },
+                {
+                    "tech_id": "T1087.003",
+                    "tech_name": "Account Discovery: Email Account"
+                },
+                {
+                    "tech_id": "T1087.001",
+                    "tech_name": "Account Discovery: Local Account"
+                }
+            ]
+        },
+        "T1010": {
+            "tech_id": "T1010",
+            "tech_name": "Application Window Discovery",
+            "subtechniques": []
+        },
+        "T1217": {
+            "tech_id": "T1217",
+            "tech_name": "Browser Information Discovery",
+            "subtechniques": []
+        },
+        "T1580": {
+            "tech_id": "T1580",
+            "tech_name": "Cloud Infrastructure Discovery",
+            "subtechniques": []
+        },
+        "T1538": {
+            "tech_id": "T1538",
+            "tech_name": "Cloud Service Dashboard",
+            "subtechniques": []
+        },
+        "T1526": {
+            "tech_id": "T1526",
+            "tech_name": "Cloud Service Discovery",
+            "subtechniques": []
+        },
+        "T1619": {
+            "tech_id": "T1619",
+            "tech_name": "Cloud Storage Object Discovery",
+            "subtechniques": []
+        },
+        "T1613": {
+            "tech_id": "T1613",
+            "tech_name": "Container and Resource Discovery",
+            "subtechniques": []
+        },
+        "T1622": {
+            "tech_id": "T1622",
+            "tech_name": "Debugger Evasion",
+            "subtechniques": []
+        },
+        "T1652": {
+            "tech_id": "T1652",
+            "tech_name": "Device Driver Discovery",
+            "subtechniques": []
+        },
+        "T1482": {
+            "tech_id": "T1482",
+            "tech_name": "Domain Trust Discovery",
+            "subtechniques": []
+        },
+        "T1083": {
+            "tech_id": "T1083",
+            "tech_name": "File and Directory Discovery",
+            "subtechniques": []
+        },
+        "T1615": {
+            "tech_id": "T1615",
+            "tech_name": "Group Policy Discovery",
+            "subtechniques": []
+        },
+        "T1680": {
+            "tech_id": "T1680",
+            "tech_name": "Local Storage Discovery",
+            "subtechniques": []
+        },
+        "T1654": {
+            "tech_id": "T1654",
+            "tech_name": "Log Enumeration",
+            "subtechniques": []
+        },
+        "T1046": {
+            "tech_id": "T1046",
+            "tech_name": "Network Service Discovery",
+            "subtechniques": []
+        },
+        "T1135": {
+            "tech_id": "T1135",
+            "tech_name": "Network Share Discovery",
+            "subtechniques": []
+        },
+        "T1040": {
+            "tech_id": "T1040",
+            "tech_name": "Network Sniffing",
+            "subtechniques": []
+        },
+        "T1201": {
+            "tech_id": "T1201",
+            "tech_name": "Password Policy Discovery",
+            "subtechniques": []
+        },
+        "T1120": {
+            "tech_id": "T1120",
+            "tech_name": "Peripheral Device Discovery",
+            "subtechniques": []
+        },
+        "T1069": {
+            "tech_id": "T1069",
+            "tech_name": "Permission Groups Discovery",
+            "subtechniques": [
+                {
+                    "tech_id": "T1069.003",
+                    "tech_name": "Permission Groups Discovery: Cloud Groups"
+                },
+                {
+                    "tech_id": "T1069.002",
+                    "tech_name": "Permission Groups Discovery: Domain Groups"
+                },
+                {
+                    "tech_id": "T1069.001",
+                    "tech_name": "Permission Groups Discovery: Local Groups"
+                }
+            ]
+        },
+        "T1057": {
+            "tech_id": "T1057",
+            "tech_name": "Process Discovery",
+            "subtechniques": []
+        },
+        "T1012": {
+            "tech_id": "T1012",
+            "tech_name": "Query Registry",
+            "subtechniques": []
+        },
+        "T1018": {
+            "tech_id": "T1018",
+            "tech_name": "Remote System Discovery",
+            "subtechniques": []
+        },
+        "T1518": {
+            "tech_id": "T1518",
+            "tech_name": "Software Discovery",
+            "subtechniques": [
+                {
+                    "tech_id": "T1518.002",
+                    "tech_name": "Software Discovery: Backup Software Discovery"
+                },
+                {
+                    "tech_id": "T1518.001",
+                    "tech_name": "Software Discovery: Security Software Discovery"
+                }
+            ]
+        },
+        "T1082": {
+            "tech_id": "T1082",
+            "tech_name": "System Information Discovery",
+            "subtechniques": []
+        },
+        "T1614": {
+            "tech_id": "T1614",
+            "tech_name": "System Location Discovery",
+            "subtechniques": [
+                {
+                    "tech_id": "T1614.001",
+                    "tech_name": "System Location Discovery: System Language Discovery"
+                }
+            ]
+        },
+        "T1016": {
+            "tech_id": "T1016",
+            "tech_name": "System Network Configuration Discovery",
+            "subtechniques": [
+                {
+                    "tech_id": "T1016.001",
+                    "tech_name": "System Network Configuration Discovery: Internet Connection Discovery"
+                },
+                {
+                    "tech_id": "T1016.002",
+                    "tech_name": "System Network Configuration Discovery: Wi-Fi Discovery"
+                }
+            ]
+        },
+        "T1049": {
+            "tech_id": "T1049",
+            "tech_name": "System Network Connections Discovery",
+            "subtechniques": []
+        },
+        "T1033": {
+            "tech_id": "T1033",
+            "tech_name": "System Owner/User Discovery",
+            "subtechniques": []
+        },
+        "T1007": {
+            "tech_id": "T1007",
+            "tech_name": "System Service Discovery",
+            "subtechniques": []
+        },
+        "T1124": {
+            "tech_id": "T1124",
+            "tech_name": "System Time Discovery",
+            "subtechniques": []
+        },
+        "T1673": {
+            "tech_id": "T1673",
+            "tech_name": "Virtual Machine Discovery",
+            "subtechniques": []
+        },
+        "T1497": {
+            "tech_id": "T1497",
+            "tech_name": "Virtualization/Sandbox Evasion",
+            "subtechniques": [
+                {
+                    "tech_id": "T1497.001",
+                    "tech_name": "Virtualization/Sandbox Evasion: System Checks"
+                },
+                {
+                    "tech_id": "T1497.003",
+                    "tech_name": "Virtualization/Sandbox Evasion: Time Based Checks"
+                },
+                {
+                    "tech_id": "T1497.002",
+                    "tech_name": "Virtualization/Sandbox Evasion: User Activity Based Checks"
+                }
+            ]
+        }
+    },
+    "Persistence": {
+        "T1098": {
+            "tech_id": "T1098",
+            "tech_name": "Account Manipulation",
+            "subtechniques": [
+                {
+                    "tech_id": "T1098.001",
+                    "tech_name": "Account Manipulation: Additional Cloud Credentials"
+                },
+                {
+                    "tech_id": "T1098.003",
+                    "tech_name": "Account Manipulation: Additional Cloud Roles"
+                },
+                {
+                    "tech_id": "T1098.006",
+                    "tech_name": "Account Manipulation: Additional Container Cluster Roles"
+                },
+                {
+                    "tech_id": "T1098.002",
+                    "tech_name": "Account Manipulation: Additional Email Delegate Permissions"
+                },
+                {
+                    "tech_id": "T1098.007",
+                    "tech_name": "Account Manipulation: Additional Local or Domain Groups"
+                },
+                {
+                    "tech_id": "T1098.005",
+                    "tech_name": "Account Manipulation: Device Registration"
+                },
+                {
+                    "tech_id": "T1098.004",
+                    "tech_name": "Account Manipulation: SSH Authorized Keys"
+                }
+            ]
+        },
+        "T1197": {
+            "tech_id": "T1197",
+            "tech_name": "BITS Jobs",
+            "subtechniques": []
+        },
+        "T1547": {
+            "tech_id": "T1547",
+            "tech_name": "Boot or Logon Autostart Execution",
+            "subtechniques": [
+                {
+                    "tech_id": "T1547.014",
+                    "tech_name": "Boot or Logon Autostart Execution: Active Setup"
+                },
+                {
+                    "tech_id": "T1547.002",
+                    "tech_name": "Boot or Logon Autostart Execution: Authentication Package"
+                },
+                {
+                    "tech_id": "T1547.006",
+                    "tech_name": "Boot or Logon Autostart Execution: Kernel Modules and Extensions"
+                },
+                {
+                    "tech_id": "T1547.008",
+                    "tech_name": "Boot or Logon Autostart Execution: LSASS Driver"
+                },
+                {
+                    "tech_id": "T1547.015",
+                    "tech_name": "Boot or Logon Autostart Execution: Login Items"
+                },
+                {
+                    "tech_id": "T1547.010",
+                    "tech_name": "Boot or Logon Autostart Execution: Port Monitors"
+                },
+                {
+                    "tech_id": "T1547.012",
+                    "tech_name": "Boot or Logon Autostart Execution: Print Processors"
+                },
+                {
+                    "tech_id": "T1547.007",
+                    "tech_name": "Boot or Logon Autostart Execution: Re-opened Applications"
+                },
+                {
+                    "tech_id": "T1547.001",
+                    "tech_name": "Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder"
+                },
+                {
+                    "tech_id": "T1547.005",
+                    "tech_name": "Boot or Logon Autostart Execution: Security Support Provider"
+                },
+                {
+                    "tech_id": "T1547.009",
+                    "tech_name": "Boot or Logon Autostart Execution: Shortcut Modification"
+                },
+                {
+                    "tech_id": "T1547.003",
+                    "tech_name": "Boot or Logon Autostart Execution: Time Providers"
+                },
+                {
+                    "tech_id": "T1547.004",
+                    "tech_name": "Boot or Logon Autostart Execution: Winlogon Helper DLL"
+                },
+                {
+                    "tech_id": "T1547.013",
+                    "tech_name": "Boot or Logon Autostart Execution: XDG Autostart Entries"
+                }
+            ]
+        },
+        "T1037": {
+            "tech_id": "T1037",
+            "tech_name": "Boot or Logon Initialization Scripts",
+            "subtechniques": [
+                {
+                    "tech_id": "T1037.002",
+                    "tech_name": "Boot or Logon Initialization Scripts: Login Hook"
+                },
+                {
+                    "tech_id": "T1037.001",
+                    "tech_name": "Boot or Logon Initialization Scripts: Logon Script (Windows)"
+                },
+                {
+                    "tech_id": "T1037.003",
+                    "tech_name": "Boot or Logon Initialization Scripts: Network Logon Script"
+                },
+                {
+                    "tech_id": "T1037.004",
+                    "tech_name": "Boot or Logon Initialization Scripts: RC Scripts"
+                },
+                {
+                    "tech_id": "T1037.005",
+                    "tech_name": "Boot or Logon Initialization Scripts: Startup Items"
+                }
+            ]
+        },
+        "T1671": {
+            "tech_id": "T1671",
+            "tech_name": "Cloud Application Integration",
+            "subtechniques": []
+        },
+        "T1554": {
+            "tech_id": "T1554",
+            "tech_name": "Compromise Host Software Binary",
+            "subtechniques": []
+        },
+        "T1136": {
+            "tech_id": "T1136",
+            "tech_name": "Create Account",
+            "subtechniques": [
+                {
+                    "tech_id": "T1136.003",
+                    "tech_name": "Create Account: Cloud Account"
+                },
+                {
+                    "tech_id": "T1136.002",
+                    "tech_name": "Create Account: Domain Account"
+                },
+                {
+                    "tech_id": "T1136.001",
+                    "tech_name": "Create Account: Local Account"
+                }
+            ]
+        },
+        "T1543": {
+            "tech_id": "T1543",
+            "tech_name": "Create or Modify System Process",
+            "subtechniques": [
+                {
+                    "tech_id": "T1543.005",
+                    "tech_name": "Create or Modify System Process: Container Service"
+                },
+                {
+                    "tech_id": "T1543.001",
+                    "tech_name": "Create or Modify System Process: Launch Agent"
+                },
+                {
+                    "tech_id": "T1543.004",
+                    "tech_name": "Create or Modify System Process: Launch Daemon"
+                },
+                {
+                    "tech_id": "T1543.002",
+                    "tech_name": "Create or Modify System Process: Systemd Service"
+                },
+                {
+                    "tech_id": "T1543.003",
+                    "tech_name": "Create or Modify System Process: Windows Service"
+                }
+            ]
+        },
+        "T1546": {
+            "tech_id": "T1546",
+            "tech_name": "Event Triggered Execution",
+            "subtechniques": [
+                {
+                    "tech_id": "T1546.008",
+                    "tech_name": "Event Triggered Execution: Accessibility Features"
+                },
+                {
+                    "tech_id": "T1546.009",
+                    "tech_name": "Event Triggered Execution: AppCert DLLs"
+                },
+                {
+                    "tech_id": "T1546.010",
+                    "tech_name": "Event Triggered Execution: AppInit DLLs"
+                },
+                {
+                    "tech_id": "T1546.011",
+                    "tech_name": "Event Triggered Execution: Application Shimming"
+                },
+                {
+                    "tech_id": "T1546.001",
+                    "tech_name": "Event Triggered Execution: Change Default File Association"
+                },
+                {
+                    "tech_id": "T1546.015",
+                    "tech_name": "Event Triggered Execution: Component Object Model Hijacking"
+                },
+                {
+                    "tech_id": "T1546.014",
+                    "tech_name": "Event Triggered Execution: Emond"
+                },
+                {
+                    "tech_id": "T1546.012",
+                    "tech_name": "Event Triggered Execution: Image File Execution Options Injection"
+                },
+                {
+                    "tech_id": "T1546.016",
+                    "tech_name": "Event Triggered Execution: Installer Packages"
+                },
+                {
+                    "tech_id": "T1546.006",
+                    "tech_name": "Event Triggered Execution: LC_LOAD_DYLIB Addition"
+                },
+                {
+                    "tech_id": "T1546.007",
+                    "tech_name": "Event Triggered Execution: Netsh Helper DLL"
+                },
+                {
+                    "tech_id": "T1546.013",
+                    "tech_name": "Event Triggered Execution: PowerShell Profile"
+                },
+                {
+                    "tech_id": "T1546.018",
+                    "tech_name": "Event Triggered Execution: Python Startup Hooks"
+                },
+                {
+                    "tech_id": "T1546.002",
+                    "tech_name": "Event Triggered Execution: Screensaver"
+                },
+                {
+                    "tech_id": "T1546.005",
+                    "tech_name": "Event Triggered Execution: Trap"
+                },
+                {
+                    "tech_id": "T1546.017",
+                    "tech_name": "Event Triggered Execution: Udev Rules"
+                },
+                {
+                    "tech_id": "T1546.004",
+                    "tech_name": "Event Triggered Execution: Unix Shell Configuration Modification"
+                },
+                {
+                    "tech_id": "T1546.003",
+                    "tech_name": "Event Triggered Execution: Windows Management Instrumentation Event Subscription"
+                }
+            ]
+        },
+        "T1668": {
+            "tech_id": "T1668",
+            "tech_name": "Exclusive Control",
+            "subtechniques": []
+        },
+        "T1133": {
+            "tech_id": "T1133",
+            "tech_name": "External Remote Services",
+            "subtechniques": []
+        },
+        "T1525": {
+            "tech_id": "T1525",
+            "tech_name": "Implant Internal Image",
+            "subtechniques": []
+        },
+        "T1556": {
+            "tech_id": "T1556",
+            "tech_name": "Modify Authentication Process",
+            "subtechniques": [
+                {
+                    "tech_id": "T1556.009",
+                    "tech_name": "Modify Authentication Process: Conditional Access Policies"
+                },
+                {
+                    "tech_id": "T1556.001",
+                    "tech_name": "Modify Authentication Process: Domain Controller Authentication"
+                },
+                {
+                    "tech_id": "T1556.007",
+                    "tech_name": "Modify Authentication Process: Hybrid Identity"
+                },
+                {
+                    "tech_id": "T1556.006",
+                    "tech_name": "Modify Authentication Process: Multi-Factor Authentication"
+                },
+                {
+                    "tech_id": "T1556.004",
+                    "tech_name": "Modify Authentication Process: Network Device Authentication"
+                },
+                {
+                    "tech_id": "T1556.008",
+                    "tech_name": "Modify Authentication Process: Network Provider DLL"
+                },
+                {
+                    "tech_id": "T1556.002",
+                    "tech_name": "Modify Authentication Process: Password Filter DLL"
+                },
+                {
+                    "tech_id": "T1556.003",
+                    "tech_name": "Modify Authentication Process: Pluggable Authentication Modules"
+                },
+                {
+                    "tech_id": "T1556.005",
+                    "tech_name": "Modify Authentication Process: Reversible Encryption"
+                }
+            ]
+        },
+        "T1112": {
+            "tech_id": "T1112",
+            "tech_name": "Modify Registry",
+            "subtechniques": []
+        },
+        "T1137": {
+            "tech_id": "T1137",
+            "tech_name": "Office Application Startup",
+            "subtechniques": [
+                {
+                    "tech_id": "T1137.006",
+                    "tech_name": "Office Application Startup: Add-ins"
+                },
+                {
+                    "tech_id": "T1137.001",
+                    "tech_name": "Office Application Startup: Office Template Macros"
+                },
+                {
+                    "tech_id": "T1137.002",
+                    "tech_name": "Office Application Startup: Office Test"
+                },
+                {
+                    "tech_id": "T1137.003",
+                    "tech_name": "Office Application Startup: Outlook Forms"
+                },
+                {
+                    "tech_id": "T1137.004",
+                    "tech_name": "Office Application Startup: Outlook Home Page"
+                },
+                {
+                    "tech_id": "T1137.005",
+                    "tech_name": "Office Application Startup: Outlook Rules"
+                }
+            ]
+        },
+        "T1653": {
+            "tech_id": "T1653",
+            "tech_name": "Power Settings",
+            "subtechniques": []
+        },
+        "T1542": {
+            "tech_id": "T1542",
+            "tech_name": "Pre-OS Boot",
+            "subtechniques": [
+                {
+                    "tech_id": "T1542.003",
+                    "tech_name": "Pre-OS Boot: Bootkit"
+                },
+                {
+                    "tech_id": "T1542.002",
+                    "tech_name": "Pre-OS Boot: Component Firmware"
+                },
+                {
+                    "tech_id": "T1542.004",
+                    "tech_name": "Pre-OS Boot: ROMMONkit"
+                },
+                {
+                    "tech_id": "T1542.001",
+                    "tech_name": "Pre-OS Boot: System Firmware"
+                },
+                {
+                    "tech_id": "T1542.005",
+                    "tech_name": "Pre-OS Boot: TFTP Boot"
+                }
+            ]
+        },
+        "T1053": {
+            "tech_id": "T1053",
+            "tech_name": "Scheduled Task/Job",
+            "subtechniques": [
+                {
+                    "tech_id": "T1053.002",
+                    "tech_name": "Scheduled Task/Job: At"
+                },
+                {
+                    "tech_id": "T1053.007",
+                    "tech_name": "Scheduled Task/Job: Container Orchestration Job"
+                },
+                {
+                    "tech_id": "T1053.003",
+                    "tech_name": "Scheduled Task/Job: Cron"
+                },
+                {
+                    "tech_id": "T1053.005",
+                    "tech_name": "Scheduled Task/Job: Scheduled Task"
+                },
+                {
+                    "tech_id": "T1053.006",
+                    "tech_name": "Scheduled Task/Job: Systemd Timers"
+                }
+            ]
+        },
+        "T1505": {
+            "tech_id": "T1505",
+            "tech_name": "Server Software Component",
+            "subtechniques": [
+                {
+                    "tech_id": "T1505.004",
+                    "tech_name": "Server Software Component: IIS Components"
+                },
+                {
+                    "tech_id": "T1505.001",
+                    "tech_name": "Server Software Component: SQL Stored Procedures"
+                },
+                {
+                    "tech_id": "T1505.005",
+                    "tech_name": "Server Software Component: Terminal Services DLL"
+                },
+                {
+                    "tech_id": "T1505.002",
+                    "tech_name": "Server Software Component: Transport Agent"
+                },
+                {
+                    "tech_id": "T1505.003",
+                    "tech_name": "Server Software Component: Web Shell"
+                },
+                {
+                    "tech_id": "T1505.006",
+                    "tech_name": "Server Software Component: vSphere Installation Bundles"
+                }
+            ]
+        },
+        "T1176": {
+            "tech_id": "T1176",
+            "tech_name": "Software Extensions",
+            "subtechniques": [
+                {
+                    "tech_id": "T1176.001",
+                    "tech_name": "Software Extensions: Browser Extensions"
+                },
+                {
+                    "tech_id": "T1176.002",
+                    "tech_name": "Software Extensions: IDE Extensions"
+                }
+            ]
+        },
+        "T1205": {
+            "tech_id": "T1205",
+            "tech_name": "Traffic Signaling",
+            "subtechniques": [
+                {
+                    "tech_id": "T1205.001",
+                    "tech_name": "Traffic Signaling: Port Knocking"
+                },
+                {
+                    "tech_id": "T1205.002",
+                    "tech_name": "Traffic Signaling: Socket Filters"
+                }
+            ]
+        },
+        "T1078": {
+            "tech_id": "T1078",
+            "tech_name": "Valid Accounts",
+            "subtechniques": [
+                {
+                    "tech_id": "T1078.004",
+                    "tech_name": "Valid Accounts: Cloud Accounts"
+                },
+                {
+                    "tech_id": "T1078.001",
+                    "tech_name": "Valid Accounts: Default Accounts"
+                },
+                {
+                    "tech_id": "T1078.002",
+                    "tech_name": "Valid Accounts: Domain Accounts"
+                },
+                {
+                    "tech_id": "T1078.003",
+                    "tech_name": "Valid Accounts: Local Accounts"
+                }
+            ]
+        }
+    },
+    "Resource Development": {
+        "T1650": {
+            "tech_id": "T1650",
+            "tech_name": "Acquire Access",
+            "subtechniques": []
+        },
+        "T1583": {
+            "tech_id": "T1583",
+            "tech_name": "Acquire Infrastructure",
+            "subtechniques": [
+                {
+                    "tech_id": "T1583.005",
+                    "tech_name": "Acquire Infrastructure: Botnet"
+                },
+                {
+                    "tech_id": "T1583.002",
+                    "tech_name": "Acquire Infrastructure: DNS Server"
+                },
+                {
+                    "tech_id": "T1583.001",
+                    "tech_name": "Acquire Infrastructure: Domains"
+                },
+                {
+                    "tech_id": "T1583.008",
+                    "tech_name": "Acquire Infrastructure: Malvertising"
+                },
+                {
+                    "tech_id": "T1583.004",
+                    "tech_name": "Acquire Infrastructure: Server"
+                },
+                {
+                    "tech_id": "T1583.007",
+                    "tech_name": "Acquire Infrastructure: Serverless"
+                },
+                {
+                    "tech_id": "T1583.003",
+                    "tech_name": "Acquire Infrastructure: Virtual Private Server"
+                },
+                {
+                    "tech_id": "T1583.006",
+                    "tech_name": "Acquire Infrastructure: Web Services"
+                }
+            ]
+        },
+        "T1586": {
+            "tech_id": "T1586",
+            "tech_name": "Compromise Accounts",
+            "subtechniques": [
+                {
+                    "tech_id": "T1586.003",
+                    "tech_name": "Compromise Accounts: Cloud Accounts"
+                },
+                {
+                    "tech_id": "T1586.002",
+                    "tech_name": "Compromise Accounts: Email Accounts"
+                },
+                {
+                    "tech_id": "T1586.001",
+                    "tech_name": "Compromise Accounts: Social Media Accounts"
+                }
+            ]
+        },
+        "T1584": {
+            "tech_id": "T1584",
+            "tech_name": "Compromise Infrastructure",
+            "subtechniques": [
+                {
+                    "tech_id": "T1584.005",
+                    "tech_name": "Compromise Infrastructure: Botnet"
+                },
+                {
+                    "tech_id": "T1584.002",
+                    "tech_name": "Compromise Infrastructure: DNS Server"
+                },
+                {
+                    "tech_id": "T1584.001",
+                    "tech_name": "Compromise Infrastructure: Domains"
+                },
+                {
+                    "tech_id": "T1584.008",
+                    "tech_name": "Compromise Infrastructure: Network Devices"
+                },
+                {
+                    "tech_id": "T1584.004",
+                    "tech_name": "Compromise Infrastructure: Server"
+                },
+                {
+                    "tech_id": "T1584.007",
+                    "tech_name": "Compromise Infrastructure: Serverless"
+                },
+                {
+                    "tech_id": "T1584.003",
+                    "tech_name": "Compromise Infrastructure: Virtual Private Server"
+                },
+                {
+                    "tech_id": "T1584.006",
+                    "tech_name": "Compromise Infrastructure: Web Services"
+                }
+            ]
+        },
+        "T1587": {
+            "tech_id": "T1587",
+            "tech_name": "Develop Capabilities",
+            "subtechniques": [
+                {
+                    "tech_id": "T1587.002",
+                    "tech_name": "Develop Capabilities: Code Signing Certificates"
+                },
+                {
+                    "tech_id": "T1587.003",
+                    "tech_name": "Develop Capabilities: Digital Certificates"
+                },
+                {
+                    "tech_id": "T1587.004",
+                    "tech_name": "Develop Capabilities: Exploits"
+                },
+                {
+                    "tech_id": "T1587.001",
+                    "tech_name": "Develop Capabilities: Malware"
+                }
+            ]
+        },
+        "T1585": {
+            "tech_id": "T1585",
+            "tech_name": "Establish Accounts",
+            "subtechniques": [
+                {
+                    "tech_id": "T1585.003",
+                    "tech_name": "Establish Accounts: Cloud Accounts"
+                },
+                {
+                    "tech_id": "T1585.002",
+                    "tech_name": "Establish Accounts: Email Accounts"
+                },
+                {
+                    "tech_id": "T1585.001",
+                    "tech_name": "Establish Accounts: Social Media Accounts"
+                }
+            ]
+        },
+        "T1683": {
+            "tech_id": "T1683",
+            "tech_name": "Generate Content",
+            "subtechniques": [
+                {
+                    "tech_id": "T1683.002",
+                    "tech_name": "Generate Content: Audio-Visual Content"
+                },
+                {
+                    "tech_id": "T1683.001",
+                    "tech_name": "Generate Content: Written Content"
+                }
+            ]
+        },
+        "T1588": {
+            "tech_id": "T1588",
+            "tech_name": "Obtain Capabilities",
+            "subtechniques": [
+                {
+                    "tech_id": "T1588.007",
+                    "tech_name": "Obtain Capabilities: Artificial Intelligence"
+                },
+                {
+                    "tech_id": "T1588.003",
+                    "tech_name": "Obtain Capabilities: Code Signing Certificates"
+                },
+                {
+                    "tech_id": "T1588.004",
+                    "tech_name": "Obtain Capabilities: Digital Certificates"
+                },
+                {
+                    "tech_id": "T1588.005",
+                    "tech_name": "Obtain Capabilities: Exploits"
+                },
+                {
+                    "tech_id": "T1588.001",
+                    "tech_name": "Obtain Capabilities: Malware"
+                },
+                {
+                    "tech_id": "T1588.002",
+                    "tech_name": "Obtain Capabilities: Tool"
+                },
+                {
+                    "tech_id": "T1588.006",
+                    "tech_name": "Obtain Capabilities: Vulnerabilities"
+                }
+            ]
+        },
+        "T1608": {
+            "tech_id": "T1608",
+            "tech_name": "Stage Capabilities",
+            "subtechniques": [
+                {
+                    "tech_id": "T1608.004",
+                    "tech_name": "Stage Capabilities: Drive-by Target"
+                },
+                {
+                    "tech_id": "T1608.003",
+                    "tech_name": "Stage Capabilities: Install Digital Certificate"
+                },
+                {
+                    "tech_id": "T1608.005",
+                    "tech_name": "Stage Capabilities: Link Target"
+                },
+                {
+                    "tech_id": "T1608.006",
+                    "tech_name": "Stage Capabilities: SEO Poisoning"
+                },
+                {
+                    "tech_id": "T1608.001",
+                    "tech_name": "Stage Capabilities: Upload Malware"
+                },
+                {
+                    "tech_id": "T1608.002",
+                    "tech_name": "Stage Capabilities: Upload Tool"
+                }
+            ]
+        }
+    },
+    "Reconnaissance": {
+        "T1595": {
+            "tech_id": "T1595",
+            "tech_name": "Active Scanning",
+            "subtechniques": [
+                {
+                    "tech_id": "T1595.001",
+                    "tech_name": "Active Scanning: Scanning IP Blocks"
+                },
+                {
+                    "tech_id": "T1595.002",
+                    "tech_name": "Active Scanning: Vulnerability Scanning"
+                },
+                {
+                    "tech_id": "T1595.003",
+                    "tech_name": "Active Scanning: Wordlist Scanning"
+                }
+            ]
+        },
+        "T1592": {
+            "tech_id": "T1592",
+            "tech_name": "Gather Victim Host Information",
+            "subtechniques": [
+                {
+                    "tech_id": "T1592.004",
+                    "tech_name": "Gather Victim Host Information: Client Configurations"
+                },
+                {
+                    "tech_id": "T1592.003",
+                    "tech_name": "Gather Victim Host Information: Firmware"
+                },
+                {
+                    "tech_id": "T1592.001",
+                    "tech_name": "Gather Victim Host Information: Hardware"
+                },
+                {
+                    "tech_id": "T1592.002",
+                    "tech_name": "Gather Victim Host Information: Software"
+                }
+            ]
+        },
+        "T1589": {
+            "tech_id": "T1589",
+            "tech_name": "Gather Victim Identity Information",
+            "subtechniques": [
+                {
+                    "tech_id": "T1589.001",
+                    "tech_name": "Gather Victim Identity Information: Credentials"
+                },
+                {
+                    "tech_id": "T1589.002",
+                    "tech_name": "Gather Victim Identity Information: Email Addresses"
+                },
+                {
+                    "tech_id": "T1589.003",
+                    "tech_name": "Gather Victim Identity Information: Employee Names"
+                }
+            ]
+        },
+        "T1590": {
+            "tech_id": "T1590",
+            "tech_name": "Gather Victim Network Information",
+            "subtechniques": [
+                {
+                    "tech_id": "T1590.002",
+                    "tech_name": "Gather Victim Network Information: DNS"
+                },
+                {
+                    "tech_id": "T1590.001",
+                    "tech_name": "Gather Victim Network Information: Domain Properties"
+                },
+                {
+                    "tech_id": "T1590.005",
+                    "tech_name": "Gather Victim Network Information: IP Addresses"
+                },
+                {
+                    "tech_id": "T1590.006",
+                    "tech_name": "Gather Victim Network Information: Network Security Appliances"
+                },
+                {
+                    "tech_id": "T1590.004",
+                    "tech_name": "Gather Victim Network Information: Network Topology"
+                },
+                {
+                    "tech_id": "T1590.003",
+                    "tech_name": "Gather Victim Network Information: Network Trust Dependencies"
+                }
+            ]
+        },
+        "T1591": {
+            "tech_id": "T1591",
+            "tech_name": "Gather Victim Org Information",
+            "subtechniques": [
+                {
+                    "tech_id": "T1591.002",
+                    "tech_name": "Gather Victim Org Information: Business Relationships"
+                },
+                {
+                    "tech_id": "T1591.001",
+                    "tech_name": "Gather Victim Org Information: Determine Physical Locations"
+                },
+                {
+                    "tech_id": "T1591.003",
+                    "tech_name": "Gather Victim Org Information: Identify Business Tempo"
+                },
+                {
+                    "tech_id": "T1591.004",
+                    "tech_name": "Gather Victim Org Information: Identify Roles"
+                }
+            ]
+        },
+        "T1598": {
+            "tech_id": "T1598",
+            "tech_name": "Phishing for Information",
+            "subtechniques": [
+                {
+                    "tech_id": "T1598.002",
+                    "tech_name": "Phishing for Information: Spearphishing Attachment"
+                },
+                {
+                    "tech_id": "T1598.003",
+                    "tech_name": "Phishing for Information: Spearphishing Link"
+                },
+                {
+                    "tech_id": "T1598.001",
+                    "tech_name": "Phishing for Information: Spearphishing Service"
+                },
+                {
+                    "tech_id": "T1598.004",
+                    "tech_name": "Phishing for Information: Spearphishing Voice"
+                }
+            ]
+        },
+        "T1682": {
+            "tech_id": "T1682",
+            "tech_name": "Query Public AI Services",
+            "subtechniques": []
+        },
+        "T1597": {
+            "tech_id": "T1597",
+            "tech_name": "Search Closed Sources",
+            "subtechniques": [
+                {
+                    "tech_id": "T1597.002",
+                    "tech_name": "Search Closed Sources: Purchase Technical Data"
+                },
+                {
+                    "tech_id": "T1597.001",
+                    "tech_name": "Search Closed Sources: Threat Intel Vendors"
+                }
+            ]
+        },
+        "T1596": {
+            "tech_id": "T1596",
+            "tech_name": "Search Open Technical Databases",
+            "subtechniques": [
+                {
+                    "tech_id": "T1596.004",
+                    "tech_name": "Search Open Technical Databases: CDNs"
+                },
+                {
+                    "tech_id": "T1596.001",
+                    "tech_name": "Search Open Technical Databases: DNS/Passive DNS"
+                },
+                {
+                    "tech_id": "T1596.003",
+                    "tech_name": "Search Open Technical Databases: Digital Certificates"
+                },
+                {
+                    "tech_id": "T1596.005",
+                    "tech_name": "Search Open Technical Databases: Scan Databases"
+                },
+                {
+                    "tech_id": "T1596.002",
+                    "tech_name": "Search Open Technical Databases: WHOIS"
+                }
+            ]
+        },
+        "T1593": {
+            "tech_id": "T1593",
+            "tech_name": "Search Open Websites/Domains",
+            "subtechniques": [
+                {
+                    "tech_id": "T1593.003",
+                    "tech_name": "Search Open Websites/Domains: Code Repositories"
+                },
+                {
+                    "tech_id": "T1593.002",
+                    "tech_name": "Search Open Websites/Domains: Search Engines"
+                },
+                {
+                    "tech_id": "T1593.001",
+                    "tech_name": "Search Open Websites/Domains: Social Media"
+                }
+            ]
+        },
+        "T1681": {
+            "tech_id": "T1681",
+            "tech_name": "Search Threat Vendor Data",
+            "subtechniques": []
+        },
+        "T1594": {
+            "tech_id": "T1594",
+            "tech_name": "Search Victim-Owned Websites",
+            "subtechniques": []
+        }
+    },
+    "Collection": {
+        "T1557": {
+            "tech_id": "T1557",
+            "tech_name": "Adversary-in-the-Middle",
+            "subtechniques": [
+                {
+                    "tech_id": "T1557.002",
+                    "tech_name": "Adversary-in-the-Middle: ARP Cache Poisoning"
+                },
+                {
+                    "tech_id": "T1557.003",
+                    "tech_name": "Adversary-in-the-Middle: DHCP Spoofing"
+                },
+                {
+                    "tech_id": "T1557.004",
+                    "tech_name": "Adversary-in-the-Middle: Evil Twin"
+                },
+                {
+                    "tech_id": "T1557.001",
+                    "tech_name": "Adversary-in-the-Middle: Name Resolution Poisoning and SMB Relay"
+                }
+            ]
+        },
+        "T1560": {
+            "tech_id": "T1560",
+            "tech_name": "Archive Collected Data",
+            "subtechniques": [
+                {
+                    "tech_id": "T1560.003",
+                    "tech_name": "Archive Collected Data: Archive via Custom Method"
+                },
+                {
+                    "tech_id": "T1560.002",
+                    "tech_name": "Archive Collected Data: Archive via Library"
+                },
+                {
+                    "tech_id": "T1560.001",
+                    "tech_name": "Archive Collected Data: Archive via Utility"
+                }
+            ]
+        },
+        "T1123": {
+            "tech_id": "T1123",
+            "tech_name": "Audio Capture",
+            "subtechniques": []
+        },
+        "T1119": {
+            "tech_id": "T1119",
+            "tech_name": "Automated Collection",
+            "subtechniques": []
+        },
+        "T1185": {
+            "tech_id": "T1185",
+            "tech_name": "Browser Session Hijacking",
+            "subtechniques": []
+        },
+        "T1115": {
+            "tech_id": "T1115",
+            "tech_name": "Clipboard Data",
+            "subtechniques": []
+        },
+        "T1074": {
+            "tech_id": "T1074",
+            "tech_name": "Data Staged",
+            "subtechniques": [
+                {
+                    "tech_id": "T1074.001",
+                    "tech_name": "Data Staged: Local Data Staging"
+                },
+                {
+                    "tech_id": "T1074.002",
+                    "tech_name": "Data Staged: Remote Data Staging"
+                }
+            ]
+        },
+        "T1530": {
+            "tech_id": "T1530",
+            "tech_name": "Data from Cloud Storage",
+            "subtechniques": []
+        },
+        "T1602": {
+            "tech_id": "T1602",
+            "tech_name": "Data from Configuration Repository",
+            "subtechniques": [
+                {
+                    "tech_id": "T1602.002",
+                    "tech_name": "Data from Configuration Repository: Network Device Configuration Dump"
+                },
+                {
+                    "tech_id": "T1602.001",
+                    "tech_name": "Data from Configuration Repository: SNMP (MIB Dump)"
+                }
+            ]
+        },
+        "T1213": {
+            "tech_id": "T1213",
+            "tech_name": "Data from Information Repositories",
+            "subtechniques": [
+                {
+                    "tech_id": "T1213.003",
+                    "tech_name": "Data from Information Repositories: Code Repositories"
+                },
+                {
+                    "tech_id": "T1213.001",
+                    "tech_name": "Data from Information Repositories: Confluence"
+                },
+                {
+                    "tech_id": "T1213.004",
+                    "tech_name": "Data from Information Repositories: Customer Relationship Management Software"
+                },
+                {
+                    "tech_id": "T1213.006",
+                    "tech_name": "Data from Information Repositories: Databases"
+                },
+                {
+                    "tech_id": "T1213.005",
+                    "tech_name": "Data from Information Repositories: Messaging Applications"
+                },
+                {
+                    "tech_id": "T1213.002",
+                    "tech_name": "Data from Information Repositories: Sharepoint"
+                }
+            ]
+        },
+        "T1005": {
+            "tech_id": "T1005",
+            "tech_name": "Data from Local System",
+            "subtechniques": []
+        },
+        "T1039": {
+            "tech_id": "T1039",
+            "tech_name": "Data from Network Shared Drive",
+            "subtechniques": []
+        },
+        "T1025": {
+            "tech_id": "T1025",
+            "tech_name": "Data from Removable Media",
+            "subtechniques": []
+        },
+        "T1114": {
+            "tech_id": "T1114",
+            "tech_name": "Email Collection",
+            "subtechniques": [
+                {
+                    "tech_id": "T1114.003",
+                    "tech_name": "Email Collection: Email Forwarding Rule"
+                },
+                {
+                    "tech_id": "T1114.001",
+                    "tech_name": "Email Collection: Local Email Collection"
+                },
+                {
+                    "tech_id": "T1114.002",
+                    "tech_name": "Email Collection: Remote Email Collection"
+                }
+            ]
+        },
+        "T1056": {
+            "tech_id": "T1056",
+            "tech_name": "Input Capture",
+            "subtechniques": [
+                {
+                    "tech_id": "T1056.004",
+                    "tech_name": "Input Capture: Credential API Hooking"
+                },
+                {
+                    "tech_id": "T1056.002",
+                    "tech_name": "Input Capture: GUI Input Capture"
+                },
+                {
+                    "tech_id": "T1056.001",
+                    "tech_name": "Input Capture: Keylogging"
+                },
+                {
+                    "tech_id": "T1056.003",
+                    "tech_name": "Input Capture: Web Portal Capture"
+                }
+            ]
+        },
+        "T1113": {
+            "tech_id": "T1113",
+            "tech_name": "Screen Capture",
+            "subtechniques": []
+        },
+        "T1125": {
+            "tech_id": "T1125",
+            "tech_name": "Video Capture",
+            "subtechniques": []
+        }
+    },
+    "Credential Access": {
+        "T1557": {
+            "tech_id": "T1557",
+            "tech_name": "Adversary-in-the-Middle",
+            "subtechniques": [
+                {
+                    "tech_id": "T1557.002",
+                    "tech_name": "Adversary-in-the-Middle: ARP Cache Poisoning"
+                },
+                {
+                    "tech_id": "T1557.003",
+                    "tech_name": "Adversary-in-the-Middle: DHCP Spoofing"
+                },
+                {
+                    "tech_id": "T1557.004",
+                    "tech_name": "Adversary-in-the-Middle: Evil Twin"
+                },
+                {
+                    "tech_id": "T1557.001",
+                    "tech_name": "Adversary-in-the-Middle: Name Resolution Poisoning and SMB Relay"
+                }
+            ]
+        },
+        "T1110": {
+            "tech_id": "T1110",
+            "tech_name": "Brute Force",
+            "subtechniques": [
+                {
+                    "tech_id": "T1110.004",
+                    "tech_name": "Brute Force: Credential Stuffing"
+                },
+                {
+                    "tech_id": "T1110.002",
+                    "tech_name": "Brute Force: Password Cracking"
+                },
+                {
+                    "tech_id": "T1110.001",
+                    "tech_name": "Brute Force: Password Guessing"
+                },
+                {
+                    "tech_id": "T1110.003",
+                    "tech_name": "Brute Force: Password Spraying"
+                }
+            ]
+        },
+        "T1555": {
+            "tech_id": "T1555",
+            "tech_name": "Credentials from Password Stores",
+            "subtechniques": [
+                {
+                    "tech_id": "T1555.006",
+                    "tech_name": "Credentials from Password Stores: Cloud Secrets Management Stores"
+                },
+                {
+                    "tech_id": "T1555.003",
+                    "tech_name": "Credentials from Password Stores: Credentials from Web Browsers"
+                },
+                {
+                    "tech_id": "T1555.001",
+                    "tech_name": "Credentials from Password Stores: Keychain"
+                },
+                {
+                    "tech_id": "T1555.005",
+                    "tech_name": "Credentials from Password Stores: Password Managers"
+                },
+                {
+                    "tech_id": "T1555.002",
+                    "tech_name": "Credentials from Password Stores: Securityd Memory"
+                },
+                {
+                    "tech_id": "T1555.004",
+                    "tech_name": "Credentials from Password Stores: Windows Credential Manager"
+                }
+            ]
+        },
+        "T1212": {
+            "tech_id": "T1212",
+            "tech_name": "Exploitation for Credential Access",
+            "subtechniques": []
+        },
+        "T1187": {
+            "tech_id": "T1187",
+            "tech_name": "Forced Authentication",
+            "subtechniques": []
+        },
+        "T1606": {
+            "tech_id": "T1606",
+            "tech_name": "Forge Web Credentials",
+            "subtechniques": [
+                {
+                    "tech_id": "T1606.002",
+                    "tech_name": "Forge Web Credentials: SAML Tokens"
+                },
+                {
+                    "tech_id": "T1606.001",
+                    "tech_name": "Forge Web Credentials: Web Cookies"
+                }
+            ]
+        },
+        "T1056": {
+            "tech_id": "T1056",
+            "tech_name": "Input Capture",
+            "subtechniques": [
+                {
+                    "tech_id": "T1056.004",
+                    "tech_name": "Input Capture: Credential API Hooking"
+                },
+                {
+                    "tech_id": "T1056.002",
+                    "tech_name": "Input Capture: GUI Input Capture"
+                },
+                {
+                    "tech_id": "T1056.001",
+                    "tech_name": "Input Capture: Keylogging"
+                },
+                {
+                    "tech_id": "T1056.003",
+                    "tech_name": "Input Capture: Web Portal Capture"
+                }
+            ]
+        },
+        "T1556": {
+            "tech_id": "T1556",
+            "tech_name": "Modify Authentication Process",
+            "subtechniques": [
+                {
+                    "tech_id": "T1556.009",
+                    "tech_name": "Modify Authentication Process: Conditional Access Policies"
+                },
+                {
+                    "tech_id": "T1556.001",
+                    "tech_name": "Modify Authentication Process: Domain Controller Authentication"
+                },
+                {
+                    "tech_id": "T1556.007",
+                    "tech_name": "Modify Authentication Process: Hybrid Identity"
+                },
+                {
+                    "tech_id": "T1556.006",
+                    "tech_name": "Modify Authentication Process: Multi-Factor Authentication"
+                },
+                {
+                    "tech_id": "T1556.004",
+                    "tech_name": "Modify Authentication Process: Network Device Authentication"
+                },
+                {
+                    "tech_id": "T1556.008",
+                    "tech_name": "Modify Authentication Process: Network Provider DLL"
+                },
+                {
+                    "tech_id": "T1556.002",
+                    "tech_name": "Modify Authentication Process: Password Filter DLL"
+                },
+                {
+                    "tech_id": "T1556.003",
+                    "tech_name": "Modify Authentication Process: Pluggable Authentication Modules"
+                },
+                {
+                    "tech_id": "T1556.005",
+                    "tech_name": "Modify Authentication Process: Reversible Encryption"
+                }
+            ]
+        },
+        "T1111": {
+            "tech_id": "T1111",
+            "tech_name": "Multi-Factor Authentication Interception",
+            "subtechniques": []
+        },
+        "T1621": {
+            "tech_id": "T1621",
+            "tech_name": "Multi-Factor Authentication Request Generation",
+            "subtechniques": []
+        },
+        "T1040": {
+            "tech_id": "T1040",
+            "tech_name": "Network Sniffing",
+            "subtechniques": []
+        },
+        "T1003": {
+            "tech_id": "T1003",
+            "tech_name": "OS Credential Dumping",
+            "subtechniques": [
+                {
+                    "tech_id": "T1003.008",
+                    "tech_name": "OS Credential Dumping: /etc/passwd and /etc/shadow"
+                },
+                {
+                    "tech_id": "T1003.005",
+                    "tech_name": "OS Credential Dumping: Cached Domain Credentials"
+                },
+                {
+                    "tech_id": "T1003.006",
+                    "tech_name": "OS Credential Dumping: DCSync"
+                },
+                {
+                    "tech_id": "T1003.004",
+                    "tech_name": "OS Credential Dumping: LSA Secrets"
+                },
+                {
+                    "tech_id": "T1003.001",
+                    "tech_name": "OS Credential Dumping: LSASS Memory"
+                },
+                {
+                    "tech_id": "T1003.003",
+                    "tech_name": "OS Credential Dumping: NTDS"
+                },
+                {
+                    "tech_id": "T1003.007",
+                    "tech_name": "OS Credential Dumping: Proc Filesystem"
+                },
+                {
+                    "tech_id": "T1003.002",
+                    "tech_name": "OS Credential Dumping: Security Account Manager"
+                }
+            ]
+        },
+        "T1528": {
+            "tech_id": "T1528",
+            "tech_name": "Steal Application Access Token",
+            "subtechniques": []
+        },
+        "T1539": {
+            "tech_id": "T1539",
+            "tech_name": "Steal Web Session Cookie",
+            "subtechniques": []
+        },
+        "T1649": {
+            "tech_id": "T1649",
+            "tech_name": "Steal or Forge Authentication Certificates",
+            "subtechniques": []
+        },
+        "T1558": {
+            "tech_id": "T1558",
+            "tech_name": "Steal or Forge Kerberos Tickets",
+            "subtechniques": [
+                {
+                    "tech_id": "T1558.004",
+                    "tech_name": "Steal or Forge Kerberos Tickets: AS-REP Roasting"
+                },
+                {
+                    "tech_id": "T1558.005",
+                    "tech_name": "Steal or Forge Kerberos Tickets: Ccache Files"
+                },
+                {
+                    "tech_id": "T1558.001",
+                    "tech_name": "Steal or Forge Kerberos Tickets: Golden Ticket"
+                },
+                {
+                    "tech_id": "T1558.003",
+                    "tech_name": "Steal or Forge Kerberos Tickets: Kerberoasting"
+                },
+                {
+                    "tech_id": "T1558.002",
+                    "tech_name": "Steal or Forge Kerberos Tickets: Silver Ticket"
+                }
+            ]
+        },
+        "T1552": {
+            "tech_id": "T1552",
+            "tech_name": "Unsecured Credentials",
+            "subtechniques": [
+                {
+                    "tech_id": "T1552.008",
+                    "tech_name": "Unsecured Credentials: Chat Messages"
+                },
+                {
+                    "tech_id": "T1552.005",
+                    "tech_name": "Unsecured Credentials: Cloud Instance Metadata API"
+                },
+                {
+                    "tech_id": "T1552.007",
+                    "tech_name": "Unsecured Credentials: Container API"
+                },
+                {
+                    "tech_id": "T1552.001",
+                    "tech_name": "Unsecured Credentials: Credentials In Files"
+                },
+                {
+                    "tech_id": "T1552.002",
+                    "tech_name": "Unsecured Credentials: Credentials in Registry"
+                },
+                {
+                    "tech_id": "T1552.006",
+                    "tech_name": "Unsecured Credentials: Group Policy Preferences"
+                },
+                {
+                    "tech_id": "T1552.004",
+                    "tech_name": "Unsecured Credentials: Private Keys"
+                },
+                {
+                    "tech_id": "T1552.003",
+                    "tech_name": "Unsecured Credentials: Shell History"
+                }
+            ]
+        }
+    },
+    "Command and Control": {
+        "T1071": {
+            "tech_id": "T1071",
+            "tech_name": "Application Layer Protocol",
+            "subtechniques": [
+                {
+                    "tech_id": "T1071.004",
+                    "tech_name": "Application Layer Protocol: DNS"
+                },
+                {
+                    "tech_id": "T1071.002",
+                    "tech_name": "Application Layer Protocol: File Transfer Protocols"
+                },
+                {
+                    "tech_id": "T1071.003",
+                    "tech_name": "Application Layer Protocol: Mail Protocols"
+                },
+                {
+                    "tech_id": "T1071.005",
+                    "tech_name": "Application Layer Protocol: Publish/Subscribe Protocols"
+                },
+                {
+                    "tech_id": "T1071.001",
+                    "tech_name": "Application Layer Protocol: Web Protocols"
+                }
+            ]
+        },
+        "T1092": {
+            "tech_id": "T1092",
+            "tech_name": "Communication Through Removable Media",
+            "subtechniques": []
+        },
+        "T1659": {
+            "tech_id": "T1659",
+            "tech_name": "Content Injection",
+            "subtechniques": []
+        },
+        "T1132": {
+            "tech_id": "T1132",
+            "tech_name": "Data Encoding",
+            "subtechniques": [
+                {
+                    "tech_id": "T1132.002",
+                    "tech_name": "Data Encoding: Non-Standard Encoding"
+                },
+                {
+                    "tech_id": "T1132.001",
+                    "tech_name": "Data Encoding: Standard Encoding"
+                }
+            ]
+        },
+        "T1001": {
+            "tech_id": "T1001",
+            "tech_name": "Data Obfuscation",
+            "subtechniques": [
+                {
+                    "tech_id": "T1001.001",
+                    "tech_name": "Data Obfuscation: Junk Data"
+                },
+                {
+                    "tech_id": "T1001.003",
+                    "tech_name": "Data Obfuscation: Protocol or Service Impersonation"
+                },
+                {
+                    "tech_id": "T1001.002",
+                    "tech_name": "Data Obfuscation: Steganography"
+                }
+            ]
+        },
+        "T1568": {
+            "tech_id": "T1568",
+            "tech_name": "Dynamic Resolution",
+            "subtechniques": [
+                {
+                    "tech_id": "T1568.003",
+                    "tech_name": "Dynamic Resolution: DNS Calculation"
+                },
+                {
+                    "tech_id": "T1568.002",
+                    "tech_name": "Dynamic Resolution: Domain Generation Algorithms"
+                },
+                {
+                    "tech_id": "T1568.001",
+                    "tech_name": "Dynamic Resolution: Fast Flux DNS"
+                }
+            ]
+        },
+        "T1573": {
+            "tech_id": "T1573",
+            "tech_name": "Encrypted Channel",
+            "subtechniques": [
+                {
+                    "tech_id": "T1573.002",
+                    "tech_name": "Encrypted Channel: Asymmetric Cryptography"
+                },
+                {
+                    "tech_id": "T1573.001",
+                    "tech_name": "Encrypted Channel: Symmetric Cryptography"
+                }
+            ]
+        },
+        "T1008": {
+            "tech_id": "T1008",
+            "tech_name": "Fallback Channels",
+            "subtechniques": []
+        },
+        "T1665": {
+            "tech_id": "T1665",
+            "tech_name": "Hide Infrastructure",
+            "subtechniques": []
+        },
+        "T1105": {
+            "tech_id": "T1105",
+            "tech_name": "Ingress Tool Transfer",
+            "subtechniques": []
+        },
+        "T1104": {
+            "tech_id": "T1104",
+            "tech_name": "Multi-Stage Channels",
+            "subtechniques": []
+        },
+        "T1095": {
+            "tech_id": "T1095",
+            "tech_name": "Non-Application Layer Protocol",
+            "subtechniques": []
+        },
+        "T1571": {
+            "tech_id": "T1571",
+            "tech_name": "Non-Standard Port",
+            "subtechniques": []
+        },
+        "T1572": {
+            "tech_id": "T1572",
+            "tech_name": "Protocol Tunneling",
+            "subtechniques": []
+        },
+        "T1090": {
+            "tech_id": "T1090",
+            "tech_name": "Proxy",
+            "subtechniques": [
+                {
+                    "tech_id": "T1090.004",
+                    "tech_name": "Proxy: Domain Fronting"
+                },
+                {
+                    "tech_id": "T1090.002",
+                    "tech_name": "Proxy: External Proxy"
+                },
+                {
+                    "tech_id": "T1090.001",
+                    "tech_name": "Proxy: Internal Proxy"
+                },
+                {
+                    "tech_id": "T1090.003",
+                    "tech_name": "Proxy: Multi-hop Proxy"
+                }
+            ]
+        },
+        "T1219": {
+            "tech_id": "T1219",
+            "tech_name": "Remote Access Tools",
+            "subtechniques": [
+                {
+                    "tech_id": "T1219.001",
+                    "tech_name": "Remote Access Tools: IDE Tunneling"
+                },
+                {
+                    "tech_id": "T1219.003",
+                    "tech_name": "Remote Access Tools: Remote Access Hardware"
+                },
+                {
+                    "tech_id": "T1219.002",
+                    "tech_name": "Remote Access Tools: Remote Desktop Software"
+                }
+            ]
+        },
+        "T1205": {
+            "tech_id": "T1205",
+            "tech_name": "Traffic Signaling",
+            "subtechniques": [
+                {
+                    "tech_id": "T1205.001",
+                    "tech_name": "Traffic Signaling: Port Knocking"
+                },
+                {
+                    "tech_id": "T1205.002",
+                    "tech_name": "Traffic Signaling: Socket Filters"
+                }
+            ]
+        },
+        "T1102": {
+            "tech_id": "T1102",
+            "tech_name": "Web Service",
+            "subtechniques": [
+                {
+                    "tech_id": "T1102.002",
+                    "tech_name": "Web Service: Bidirectional Communication"
+                },
+                {
+                    "tech_id": "T1102.001",
+                    "tech_name": "Web Service: Dead Drop Resolver"
+                },
+                {
+                    "tech_id": "T1102.003",
+                    "tech_name": "Web Service: One-Way Communication"
+                }
+            ]
+        }
+    },
+    "Exfiltration": {
+        "T1020": {
+            "tech_id": "T1020",
+            "tech_name": "Automated Exfiltration",
+            "subtechniques": [
+                {
+                    "tech_id": "T1020.001",
+                    "tech_name": "Automated Exfiltration: Traffic Duplication"
+                }
+            ]
+        },
+        "T1030": {
+            "tech_id": "T1030",
+            "tech_name": "Data Transfer Size Limits",
+            "subtechniques": []
+        },
+        "T1048": {
+            "tech_id": "T1048",
+            "tech_name": "Exfiltration Over Alternative Protocol",
+            "subtechniques": [
+                {
+                    "tech_id": "T1048.002",
+                    "tech_name": "Exfiltration Over Alternative Protocol: Exfiltration Over Asymmetric Encrypted Non-C2 Protocol"
+                },
+                {
+                    "tech_id": "T1048.001",
+                    "tech_name": "Exfiltration Over Alternative Protocol: Exfiltration Over Symmetric Encrypted Non-C2 Protocol"
+                },
+                {
+                    "tech_id": "T1048.003",
+                    "tech_name": "Exfiltration Over Alternative Protocol: Exfiltration Over Unencrypted Non-C2 Protocol"
+                }
+            ]
+        },
+        "T1041": {
+            "tech_id": "T1041",
+            "tech_name": "Exfiltration Over C2 Channel",
+            "subtechniques": []
+        },
+        "T1011": {
+            "tech_id": "T1011",
+            "tech_name": "Exfiltration Over Other Network Medium",
+            "subtechniques": [
+                {
+                    "tech_id": "T1011.001",
+                    "tech_name": "Exfiltration Over Other Network Medium: Exfiltration Over Bluetooth"
+                }
+            ]
+        },
+        "T1052": {
+            "tech_id": "T1052",
+            "tech_name": "Exfiltration Over Physical Medium",
+            "subtechniques": [
+                {
+                    "tech_id": "T1052.001",
+                    "tech_name": "Exfiltration Over Physical Medium: Exfiltration over USB"
+                }
+            ]
+        },
+        "T1567": {
+            "tech_id": "T1567",
+            "tech_name": "Exfiltration Over Web Service",
+            "subtechniques": [
+                {
+                    "tech_id": "T1567.004",
+                    "tech_name": "Exfiltration Over Web Service: Exfiltration Over Webhook"
+                },
+                {
+                    "tech_id": "T1567.002",
+                    "tech_name": "Exfiltration Over Web Service: Exfiltration to Cloud Storage"
+                },
+                {
+                    "tech_id": "T1567.001",
+                    "tech_name": "Exfiltration Over Web Service: Exfiltration to Code Repository"
+                },
+                {
+                    "tech_id": "T1567.003",
+                    "tech_name": "Exfiltration Over Web Service: Exfiltration to Text Storage Sites"
+                }
+            ]
+        },
+        "T1029": {
+            "tech_id": "T1029",
+            "tech_name": "Scheduled Transfer",
+            "subtechniques": []
+        },
+        "T1537": {
+            "tech_id": "T1537",
+            "tech_name": "Transfer Data to Cloud Account",
+            "subtechniques": []
+        }
+    },
+    "Execution": {
+        "T1197": {
+            "tech_id": "T1197",
+            "tech_name": "BITS Jobs",
+            "subtechniques": []
+        },
+        "T1651": {
+            "tech_id": "T1651",
+            "tech_name": "Cloud Administration Command",
+            "subtechniques": []
+        },
+        "T1059": {
+            "tech_id": "T1059",
+            "tech_name": "Command and Scripting Interpreter",
+            "subtechniques": [
+                {
+                    "tech_id": "T1059.002",
+                    "tech_name": "Command and Scripting Interpreter: AppleScript"
+                },
+                {
+                    "tech_id": "T1059.010",
+                    "tech_name": "Command and Scripting Interpreter: AutoHotKey & AutoIT"
+                },
+                {
+                    "tech_id": "T1059.009",
+                    "tech_name": "Command and Scripting Interpreter: Cloud API"
+                },
+                {
+                    "tech_id": "T1059.013",
+                    "tech_name": "Command and Scripting Interpreter: Container CLI/API"
+                },
+                {
+                    "tech_id": "T1059.012",
+                    "tech_name": "Command and Scripting Interpreter: Hypervisor CLI"
+                },
+                {
+                    "tech_id": "T1059.007",
+                    "tech_name": "Command and Scripting Interpreter: JavaScript"
+                },
+                {
+                    "tech_id": "T1059.011",
+                    "tech_name": "Command and Scripting Interpreter: Lua"
+                },
+                {
+                    "tech_id": "T1059.008",
+                    "tech_name": "Command and Scripting Interpreter: Network Device CLI"
+                },
+                {
+                    "tech_id": "T1059.001",
+                    "tech_name": "Command and Scripting Interpreter: PowerShell"
+                },
+                {
+                    "tech_id": "T1059.006",
+                    "tech_name": "Command and Scripting Interpreter: Python"
+                },
+                {
+                    "tech_id": "T1059.004",
+                    "tech_name": "Command and Scripting Interpreter: Unix Shell"
+                },
+                {
+                    "tech_id": "T1059.005",
+                    "tech_name": "Command and Scripting Interpreter: Visual Basic"
+                },
+                {
+                    "tech_id": "T1059.003",
+                    "tech_name": "Command and Scripting Interpreter: Windows Command Shell"
+                }
+            ]
+        },
+        "T1609": {
+            "tech_id": "T1609",
+            "tech_name": "Container Administration Command",
+            "subtechniques": []
+        },
+        "T1610": {
+            "tech_id": "T1610",
+            "tech_name": "Deploy Container",
+            "subtechniques": []
+        },
+        "T1675": {
+            "tech_id": "T1675",
+            "tech_name": "ESXi Administration Command",
+            "subtechniques": []
+        },
+        "T1203": {
+            "tech_id": "T1203",
+            "tech_name": "Exploitation for Client Execution",
+            "subtechniques": []
+        },
+        "T1574": {
+            "tech_id": "T1574",
+            "tech_name": "Hijack Execution Flow",
+            "subtechniques": [
+                {
+                    "tech_id": "T1574.014",
+                    "tech_name": "Hijack Execution Flow: AppDomainManager"
+                },
+                {
+                    "tech_id": "T1574.012",
+                    "tech_name": "Hijack Execution Flow: COR_PROFILER"
+                },
+                {
+                    "tech_id": "T1574.001",
+                    "tech_name": "Hijack Execution Flow: DLL"
+                },
+                {
+                    "tech_id": "T1574.004",
+                    "tech_name": "Hijack Execution Flow: Dylib Hijacking"
+                },
+                {
+                    "tech_id": "T1574.006",
+                    "tech_name": "Hijack Execution Flow: Dynamic Linker Hijacking"
+                },
+                {
+                    "tech_id": "T1574.005",
+                    "tech_name": "Hijack Execution Flow: Executable Installer File Permissions Weakness"
+                },
+                {
+                    "tech_id": "T1574.013",
+                    "tech_name": "Hijack Execution Flow: KernelCallbackTable"
+                },
+                {
+                    "tech_id": "T1574.007",
+                    "tech_name": "Hijack Execution Flow: Path Interception by PATH Environment Variable"
+                },
+                {
+                    "tech_id": "T1574.008",
+                    "tech_name": "Hijack Execution Flow: Path Interception by Search Order Hijacking"
+                },
+                {
+                    "tech_id": "T1574.009",
+                    "tech_name": "Hijack Execution Flow: Path Interception by Unquoted Path"
+                },
+                {
+                    "tech_id": "T1574.010",
+                    "tech_name": "Hijack Execution Flow: Services File Permissions Weakness"
+                },
+                {
+                    "tech_id": "T1574.011",
+                    "tech_name": "Hijack Execution Flow: Services Registry Permissions Weakness"
+                }
+            ]
+        },
+        "T1674": {
+            "tech_id": "T1674",
+            "tech_name": "Input Injection",
+            "subtechniques": []
+        },
+        "T1559": {
+            "tech_id": "T1559",
+            "tech_name": "Inter-Process Communication",
+            "subtechniques": [
+                {
+                    "tech_id": "T1559.001",
+                    "tech_name": "Inter-Process Communication: Component Object Model"
+                },
+                {
+                    "tech_id": "T1559.002",
+                    "tech_name": "Inter-Process Communication: Dynamic Data Exchange"
+                },
+                {
+                    "tech_id": "T1559.003",
+                    "tech_name": "Inter-Process Communication: XPC Services"
+                }
+            ]
+        },
+        "T1106": {
+            "tech_id": "T1106",
+            "tech_name": "Native API",
+            "subtechniques": []
+        },
+        "T1677": {
+            "tech_id": "T1677",
+            "tech_name": "Poisoned Pipeline Execution",
+            "subtechniques": []
+        },
+        "T1053": {
+            "tech_id": "T1053",
+            "tech_name": "Scheduled Task/Job",
+            "subtechniques": [
+                {
+                    "tech_id": "T1053.002",
+                    "tech_name": "Scheduled Task/Job: At"
+                },
+                {
+                    "tech_id": "T1053.007",
+                    "tech_name": "Scheduled Task/Job: Container Orchestration Job"
+                },
+                {
+                    "tech_id": "T1053.003",
+                    "tech_name": "Scheduled Task/Job: Cron"
+                },
+                {
+                    "tech_id": "T1053.005",
+                    "tech_name": "Scheduled Task/Job: Scheduled Task"
+                },
+                {
+                    "tech_id": "T1053.006",
+                    "tech_name": "Scheduled Task/Job: Systemd Timers"
+                }
+            ]
+        },
+        "T1648": {
+            "tech_id": "T1648",
+            "tech_name": "Serverless Execution",
+            "subtechniques": []
+        },
+        "T1129": {
+            "tech_id": "T1129",
+            "tech_name": "Shared Modules",
+            "subtechniques": []
+        },
+        "T1072": {
+            "tech_id": "T1072",
+            "tech_name": "Software Deployment Tools",
+            "subtechniques": []
+        },
+        "T1569": {
+            "tech_id": "T1569",
+            "tech_name": "System Services",
+            "subtechniques": [
+                {
+                    "tech_id": "T1569.001",
+                    "tech_name": "System Services: Launchctl"
+                },
+                {
+                    "tech_id": "T1569.002",
+                    "tech_name": "System Services: Service Execution"
+                },
+                {
+                    "tech_id": "T1569.003",
+                    "tech_name": "System Services: Systemctl"
+                }
+            ]
+        },
+        "T1127": {
+            "tech_id": "T1127",
+            "tech_name": "Trusted Developer Utilities Proxy Execution",
+            "subtechniques": [
+                {
+                    "tech_id": "T1127.002",
+                    "tech_name": "Trusted Developer Utilities Proxy Execution: ClickOnce"
+                },
+                {
+                    "tech_id": "T1127.003",
+                    "tech_name": "Trusted Developer Utilities Proxy Execution: JamPlus"
+                },
+                {
+                    "tech_id": "T1127.001",
+                    "tech_name": "Trusted Developer Utilities Proxy Execution: MSBuild"
+                }
+            ]
+        },
+        "T1204": {
+            "tech_id": "T1204",
+            "tech_name": "User Execution",
+            "subtechniques": [
+                {
+                    "tech_id": "T1204.004",
+                    "tech_name": "User Execution: Malicious Copy and Paste"
+                },
+                {
+                    "tech_id": "T1204.002",
+                    "tech_name": "User Execution: Malicious File"
+                },
+                {
+                    "tech_id": "T1204.003",
+                    "tech_name": "User Execution: Malicious Image"
+                },
+                {
+                    "tech_id": "T1204.005",
+                    "tech_name": "User Execution: Malicious Library"
+                },
+                {
+                    "tech_id": "T1204.001",
+                    "tech_name": "User Execution: Malicious Link"
+                }
+            ]
+        },
+        "T1047": {
+            "tech_id": "T1047",
+            "tech_name": "Windows Management Instrumentation",
+            "subtechniques": []
+        }
+    },
+    "Initial Access": {
+        "T1659": {
+            "tech_id": "T1659",
+            "tech_name": "Content Injection",
+            "subtechniques": []
+        },
+        "T1189": {
+            "tech_id": "T1189",
+            "tech_name": "Drive-by Compromise",
+            "subtechniques": []
+        },
+        "T1190": {
+            "tech_id": "T1190",
+            "tech_name": "Exploit Public-Facing Application",
+            "subtechniques": []
+        },
+        "T1133": {
+            "tech_id": "T1133",
+            "tech_name": "External Remote Services",
+            "subtechniques": []
+        },
+        "T1200": {
+            "tech_id": "T1200",
+            "tech_name": "Hardware Additions",
+            "subtechniques": []
+        },
+        "T1566": {
+            "tech_id": "T1566",
+            "tech_name": "Phishing",
+            "subtechniques": [
+                {
+                    "tech_id": "T1566.001",
+                    "tech_name": "Phishing: Spearphishing Attachment"
+                },
+                {
+                    "tech_id": "T1566.002",
+                    "tech_name": "Phishing: Spearphishing Link"
+                },
+                {
+                    "tech_id": "T1566.004",
+                    "tech_name": "Phishing: Spearphishing Voice"
+                },
+                {
+                    "tech_id": "T1566.003",
+                    "tech_name": "Phishing: Spearphishing via Service"
+                }
+            ]
+        },
+        "T1091": {
+            "tech_id": "T1091",
+            "tech_name": "Replication Through Removable Media",
+            "subtechniques": []
+        },
+        "T1195": {
+            "tech_id": "T1195",
+            "tech_name": "Supply Chain Compromise",
+            "subtechniques": [
+                {
+                    "tech_id": "T1195.003",
+                    "tech_name": "Supply Chain Compromise: Compromise Hardware Supply Chain"
+                },
+                {
+                    "tech_id": "T1195.001",
+                    "tech_name": "Supply Chain Compromise: Compromise Software Dependencies and Development Tools"
+                },
+                {
+                    "tech_id": "T1195.002",
+                    "tech_name": "Supply Chain Compromise: Compromise Software Supply Chain"
+                }
+            ]
+        },
+        "T1199": {
+            "tech_id": "T1199",
+            "tech_name": "Trusted Relationship",
+            "subtechniques": []
+        },
+        "T1078": {
+            "tech_id": "T1078",
+            "tech_name": "Valid Accounts",
+            "subtechniques": [
+                {
+                    "tech_id": "T1078.004",
+                    "tech_name": "Valid Accounts: Cloud Accounts"
+                },
+                {
+                    "tech_id": "T1078.001",
+                    "tech_name": "Valid Accounts: Default Accounts"
+                },
+                {
+                    "tech_id": "T1078.002",
+                    "tech_name": "Valid Accounts: Domain Accounts"
+                },
+                {
+                    "tech_id": "T1078.003",
+                    "tech_name": "Valid Accounts: Local Accounts"
+                }
+            ]
+        },
+        "T1669": {
+            "tech_id": "T1669",
+            "tech_name": "Wi-Fi Networks",
+            "subtechniques": []
+        }
+    },
+    "Defense Impairment": {
+        "T1686": {
+            "tech_id": "T1686",
+            "tech_name": "Disable or Modify System Firewall",
+            "subtechniques": [
+                {
+                    "tech_id": "T1686.001",
+                    "tech_name": "Disable or Modify System Firewall: Cloud Firewall"
+                },
+                {
+                    "tech_id": "T1686.002",
+                    "tech_name": "Disable or Modify System Firewall: Network Device Firewall"
+                },
+                {
+                    "tech_id": "T1686.003",
+                    "tech_name": "Disable or Modify System Firewall: Windows Host Firewall"
+                }
+            ]
+        },
+        "T1685": {
+            "tech_id": "T1685",
+            "tech_name": "Disable or Modify Tools",
+            "subtechniques": [
+                {
+                    "tech_id": "T1685.006",
+                    "tech_name": "Disable or Modify Tools: Clear Linux or Mac System Logs"
+                },
+                {
+                    "tech_id": "T1685.005",
+                    "tech_name": "Disable or Modify Tools: Clear Windows Event Logs"
+                },
+                {
+                    "tech_id": "T1685.002",
+                    "tech_name": "Disable or Modify Tools: Disable or Modify Cloud Log"
+                },
+                {
+                    "tech_id": "T1685.004",
+                    "tech_name": "Disable or Modify Tools: Disable or Modify Linux Audit System Log"
+                },
+                {
+                    "tech_id": "T1685.001",
+                    "tech_name": "Disable or Modify Tools: Disable or Modify Windows Event Log"
+                },
+                {
+                    "tech_id": "T1685.003",
+                    "tech_name": "Disable or Modify Tools: Modify or Spoof Tool UI"
+                }
+            ]
+        },
+        "T1484": {
+            "tech_id": "T1484",
+            "tech_name": "Domain or Tenant Policy Modification",
+            "subtechniques": [
+                {
+                    "tech_id": "T1484.001",
+                    "tech_name": "Domain or Tenant Policy Modification: Group Policy Modification"
+                },
+                {
+                    "tech_id": "T1484.002",
+                    "tech_name": "Domain or Tenant Policy Modification: Trust Modification"
+                }
+            ]
+        },
+        "T1689": {
+            "tech_id": "T1689",
+            "tech_name": "Downgrade Attack",
+            "subtechniques": []
+        },
+        "T1687": {
+            "tech_id": "T1687",
+            "tech_name": "Exploitation for Defense Impairment",
+            "subtechniques": []
+        },
+        "T1222": {
+            "tech_id": "T1222",
+            "tech_name": "File and Directory Permissions Modification",
+            "subtechniques": [
+                {
+                    "tech_id": "T1222.002",
+                    "tech_name": "File and Directory Permissions Modification: Linux and Mac Permissions"
+                },
+                {
+                    "tech_id": "T1222.001",
+                    "tech_name": "File and Directory Permissions Modification: Windows Permissions"
+                }
+            ]
+        },
+        "T1556": {
+            "tech_id": "T1556",
+            "tech_name": "Modify Authentication Process",
+            "subtechniques": [
+                {
+                    "tech_id": "T1556.009",
+                    "tech_name": "Modify Authentication Process: Conditional Access Policies"
+                },
+                {
+                    "tech_id": "T1556.001",
+                    "tech_name": "Modify Authentication Process: Domain Controller Authentication"
+                },
+                {
+                    "tech_id": "T1556.007",
+                    "tech_name": "Modify Authentication Process: Hybrid Identity"
+                },
+                {
+                    "tech_id": "T1556.006",
+                    "tech_name": "Modify Authentication Process: Multi-Factor Authentication"
+                },
+                {
+                    "tech_id": "T1556.004",
+                    "tech_name": "Modify Authentication Process: Network Device Authentication"
+                },
+                {
+                    "tech_id": "T1556.008",
+                    "tech_name": "Modify Authentication Process: Network Provider DLL"
+                },
+                {
+                    "tech_id": "T1556.002",
+                    "tech_name": "Modify Authentication Process: Password Filter DLL"
+                },
+                {
+                    "tech_id": "T1556.003",
+                    "tech_name": "Modify Authentication Process: Pluggable Authentication Modules"
+                },
+                {
+                    "tech_id": "T1556.005",
+                    "tech_name": "Modify Authentication Process: Reversible Encryption"
+                }
+            ]
+        },
+        "T1578": {
+            "tech_id": "T1578",
+            "tech_name": "Modify Cloud Compute Infrastructure",
+            "subtechniques": [
+                {
+                    "tech_id": "T1578.002",
+                    "tech_name": "Modify Cloud Compute Infrastructure: Create Cloud Instance"
+                },
+                {
+                    "tech_id": "T1578.001",
+                    "tech_name": "Modify Cloud Compute Infrastructure: Create Snapshot"
+                },
+                {
+                    "tech_id": "T1578.003",
+                    "tech_name": "Modify Cloud Compute Infrastructure: Delete Cloud Instance"
+                },
+                {
+                    "tech_id": "T1578.005",
+                    "tech_name": "Modify Cloud Compute Infrastructure: Modify Cloud Compute Configurations"
+                },
+                {
+                    "tech_id": "T1578.004",
+                    "tech_name": "Modify Cloud Compute Infrastructure: Revert Cloud Instance"
+                }
+            ]
+        },
+        "T1666": {
+            "tech_id": "T1666",
+            "tech_name": "Modify Cloud Resource Hierarchy",
+            "subtechniques": []
+        },
+        "T1112": {
+            "tech_id": "T1112",
+            "tech_name": "Modify Registry",
+            "subtechniques": []
+        },
+        "T1601": {
+            "tech_id": "T1601",
+            "tech_name": "Modify System Image",
+            "subtechniques": [
+                {
+                    "tech_id": "T1601.002",
+                    "tech_name": "Modify System Image: Downgrade System Image"
+                },
+                {
+                    "tech_id": "T1601.001",
+                    "tech_name": "Modify System Image: Patch System Image"
+                }
+            ]
+        },
+        "T1599": {
+            "tech_id": "T1599",
+            "tech_name": "Network Boundary Bridging",
+            "subtechniques": [
+                {
+                    "tech_id": "T1599.001",
+                    "tech_name": "Network Boundary Bridging: Network Address Translation Traversal"
+                }
+            ]
+        },
+        "T1647": {
+            "tech_id": "T1647",
+            "tech_name": "Plist File Modification",
+            "subtechniques": []
+        },
+        "T1690": {
+            "tech_id": "T1690",
+            "tech_name": "Prevent Command History Logging",
+            "subtechniques": []
+        },
+        "T1207": {
+            "tech_id": "T1207",
+            "tech_name": "Rogue Domain Controller",
+            "subtechniques": []
+        },
+        "T1688": {
+            "tech_id": "T1688",
+            "tech_name": "Safe Mode Boot",
+            "subtechniques": []
+        },
+        "T1553": {
+            "tech_id": "T1553",
+            "tech_name": "Subvert Trust Controls",
+            "subtechniques": [
+                {
+                    "tech_id": "T1553.002",
+                    "tech_name": "Subvert Trust Controls: Code Signing"
+                },
+                {
+                    "tech_id": "T1553.006",
+                    "tech_name": "Subvert Trust Controls: Code Signing Policy Modification"
+                },
+                {
+                    "tech_id": "T1553.001",
+                    "tech_name": "Subvert Trust Controls: Gatekeeper Bypass"
+                },
+                {
+                    "tech_id": "T1553.004",
+                    "tech_name": "Subvert Trust Controls: Install Root Certificate"
+                },
+                {
+                    "tech_id": "T1553.005",
+                    "tech_name": "Subvert Trust Controls: Mark-of-the-Web Bypass"
+                },
+                {
+                    "tech_id": "T1553.003",
+                    "tech_name": "Subvert Trust Controls: SIP and Trust Provider Hijacking"
+                }
+            ]
+        },
+        "T1600": {
+            "tech_id": "T1600",
+            "tech_name": "Weaken Encryption",
+            "subtechniques": [
+                {
+                    "tech_id": "T1600.002",
+                    "tech_name": "Weaken Encryption: Disable Crypto Hardware"
+                },
+                {
+                    "tech_id": "T1600.001",
+                    "tech_name": "Weaken Encryption: Reduce Key Space"
+                }
+            ]
+        }
+    },
+    "Lateral Movement": {
+        "T1210": {
+            "tech_id": "T1210",
+            "tech_name": "Exploitation of Remote Services",
+            "subtechniques": []
+        },
+        "T1534": {
+            "tech_id": "T1534",
+            "tech_name": "Internal Spearphishing",
+            "subtechniques": []
+        },
+        "T1570": {
+            "tech_id": "T1570",
+            "tech_name": "Lateral Tool Transfer",
+            "subtechniques": []
+        },
+        "T1563": {
+            "tech_id": "T1563",
+            "tech_name": "Remote Service Session Hijacking",
+            "subtechniques": [
+                {
+                    "tech_id": "T1563.002",
+                    "tech_name": "Remote Service Session Hijacking: RDP Hijacking"
+                },
+                {
+                    "tech_id": "T1563.001",
+                    "tech_name": "Remote Service Session Hijacking: SSH Hijacking"
+                }
+            ]
+        },
+        "T1021": {
+            "tech_id": "T1021",
+            "tech_name": "Remote Services",
+            "subtechniques": [
+                {
+                    "tech_id": "T1021.007",
+                    "tech_name": "Remote Services: Cloud Services"
+                },
+                {
+                    "tech_id": "T1021.008",
+                    "tech_name": "Remote Services: Direct Cloud VM Connections"
+                },
+                {
+                    "tech_id": "T1021.003",
+                    "tech_name": "Remote Services: Distributed Component Object Model"
+                },
+                {
+                    "tech_id": "T1021.001",
+                    "tech_name": "Remote Services: Remote Desktop Protocol"
+                },
+                {
+                    "tech_id": "T1021.002",
+                    "tech_name": "Remote Services: SMB/Windows Admin Shares"
+                },
+                {
+                    "tech_id": "T1021.004",
+                    "tech_name": "Remote Services: SSH"
+                },
+                {
+                    "tech_id": "T1021.005",
+                    "tech_name": "Remote Services: VNC"
+                },
+                {
+                    "tech_id": "T1021.006",
+                    "tech_name": "Remote Services: Windows Remote Management"
+                }
+            ]
+        },
+        "T1091": {
+            "tech_id": "T1091",
+            "tech_name": "Replication Through Removable Media",
+            "subtechniques": []
+        },
+        "T1072": {
+            "tech_id": "T1072",
+            "tech_name": "Software Deployment Tools",
+            "subtechniques": []
+        },
+        "T1080": {
+            "tech_id": "T1080",
+            "tech_name": "Taint Shared Content",
+            "subtechniques": []
+        },
+        "T1550": {
+            "tech_id": "T1550",
+            "tech_name": "Use Alternate Authentication Material",
+            "subtechniques": [
+                {
+                    "tech_id": "T1550.001",
+                    "tech_name": "Use Alternate Authentication Material: Application Access Token"
+                },
+                {
+                    "tech_id": "T1550.002",
+                    "tech_name": "Use Alternate Authentication Material: Pass the Hash"
+                },
+                {
+                    "tech_id": "T1550.003",
+                    "tech_name": "Use Alternate Authentication Material: Pass the Ticket"
+                },
+                {
+                    "tech_id": "T1550.004",
+                    "tech_name": "Use Alternate Authentication Material: Web Session Cookie"
+                }
+            ]
+        }
+    }
+}
