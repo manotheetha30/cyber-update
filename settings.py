@@ -12,8 +12,6 @@ load_dotenv()
 # All source files are flat in the project root — BASE_DIR is this directory
 BASE_DIR = Path(__file__).resolve().parent
 
-# ── Database ──────────────────────────────────────────────────────────────────
-DATABASE_URL: str = os.getenv("CTI_DATABASE_URL", f"sqlite:///{BASE_DIR}/data/cti.db")
 
 # ── LLM ───────────────────────────────────────────────────────────────────────
 OLLAMA_BASE_URL: str  = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")

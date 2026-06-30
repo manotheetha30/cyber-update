@@ -154,7 +154,7 @@ class PeakPrepare(BaseModel):
 class PeakExecute(BaseModel):
     gather_data: List[str]
     analysis_steps: List[str]
-    hunt_queries: List[str]
+    hunt_query_logic: List[str]
     supporting_evidence: List[str]
 
 

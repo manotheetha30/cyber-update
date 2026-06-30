@@ -184,9 +184,9 @@ def render_report(report: HuntReport) -> str:
             for item in hunt.execute.analysis_steps:
                 lines.append(f"- {item}")
 
-            lines += ["", "**Hunt Queries**"]
+            lines += ["", "**Hunt Query Logic**"]
 
-            for item in hunt.execute.hunt_queries:
+            for item in hunt.execute.hunt_query_logic:
                 lines.append(f"- {item}")
 
             lines += ["", "**Supporting Evidence**"]

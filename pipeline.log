@@ -5184,3 +5184,163 @@ AttributeError: 'list' object has no attribute 'published_date'
 2026-06-28 10:13:06,501 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from BAAI/bge-small-en-v1.5.
 2026-06-28 10:13:06,510 [WARNING] huggingface_hub.utils._http: '[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/adapter_config.json
 2026-06-28 10:13:06,511 [WARNING] huggingface_hub.utils._http: Retrying in 1s [Retry 1/5].
+2026-06-28 10:19:53,815 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-28 10:19:53,815 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./attack_mapper.
+2026-06-28 10:19:54,097 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-28 10:19:54,185 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-06-28 10:19:54,710 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 10:19:54,722 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/BAAI/bge-small-en-v1.5/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/modules.json "HTTP/1.1 200 OK"
+2026-06-28 10:19:54,960 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 10:19:54,973 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/BAAI/bge-small-en-v1.5/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-28 10:19:54,977 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from BAAI/bge-small-en-v1.5.
+2026-06-28 10:19:55,198 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 10:19:55,198 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 10:19:55,208 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/BAAI/bge-small-en-v1.5/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-28 10:19:55,432 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 10:19:55,443 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/BAAI/bge-small-en-v1.5/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/README.md "HTTP/1.1 200 OK"
+2026-06-28 10:19:55,668 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 10:19:55,684 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/BAAI/bge-small-en-v1.5/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/modules.json "HTTP/1.1 200 OK"
+2026-06-28 10:19:55,918 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 10:19:55,930 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/BAAI/bge-small-en-v1.5/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-28 10:19:56,156 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 10:19:56,381 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 10:19:56,394 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/BAAI/bge-small-en-v1.5/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/config.json "HTTP/1.1 200 OK"
+2026-06-28 10:19:56,715 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 10:19:56,944 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 10:19:57,174 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 10:19:57,396 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 10:19:57,626 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 10:19:57,638 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/BAAI/bge-small-en-v1.5/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 10:19:57,928 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 10:19:57,940 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/BAAI/bge-small-en-v1.5/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/config.json "HTTP/1.1 200 OK"
+2026-06-28 10:19:58,161 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 10:19:58,173 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/BAAI/bge-small-en-v1.5/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/config.json "HTTP/1.1 200 OK"
+2026-06-28 10:19:58,402 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 10:19:58,415 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/BAAI/bge-small-en-v1.5/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 10:19:58,635 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-small-en-v1.5/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 10:19:58,857 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-small-en-v1.5/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 10:19:59,122 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 10:19:59,133 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/BAAI/bge-small-en-v1.5/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-28 10:19:59,372 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-small-en-v1.5 "HTTP/1.1 200 OK"
+2026-06-28 10:19:59,385 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-28 10:20:00,685 [INFO] rss_ingestor:   -> 2 articles from The Hacker News
+2026-06-28 10:20:00,685 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-28 10:20:01,930 [INFO] rss_ingestor:   -> 1 articles from BleepingComputer
+2026-06-28 10:20:01,931 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-28 10:20:03,275 [INFO] rss_ingestor:   -> 0 articles from The Record
+2026-06-28 10:20:03,275 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-28 10:20:36,244 [WARNING] rss_ingestor: Failed to fetch Krebs on Security (https://krebsonsecurity.com/feed/): RetryError[<Future at 0x1e1a253af60 state=finished raised HTTPError>]
+2026-06-28 10:20:36,245 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-28 10:20:38,757 [INFO] rss_ingestor:   -> 1 articles from Dark Reading
+2026-06-28 10:20:38,757 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-28 10:20:39,315 [INFO] rss_ingestor:   -> 0 articles from Schneier on Security
+2026-06-28 10:20:39,316 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-28 10:20:39,891 [INFO] rss_ingestor:   -> 0 articles from CyberScoop
+2026-06-28 10:20:39,891 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-28 10:20:42,641 [INFO] rss_ingestor:   -> 1 articles from SecurityWeek
+2026-06-28 10:20:42,641 [INFO] rss_ingestor: Total articles collected: 5
+2026-06-28 10:20:42,641 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/ukraine-says-russian-intelligence-used.html
+2026-06-28 10:20:44,862 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-28 10:20:44,862 [INFO] llm_analyzer: Classifying article: Ukraine Says Russian Intelligence Used Fake Support Texts to
+2026-06-28 10:43:42,890 [INFO] llm_analyzer:  -> actors=1  iocs=0  behaviors=2  (1133.9s)
+2026-06-28 10:43:43,649 [INFO] attack_mapper:   Sent SMS messages masquerading as support bot to prompt (context: Initial step in credential the) -> T1496.003 | Impact
+2026-06-28 10:43:43,725 [INFO] attack_mapper:   Spear-phishing campaign using compromised accounts to d (context: Targeted government organizati) -> T1598.002 | Reconnaissance
+2026-06-28 10:43:43,730 [INFO] attack_mapper: Mapped 2 behaviors -> 2 techniques
+2026-06-28 10:59:49,894 [INFO] report_generator: Report written: M:\cyber\reports\2026-06-27_Ukraine_Says_Russian_Intelligence_Used_Fake_Suppor.md
+2026-06-28 10:59:49,935 [INFO] report_generator: IOC CSV: M:\cyber\reports\2026-06-28_iocs.csv (0 IOCs)
+2026-06-28 11:05:16,561 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-28 11:05:17,800 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 11:05:22,289 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-28 11:05:23,882 [INFO] rss_ingestor:   -> 2 articles from The Hacker News
+2026-06-28 11:05:23,882 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-28 11:05:24,530 [INFO] rss_ingestor:   -> 1 articles from BleepingComputer
+2026-06-28 11:05:24,531 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-28 11:05:26,037 [INFO] rss_ingestor:   -> 0 articles from The Record
+2026-06-28 11:05:26,038 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-28 11:05:26,756 [INFO] rss_ingestor:   -> 0 articles from Krebs on Security
+2026-06-28 11:05:26,756 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-28 11:05:29,368 [INFO] rss_ingestor:   -> 1 articles from Dark Reading
+2026-06-28 11:05:29,369 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-28 11:05:29,901 [INFO] rss_ingestor:   -> 0 articles from Schneier on Security
+2026-06-28 11:05:29,902 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-28 11:05:30,501 [INFO] rss_ingestor:   -> 0 articles from CyberScoop
+2026-06-28 11:05:30,501 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-28 11:05:33,317 [INFO] rss_ingestor:   -> 1 articles from SecurityWeek
+2026-06-28 11:05:33,318 [INFO] rss_ingestor: Total articles collected: 5
+2026-06-28 11:05:33,318 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/ukraine-says-russian-intelligence-used.html
+2026-06-28 11:05:35,070 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-28 11:05:35,070 [INFO] llm_analyzer: Classifying article: Ukraine Says Russian Intelligence Used Fake Support Texts to
+2026-06-28 14:36:15,942 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-28 14:36:16,737 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 14:36:21,343 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-28 14:36:22,198 [INFO] rss_ingestor:   -> 2 articles from The Hacker News
+2026-06-28 14:36:22,200 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-28 14:36:24,571 [INFO] rss_ingestor:   -> 1 articles from BleepingComputer
+2026-06-28 14:36:24,571 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-28 14:36:25,749 [INFO] rss_ingestor:   -> 0 articles from The Record
+2026-06-28 14:36:25,750 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-28 14:36:26,464 [INFO] rss_ingestor:   -> 0 articles from Krebs on Security
+2026-06-28 14:36:26,464 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-28 14:36:28,072 [INFO] rss_ingestor:   -> 1 articles from Dark Reading
+2026-06-28 14:36:28,072 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-28 14:36:28,444 [INFO] rss_ingestor:   -> 0 articles from Schneier on Security
+2026-06-28 14:36:28,445 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-28 14:36:29,374 [INFO] rss_ingestor:   -> 0 articles from CyberScoop
+2026-06-28 14:36:29,374 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-28 14:36:31,711 [INFO] rss_ingestor:   -> 1 articles from SecurityWeek
+2026-06-28 14:36:31,712 [INFO] rss_ingestor: Total articles collected: 5
+2026-06-28 14:36:31,712 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/ukraine-says-russian-intelligence-used.html
+2026-06-28 14:36:32,957 [INFO] scraper: Extraction complete: 1/1 articles succeeded
+2026-06-28 14:36:32,958 [INFO] llm_analyzer: Classifying article: Ukraine Says Russian Intelligence Used Fake Support Texts to
+2026-06-28 14:52:57,805 [INFO] llm_analyzer:  -> actors=1  iocs=0  behaviors=1  (868.4s)
+2026-06-28 14:52:58,453 [INFO] attack_mapper: Mapped 1 behaviors -> 1 techniques
+2026-06-28 15:00:36,228 [INFO] report_generator: Report written: M:\cyber\reports\2026-06-27_Ukraine_Says_Russian_Intelligence_Used_Fake_Suppor.md
+2026-06-28 15:00:36,232 [INFO] report_generator: IOC CSV: M:\cyber\reports\2026-06-28_iocs.csv (0 IOCs)
+2026-06-28 15:03:45,581 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-28 15:03:46,985 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 15:03:51,130 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-28 15:03:52,470 [INFO] rss_ingestor:   -> 2 articles from The Hacker News
+2026-06-28 15:03:52,470 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-28 15:03:52,905 [INFO] rss_ingestor:   -> 1 articles from BleepingComputer
+2026-06-28 15:03:52,905 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-28 15:03:54,062 [INFO] rss_ingestor:   -> 0 articles from The Record
+2026-06-28 15:03:54,063 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-28 15:03:54,617 [INFO] rss_ingestor:   -> 0 articles from Krebs on Security
+2026-06-28 15:03:54,619 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-28 15:03:57,186 [INFO] rss_ingestor:   -> 1 articles from Dark Reading
+2026-06-28 15:03:57,187 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-28 15:03:57,552 [INFO] rss_ingestor:   -> 0 articles from Schneier on Security
+2026-06-28 15:03:57,553 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-28 15:03:57,907 [INFO] rss_ingestor:   -> 0 articles from CyberScoop
+2026-06-28 15:03:57,907 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-28 15:04:00,352 [INFO] rss_ingestor:   -> 1 articles from SecurityWeek
+2026-06-28 15:04:00,352 [INFO] rss_ingestor: Total articles collected: 5
+2026-06-28 15:04:00,353 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/ukraine-says-russian-intelligence-used.html
+2026-06-28 15:04:01,581 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/clean-github-repo-tricks-ai-codin
+2026-06-28 15:04:03,097 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/openai-limits-gpt-56-rollout-as-sol.html
+2026-06-28 15:04:03,944 [INFO] scraper: Extracting: https://www.darkreading.com/cyber-risk/third-party-breaches-teaches-education-le
+2026-06-28 15:04:06,460 [INFO] scraper: Extraction complete: 4/4 articles succeeded
+2026-06-28 15:04:06,460 [INFO] llm_analyzer: Classifying article: Ukraine Says Russian Intelligence Used Fake Support Texts to
+2026-06-28 15:05:20,600 [INFO] llm_analyzer: Classifying article: Clean GitHub repo tricks AI coding agents into running malwa
+2026-06-28 15:07:11,266 [INFO] llm_analyzer: Classifying article: OpenAI Previews GPT-5.6 Sol With Restricted Access and Stron
+2026-06-28 15:10:00,480 [INFO] venv:   Skipping analysis: classified as General Information
+2026-06-28 15:10:00,480 [INFO] llm_analyzer: Classifying article: Third-Party Breaches Teach Education Sector a Costly Lesson 
+2026-06-28 15:20:47,981 [INFO] llm_analyzer:  -> actors=1  iocs=0  behaviors=1  (566.7s)
+2026-06-28 15:29:38,870 [INFO] llm_analyzer:  -> actors=0  iocs=0  behaviors=3  (530.9s)
+2026-06-28 15:29:38,872 [INFO] llm_analyzer:   Analyzing 2 chunks from full article...
+2026-06-28 15:49:54,260 [INFO] llm_analyzer: Merged 2 chunk reports: actors=1, behaviors=3, iocs=2
+2026-06-28 15:49:54,263 [INFO] llm_analyzer:  -> actors=1  iocs=2  behaviors=3  (1215.4s)
+2026-06-28 15:49:54,727 [INFO] attack_mapper:   Sent SMS messages masquerading as support bot to prompt (context: Initial step in credential the) -> T1496.003 | Impact
+2026-06-28 15:49:54,730 [INFO] attack_mapper: Mapped 1 behaviors -> 1 techniques
+2026-06-28 15:49:54,804 [INFO] attack_mapper:   Python package setup command executed to trigger shell  (context: The AI agent automatically exe) -> T1059.006 | Execution
+2026-06-28 15:49:54,878 [INFO] attack_mapper:   DNS TXT record queried to retrieve attacker-controlled  (context: The DNS lookup fetches the att) -> T1590.002 | Reconnaissance
+2026-06-28 15:49:54,943 [INFO] attack_mapper:   Reverse shell established with developer privileges (context: The attack chain culminates in) -> T1059.004 | Execution
+2026-06-28 15:49:54,943 [INFO] attack_mapper: Mapped 3 behaviors -> 3 techniques
+2026-06-28 15:49:55,019 [INFO] attack_mapper:   Exploited zero-day vulnerability in Oracle's E-Business (context: Attack occurred in late 2025, ) -> T1499.004 | Impact
+2026-06-28 15:49:55,088 [INFO] attack_mapper:   Ransomware attack encrypted data and demanded ransom (context: Incidents included the 2025 Or) -> T1486 | Impact
+2026-06-28 15:49:55,153 [INFO] attack_mapper:   Leveraged third-party SaaS platforms as attack vectors (context: These platforms became entry p) -> T1210 | Lateral Movement
+2026-06-28 15:49:55,153 [INFO] attack_mapper: Mapped 3 behaviors -> 3 techniques
+2026-06-28 19:58:58,263 [INFO] report_generator: Report written: M:\cyber\reports\2026-06-27_Ukraine_Says_Russian_Intelligence_Used_Fake_Suppor.md
+2026-06-28 19:58:58,296 [INFO] report_generator: Report written: M:\cyber\reports\2026-06-27_Clean_GitHub_repo_tricks_AI_coding_agents_into_run.md
+2026-06-28 19:58:58,306 [INFO] report_generator: Report written: M:\cyber\reports\2026-06-27_Third-Party_Breaches_Teach_Education_Sector_a_Cost.md
+2026-06-28 19:58:58,319 [INFO] report_generator: IOC CSV: M:\cyber\reports\2026-06-28_iocs.csv (2 IOCs)

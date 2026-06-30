@@ -66,8 +66,7 @@ def _build_query(behavior: RawBehavior) -> str:
     
     # Evidence provides additional grounding
     if behavior.evidence:
-        # Truncate long evidence to avoid overwhelming the embedding
-        evidence_snippet = behavior.evidence[:100] if len(behavior.evidence) > 100 else behavior.evidence
+        evidence_snippet = behavior.evidence
         parts.append(f"Evidence: {evidence_snippet}")
     
     query_text = " | ".join(parts)
@@ -132,7 +131,7 @@ def map_behavior(behavior: RawBehavior, top_k: int = 1) -> list[ATTACKMapping]:
             )
             
             logger.debug(
-                f"[{score:.3f}] {behavior.behavior[:50]} "
+                f"[{score:.3f}] {behavior.behavior} "
                 f"-> {technique['attack_id']} ({technique['tactic']})"
             )
             

@@ -1,0 +1,104 @@
+# Threat Hunt Generation Report: Ukraine Says Russian Intelligence Used Fake Support Texts to Steal Messaging Credentials
+
+| Field | Value |
+| --- | --- |
+| Source | The Hacker News |
+| Published | 2026-06-27 |
+| URL | [https://thehackernews.com/2026/06/ukraine-says-russian-intelligence-used.html](https://thehackernews.com/2026/06/ukraine-says-russian-intelligence-used.html) |
+| Classification | Security Incident |
+| Report Generated | 2026-06-28 19:58 UTC |
+| Model | cth-qwen:latest |
+| LLM Processing Time | 566.69s |
+
+---
+
+## Executive Summary
+
+Ukrainian Security Service (SSU) and FBI uncovered a Russian intelligence campaign using fake support SMS messages to steal messaging credentials from government officials, military personnel, and activists. The attack involved phishing for account recovery keys and deploying the OYSTERBLUES information stealer via spear-phishing campaigns.
+
+## Threat Actors
+
+### Russian Intelligence Services (RIS)
+- **Aliases:** Star Blizzard, UNC5792 (UAC-0195), UNC4221 (UAC-0185), UNC1151 (Ghostwriter, UAC-0057)
+- **Motivation:** Steal sensitive military, political, economic information and personal data
+- **Evidence:** SSU/FBI attributed attacks to Russian intelligence and specific threat groups
+
+## Campaigns
+
+### Russian Intelligence Messaging Credential Theft Campaign
+- **Aliases:** —
+- **Description:** Long-running operation using fake support SMS to steal messaging credentials and backup recovery keys
+- **Evidence:** SSU/FBI identified the campaign as orchestrated by Russian intelligence services
+
+### Spear-Phishing Campaign
+- **Aliases:** UNC1151 (Ghostwriter, UAC-0057)
+- **Description:** Targeted government organizations using compromised accounts to deliver OYSTERBLUES information stealer
+- **Evidence:** CERT-UA attributed campaign to Belarus-aligned UNC1151
+
+## Malware
+
+### OYSTERBLUES (Infostealer)
+- **Aliases:** —
+- **Description:** Information stealer deployed via spear-phishing campaigns targeting government organizations
+
+## Indicators of Compromise
+
+_None extracted._
+
+## Observed Behaviors
+
+**1. Sent SMS messages masquerading as support bot to prompt users for account credentials**
+- **Evidence:** Attackers send SMS messages that masquerade as the messaging platform's support bot and urge users to disclose their account credentials
+- **Artifacts:** `SMS`
+- **Context:** Initial step in credential theft campaign targeting messaging app users
+
+## MITRE ATT&CK Mapping
+
+| Tactic | Technique ID | Technique Name | Observed Behavior |
+| --- | --- | --- | --- |
+| Impact | `T1496.003` | Resource Hijacking: SMS Pumping | Sent SMS messages masquerading as support bot to prompt users for account credentials |
+
+## PEAK Hunt Hypotheses
+
+### Hunt 1
+
+#### Prepare
+- **Hypothesis:** Adversaries may be using SMS spoofing to trick users into disclosing credentials by impersonating a support bot.
+- **Behavior Basis:** Attackers sent SMS messages masquerading as a support bot, urging users to provide account credentials. This aligns with initial credential theft tactics.
+- **Objective:** Identify SMS messages impersonating a support bot and correlate them with credential exposure events.
+- **Required Data Sources:** SMS gateway logs (sender/receiver, content), User authentication logs (credential access attempts), Mobile device logs (if available)
+
+#### Execute
+
+**Gather Data**
+- Collect SMS gateway logs for the past 7 days, filtering for messages containing 'support bot' or similar phishing language.
+- Extract user authentication logs around the time of SMS delivery to identify credential access attempts.
+
+**Analysis Steps**
+- Verify SMS messages originate from non-verified numbers or spoofed sender IDs.
+- Correlate SMS timestamps with user credential access events (e.g., login failures, password changes).
+- Check for patterns in SMS content matching known phishing templates.
+
+**Hunt Query Logic**
+- SMS logs: sender != verified_support_number AND content CONTAINS 'support bot' AND content CONTAINS 'provide your credentials'
+- Correlate with authentication logs: event_type = 'credential_access' AND timestamp BETWEEN (SMS_timestamp - 5 minutes) AND (SMS_timestamp + 5 minutes)
+
+**Supporting Evidence**
+- SMS messages with spoofed sender IDs matching known phishing patterns
+- User credential access events occurring within 5 minutes of SMS delivery
+
+#### Act
+- **Documentation Requirements:** Record SMS content, sender IDs, correlated authentication events, and timestamps. Note whether credentials were successfully exfiltrated.
+
+**Findings to Preserve**
+- Verified SMS spoofing tactics used by adversaries
+- Correlation between SMS delivery and credential access attempts
+- List of affected user accounts
+
+**Future Hunt Recommendations**
+- Monitor for SMS traffic to/from non-verified numbers
+- Implement SMS gateway logging for all incoming/outgoing messages
+- Establish baseline for legitimate support communication patterns
+
+---
+*Generated by Threat Hunt Generation Pipeline | 2026-06-28 19:58 UTC*

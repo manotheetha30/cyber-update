@@ -159,10 +159,8 @@ def _classify_article(article: ExtractedArticle) -> ArticleClassification:
             source=rss.source,
             published_date=rss.published_date.strftime("%Y-%m-%d"),
             content=content,
-        )
-        
-        
-        raw = _ollama(prompt)
+        )    
+        raw = _ollama(prompt,model="qwen3:8b")
         data = _parse_json(raw)
         
         classification_str = data.get("classification", "Unknown").lower()
@@ -190,7 +188,7 @@ def _itype(v: Any) -> IOCType:
 
 # ── Result aggregation (for multi-chunk processing) ────────────────────────────
 
-def _merge_reports(chunk_reports: list[dict],cluster: bool) -> dict:
+def _merge_reports(chunk_reports: list[dict]) -> dict:
     """
     Merge extraction results from multiple chunks with chat history.
     Deduplicates behaviors and IOCs while preserving context.
@@ -200,85 +198,88 @@ def _merge_reports(chunk_reports: list[dict],cluster: bool) -> dict:
     
     if len(chunk_reports) == 1:
         return chunk_reports[0]
+    try:
+        merged = {
+            "executive_summary": chunk_reports[0].get("executive_summary", ""),
+            "threat_actors": [],
+            "campaigns": [],
+            "malware": [],
+            "iocs": [],
+            "behaviors": []
+        }
+        
+        # Deduplicate threat actors by name
+        actors_seen = set()
+        for report in chunk_reports:
+            for actor in (report.get("threat_actors") or []):
+                name = actor.get("name", "").lower()
+                if name and name not in actors_seen:
+                    actors_seen.add(name)
+                    merged["threat_actors"].append(actor)
+        
+        # Deduplicate campaigns by name
+        campaigns_seen = set()
+        for report in chunk_reports:
+            for campaign in (report.get("campaigns") or []):
+                name = campaign.get("name", "").lower()
+                if name and name not in campaigns_seen:
+                    campaigns_seen.add(name)
+                    merged["campaigns"].append(campaign)
+        
+        # Deduplicate malware by name
+        malware_seen = set()
+        for report in chunk_reports:
+            for malware in (report.get("malware") or []):
+                name = malware.get("name", "").lower()
+                if name and name not in malware_seen:
+                    malware_seen.add(name)
+                    merged["malware"].append(malware)
+        
+        # Deduplicate IOCs by value
+        iocs_by_value = {}
+        for report in chunk_reports:
+            for ioc in (report.get("iocs") or []):
+                value = ioc.get("value", "").lower()
+                if value:
+                    if value not in iocs_by_value:
+                        iocs_by_value[value] = ioc
+                    else:
+                        # Merge context
+                        existing_ctx = iocs_by_value[value].get("context", "")
+                        new_ctx = ioc.get("context", "")
+                        if new_ctx and new_ctx != existing_ctx:
+                            iocs_by_value[value]["context"] = f"{existing_ctx}; {new_ctx}"
+        merged["iocs"] = list(iocs_by_value.values())
+        
+        # Deduplicate behaviors by description + context
+        behaviors_by_key = {}
+        for report in chunk_reports:
+            for behavior in (report.get("behaviors") or []):
+                desc = behavior.get("behavior", "").lower().strip()
+                context = behavior.get("context", "").lower().strip()
+                key = f"{desc}||{context}"  # Unique key combining behavior and context
+                
+                if desc:
+                    if key not in behaviors_by_key:
+                        behaviors_by_key[key] = behavior
+                    else:
+                        # Merge artifacts if different
+                        existing_artifacts = set(behaviors_by_key[key].get("artifacts", []))
+                        new_artifacts = set(behavior.get("artifacts", []))
+                        behaviors_by_key[key]["artifacts"] = list(existing_artifacts | new_artifacts)
+        
+        merged["behaviors"] = list(behaviors_by_key.values())
+        logger.info(
+            f"Merged {len(chunk_reports)} chunk reports: "
+            f"actors={len(merged['threat_actors'])}, "
+            f"behaviors={len(merged['behaviors'])}, "
+            f"iocs={len(merged['iocs'])}"
+        )
     
-    merged = {
-        "executive_summary": chunk_reports[0].get("executive_summary", ""),
-        "threat_actors": [],
-        "campaigns": [],
-        "malware": [],
-        "iocs": [],
-        "behaviors": []
-    }
-    
-    # Deduplicate threat actors by name
-    actors_seen = set()
-    for report in chunk_reports:
-        for actor in (report.get("threat_actors") or []):
-            name = actor.get("name", "").lower()
-            if name and name not in actors_seen:
-                actors_seen.add(name)
-                merged["threat_actors"].append(actor)
-    
-    # Deduplicate campaigns by name
-    campaigns_seen = set()
-    for report in chunk_reports:
-        for campaign in (report.get("campaigns") or []):
-            name = campaign.get("name", "").lower()
-            if name and name not in campaigns_seen:
-                campaigns_seen.add(name)
-                merged["campaigns"].append(campaign)
-    
-    # Deduplicate malware by name
-    malware_seen = set()
-    for report in chunk_reports:
-        for malware in (report.get("malware") or []):
-            name = malware.get("name", "").lower()
-            if name and name not in malware_seen:
-                malware_seen.add(name)
-                merged["malware"].append(malware)
-    
-    # Deduplicate IOCs by value
-    iocs_by_value = {}
-    for report in chunk_reports:
-        for ioc in (report.get("iocs") or []):
-            value = ioc.get("value", "").lower()
-            if value:
-                if value not in iocs_by_value:
-                    iocs_by_value[value] = ioc
-                else:
-                    # Merge context
-                    existing_ctx = iocs_by_value[value].get("context", "")
-                    new_ctx = ioc.get("context", "")
-                    if new_ctx and new_ctx != existing_ctx:
-                        iocs_by_value[value]["context"] = f"{existing_ctx}; {new_ctx}"
-    merged["iocs"] = list(iocs_by_value.values())
-    
-    # Deduplicate behaviors by description + context
-    behaviors_by_key = {}
-    for report in chunk_reports:
-        for behavior in (report.get("behaviors") or []):
-            desc = behavior.get("behavior", "").lower().strip()
-            context = behavior.get("context", "").lower().strip()
-            key = f"{desc}||{context}"  # Unique key combining behavior and context
-            
-            if desc:
-                if key not in behaviors_by_key:
-                    behaviors_by_key[key] = behavior
-                else:
-                    # Merge artifacts if different
-                    existing_artifacts = set(behaviors_by_key[key].get("artifacts", []))
-                    new_artifacts = set(behavior.get("artifacts", []))
-                    behaviors_by_key[key]["artifacts"] = list(existing_artifacts | new_artifacts)
-    
-    merged["behaviors"] = list(behaviors_by_key.values())
-    logger.info(
-        f"Merged {len(chunk_reports)} chunk reports: "
-        f"actors={len(merged['threat_actors'])}, "
-        f"behaviors={len(merged['behaviors'])}, "
-        f"iocs={len(merged['iocs'])}"
-    )
-    
-    return merged
+        return merged
+    except Exception as exc:
+        logger.warning(f"Failed to merge chunk reports: {exc}")
+        return None
 
 
 # ── JSON → Pydantic ───────────────────────────────────────────────────────────
@@ -290,83 +291,91 @@ def _build_report(
     model: str,
     elapsed: float
 ) -> HuntReport:
-    """Build HuntReport from extracted data."""
-    threat_actors = [
-        ThreatActor(
-            name        = ta.get("name", "Unknown"),
-            aliases     = ta.get("aliases", []),
-            motivation  = ta.get("motivation"),
-            evidence    = ta.get("evidence"),
-        )
-        for ta in (data.get("threat_actors") or [])
-        if ta.get("name")
-    ]
+    try:
+        """Build HuntReport from extracted data."""
+        threat_actors = [
+            ThreatActor(
+                name        = ta.get("name", "Unknown"),
+                aliases     = ta.get("aliases", []),
+                motivation  = ta.get("motivation"),
+                evidence    = ta.get("evidence"),
+            )
+            for ta in (data.get("threat_actors") or [])
+            if ta.get("name")
+        ]
 
-    campaigns = [
-        Campaign(
-            name        = c.get("name", "Unknown"),
-            aliases     = c.get("aliases", []),
-            description = c.get("description", ""),
-            evidence    = c.get("evidence", ""),
-        )
-        for c in (data.get("campaigns") or [])
-        if c.get("name")
-    ]
+        campaigns = [
+            Campaign(
+                name        = c.get("name", "Unknown"),
+                aliases     = c.get("aliases", []),
+                description = c.get("description", ""),
+                evidence    = c.get("evidence", ""),
+            )
+            for c in (data.get("campaigns") or [])
+            if c.get("name")
+        ]
 
-    malware = [
-        MalwareFamily(
-            name         = m.get("name", "Unknown"),
-            malware_type = _mtype(m.get("type", "")),
-            description  = m.get("description"),
-        )
-        for m in (data.get("malware") or [])
-        if m.get("name")
-    ]
+        malware = [
+            MalwareFamily(
+                name         = m.get("name", "Unknown"),
+                malware_type = _mtype(m.get("type", "")),
+                description  = m.get("description"),
+            )
+            for m in (data.get("malware") or [])
+            if m.get("name")
+        ]
 
-    iocs = [
-        IOC(
-            value      = i.get("value", ""),
-            ioc_type   = _itype(i.get("ioc_type", "")),
-            context    = i.get("context"),
-        )
-        for i in (data.get("iocs") or [])
-        if i.get("value")
-    ]
+        iocs = [
+            IOC(
+                value      = i.get("value", ""),
+                ioc_type   = _itype(i.get("ioc_type", "")),
+                context    = i.get("context"),
+            )
+            for i in (data.get("iocs") or [])
+            if i.get("value")
+        ]
 
-    behaviors = [
-        RawBehavior(
-            behavior   = b.get("behavior", ""),
-            evidence   = b.get("evidence", ""),
-            artifacts  = b.get("artifacts", []),
-            context    = b.get("context"),
-        )
-        for b in (data.get("behaviors") or [])
-        if b.get("behavior")
-    ]
+        behaviors = [
+            RawBehavior(
+                behavior   = b.get("behavior", ""),
+                evidence   = b.get("evidence", ""),
+                artifacts  = b.get("artifacts", []),
+                context    = b.get("context"),
+            )
+            for b in (data.get("behaviors") or [])
+            if b.get("behavior")
+        ]
 
-    return HuntReport(
-        article           = article,
-        classification    = classification,
-        executive_summary = data.get("executive_summary", ""),
-        threat_actors     = threat_actors,
-        campaigns         = campaigns,
-        malware           = malware,
-        iocs              = iocs,
-        behaviors         = behaviors,
-        model_used        = model,
-        processing_time_s = round(elapsed, 2),
-    )
+        return HuntReport(
+            article           = article,
+            classification    = classification,
+            executive_summary = data.get("executive_summary", ""),
+            threat_actors     = threat_actors,
+            campaigns         = campaigns,
+            malware           = malware,
+            iocs              = iocs,
+            behaviors         = behaviors,
+            model_used        = model,
+            processing_time_s = round(elapsed, 2),
+        )
+    except Exception as exc:
+        logger.warning(f"Failed to build HuntReport: {exc}")
+        return HuntReport(
+            article           = article,
+            classification    = classification,
+            executive_summary = f"[Report build failed: {exc}]",
+            model_used        = model,
+            processing_time_s = round(elapsed, 2),
+        )
+    
 
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
 def analyze_article(article: ExtractedArticleWithCluster | ExtractedArticle, model: str = LLM_MODEL, use_chunking: bool = True) -> HuntReport:
     """
-    Stage A: Classify article, then extract facts if it's a security incident.
     
     Supports intelligent chunking for longer articles with chat history:
-    - Classifies article first
-    - Skips analysis for non-incident articles
     - Splits article into overlapping chunks at sentence boundaries
     - Maintains chat history across chunks for context
     - Merges and deduplicates results
@@ -377,7 +386,6 @@ def analyze_article(article: ExtractedArticleWithCluster | ExtractedArticle, mod
         behavior_memory = []
         chunk_results = []
         if isinstance(article, ExtractedArticleWithCluster):
-            cluster=True
             rss=article.rss_article[0]
     
             content="\n".join(article.full_text)
@@ -402,7 +410,6 @@ def analyze_article(article: ExtractedArticleWithCluster | ExtractedArticle, mod
         else:
             rss     = article.rss_article
             content = article.full_text
-            cluster=False
             context_article = f"""
                                 Previous observed behaviors from earlier chunks of the SAME article:
 
@@ -454,7 +461,7 @@ def analyze_article(article: ExtractedArticleWithCluster | ExtractedArticle, mod
             if not chunk_results:
                 raise ValueError("All chunks failed to extract")
             
-            data = _merge_reports(chunk_results,cluster)
+            data = _merge_reports(chunk_results)
         
         else:
             # Single-pass for short articles

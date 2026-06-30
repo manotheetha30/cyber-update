@@ -20,6 +20,14 @@ from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, TimeElapsedColumn
 from rich.table import Table
 from llm_analyzer import _classify_article
+#Hugging Face
+logging.getLogger("huggingface_hub").setLevel(logging.ERROR)
+# HTTP requests made by HF
+logging.getLogger("httpx").setLevel(logging.ERROR)
+# Transformers
+logging.getLogger("transformers").setLevel(logging.ERROR)
+# Sentence Transformers
+logging.getLogger("sentence_transformers").setLevel(logging.WARNING)
 RELEVANT_KEYWORDS = [
     "cve", "vulnerability", "vulnerable", "zero", "day", "flaw", "risk", "hackers",
     "exploit", "adware", "traffic", "fake", "phishing", "hack", "bug",
@@ -146,7 +154,7 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
     
         # ── Stage 2: Extract Article Content ──────────────────────────────────
             
-            extracted = extract_articles(rss_articles[:1])
+            extracted = extract_articles(rss_articles)
             stats["articles_extracted"] = len(extracted)
             prog.update(t, description=f"Stage 2 done — {len(extracted)} extracted")
             if not extracted:

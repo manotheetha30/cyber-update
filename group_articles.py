@@ -3,7 +3,6 @@ from sentence_transformers import SentenceTransformer
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.metrics.pairwise import cosine_similarity
 from models import ExtractedArticle
-# Load once when your application starts
 model = SentenceTransformer("BAAI/bge-small-en-v1.5")  
 
 def group_news(articles:list[ExtractedArticle],similarity_threshold=0.85) -> list[list[int]]:
