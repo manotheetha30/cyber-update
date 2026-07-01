@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import AttackMatrix from "./AttackMatrix";
 
@@ -41,6 +41,7 @@ function UrlCard() {
 }
 
 function BatchCard() {
+
   const handleClick = () => {
     console.log("Analyze Recent Threat Articles");
 
@@ -117,16 +118,44 @@ function BatchCard() {
 }
 
 function App() {
+  const [iocs, setIocs] = useState([]);
+  useEffect(() => {console.log("fetch iocss");
+  fetch("http://localhost:8000/iocs")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("API Response:", data);
+      console.log("Is array?", Array.isArray(data));
+      console.log("Length:", data.length);
+
+      setIocs(data);
+    })
+    .catch((err) => console.error(err));
+}, []);
+console.log(iocs);
+
   return (
     <div className="app">
       <Header />
 
-      <main className="dashboard">
-        <UrlCard />
-        <BatchCard />
-        <AttackMatrix/>
-      </main>
-    </div>
+       <div className="ioc-section">
+        <p>Total IOCs: {iocs.length}</p>
+    
+
+    <h2>Indicators of Compromise</h2>
+
+    {iocs.map(ioc => (
+        <div className="ioc-card" key={ioc._id}>
+
+            <div><strong>Type:</strong> {ioc.value}</div>
+            <p>Total IOCs: {iocs.length}</p>
+
+        </div>
+        
+    ))}
+
+</div>
+</div>
+
   );
 }
 

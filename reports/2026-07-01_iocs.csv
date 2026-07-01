@@ -1,0 +1,17 @@
+value,type,context,source,url,published_date
+value,type,context,source,url,published_date
+VLifeGram,Malware Name,"Malicious Pyrogram fork with 4,150 downloads",BleepingComputer,https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/,2026-06-30
+VLife-Gram,Malware Name,"Malicious Pyrogram fork with 1,030 downloads",BleepingComputer,https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/,2026-06-30
+pyrogram-navy,Malware Name,"Malicious Pyrogram fork with 2,530 downloads",BleepingComputer,https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/,2026-06-30
+pyrogram-styled,Malware Name,"Malicious Pyrogram fork with 15,370 downloads",BleepingComputer,https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/,2026-06-30
+pyrogram-zeeb,Malware Name,Malicious Pyrogram fork with 432 downloads,BleepingComputer,https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/,2026-06-30
+kelragram,Malware Name,"Malicious Pyrogram fork with 1,041 downloads",BleepingComputer,https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/,2026-06-30
+sepgram,Malware Name,Malicious Pyrogram fork with 264 downloads,BleepingComputer,https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/,2026-06-30
+pyrogram-kelra,Malware Name,Malicious Pyrogram fork with 672 downloads,BleepingComputer,https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/,2026-06-30
+secret.py,Filename,Backdoor file hidden in helpers module of Pyrogram forks,BleepingComputer,https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/,2026-06-30
+value,type,context,source,url,published_date
+CVE-2026-33017,CVE,RCE vulnerability exploited for initial access,The Hacker News,https://thehackernews.com/2026/06/langflow-rce-exploited-to-deploy-monero.html,2026-06-30
+CVE-2025-3248,CVE,Previously exploited Langflow vulnerability,The Hacker News,https://thehackernews.com/2026/06/langflow-rce-exploited-to-deploy-monero.html,2026-06-30
+83.142.209.214:80,IP Address,C2 server used for miner deployment,The Hacker News,https://thehackernews.com/2026/06/langflow-rce-exploited-to-deploy-monero.html,2026-06-30
+ipinfo.io,Domain,Used to fetch host IP address for geo-fencing,The Hacker News,https://thehackernews.com/2026/06/langflow-rce-exploited-to-deploy-monero.html,2026-06-30
+lambsys,Filename,ELF executable deployed by malware,The Hacker News,https://thehackernews.com/2026/06/langflow-rce-exploited-to-deploy-monero.html,2026-06-30

@@ -140,8 +140,6 @@ async def _extract_playwright(url: str) -> Optional[str]:
     try:
 
         from playwright.async_api import async_playwright
-
-
         async with async_playwright() as pw:
             try:
                 browser = await pw.chromium.launch(headless=True)

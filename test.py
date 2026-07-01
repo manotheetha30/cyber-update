@@ -1,22 +1,9 @@
-from markdown import markdown
-from weasyprint import HTML
+from pymongo import MongoClient
 
-def convert_md_file_to_pdf(md_file, pdf_file):
+client = MongoClient("mongodb://localhost:27017")
 
-    with open(md_file, "r", encoding="utf-8") as f:
-        md = f.read()
+db = client["hunt_generation_dashboard"]
 
-    html = markdown(
-        md,
-        extensions=[
-            "tables",
-            "fenced_code",
-            "toc",
-        ],
-    )
+print(db.list_collection_names())
 
-    HTML(string=html).write_pdf(pdf_file)
-convert_md_file_to_pdf(
-    "reports/2026-06-17_Crypto_Clipper_Campaign_Abuses_Fake_Reviews__AI_Na.md",
-    "reports/report.pdf"
-)
+""" record retention- until delete by user/ maybe once in a week..whichever is best"""

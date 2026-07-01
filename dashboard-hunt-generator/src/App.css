@@ -80,6 +80,11 @@ body{
   margin-bottom:25px;
 
 }
+.matrix-title{
+  font-weight: bold;
+  text-align:center;
+  padding-bottom: 2%;
+}
 select {
   width: 100%;
   padding: 12px;
@@ -95,7 +100,10 @@ select {
   gap: 20px;
   margin: 15px 0 20px;
 }
-
+.ioc-section{
+  text-align: left;
+  font-size: medium;
+}
 .source-item {
   display: flex;
   align-items: center;

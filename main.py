@@ -91,6 +91,7 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
     from group_articles import group_news
     from models import ArticleClassification
     from models import  ExtractedArticleWithCluster
+    from database import report_collection
     if url:
         stats = {
         "article_analyzed": 0,
@@ -154,7 +155,7 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
     
         # ── Stage 2: Extract Article Content ──────────────────────────────────
             
-            extracted = extract_articles(rss_articles)
+            extracted = extract_articles(rss_articles[6:8])
             stats["articles_extracted"] = len(extracted)
             prog.update(t, description=f"Stage 2 done — {len(extracted)} extracted")
             if not extracted:
@@ -174,7 +175,15 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
                     else:
                         unique_articles.append(article)
             except Exception as exc:
-                logger.exception("LLM Classification failed for '%s': %s", article.rss_article.title[:60], exc)
+                logger.exception("LLM Classification failed! %s ", exc)
+                stats["articles_analyzed"] = 0
+                stats["articles_classified_security"] = 0
+                stats["articles_skipped_non_incident"] =0
+                stats["attack_mappings"]=0
+                stats["iocs_extracted"]=0
+                stats["hunt_hypotheses"]=0
+                stats["reports_written"]=0
+                stats["elapsed_s"] = round(time.time() - t0, 1)
                 return stats     
 
             classified_security =len(unique_articles)           
@@ -263,6 +272,8 @@ def run_pipeline(lookback_days: int = 1,url: str | None = None) -> dict:
 
         # ── Persist + Output ──────────────────────────────────────────────────
         t = prog.add_task("[cyan]Writing reports...", total=None)
+        for r in reports:
+            report_collection.insert_one(r.model_dump())
         
         paths = save_all_reports(reports)
         export_ioc_csv(reports)

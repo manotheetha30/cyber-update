@@ -5348,3 +5348,375 @@ AttributeError: 'list' object has no attribute 'published_date'
 2026-06-29 23:38:10,371 [INFO] sentence_transformers.base.model: No device provided, using cpu
 2026-06-29 23:38:10,373 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from ./attack_mapper.
 2026-06-29 23:38:10,743 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-30 23:39:29,067 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-06-30 23:39:39,711 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-30 23:39:44,862 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-06-30 23:39:45,827 [INFO] rss_ingestor:   -> 12 articles from The Hacker News
+2026-06-30 23:39:45,827 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-06-30 23:39:46,396 [INFO] rss_ingestor:   -> 11 articles from BleepingComputer
+2026-06-30 23:39:46,396 [INFO] rss_ingestor: Fetching feed: The Record
+2026-06-30 23:39:47,524 [INFO] rss_ingestor:   -> 3 articles from The Record
+2026-06-30 23:39:47,524 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-06-30 23:39:48,179 [INFO] rss_ingestor:   -> 0 articles from Krebs on Security
+2026-06-30 23:39:48,179 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-06-30 23:39:49,511 [INFO] rss_ingestor:   -> 5 articles from Dark Reading
+2026-06-30 23:39:49,511 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-06-30 23:39:50,382 [INFO] rss_ingestor:   -> 1 articles from Schneier on Security
+2026-06-30 23:39:50,382 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-06-30 23:39:51,044 [INFO] rss_ingestor:   -> 4 articles from CyberScoop
+2026-06-30 23:39:51,044 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-06-30 23:39:52,845 [INFO] rss_ingestor:   -> 9 articles from SecurityWeek
+2026-06-30 23:39:52,845 [INFO] rss_ingestor: Total articles collected: 45
+2026-06-30 23:39:52,845 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/new-bioshocking-attack-manipulate
+2026-06-30 23:39:54,767 [INFO] scraper: Extracting: https://cyberscoop.com/citrix-netscaler-flaw-cve-2026-8451-citrixbleed/
+2026-06-30 23:39:55,244 [INFO] scraper: Extracting: https://www.darkreading.com/cyber-risk/fake-bug-report-hijacks-ai-coding-agents
+2026-06-30 23:40:00,608 [WARNING] scraper: HTTP fetch failed for https://www.darkreading.com/cyber-risk/fake-bug-report-hijacks-ai-coding-agents: RetryError[<Future at 0x1f4948c4620 state=finished raised HTTPError>]
+2026-06-30 23:40:00,608 [INFO] scraper:   Trying Playwright for https://www.darkreading.com/cyber-risk/fake-bug-report-hijacks-ai-coding-agents
+2026-06-30 23:40:16,509 [WARNING] scraper:   All extraction methods failed for https://www.darkreading.com/cyber-risk/fake-bug-report-hijacks-ai-coding-agents
+2026-06-30 23:40:16,509 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/microsoft/microsoft-accelerates-quantum-sa
+2026-06-30 23:40:18,342 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hack
+2026-06-30 23:40:20,311 [INFO] scraper: Extracting: https://www.darkreading.com/cloud-security/attackers-hijack-exposed-ai-endpoints
+2026-06-30 23:40:25,450 [WARNING] scraper: HTTP fetch failed for https://www.darkreading.com/cloud-security/attackers-hijack-exposed-ai-endpoints-power-offensive-ops: RetryError[<Future at 0x1f4965848f0 state=finished raised HTTPError>]
+2026-06-30 23:40:25,450 [INFO] scraper:   Trying Playwright for https://www.darkreading.com/cloud-security/attackers-hijack-exposed-ai-endpoints-power-offensive-ops
+2026-06-30 23:40:27,097 [WARNING] scraper:   All extraction methods failed for https://www.darkreading.com/cloud-security/attackers-hijack-exposed-ai-endpoints-power-offensive-ops
+2026-06-30 23:40:27,097 [INFO] scraper: Extracting: https://www.darkreading.com/cybersecurity-operations/identity-security-cyber-car
+2026-06-30 23:40:32,231 [WARNING] scraper: HTTP fetch failed for https://www.darkreading.com/cybersecurity-operations/identity-security-cyber-career-entry-point: RetryError[<Future at 0x1f495c4eb70 state=finished raised HTTPError>]
+2026-06-30 23:40:32,231 [INFO] scraper:   Trying Playwright for https://www.darkreading.com/cybersecurity-operations/identity-security-cyber-career-entry-point
+2026-06-30 23:40:33,909 [WARNING] scraper:   All extraction methods failed for https://www.darkreading.com/cybersecurity-operations/identity-security-cyber-career-entry-point
+2026-06-30 23:40:33,909 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/langflow-rce-exploited-to-deploy-monero.html
+2026-06-30 23:40:34,935 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/fake-perplexity-extension-on-chro
+2026-06-30 23:40:36,725 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/silent-swap-crypto-clipper-uses-fake.html
+2026-06-30 23:40:37,626 [INFO] scraper: Extracting: https://cyberscoop.com/dhs-anchor-ci-cybersecurity-information-sharing/
+2026-06-30 23:40:38,042 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/guardfall-exposes-open-source-ai-coding.html
+2026-06-30 23:40:39,332 [INFO] scraper: Extracting: https://www.securityweek.com/bluehammer-vulnerability-exploited-in-ransomware-at
+2026-06-30 23:40:40,334 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/282-ios-apps-found-leaking-llm-api-keys.html
+2026-06-30 23:40:41,177 [INFO] scraper: Extracting: https://www.securityweek.com/decades-old-bash-tricks-expose-ai-coding-agents-to-
+2026-06-30 23:40:42,300 [INFO] scraper: Extracting: https://www.securityweek.com/aflac-japan-data-breach-impacts-4-38-million/
+2026-06-30 23:40:43,410 [INFO] scraper: Extracting: https://www.securityweek.com/hacker-conversations-chris-thompson-former-head-of-
+2026-06-30 23:40:44,542 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/what-numbers-say-about-fifa-2026-cyber.html
+2026-06-30 23:40:45,683 [INFO] scraper: Extracting: https://www.securityweek.com/exploitation-of-recent-oracle-e-business-suite-vuln
+2026-06-30 23:40:46,693 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/attackers-exploit-simplehelp-cve-2026.html
+2026-06-30 23:40:47,482 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/insurance-giant-aflac-discloses-d
+2026-06-30 23:40:49,383 [INFO] scraper: Extracting: https://www.securityweek.com/the-ai-token-costs-that-can-break-cybersecurity/
+2026-06-30 23:40:50,581 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/blackfield-ransomware-asks-nidec-
+2026-06-30 23:40:52,563 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/airdrop-and-quick-share-flaws-let.html
+2026-06-30 23:40:53,349 [INFO] scraper: Extracting: https://www.securityweek.com/nissan-employee-data-breached-in-oracle-peoplesoft-
+2026-06-30 23:40:54,378 [INFO] scraper: Extracting: https://cyberscoop.com/ransomware-syndicates-corporate-organization-op-ed/
+2026-06-30 23:40:54,864 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/cisa-windows-bluehammer-flaw-now-
+2026-06-30 23:40:56,792 [INFO] scraper: Extracting: https://www.securityweek.com/critical-simplehelp-vulnerability-exploited-for-mal
+2026-06-30 23:40:57,865 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/new-bioshocking-attack-tricks-ai.html
+2026-06-30 23:40:58,850 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/progress-kemp-loadmaster-flaw-could-let.html
+2026-06-30 23:40:59,731 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/oracle-e-business-suite-flaw-cve-2026.html
+2026-06-30 23:41:00,625 [INFO] scraper: Extraction complete: 28/31 articles succeeded
+2026-06-30 23:41:00,625 [INFO] llm_analyzer: Classifying article: New BioShocking attack manipulates AI browser into data thef
+2026-06-30 23:41:13,763 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f4982c3500 state=finished raised ConnectionError>]
+2026-06-30 23:41:13,765 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:41:13,765 [INFO] llm_analyzer: Classifying article: Citrix patches a new NetScaler flaw with echoes of CitrixBle
+2026-06-30 23:41:26,936 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f4983409e0 state=finished raised ConnectionError>]
+2026-06-30 23:41:26,936 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:41:26,936 [INFO] llm_analyzer: Classifying article: Microsoft accelerates quantum-safe roadmap as risks grow
+2026-06-30 23:41:40,105 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f498343620 state=finished raised ConnectionError>]
+2026-06-30 23:41:40,105 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:41:40,107 [INFO] llm_analyzer: Classifying article: Malicious PyPI packages give hackers control of Telegram bot
+2026-06-30 23:41:53,273 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f498343aa0 state=finished raised ConnectionError>]
+2026-06-30 23:41:53,275 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:41:53,275 [INFO] llm_analyzer: Classifying article: Langflow RCE Exploited to Deploy Monero Miner on Exposed AI 
+2026-06-30 23:42:06,423 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f496608980 state=finished raised ConnectionError>]
+2026-06-30 23:42:06,423 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:42:06,423 [INFO] llm_analyzer: Classifying article: Fake Perplexity extension on Chrome Web Store tracked search
+2026-06-30 23:42:19,603 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f4981d4380 state=finished raised ConnectionError>]
+2026-06-30 23:42:19,603 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:42:19,603 [INFO] llm_analyzer: Classifying article: Silent Swap Crypto Clipper Uses Fake Google Notes Extension 
+2026-06-30 23:42:32,771 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f4966dd640 state=finished raised ConnectionError>]
+2026-06-30 23:42:32,774 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:42:32,774 [INFO] llm_analyzer: Classifying article: DHS to unveil replacement council for critical infrastructur
+2026-06-30 23:42:45,922 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f4966ded50 state=finished raised ConnectionError>]
+2026-06-30 23:42:45,922 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:42:45,922 [INFO] llm_analyzer: Classifying article: GuardFall Exposes Open-Source AI Coding Agents to Decades-Ol
+2026-06-30 23:42:59,085 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f49835e990 state=finished raised ConnectionError>]
+2026-06-30 23:42:59,085 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:42:59,087 [INFO] llm_analyzer: Classifying article: BlueHammer Vulnerability Exploited in Ransomware Attacks
+2026-06-30 23:43:12,262 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f498364530 state=finished raised ConnectionError>]
+2026-06-30 23:43:12,262 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:43:12,262 [INFO] llm_analyzer: Classifying article: 282 iOS AI Apps Leak API Keys and Open AI Proxy Access in Ne
+2026-06-30 23:43:25,439 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f4983641a0 state=finished raised ConnectionError>]
+2026-06-30 23:43:25,439 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:43:25,439 [INFO] llm_analyzer: Classifying article: Decades-Old Bash Tricks Expose AI Coding Agents to Supply Ch
+2026-06-30 23:43:38,588 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f4983655e0 state=finished raised ConnectionError>]
+2026-06-30 23:43:38,588 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:43:38,588 [INFO] llm_analyzer: Classifying article: Aflac Japan Data Breach Impacts 4.38 Million
+2026-06-30 23:43:51,770 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f4983763c0 state=finished raised ConnectionError>]
+2026-06-30 23:43:51,771 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:43:51,771 [INFO] llm_analyzer: Classifying article: Hacker Conversations: Chris Thompson, Former Head of IBM X-F
+2026-06-30 23:44:04,954 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f498377ec0 state=finished raised ConnectionError>]
+2026-06-30 23:44:04,954 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:44:04,954 [INFO] llm_analyzer: Classifying article: What the Numbers Say About FIFA 2026 Cyber Risk
+2026-06-30 23:44:18,139 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f498377d70 state=finished raised ConnectionError>]
+2026-06-30 23:44:18,139 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:44:18,139 [INFO] llm_analyzer: Classifying article: Exploitation of Recent Oracle E-Business Suite Vulnerability
+2026-06-30 23:44:31,340 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f49837db20 state=finished raised ConnectionError>]
+2026-06-30 23:44:31,340 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:44:31,341 [INFO] llm_analyzer: Classifying article: Attackers Exploit SimpleHelp CVE-2026-48558 to Deploy TaskWe
+2026-06-30 23:44:44,544 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f498375940 state=finished raised ConnectionError>]
+2026-06-30 23:44:44,544 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:44:44,544 [INFO] llm_analyzer: Classifying article: Insurance giant Aflac discloses data breach after subsidiary
+2026-06-30 23:44:57,668 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f49837c8c0 state=finished raised ConnectionError>]
+2026-06-30 23:44:57,668 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:44:57,668 [INFO] llm_analyzer: Classifying article: The AI Token Costs That Can Break Cybersecurity
+2026-06-30 23:45:10,801 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f498376f30 state=finished raised ConnectionError>]
+2026-06-30 23:45:10,801 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:45:10,801 [INFO] llm_analyzer: Classifying article: Blackfield ransomware asks Nidec Corporation for $2 million 
+2026-06-30 23:45:23,935 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f49837de80 state=finished raised ConnectionError>]
+2026-06-30 23:45:23,936 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:45:23,936 [INFO] llm_analyzer: Classifying article: AirDrop and Quick Share Flaws Let Nearby Attackers Trigger C
+2026-06-30 23:45:37,102 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f498367620 state=finished raised ConnectionError>]
+2026-06-30 23:45:37,104 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:45:37,108 [INFO] llm_analyzer: Classifying article: Nissan Employee Data Breached in Oracle PeopleSoft Hack
+2026-06-30 23:45:50,248 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f49660bb00 state=finished raised ConnectionError>]
+2026-06-30 23:45:50,248 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:45:50,248 [INFO] llm_analyzer: Classifying article: How ransomware syndicates weaponize corporate-style organiza
+2026-06-30 23:46:03,418 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f49835d5b0 state=finished raised ConnectionError>]
+2026-06-30 23:46:03,418 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:46:03,418 [INFO] llm_analyzer: Classifying article: CISA: Windows BlueHammer flaw now exploited by ransomware ga
+2026-06-30 23:46:16,571 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f4966de870 state=finished raised ConnectionError>]
+2026-06-30 23:46:16,571 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:46:16,571 [INFO] llm_analyzer: Classifying article: Critical SimpleHelp Vulnerability Exploited for Malware Deli
+2026-06-30 23:46:29,675 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f498365b80 state=finished raised ConnectionError>]
+2026-06-30 23:46:29,675 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:46:29,675 [INFO] llm_analyzer: Classifying article: New BioShocking Attack Tricks AI Browsers Into Leaking User 
+2026-06-30 23:46:42,861 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f496789700 state=finished raised ConnectionError>]
+2026-06-30 23:46:42,861 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:46:42,861 [INFO] llm_analyzer: Classifying article: Progress Kemp LoadMaster Flaw Could Let Attackers Run Root C
+2026-06-30 23:46:56,047 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f4966dfbc0 state=finished raised ConnectionError>]
+2026-06-30 23:46:56,049 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-06-30 23:46:56,049 [INFO] llm_analyzer: Classifying article: Oracle E-Business Suite Flaw CVE-2026-46817 Actively Exploit
+2026-06-30 23:47:09,182 [WARNING] llm_analyzer: Classification failed: RetryError[<Future at 0x1f4981d40b0 state=finished raised ConnectionError>]
+2026-06-30 23:47:09,182 [INFO] venv:   Skipping analysis: classified as Unknown
+2026-07-01 00:17:16,468 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-07-01 00:17:17,186 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-01 00:17:22,333 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-07-01 00:17:23,186 [INFO] rss_ingestor:   -> 12 articles from The Hacker News
+2026-07-01 00:17:23,186 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-07-01 00:17:24,046 [INFO] rss_ingestor:   -> 11 articles from BleepingComputer
+2026-07-01 00:17:24,046 [INFO] rss_ingestor: Fetching feed: The Record
+2026-07-01 00:17:25,318 [INFO] rss_ingestor:   -> 3 articles from The Record
+2026-07-01 00:17:25,318 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-07-01 00:17:25,724 [INFO] rss_ingestor:   -> 0 articles from Krebs on Security
+2026-07-01 00:17:25,724 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-07-01 00:17:26,943 [INFO] rss_ingestor:   -> 5 articles from Dark Reading
+2026-07-01 00:17:26,944 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-07-01 00:17:27,305 [INFO] rss_ingestor:   -> 1 articles from Schneier on Security
+2026-07-01 00:17:27,305 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-07-01 00:17:28,198 [INFO] rss_ingestor:   -> 4 articles from CyberScoop
+2026-07-01 00:17:28,198 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-07-01 00:17:30,235 [INFO] rss_ingestor:   -> 9 articles from SecurityWeek
+2026-07-01 00:17:30,237 [INFO] rss_ingestor: Total articles collected: 45
+2026-07-01 00:17:30,238 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/new-bioshocking-attack-manipulate
+2026-07-01 00:17:32,131 [INFO] scraper: Extracting: https://cyberscoop.com/citrix-netscaler-flaw-cve-2026-8451-citrixbleed/
+2026-07-01 00:17:32,478 [INFO] scraper: Extracting: https://www.darkreading.com/cyber-risk/fake-bug-report-hijacks-ai-coding-agents
+2026-07-01 00:17:37,466 [WARNING] scraper: HTTP fetch failed for https://www.darkreading.com/cyber-risk/fake-bug-report-hijacks-ai-coding-agents: RetryError[<Future at 0x200a0a103e0 state=finished raised HTTPError>]
+2026-07-01 00:17:37,466 [INFO] scraper:   Trying Playwright for https://www.darkreading.com/cyber-risk/fake-bug-report-hijacks-ai-coding-agents
+2026-07-01 00:17:41,821 [WARNING] scraper:   All extraction methods failed for https://www.darkreading.com/cyber-risk/fake-bug-report-hijacks-ai-coding-agents
+2026-07-01 00:17:41,821 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/microsoft/microsoft-accelerates-quantum-sa
+2026-07-01 00:17:43,678 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hack
+2026-07-01 00:17:45,432 [INFO] scraper: Extracting: https://www.darkreading.com/cloud-security/attackers-hijack-exposed-ai-endpoints
+2026-07-01 00:17:50,709 [WARNING] scraper: HTTP fetch failed for https://www.darkreading.com/cloud-security/attackers-hijack-exposed-ai-endpoints-power-offensive-ops: RetryError[<Future at 0x200a0928b90 state=finished raised HTTPError>]
+2026-07-01 00:17:50,709 [INFO] scraper:   Trying Playwright for https://www.darkreading.com/cloud-security/attackers-hijack-exposed-ai-endpoints-power-offensive-ops
+2026-07-01 00:17:52,515 [WARNING] scraper:   All extraction methods failed for https://www.darkreading.com/cloud-security/attackers-hijack-exposed-ai-endpoints-power-offensive-ops
+2026-07-01 00:17:52,515 [INFO] scraper: Extracting: https://www.darkreading.com/cybersecurity-operations/identity-security-cyber-car
+2026-07-01 00:17:57,965 [WARNING] scraper: HTTP fetch failed for https://www.darkreading.com/cybersecurity-operations/identity-security-cyber-career-entry-point: RetryError[<Future at 0x200a09176e0 state=finished raised HTTPError>]
+2026-07-01 00:17:57,966 [INFO] scraper:   Trying Playwright for https://www.darkreading.com/cybersecurity-operations/identity-security-cyber-career-entry-point
+2026-07-01 00:17:59,242 [WARNING] scraper:   All extraction methods failed for https://www.darkreading.com/cybersecurity-operations/identity-security-cyber-career-entry-point
+2026-07-01 00:17:59,242 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/langflow-rce-exploited-to-deploy-monero.html
+2026-07-01 00:18:00,325 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/fake-perplexity-extension-on-chro
+2026-07-01 00:18:02,195 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/silent-swap-crypto-clipper-uses-fake.html
+2026-07-01 00:18:03,515 [INFO] scraper: Extracting: https://cyberscoop.com/dhs-anchor-ci-cybersecurity-information-sharing/
+2026-07-01 00:18:03,996 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/guardfall-exposes-open-source-ai-coding.html
+2026-07-01 00:18:05,111 [INFO] scraper: Extracting: https://www.securityweek.com/bluehammer-vulnerability-exploited-in-ransomware-at
+2026-07-01 00:18:06,656 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/282-ios-apps-found-leaking-llm-api-keys.html
+2026-07-01 00:18:07,638 [INFO] scraper: Extracting: https://www.securityweek.com/decades-old-bash-tricks-expose-ai-coding-agents-to-
+2026-07-01 00:18:08,712 [INFO] scraper: Extracting: https://www.securityweek.com/aflac-japan-data-breach-impacts-4-38-million/
+2026-07-01 00:18:09,700 [INFO] scraper: Extracting: https://www.securityweek.com/hacker-conversations-chris-thompson-former-head-of-
+2026-07-01 00:18:10,731 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/what-numbers-say-about-fifa-2026-cyber.html
+2026-07-01 00:18:11,672 [INFO] scraper: Extracting: https://www.securityweek.com/exploitation-of-recent-oracle-e-business-suite-vuln
+2026-07-01 00:18:12,714 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/attackers-exploit-simplehelp-cve-2026.html
+2026-07-01 00:18:13,863 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/insurance-giant-aflac-discloses-d
+2026-07-01 00:18:15,776 [INFO] scraper: Extracting: https://www.securityweek.com/the-ai-token-costs-that-can-break-cybersecurity/
+2026-07-01 00:18:16,870 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/blackfield-ransomware-asks-nidec-
+2026-07-01 00:18:18,916 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/airdrop-and-quick-share-flaws-let.html
+2026-07-01 00:18:19,878 [INFO] scraper: Extracting: https://www.securityweek.com/nissan-employee-data-breached-in-oracle-peoplesoft-
+2026-07-01 00:18:20,935 [INFO] scraper: Extracting: https://cyberscoop.com/ransomware-syndicates-corporate-organization-op-ed/
+2026-07-01 00:18:21,514 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/cisa-windows-bluehammer-flaw-now-
+2026-07-01 00:18:23,532 [INFO] scraper: Extracting: https://www.securityweek.com/critical-simplehelp-vulnerability-exploited-for-mal
+2026-07-01 00:18:24,586 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/new-bioshocking-attack-tricks-ai.html
+2026-07-01 00:18:25,513 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/progress-kemp-loadmaster-flaw-could-let.html
+2026-07-01 00:18:26,504 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/oracle-e-business-suite-flaw-cve-2026.html
+2026-07-01 00:18:27,328 [INFO] scraper: Extraction complete: 28/31 articles succeeded
+2026-07-01 00:18:27,328 [INFO] llm_analyzer: Classifying article: New BioShocking attack manipulates AI browser into data thef
+2026-07-01 00:19:25,941 [INFO] llm_analyzer: Classifying article: Citrix patches a new NetScaler flaw with echoes of CitrixBle
+2026-07-01 00:20:23,064 [INFO] venv:   Skipping analysis: classified as Advisory
+2026-07-01 00:20:23,066 [INFO] llm_analyzer: Classifying article: Microsoft accelerates quantum-safe roadmap as risks grow
+2026-07-01 00:21:18,859 [INFO] venv:   Skipping analysis: classified as General Information
+2026-07-01 00:21:18,860 [INFO] llm_analyzer: Classifying article: Malicious PyPI packages give hackers control of Telegram bot
+2026-07-01 00:22:07,308 [INFO] llm_analyzer: Classifying article: Langflow RCE Exploited to Deploy Monero Miner on Exposed AI 
+2026-07-01 00:23:11,772 [INFO] llm_analyzer: Classifying article: Fake Perplexity extension on Chrome Web Store tracked search
+2026-07-01 00:24:16,408 [INFO] llm_analyzer: Classifying article: Silent Swap Crypto Clipper Uses Fake Google Notes Extension 
+2026-07-01 00:25:15,404 [INFO] llm_analyzer: Classifying article: DHS to unveil replacement council for critical infrastructur
+2026-07-01 00:26:26,768 [INFO] venv:   Skipping analysis: classified as General Information
+2026-07-01 00:26:26,769 [INFO] llm_analyzer: Classifying article: GuardFall Exposes Open-Source AI Coding Agents to Decades-Ol
+2026-07-01 00:27:20,168 [INFO] llm_analyzer: Classifying article: BlueHammer Vulnerability Exploited in Ransomware Attacks
+2026-07-01 00:28:44,955 [INFO] llm_analyzer: Classifying article: 282 iOS AI Apps Leak API Keys and Open AI Proxy Access in Ne
+2026-07-01 00:29:35,339 [INFO] llm_analyzer: Classifying article: Decades-Old Bash Tricks Expose AI Coding Agents to Supply Ch
+2026-07-01 00:30:28,226 [INFO] llm_analyzer: Classifying article: Aflac Japan Data Breach Impacts 4.38 Million
+2026-07-01 00:31:29,245 [INFO] llm_analyzer: Classifying article: Hacker Conversations: Chris Thompson, Former Head of IBM X-F
+2026-07-01 00:36:04,459 [INFO] venv:   Skipping analysis: classified as General Information
+2026-07-01 00:36:04,459 [INFO] llm_analyzer: Classifying article: What the Numbers Say About FIFA 2026 Cyber Risk
+2026-07-01 00:37:09,856 [INFO] llm_analyzer: Classifying article: Exploitation of Recent Oracle E-Business Suite Vulnerability
+2026-07-01 00:38:16,001 [INFO] llm_analyzer: Classifying article: Attackers Exploit SimpleHelp CVE-2026-48558 to Deploy TaskWe
+2026-07-01 00:39:16,241 [INFO] llm_analyzer: Classifying article: Insurance giant Aflac discloses data breach after subsidiary
+2026-07-01 00:39:55,767 [INFO] llm_analyzer: Classifying article: The AI Token Costs That Can Break Cybersecurity
+2026-07-01 00:41:52,560 [INFO] llm_analyzer: Classifying article: Blackfield ransomware asks Nidec Corporation for $2 million 
+2026-07-01 00:42:42,719 [INFO] llm_analyzer: Classifying article: AirDrop and Quick Share Flaws Let Nearby Attackers Trigger C
+2026-07-01 00:43:32,038 [INFO] llm_analyzer: Classifying article: Nissan Employee Data Breached in Oracle PeopleSoft Hack
+2026-07-01 00:44:19,241 [INFO] llm_analyzer: Classifying article: How ransomware syndicates weaponize corporate-style organiza
+2026-07-01 00:46:51,381 [INFO] llm_analyzer: Classifying article: CISA: Windows BlueHammer flaw now exploited by ransomware ga
+2026-07-01 00:48:02,711 [INFO] llm_analyzer: Classifying article: Critical SimpleHelp Vulnerability Exploited for Malware Deli
+2026-07-01 00:49:12,654 [INFO] llm_analyzer: Classifying article: New BioShocking Attack Tricks AI Browsers Into Leaking User 
+2026-07-01 00:50:09,249 [INFO] llm_analyzer: Classifying article: Progress Kemp LoadMaster Flaw Could Let Attackers Run Root C
+2026-07-01 00:51:03,022 [INFO] llm_analyzer: Classifying article: Oracle E-Business Suite Flaw CVE-2026-46817 Actively Exploit
+2026-07-01 02:31:15,143 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-07-01 02:31:15,887 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-01 02:31:21,309 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-07-01 02:31:22,148 [INFO] rss_ingestor:   -> 12 articles from The Hacker News
+2026-07-01 02:31:22,148 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-07-01 02:31:22,572 [INFO] rss_ingestor:   -> 11 articles from BleepingComputer
+2026-07-01 02:31:22,573 [INFO] rss_ingestor: Fetching feed: The Record
+2026-07-01 02:31:23,193 [INFO] rss_ingestor:   -> 3 articles from The Record
+2026-07-01 02:31:23,193 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-07-01 02:31:23,640 [INFO] rss_ingestor:   -> 0 articles from Krebs on Security
+2026-07-01 02:31:23,640 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-07-01 02:31:24,893 [INFO] rss_ingestor:   -> 5 articles from Dark Reading
+2026-07-01 02:31:24,893 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-07-01 02:31:25,495 [INFO] rss_ingestor:   -> 1 articles from Schneier on Security
+2026-07-01 02:31:25,495 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-07-01 02:31:25,882 [INFO] rss_ingestor:   -> 4 articles from CyberScoop
+2026-07-01 02:31:25,882 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-07-01 02:31:28,490 [INFO] rss_ingestor:   -> 6 articles from SecurityWeek
+2026-07-01 02:31:28,490 [INFO] rss_ingestor: Total articles collected: 42
+2026-07-01 02:31:28,491 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/new-bioshocking-attack-manipulate
+2026-07-01 02:31:30,287 [INFO] scraper: Extracting: https://cyberscoop.com/citrix-netscaler-flaw-cve-2026-8451-citrixbleed/
+2026-07-01 02:31:30,668 [INFO] scraper: Extraction complete: 2/2 articles succeeded
+2026-07-01 02:31:30,669 [INFO] llm_analyzer: Classifying article: New BioShocking attack manipulates AI browser into data thef
+2026-07-01 02:32:34,082 [INFO] llm_analyzer: Classifying article: Citrix patches a new NetScaler flaw with echoes of CitrixBle
+2026-07-01 02:34:03,385 [INFO] venv:   Skipping analysis: classified as Advisory
+2026-07-01 02:39:25,776 [INFO] llm_analyzer:  -> actors=0  iocs=1  behaviors=1  (322.4s)
+2026-07-01 02:39:26,094 [INFO] attack_mapper:   AI agent instructed to copy sensitive data from GitHub  (context: After learning that 'incorrect) -> T1213.003 | Collection
+2026-07-01 02:39:26,095 [INFO] attack_mapper: Mapped 1 behaviors -> 1 techniques
+2026-07-01 02:47:17,527 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-07-01 02:47:18,777 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-01 02:47:24,088 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-07-01 02:47:24,952 [INFO] rss_ingestor:   -> 12 articles from The Hacker News
+2026-07-01 02:47:24,952 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-07-01 02:47:25,467 [INFO] rss_ingestor:   -> 11 articles from BleepingComputer
+2026-07-01 02:47:25,468 [INFO] rss_ingestor: Fetching feed: The Record
+2026-07-01 02:47:26,825 [INFO] rss_ingestor:   -> 3 articles from The Record
+2026-07-01 02:47:26,826 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-07-01 02:47:27,373 [INFO] rss_ingestor:   -> 0 articles from Krebs on Security
+2026-07-01 02:47:27,374 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-07-01 02:47:28,699 [INFO] rss_ingestor:   -> 5 articles from Dark Reading
+2026-07-01 02:47:28,700 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-07-01 02:47:29,583 [INFO] rss_ingestor:   -> 1 articles from Schneier on Security
+2026-07-01 02:47:29,584 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-07-01 02:47:30,210 [INFO] rss_ingestor:   -> 4 articles from CyberScoop
+2026-07-01 02:47:30,211 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-07-01 02:47:32,225 [INFO] rss_ingestor:   -> 6 articles from SecurityWeek
+2026-07-01 02:47:32,226 [INFO] rss_ingestor: Total articles collected: 42
+2026-07-01 02:47:32,227 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/new-bioshocking-attack-manipulate
+2026-07-01 02:47:34,206 [INFO] scraper: Extracting: https://cyberscoop.com/citrix-netscaler-flaw-cve-2026-8451-citrixbleed/
+2026-07-01 02:47:34,690 [INFO] scraper: Extraction complete: 2/2 articles succeeded
+2026-07-01 02:47:34,690 [INFO] llm_analyzer: Classifying article: New BioShocking attack manipulates AI browser into data thef
+2026-07-01 02:48:37,855 [INFO] llm_analyzer: Classifying article: Citrix patches a new NetScaler flaw with echoes of CitrixBle
+2026-07-01 02:49:24,284 [INFO] venv:   Skipping analysis: classified as Advisory
+2026-07-01 02:56:37,866 [INFO] llm_analyzer:  -> actors=0  iocs=0  behaviors=1  (433.6s)
+2026-07-01 02:56:38,175 [INFO] attack_mapper:   AI agent instructed to visit GitHub repository and copy (context: The agent was tricked into tre) -> T1213.003 | Collection
+2026-07-01 02:56:38,176 [INFO] attack_mapper: Mapped 1 behaviors -> 1 techniques
+2026-07-01 03:02:35,387 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-30_New_BioShocking_attack_manipulates_AI_browser_into.md
+2026-07-01 03:02:35,389 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-07-01_iocs.csv (0 IOCs)
+2026-07-01 03:21:26,100 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-07-01 03:21:26,847 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-01 03:21:32,082 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-07-01 03:21:33,432 [INFO] rss_ingestor:   -> 12 articles from The Hacker News
+2026-07-01 03:21:33,433 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-07-01 03:21:33,828 [INFO] rss_ingestor:   -> 11 articles from BleepingComputer
+2026-07-01 03:21:33,829 [INFO] rss_ingestor: Fetching feed: The Record
+2026-07-01 03:21:34,421 [INFO] rss_ingestor:   -> 3 articles from The Record
+2026-07-01 03:21:34,421 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-07-01 03:21:34,886 [INFO] rss_ingestor:   -> 0 articles from Krebs on Security
+2026-07-01 03:21:34,886 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-07-01 03:21:35,748 [INFO] rss_ingestor:   -> 5 articles from Dark Reading
+2026-07-01 03:21:35,749 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-07-01 03:21:36,108 [INFO] rss_ingestor:   -> 1 articles from Schneier on Security
+2026-07-01 03:21:36,108 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-07-01 03:21:36,489 [INFO] rss_ingestor:   -> 4 articles from CyberScoop
+2026-07-01 03:21:36,490 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-07-01 03:21:39,090 [INFO] rss_ingestor:   -> 5 articles from SecurityWeek
+2026-07-01 03:21:39,090 [INFO] rss_ingestor: Total articles collected: 41
+2026-07-01 03:21:39,091 [INFO] scraper: Extracting: https://www.darkreading.com/cyber-risk/fake-bug-report-hijacks-ai-coding-agents
+2026-07-01 03:21:44,030 [WARNING] scraper: HTTP fetch failed for https://www.darkreading.com/cyber-risk/fake-bug-report-hijacks-ai-coding-agents: RetryError[<Future at 0x1dcd319a480 state=finished raised HTTPError>]
+2026-07-01 03:21:44,031 [INFO] scraper:   Trying Playwright for https://www.darkreading.com/cyber-risk/fake-bug-report-hijacks-ai-coding-agents
+2026-07-01 03:21:48,746 [WARNING] scraper:   All extraction methods failed for https://www.darkreading.com/cyber-risk/fake-bug-report-hijacks-ai-coding-agents
+2026-07-01 03:21:48,746 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/microsoft/microsoft-accelerates-quantum-sa
+2026-07-01 03:21:50,596 [INFO] scraper: Extracting: https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hack
+2026-07-01 03:21:52,435 [INFO] scraper: Extraction complete: 2/3 articles succeeded
+2026-07-01 03:21:52,435 [INFO] llm_analyzer: Classifying article: Microsoft accelerates quantum-safe roadmap as risks grow
+2026-07-01 03:23:02,586 [INFO] venv:   Skipping analysis: classified as General Information
+2026-07-01 03:23:02,586 [INFO] llm_analyzer: Classifying article: Malicious PyPI packages give hackers control of Telegram bot
+2026-07-01 03:38:18,179 [INFO] llm_analyzer:  -> actors=0  iocs=9  behaviors=5  (874.9s)
+2026-07-01 03:38:18,494 [INFO] attack_mapper:   Telegram command /asu executed to run Python code on vi (context: Remote code execution via Tele) -> T1059.006 | Execution
+2026-07-01 03:38:18,548 [INFO] attack_mapper:   Telegram command /asi executed to run shell commands on (context: Remote command execution via T) -> T1059.004 | Execution
+2026-07-01 03:38:18,596 [INFO] attack_mapper:   File system access granted to read arbitrary files on c (context: Post-compromise data exfiltrat) -> T1027 | Stealth
+2026-07-01 03:38:18,639 [INFO] attack_mapper:   Persistent backdoor installed via Telegram bot infrastr (context: Long-term access maintenance) -> T1556.001 | Persistence
+2026-07-01 03:38:18,690 [INFO] attack_mapper:   Command output exfiltrated via Telegram messages or doc (context: Data exfiltration mechanism) -> T1041 | Exfiltration
+2026-07-01 03:38:18,691 [INFO] attack_mapper: Mapped 5 behaviors -> 5 techniques
+2026-07-01 03:49:51,836 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-30_Malicious_PyPI_packages_give_hackers_control_of_Te.md
+2026-07-01 03:49:51,839 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-07-01_iocs.csv (9 IOCs)
+2026-07-01 06:06:36,694 [INFO] attack_mapper: Loaded 872 ATT&CK techniques
+2026-07-01 06:06:37,543 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-01 06:06:42,699 [INFO] rss_ingestor: Fetching feed: The Hacker News
+2026-07-01 06:06:43,353 [INFO] rss_ingestor:   -> 12 articles from The Hacker News
+2026-07-01 06:06:43,355 [INFO] rss_ingestor: Fetching feed: BleepingComputer
+2026-07-01 06:06:43,732 [INFO] rss_ingestor:   -> 10 articles from BleepingComputer
+2026-07-01 06:06:43,732 [INFO] rss_ingestor: Fetching feed: The Record
+2026-07-01 06:06:44,778 [INFO] rss_ingestor:   -> 3 articles from The Record
+2026-07-01 06:06:44,779 [INFO] rss_ingestor: Fetching feed: Krebs on Security
+2026-07-01 06:06:45,244 [INFO] rss_ingestor:   -> 0 articles from Krebs on Security
+2026-07-01 06:06:45,244 [INFO] rss_ingestor: Fetching feed: Dark Reading
+2026-07-01 06:06:46,120 [INFO] rss_ingestor:   -> 5 articles from Dark Reading
+2026-07-01 06:06:46,120 [INFO] rss_ingestor: Fetching feed: Schneier on Security
+2026-07-01 06:06:46,759 [INFO] rss_ingestor:   -> 1 articles from Schneier on Security
+2026-07-01 06:06:46,759 [INFO] rss_ingestor: Fetching feed: CyberScoop
+2026-07-01 06:06:47,137 [INFO] rss_ingestor:   -> 4 articles from CyberScoop
+2026-07-01 06:06:47,137 [INFO] rss_ingestor: Fetching feed: SecurityWeek
+2026-07-01 06:06:49,624 [INFO] rss_ingestor:   -> 3 articles from SecurityWeek
+2026-07-01 06:06:49,625 [INFO] rss_ingestor: Total articles collected: 38
+2026-07-01 06:06:49,625 [INFO] scraper: Extracting: https://www.darkreading.com/cybersecurity-operations/identity-security-cyber-car
+2026-07-01 06:06:54,521 [WARNING] scraper: HTTP fetch failed for https://www.darkreading.com/cybersecurity-operations/identity-security-cyber-career-entry-point: RetryError[<Future at 0x1a888b8ccb0 state=finished raised HTTPError>]
+2026-07-01 06:06:54,521 [INFO] scraper:   Trying Playwright for https://www.darkreading.com/cybersecurity-operations/identity-security-cyber-career-entry-point
+2026-07-01 06:06:59,705 [WARNING] scraper:   All extraction methods failed for https://www.darkreading.com/cybersecurity-operations/identity-security-cyber-career-entry-point
+2026-07-01 06:06:59,705 [INFO] scraper: Extracting: https://thehackernews.com/2026/06/langflow-rce-exploited-to-deploy-monero.html
+2026-07-01 06:07:00,632 [INFO] scraper: Extraction complete: 1/2 articles succeeded
+2026-07-01 06:07:00,633 [INFO] llm_analyzer: Classifying article: Langflow RCE Exploited to Deploy Monero Miner on Exposed AI 
+2026-07-01 06:20:42,737 [INFO] llm_analyzer:  -> actors=0  iocs=5  behaviors=10  (766.9s)
+2026-07-01 06:20:43,107 [INFO] attack_mapper:   Python script executed to download shell script and min (context: Initial exploitation of CVE-20) -> T1105 | Command and Control
+2026-07-01 06:20:43,182 [INFO] attack_mapper:   Miner binary launched as detached process (context: Execution of the miner binary) -> T1546.006 | Privilege Escalation
+2026-07-01 06:20:43,249 [INFO] attack_mapper:   Cron-based persistence established (context: Long-term maintenance of the m) -> T1053.003 | Persistence
+2026-07-01 06:20:43,331 [INFO] attack_mapper:   Security controls disabled (context: Evasion of host defenses) -> T1686 | Defense Impairment
+2026-07-01 06:20:43,425 [INFO] attack_mapper:   System logs removed and file attributes modified (context: Covering tracks and ensuring p) -> T1685.006 | Defense Impairment
+2026-07-01 06:20:43,494 [INFO] attack_mapper:   Miner binary contacts C2 server to fetch TAR archive (context: Deployment of the mining paylo) -> T1496.001 | Impact
+2026-07-01 06:20:43,557 [INFO] attack_mapper:   SSH key reuse for lateral movement (context: Expanding compromise across th) -> T1098.004 | Persistence
+2026-07-01 06:20:43,627 [INFO] attack_mapper:   IP address and location retrieved via external domain (context: Geo-fencing and operational de) -> T1590.005 | Reconnaissance
+2026-07-01 06:20:43,686 [INFO] attack_mapper:   Competing miner processes terminated (context: Eliminating rival cryptominer ) -> T1036.009 | Stealth
+2026-07-01 06:20:43,751 [INFO] attack_mapper:   Registry key modifications for persistence (context: Ensuring persistence mechanism) -> T1112 | Persistence
+2026-07-01 06:20:43,751 [INFO] attack_mapper: Mapped 10 behaviors -> 10 techniques
+2026-07-01 06:34:26,800 [INFO] report_generator: Report written: C:\Users\threa\cyber_helper\reports\2026-06-30_Langflow_RCE_Exploited_to_Deploy_Monero_Miner_on_E.md
+2026-07-01 06:34:26,806 [INFO] report_generator: IOC CSV: C:\Users\threa\cyber_helper\reports\2026-07-01_iocs.csv (5 IOCs)

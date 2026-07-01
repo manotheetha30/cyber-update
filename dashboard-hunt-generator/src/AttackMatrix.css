@@ -1,3 +1,29 @@
+
+.attack-matrix-container {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    gap: 20px;
+    height: 100%;
+}
+
+.matrix-title {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+}
+.threat-actors-panel{
+    border-left: 1px solid #ddd;
+    padding-left: 20px;
+    overflow-y: auto;
+}
+.attack-matrix {
+    padding-left: 2%;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    overflow-x: auto; /* allows horizontal scrolling if needed */
+}
 .tech-header{
     display:flex;
     gap:10px;
@@ -6,6 +32,19 @@
     padding:8px;
 }
 
+.tactic-column {
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tactic-header {
+    background: #2563eb;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
 .tech-header:hover{
     background:#eef4ff;
 }

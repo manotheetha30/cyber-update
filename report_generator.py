@@ -10,7 +10,7 @@ from pathlib import Path
 
 from settings import REPORT_DIR
 from models import ExtractedArticle, HuntReport
-
+from database import ioc_collection
 logger = logging.getLogger(__name__)
 def _table(headers: list[str], rows: list[list[str]]) -> str:
     """Render a markdown table."""
@@ -254,7 +254,7 @@ def export_ioc_csv(reports: list[HuntReport], output_dir: Path | None = None) ->
     output_dir.mkdir(parents=True, exist_ok=True)
     path = output_dir / f"{datetime.utcnow().strftime('%Y-%m-%d')}_iocs.csv"
 
-    with open(path, "w", newline="", encoding="utf-8") as f:
+    with open(path, "a", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=[
             "value", "type", "context", "source", "url", "published_date"
         ])
@@ -269,14 +269,14 @@ def export_ioc_csv(reports: list[HuntReport], output_dir: Path | None = None) ->
                 url="\n ".join(a.url for a in rss)
 
             for ioc in r.iocs:
-                w.writerow({
-                    "value":          ioc.value,
+                ioc_dict={ "value":          ioc.value,
                     "type":           ioc.ioc_type.value,
                     "context":        ioc.context or "",
                     "source":         source,
                     "url":            url,
-                    "published_date": rss[0].published_date.strftime("%Y-%m-%d"),
-                })
+                    "published_date": rss[0].published_date.strftime("%Y-%m-%d")}
+                w.writerow(ioc_dict)
+                ioc_collection.insert_one(ioc_dict)
 
     total = sum(len(r.iocs) for r in reports)
     logger.info("IOC CSV: %s (%d IOCs)", path, total)

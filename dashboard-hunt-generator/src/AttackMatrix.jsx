@@ -9,7 +9,8 @@ const tacticOrder = [
   "Execution",
   "Persistence",
   "Privilege Escalation",
-  "Defense Evasion",
+  "Stealth",
+  "Defense Impairment",
   "Credential Access",
   "Discovery",
   "Lateral Movement",
@@ -30,11 +31,16 @@ function AttackMatrix() {
   };
 
   return (
+    <div className="attack-matrix-container">
     <div className="attack-matrix">
-      {tacticOrder.map((tactic) => {
-        const techniques = Object.values(attackData[tactic] || {});
+        {tacticOrder.map((tactic) => {
 
-        return (
+  const techniques = Object.values(attackData[tactic] || {});
+
+  return (
+
+
+
           <div className="tactic-column" key={tactic}>
             <div className="tactic-header">
               {tactic}
@@ -57,8 +63,9 @@ function AttackMatrix() {
                     </div>
 
                     <div className="tech-name">
-                      {tech.tech_name}
-                    </div>
+                      {tech.tech_name}{tech.subtechniques.length>0 && ( ` (${tech.subtechniques.length})`)}
+                    </div> 
+
                   </div>
                 </div>
 
@@ -87,7 +94,7 @@ function AttackMatrix() {
                             </div>
 
                             <div className="sub-name">
-                              {sub.tech_name}
+                              {sub.tech_name.split(":")[1]}
                             </div>
                           </div>
 
@@ -102,6 +109,10 @@ function AttackMatrix() {
           </div>
         );
       })}
+    </div>
+    <div className="threat-actors-panel">
+      <h2> Threat Actor(s) / Malware</h2>
+    </div>
     </div>
   );
 }
